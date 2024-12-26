@@ -1,0 +1,576 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
+
+\begin{document}
+
+\tableofcontents
+
+\section{Электрическое поле}
+\[
+    \vec{E} = k\frac{q}{r^3}\vec{r} ,\;\text{где }
+    k=\frac{1}{4\pi\varepsilon_0}=9\cdot10^9 \,\text{м/Ф} ,\;
+    \varepsilon_{0} = 8,85\cdot10^{-12} \,\text{м/Ф}
+\]
+В случае непрерывного распределения заряда:
+\[\vec{E} = \frac{1}{4\pi\varepsilon_0}\int\frac{\rho\vec{r}dV}{r^3}\]
+
+\subsection{Теорема Гаусса}
+\[\Phi=\int\limits_{S}\vec{E}\vec{dS}\]
+\[\oint\vec{E}\vec{dS}=\frac{1}{\varepsilon_{0}}q_\text{внутр}\]
+\subsubsection{Частные случаи}
+\begin{itemize}
+    \item Плоскость: $E=\frac{\sigma}{2\varepsilon_{0}\varepsilon}$
+    \item Стена ширины d: $E=\begin{cases}
+                  \frac{\rho x}{\varepsilon_{0}}   & ,x<\frac{d}{2}   \\
+                  \frac{\rho d}{2\varepsilon_{0}} & ,x\ge\frac{d}{2}
+              \end{cases}$
+    \item Цилиндр: $E=\begin{cases}
+        \frac{\rho r}{2 \varepsilon_0} & ,r<R \\
+        \frac{\sigma R}{\varepsilon_0 r} & ,r>R
+    \end{cases}$
+    \item Шар: $E=\begin{cases}
+                  \frac{Qr}{4\pi\varepsilon_{0}R^3}  & ,r<R \\
+                  \frac{Q}{4\pi\varepsilon_{0}r^{2}} & ,r>R
+              \end{cases}$
+\end{itemize}
+\subsubsection{Дифференциальный вид}
+\[\nabla\cdot\vec{E}=\frac{\rho}{\varepsilon_{0}}\]
+
+\subsection{Потенциал}
+Теорема о циркуляции вектора E:
+\[\oint_{1}^{2}\vec{E}\vec{dl}=0\]
+Электростатическое поле является потенциальным.
+\[\varphi_{1}-\varphi_{2}=\int_{1}^{2}\vec{E}\vec{dl}\]
+Потенциал - величина, численно равная потенциальной энергии единичного положительного заряда в данной точке.
+\[
+    -d\varphi=\vec{E}\vec{dl} \qquad
+    \varphi=\frac{1}{4\pi\varepsilon_{0}}\frac{q}{r}
+\]
+Потенциал на бесконечности ($r\to\inf$) полагаем равным 0.
+\[\vec{E}=-\nabla\varphi\]
+
+\subsection{Электрический диполь}
+Момент диполя:
+\[\vec{p}=q\vec{l}\]
+где $\vec{l}$ направлен от - к +, q - положительный заряд
+\subsubsection{Потенциал поля диполя}
+\[
+    \varphi=\frac{1}{4\pi\varepsilon_{0}}(\frac{q}{r_{+}}-\frac{q}{r_{-}})=
+    \frac{1}{4\pi\varepsilon_{0}}\frac{p\cos\theta}{r^2}
+\]
+где $\theta$ - угол между p и r
+\subsubsection{Напряженность поля диполя}
+\[
+    E_{r}=-\frac{\partial\varphi}{\partial r}=\frac{1}{4\pi\varepsilon_{0}}\frac{2p\cos\theta}{r^3} \qquad
+    E_{\theta}=-\frac{\partial\varphi}{r\partial\theta}=\frac{1}{4\pi\varepsilon_{0}}\frac{p\sin\theta}{r^3} \qquad
+\]
+\[E=\sqrt{E_{r}^2+E_{\theta}^2}=\frac{1}{4\pi\varepsilon_{0}}\frac{p}{r^3}\sqrt{1+3\cos^2\theta}\]
+В частности при $\theta = 0$ и $\theta = \frac{\pi}{2}$
+\[
+    E_{\parallel} = \frac{1}{4\pi\varepsilon_{0}}\frac{2p}{r^3} \qquad
+    E_{\perp} = \frac{1}{4\pi\varepsilon_{0}}\frac{p}{r^3}
+\]
+\subsubsection{Сила действующая на диполь}
+\[\vec{F}=p\frac{\partial\vec{E}}{\partial\vec{l}}\]
+\subsubsection{Момент сил действующих на диполь}
+\[M=qEl\sin\alpha=pE\sin\alpha\]
+\[\vec{M}=[\vec{p}\times\vec{E}]\]
+\subsubsection{Энергия диполя в поле}
+\[W=q(\varphi_{+}-\varphi_{-})=q\frac{\partial\varphi}{\partial l}l=-qE_{l}l=-\vec{p}\vec{E}\]
+
+
+\section{Проводник в электростатическом поле}
+
+\subsection{Поле внутри проводника}
+Внутри проводника:
+\[
+    \vec{E}=0 \qquad \rho_{\text{внутр}}=0 \qquad \varphi=const
+\]
+Поверхность проводника эквипотенциальна!
+
+\subsection{Поле у поверхности проводника}
+\[E_{n}=\frac{\sigma}{\varepsilon_{0}}\]
+где $\sigma$ - локальная плотность заряда.
+
+\subsection{Силы, действующие на поверхность проводника}
+\[\varDelta\vec{F}=\sigma\varDelta S\vec{E}_{0}\]
+где $\sigma\varDelta S$ - заряд элемента, $\vec{E}_{0}$ - напряженность, создаваемая остальными зарядами.
+\[
+    E_{\sigma}=E_{0} \qquad
+    \vec{E}_{0}=\frac{\vec{E}}{2} \qquad
+    \varDelta\vec{F}=\frac{\sigma\varDelta S\vec{E}}{2}
+\]
+\[
+    \vec{F}_{\text{ед}}=\frac{\sigma\vec{E}}{2}=\frac{\sigma^2\vec{n}}{2\varepsilon_{0}}=\frac{\varepsilon_{0}E^2\vec{n}}{2}
+\]
+
+\subsection{Замкнутая оболочка}
+Замкнутая проводящая оболочка разделяет все пространство на внешнюю и внутреннюю части, в электрическом отношении совершенно не зависящие друг от друга
+
+\subsection{Конденсатор}
+Для изолированного проводника:
+\[C=\frac{q}{\varphi}\]
+Для кондесатора:
+\[C=\frac{q}{U}\]
+\subsubsection{Частные случаи ёмкостей}
+\begin{itemize}
+    \item Плоский: $C=\frac{\varepsilon_{0}S}{h}$
+    \item Сферический: $C=4\pi\varepsilon_{0}\frac{ab}{a-b}$
+    \item Цилиндрический: $C=\frac{2\pi\varepsilon_{0}l}{\ln(b/a)}$
+\end{itemize}
+
+
+\section{Электрическое поле в веществе}
+Свзянные заряды и их поле помечаются штрихом ($q', \rho', \sigma', \vec{E}'$), сторонне поле обозначено как $\vec{E}_{0}$.
+
+\subsection{Поляризованность P}
+- дипольный момент объёма вещества
+\[\vec{P}=\frac{1}{\Delta V}\sum\vec{p_{i}} \qquad \vec{P}=\eta\langle\vec{p}\rangle\]
+Для изотропного диэлектрика:
+\[\vec{P}=\kappa\varepsilon_{0}\vec{E} ,\;\text{где } \kappa=\varepsilon-1\ \;\text{- диэлектрическая восприимчивость}\]
+\subsubsection{Теорема Гаусса}
+\[\oint\vec{P}\vec{dS}=-q'_{\text{внутр}}\]
+\subsubsection{Граничные условия}
+\[P_{2n}-P_{1n}=-\sigma'\]
+где индекс n означает проекцию на нормаль
+
+\subsection{Вектор D}
+\[\vec{D}=\varepsilon_{0}\vec{E}+\vec{P} \qquad \vec{D}=\varepsilon\varepsilon_{0}\vec{E}\]
+\subsubsection{Теорема Гаусса}
+\[\oint\vec{D}\vec{dS}=q_{\text{внутр}}^{\text{сторонние}}\]
+
+\subsection{Условия на границе}
+\subsubsection{Два диэлектрика}
+\[\oint\vec{E}\vec{dS}=0 \qquad \oint\vec{D}\vec{dS}=q_{\text{внутр}}\]
+\[E_{1\tau}=E_{2\tau} \qquad D_{2n}-D_{1n}=\sigma=0\]
+\[\frac{\tan\alpha_{2}}{\tan\alpha_{1}}=\frac{\varepsilon_{2}}{\varepsilon_{1}}\]
+\subsubsection{Проводник - диэлектрик}
+\[D_{n}=\sigma \Rightarrow \sigma'=-\frac{\varepsilon-1}{\varepsilon}\sigma\]
+
+\subsection{Поле в однородном диэлектрике}
+\[\vec{E}=\frac{\vec{E}_{0}}{\varepsilon} \qquad \vec{D}=\vec{D}_{0}\ \qquad \vec{E}'=-\vec{P}/\varepsilon_{0}\]
+
+
+\section{Энергия электрического поля}
+
+\subsection{Электрическая энергия системы зарядов}
+\[\delta A=-dW \qquad W=\frac{1}{2}\sum q_{i}\varphi_{i}\]
+где $q_{i}$ - i-й заряд системы, $\varphi_{i}$ - потенциал, создаваемый в месте нахождения i-ro заряда всеми остальными зарядами.
+\[W=\frac{1}{2}\int\rho\varphi dV\]
+где $\varphi$ - потенциал, создаваемый всеми зарядами системы в объеме dV.
+
+\subsection{Энергия заряженных проводников и кондесатора}
+Уединенный проводник:
+\[W=\frac{q\varphi}{2}=\frac{C\varphi^2}{2}=\frac{q^2}{2C}\]
+Конденсатор:
+\[W=\frac{qU}{2}=\frac{CU^2}{2}=\frac{q^2}{2C}\]
+
+\subsection{Энергия поля}
+\[W=\int\frac{\varepsilon\varepsilon_{0} E^2}{2}dV=\int\frac{\vec{E}\vec{D}}{2}dV\]
+\subsubsection{Объёмная плотность}
+\[w=\frac{\varepsilon\varepsilon_{0} E^2}{2}=\frac{\vec{E}\vec{D}}{2}\]
+
+
+\section{Постоянный электрический ток}
+\[I=\frac{dq}{dt}\]
+
+\subsection{Плотность тока, уравнение непрерывности}
+\[j=\frac{dI}{dS_{\perp}} \qquad I=\int\vec{j}\vec{dS}\]
+Вектор плотности тока - отношение силы тока и площадки в данной точке, перпендикулярной ему. Сонаправлен с вектором скорости положительных частиц.
+\[\oint\vec{j}\vec{dS}=-\frac{dq}{dt}\]
+В случае постоянного тока, распределение не изменяется:
+\[\oint\vec{j}\vec{dS}=0\]
+Дифференциальная форма:
+\[\nabla\cdot\vec{j}=-\frac{\partial\rho}{\partial t}\]
+
+\subsection{Закон Ома для однородного проводника}
+\[I=\frac{U}{R} \qquad R=\rho\frac{l}{S}\]
+\[\vec{j}=\frac{1}{\rho}\vec{E}=\lambda\vec{E}\]
+$\lambda$ - удельная электропроводность, сименс на метр (См/м)
+\subsubsection{Закон Ома для неоднородного участка}
+При наличии сторонних (некулоновских) сил ($\vec{E}^{*}$), обобщённый закон Ома:
+\[\vec{j}=\lambda(\vec{E}+\vec{E}^{*})\]
+\[I\int_{1}^{2}\rho\frac{dl}{S}=\int_{1}^{2}\frac{\vec{j}\vec{dl}}{\lambda}=\int_{1}^{2}\vec{E}\vec{dl}+\int_{1}^{2}\vec{E}^{*}\vec{dl}\]
+\[RI=\varphi_{1}-\varphi_{2}+\varepsilon_{12}\]
+$\varepsilon_{12}$ - электродвижущая сила
+
+\subsection{Правила Кирхгофа}
+В узле алгебраическая сумма токов равна 0:
+\[\sum I_{k}=0\]
+В замкнутом контуре:
+\[\sum I_{k}R_{k}=\sum\varepsilon_{k}\]
+
+\subsection{Закон Ждоуля-Ленца}
+\[Q=RI^{2} \qquad Q_{\text{удельная}}=\rho j^{2}=\vec{j}\vec{E}=\lambda E^{2}\]
+В неоднородной среде:
+\[Q=\varepsilon I \qquad Q_{\text{удельная}}=\rho j^{2}=\vec{j}(\vec{E}+\vec{E}^{*})\]
+
+\subsection{Переходные процессы в цепи с конденсатором}
+\subsubsection{Разрядка конденсатора}
+\[RI=U \qquad \frac{dq}{dt}+\frac{q}{RC}=0\]
+\[q=q_{0}e^{-t/\tau} \qquad \tau=RC\]
+\[I=-\frac{dq}{dt}=I_{0}e^{-t/\tau} \qquad I_{0}=\frac{q_{0}}{\tau}\]
+\subsubsection{Зарядка кондесатора}
+\[RI=\varphi_{1}-\varphi_{2}+\varepsilon \qquad \frac{dq}{dt}=\frac{\varepsilon-q/C}{R}\]
+\[RC\ln(1-\frac{q}{\varepsilon C})=-t \qquad q=q_{m}(1-e^{-t/\tau})\]
+\[I=\frac{dq}{dt}=I_{0}e^{-t/\tau} \qquad I_{0}=\frac{\varepsilon}{R}\]
+
+
+\section{Магнитное поле}
+Магнитное поле равномерно движущегося заряда:
+\[
+    \vec{B}=\frac{\mu_{0}}{4\pi}\frac{q[\vec{v}\times\vec{r}]}{r^3}
+    ,\; \text{где } \mu_{0}=4\pi\cdot10^{-7} \, \text{Гн/м}
+\]
+\[\vec{B}=\varepsilon_{0}\mu_{0}[\vec{v}\times\vec{E}]\]
+
+\subsection{Сила Лоренца}
+\[
+    \vec{F}_{L}=[\vec{v}\times\vec{B}]q
+\]
+
+\subsection{Закон Био-Савара}
+\[\vec{dB}=\frac{\mu_{0}}{4\pi}\frac{I[\vec{dl}\times\vec{r}]}{r^3}\]
+Магнитное поле на оси кругового тока: $B=\frac{\mu_{0}}{4\pi}\frac{2\pi R^2I}{(z^2+r^2)^{\frac{3}{2}}}$
+
+\subsection{Теорема Гаусса}
+\[\oint\vec{B}\vec{dS}=0 \qquad \nabla\cdot\vec{B}=0\]
+
+\subsection{Теорема о циркуляции B}
+\[\oint\vec{B}\vec{dl}=\mu_{0}I\]
+Циркуляция вектора $\vec{B}$ по произвольному контуру Г равна произведению $\mu_{0}$ на алгебраическую сумму токов, охватываемых контуром Г.
+\subsubsection{Частные случаи}
+\begin{itemize}
+    \item Прямой провод: $B=\frac{\mu_{0}I}{2\pi r}, \; r \ge R$
+    \item Внутри длинного соленоида: $B=\mu_{0}\mu nI$
+    \item Плоскость с током: $B=\frac{\mu_{0}l}{2}$, где l сторона контура, параллельная плоскости
+\end{itemize}
+\subsubsection{Дифференциальный вид}
+\[\lim_{S \to 0}\frac{\oint\vec{B}\vec{dl}}{S}=(rot\,\vec{B})_{n}\]
+Правая часть - проекция ротора на нормаль площадки, полученную по правилу правого винта.
+\[
+    \nabla \times \vec{B} = \begin{vmatrix}
+        e_{x}                       & e_{y}                       & e_{z}                       \\
+        \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+        B_{x}                       & B_{y}                       & B_{z}
+    \end{vmatrix}
+\]
+\[
+    \nabla \times \vec{B} = \mu_{0}\vec{j}
+\]
+Где $\vec{j}=\frac{\vec{I}}{S}$ - плотность тока.
+
+\subsection{Сила Ампера}
+\[
+    \vec{dF}_{A}=\rho[\vec{v}\times\vec{B}]dV \qquad
+    \vec{dF}_{A}=I[\vec{dl}\times\vec{B}] \qquad
+    \vec{F}_{A}=l[\vec{I}\times\vec{B}]
+\]
+\subsubsection{Частные случаи}
+\begin{itemize}
+    \item Параллельные токи (на расстояние h) на единицу длины: $F = \frac{\mu_{0}}{4\pi}\frac{2I_{1}I_{2}}{h}$
+    \item Контур с током при постоянном B: $\vec{F}=I\oint[\vec{dl}\times\vec{B}]=I[(\oint\vec{dl})\times\vec{B}]=I[0\times\vec{B}]=0$
+\end{itemize}
+\subsubsection{Работа при перемещении контура}
+\[\delta A=Id\Phi \]
+где $d\Phi$ - приращение магнитного потока сквозь контур.\\
+В случаем подвижной перемычки:
+\[\delta A=Fdx=IBldx=IBdS\]
+
+\subsection{Элементарный контур (магнитный диполь)}
+Поведение плоского малого контура описывается магнитным моментом: $\vec{p}_{m}=IS\vec{n}$, где S - площать контура, $\vec{n}$ - нормаль по правилу правого винта.
+\subsubsection{Сила действующая на контур}
+В неоднородном магнитном поле по закону ампера получаем:
+\[\vec{F}=p_{m}\frac{\partial\vec{B}}{\partial\vec{n}}\]
+где $p_{m}$ - модуль момента, $\frac{\partial\vec{B}}{\partial\vec{n}}$ - производная по направлению нормали $\vec{n}$.
+\subsubsection{Момент сил}
+\[\vec{M}=[\vec{p}_{m}\times\vec{B}]\]
+
+
+\section{Магнитное поле в веществе}
+
+\subsection{Намагниченность J}
+\[\vec{J}=\frac{1}{\Delta V}\sum \vec{p}_{m} \qquad \vec{J}=n\langle\vec{p}_{m}\rangle\]
+\subsubsection{Циркуляция}
+\[\oint\vec{J}\vec{dl}=I' \qquad I'=\int\vec{j}'\vec{dS}\]
+где $I'$ - алгебраическая сумма токов намагничивания в контуре, а \\ $\vec{j}'$ - объёмная плотность тока намагничивания, интегрирование по \\ произвольной поверхности, натянутой на контур.
+\[\nabla\times\vec{J}=\vec{j}'\]
+\subsubsection{Когда j'=0}
+\begin{itemize}
+    \item магнетик однородный
+    \item внутри магнетика нет токов проводимости
+\end{itemize}
+
+\subsection{Вектор H}
+\[\oint\vec{B}\vec{dl}=\mu_{0}(I+I')\]
+\[\vec{H}=\frac{\vec{B}}{\mu_{0}}-\vec{J} \qquad \oint\vec{H}\vec{dl}=I\]
+где $I$ - алгебраическая сумма токов проводимости
+\[\nabla\times\vec{H}=\vec{j}\]
+где $\vec{j}$ - плотность тока проводимости
+\subsubsection{Связь J и H}
+\[\vec{J}=\chi\vec{H}\]
+$\chi$ - магнитная восприимчивость
+\begin{itemize}
+    \item пармагнетики $\chi > 0, \; \vec{J}\uparrow\uparrow\vec{H}$
+    \item диамагнетики $\chi > 0, \; \vec{J}\uparrow\downarrow\vec{H}$
+    \item ферромагнетики, $J$ зависит от предыистории (гистерезис)
+\end{itemize}
+\subsubsection{Связь B и H}
+\[\vec{B}=\mu\mu_{0}\vec{H} \qquad \mu=1+\chi\]
+
+\subsection{Граничные условия B и H}
+\[\oint\vec{B}\vec{dl}=0 \qquad \oint\vec{H}\vec{dl}=I\]
+\[B_{2n}\Delta S + B_{1n}\Delta S=0 \qquad B_{2n}=B_{1n}\]
+\[H_{2\tau}l+H_{2\tau}l=i_{N}l \qquad H_{2\tau}-H_{1\tau}=i_{N}\]
+$\vec{N}$ - нормаль к контуру, $i$ - плотность токов проводимости
+\subsubsection{Преломление линий B (H)}
+\[\frac{\tan\alpha_{2}}{\tan\alpha_{1}}=\frac{\mu_{2}}{\mu_{1}}\]
+
+
+\section{Относительность полей}
+Система отсчёта $K'$ движется относительно системы $K$, тогда \textbf{локально} верны следующие соотношения:
+\[\vec{E}'_{\parallel}=\vec{E} \qquad \vec{B}'_{\parallel}=\vec{B}\]
+\[\vec{E}'_{\perp}=\frac{\vec{E}_{\perp}+[\vec{v}_{0}\times\vec{B}]}{\sqrt{1-\beta^{2}}} \qquad \vec{B}'_{\perp}=\frac{\vec{B}_{\perp}+[\vec{v}_{0}\times\vec{E}]}{\sqrt{1-\beta^{2}}}\]
+где $\beta = v_{0}/c $
+
+\subsection{Простые следствия}
+\begin{itemize}
+    \item В системе K только E: $\vec{B}'=-[\vec{v}_{0}\times\vec{E}']$
+    \item В системе K только B: $\vec{E}'=[\vec{v}_{0}\times\vec{B}']$
+\end{itemize}
+
+\subsection{Инварианты}
+\[\vec{E}\vec{B}=inv \qquad E^2-c^2B^2=inv\]
+
+
+\section{Электромагнитная индукция}
+
+\subsection{Правило Ленца}
+Индукционный ток направлен так, чтобы противодействовать причине, его вызывающей.
+
+\subsection{Закон Фарадея}
+\[\varepsilon=\oint\vec{E}\vec{dl}=-\frac{d\Phi}{dt} \qquad \nabla\times E=-\frac{\partial B}{\partial t}\]
+При нескольких витках $\varepsilon=-N\frac{d\Phi}{dt}$
+В полном виде:
+\[\oint\vec{E}\vec{dl}=-\frac{\partial\Phi}{\partial t}+\oint[\vec{v}\times\vec{B}]\vec{dl}\]
+Первое слагаемое связано с изменением магнитного поля во времени, второе - с движением контура.
+
+\subsection{Самоиндукция}
+\[\Phi=LI\]
+$L$ - индуктивность (e.g. соленоид $L=\mu\mu_{0}n^{2}V$)
+\[\varepsilon_{s}=-\frac{\partial\Phi}{\partial t}=-\frac{d}{dt}(LI)=-L\frac{dI}{dt}\]
+\subsubsection{Исчезновение тока при размыкании цепи}
+\[RI=\varepsilon_{s}=-L\frac{dI}{dt} \qquad I=I_{0}e^{-t/\tau}\]
+где $\tau=L/R$ - время релаксации.
+\subsubsection{Установление тока при замыкании цепи}
+\[RI=\varepsilon-L\frac{dI}{dt} \qquad I=I_{0}(1-e^{-t/\tau})\]
+
+\subsection{Взаимная индукция}
+Два неподвижных контура достаточно близких к друг другу:
+\[\Phi_{2}=L_{21}\cdot I_{1} \qquad \Phi_{1}=L_{12}\cdot I_{2}\]
+Где $L_{12}=L_{21}=M$ - взаимная индуктивность, при отсутствии поблизости ферромагнетиков. (Может быть и отрицательна, в отличие от L.)
+
+\subsection{Энергия магнитного поля}
+Работа совершаемая сторонними силами против эдс самоиндукции:
+\[\varepsilon_{0}=RI-\varepsilon_{s} \; |\cdot Idt \; \Rightarrow \; \delta A_{\text{стор}}=\delta Q + Id\Phi\]
+\[\delta A^{\text{доп}}=Id\Phi\]
+Считаем что ферромагнетиков нет:
+\[d\Phi=LdI \; \Rightarrow \; A^{\text{доп}}=\frac{LI^2}{2}\]
+\[W=\frac{LI^2}{2}=\frac{I\Phi}{2}=\frac{\Phi^2}{2L}\]
+\[W=\int\frac{\vec{B}\vec{H}}{2}dV \qquad w=\frac{\vec{B}\vec{H}}{2}=\frac{B^2}{2\mu\mu_{0}}\]
+\[L=\frac{1}{I^2}\int\frac{B^2}{\mu\mu_{0}}dV\]
+
+\subsection{Магнитная энергия двух контуров}
+\[W=\frac{L_1I_1^2}{2}+\frac{L_2I_2^2}{2}+MI_1I_2\]
+\[W=\int\frac{B_1^2}{2\mu\mu_0}dv+\int\frac{B_2^2}{2\mu\mu_0}dv+\int\frac{\vec{B}_1\vec{B}_2}{\mu\mu_0}dv\]
+\[M=\frac{1}{I_1I_2}\int\frac{\vec{B}_1\vec{B}_2}{\mu\mu_0}dv\]
+
+\subsection{Энергия и силы в магнитном поле}
+\[\delta A^*=\delta Q + dW + \delta A_{\text{мех}} \qquad \delta A^{\text{доп}}=I_1d\Phi_1+I_2d\Phi_2\]
+где $A^*$ - работа источника тока, $\delta Q$ - потери тепловыделения, $\delta A_{\text{мех}}$ - работа на перемещение и деформацию контуров, dW - прирост магнитной энергии.
+\[I_1d\Phi_1+I_2d\Phi_2=dW+dA_{\text{мех}}\]
+Следствия:
+\begin{itemize}
+    \item При постоянных потоках: $\delta A_{\text{мех}}=-dW \Big\rvert_{\Phi}$
+    \item При постоянных токах: $\delta A_{\text{мех}}=-dW \Big\rvert_{I}$
+\end{itemize}
+
+
+\section{Уравнения Максвелла}
+
+\subsection{Ток смещения}
+\[\oint \frac{\partial \vec{D}}{\partial t}\vec{dS}=\frac{\partial q}{\partial t} \qquad \oint \vec{j}\vec{dS}=-\frac{\partial q}{\partial t}\]
+\[\oint (\vec{j} + \frac{\partial \vec{D}}{\partial t})\vec{dS}=0\]
+$\vec{j}_{\text{см}}=\partial\vec{D}/\partial t$ - ток смещения, $\vec{j}_{\text{полн}}=\vec{j}+\frac{\partial \vec{D}}{\partial t}$ - полный ток
+\[\oint \vec{H}\vec{dl}=I_{\text{полн}}=\int(\vec{j}+\frac{\partial \vec{D}}{\partial t})\vec{dS}\]
+\[\nabla \times \vec{H}=\vec{j}+\frac{\partial \vec{D}}{\partial t}\]
+
+\subsection{Система уравнений Максвелла}
+\[\boxed{\begin{aligned}
+& \int \vec{E}\vec{dl}=-\int \frac{\partial \vec{B}}{\partial t}\vec{dS}  & & \oint \vec{B}\vec{dS}=0 \\
+& \oint \vec{H}\vec{dl}=\int(\vec{j}+\frac{\partial \vec{D}}{\partial t})\vec{dS} & & \oint\vec{D}\vec{dS}=\int\rho dV 
+\end{aligned}}\]
+\[\boxed{\begin{aligned}
+& \nabla \times \vec{E}=-\frac{\partial \vec{B}}{\partial t} & & \nabla \cdot \vec{B}=0 \\
+& \nabla \times \vec{H} = \vec{j} + \frac{\partial \vec{D}}{\partial t} & & \nabla \cdot \vec{D} = \rho
+\end{aligned}}\]
+Вместе с силой Лоренца $d\vec{p}/dt=q\vec{E}+q[\vec{v}\times\vec{B}]$ составляют фундаментальную систему
+
+\subsection{Вектор Пойнтинга. Энергия и её поток}
+\subsubsection{Теорема Пойнтинга}
+\[-\frac{dW}{dt}=\oint\vec{\Pi}\vec{dS}+P\]
+где $W=\int wdv$, $P=\int \vec{j}\vec{E}dV$ - мощность силы прикладываемой к зарядам, $\vec{\Pi}$ - вектор Пойнтинга
+\[w=\frac{\vec{E}\vec{D}}{2}+\frac{\vec{B}\vec{H}}{2} \qquad \vec{\Pi}=[\vec{E}\times\vec{H}]\]
+
+\subsection{Импульс электромагнитного поля}
+\subsubsection{Давление электромагнитной волны}
+Электромагнитная волна распространяется в однородной среде, \\ обладающей поглощением (объёмная плотность выделяемой теплоты $\rho j^2=\lambda E^2$)
+\[\vec{j}=\lambda \vec{E} \qquad F_{\text{ед}}=[\vec{j} \times \vec{B}]=\lambda [\vec{E}\times\vec{B}]\]
+$F_{\text{ед}}$ - сила на единицу объёма, ответсвенная за появление давления и \\ сонаправленная с вектором скорости волны.
+\subsubsection{Импульс электромагнитного поля}
+Плотность импульса $\vec{G}$ - импульс поля в единице объёма
+\[\vec{G}=\vec{\Pi}/c^2\]
+В вакууме $G=w/c$
+\section{Электрические колебания}
+\subsection{Уравнение колебательного контура}
+\subsubsection{
+    Условие квазистационарности.
+}
+\[ \tau=\frac{l}{c} << T\]
+где T - период изменений 
+l - длина цепи 
+c - скорость света
+\subsubsection{
+    Колебательный контур.
+}
+уравнение колебательного контура
+\[L\frac{d^2q}{dt^2}+R\frac{dq}{dt} + \frac{1}{c}q = \varepsilon\] 
+иной вид
+\[\ddot{q} + 2\beta\dot{q} + \omega_0^2q = \frac{\varepsilon}{L}\]
+\[2\beta = \frac{R}{L}, \qquad \omega_0^2 = \frac{1}{LC} \]
+\subsection{
+    Свободные электрические колебания
+}
+\subsubsection{
+    Свободные незатухающие колебания
+}
+\[\ddot{q} + \omega_0^2q = 0 \qquad q= q_m\cos(\omega_0t + \alpha)\]
+Период (формула Томпсона)
+\[T_0 = \frac{2\pi}{\sqrt{LC}}\]
+\subsubsection{
+    Свободные затухающие колебания
+}
+\[\ddot{q} + 2\beta\dot{q} + \omega_0^2q = 0 \qquad q= q_m e^{-\beta t} \cos(\omega t + \alpha)\]
+\[\omega = \sqrt{\omega_0^2 - \beta^2} \qquad T = \frac{2\pi}{\omega}\]
+Напряжение на конденсаторе и ток в контуре
+\[U_C = \frac{q}{C} = \frac{q_m}{C}e^{-\beta t}cos(\omega t + \alpha)\]
+\[I = \omega q_m e ^ {-\beta t} cos(\omega t + \alpha + \delta)\]
+\subsection{
+    Величины характеризующие затухание
+}
+\subsubsection{
+    Коэффицент затухания и время релаксации
+}
+время релаксации  $\tau$ - время за которое амплитуда колебаний\\
+уменьшается в e раз
+\[\tau = \frac{1}{\beta}\]
+\subsubsection{
+    Логарифмический декремент затухания
+}
+Определяется как натуральный логарифм отношения двух значений \\
+амплитуд взятых через период колебания T
+\[\lambda = \ln{\frac{\alpha(t)}{\alpha(t + T)}} = \beta T\]
+если затухание мало 
+\[\lambda \approx \beta \frac{2\pi}{\omega_0} = \pi R \sqrt{\frac{C}{L}}\]
+\subsubsection{
+    Добротность
+}
+\begin{itemize}
+    \item По определению: $Q = \frac{\pi}{\lambda}$
+    \item При слабом затухании: $Q \approx \frac{1}{R}\sqrt{\frac{L}{C}}$
+    \item Энергетический смысл: $Q \approx 2\pi \frac{W}{\delta W}$
+\end{itemize}
+\subsection{
+    Вынужденные электрические колебания
+}
+\[L\frac{dI}{dt} + RI + \frac{q}{C} = \varepsilon_m cos(\omega t)\]
+или
+\[\ddot{q} + 2\beta\dot{q} + \omega_0^2 q = \frac{\varepsilon_m}{L} cos(\omega t) \qquad q = q_m cos(\omega t - \psi)\]
+где $q_m$ - амплитуда заряда на конденсаторе\\
+$\psi$ - разность фаз между колебаниями заряда и внешней э.д.с $\varepsilon$
+ток в цепи
+\[I = I_m cos (\omega t - \varphi)\]
+где $I_m$ амплитуда тока $\varphi$ сдвиг по фазе между током и\\
+внешней э.д.с $\varepsilon$
+\[I_m = \omega q_m, \qquad \varphi = \psi - \frac{\pi}{2}\]
+напряжения на индуктивности сопротивлении и емкости
+\[U_R = RI_mcos(\omega t - \varphi)\]
+\[U_C = \frac{I_m}{\omega C} cos(\omega t - \varphi - \frac{\pi}{2})\]
+\[U_L = {I_m\omega L} cos(\omega t - \varphi + \frac{\pi}{2})\]
+\subsubsection{
+    Векторная диаграмма
+}
+\[I_m = \frac{\varepsilon_m}{\sqrt{R^2 + (\omega L - \frac{1}{\omega C})^2}} \qquad \tan \varphi = \frac{\omega L - \frac{1}{\omega C}}{R}\]
+\subsubsection{
+    Резонансные кривые
+}
+\[\omega_{I\text{рез}} = \omega_0 = \frac{1}{\sqrt{LC}} \qquad \omega_{q\text{рез}} = \sqrt{\omega_0^2 - 2\beta^2}\]
+резонансные частоты для:
+\begin{itemize}
+    \item $U_R$: $\omega_{R\text{рез}} = \omega_0$
+    \item $U_C$: $\omega_{C\text{рез}} = \omega_0\sqrt{1 - 2(\frac{\beta}{\omega_0}) ^ 2}$
+    \item $U_L$: $\omega_{R\text{рез}} = \frac{\omega_0}{\sqrt{1 - 2(\frac{\beta}{\omega_0}) ^ 2}}$ 
+\end{itemize}
+\subsubsection{
+    Резонансные кривые и добротность
+}
+если $\beta << \omega_0$
+\[\frac{U_{C\text{рез}}}{\varepsilon_m} = Q \qquad Q = \frac{\omega_0}{\delta \omega}\]
+где $\omega_0$ - резонансная частота$\delta \omega$ - ширина резонансной кривой на\\ 
+высоте 0.7 от максимальной
+\subsection{
+    Переменный ток
+}
+\subsubsection{
+    Полное сопротивление (импенданс)
+}
+\[Z = \sqrt{R^2 + (\omega L - \frac{1}{\omega C}) ^ 2}\]
+при $\omega = \omega_0 = \frac{1}{\sqrt{LC}}$ это сопротивление минимально и равно активному \\
+сопротивлению R.
+X - реактивное сопротивление
+\[X = \omega L - \frac{1}{\omega C}\]
+$\omega L$ - индуктивное сопротивление $ \frac{1}{\omega C}$ - емкостное сопротивление \\
+их обозначают $X_L \quad X_C$ соответсвенно
+\subsubsection{
+    Мощность, выделяемая в цепи переменного тока
+}
+\[P(t) = UI = U_mI_mcos(\omega t)cos(\omega t - \varphi)\]
+можно представить в виде
+\[P(t) = U_mI_m(\cos^2(\omega t)cos(\varphi) + sin(\omega t) cos(\omega t) sin(\varphi))\]
+практический интерес имеет среднее за период колебаний значение мощности.
+\[\langle P\rangle = \frac{U_mI_m}{2}cos(\varphi) = \frac{RI^2_m}{2}\]
+такую же мощность развивает постоянный ток с постоянными величинами: 
+\[I = \frac{I_m}{\sqrt{2}} \qquad U = \frac{U_m}{\sqrt{2}} \qquad \langle P\rangle = UIcos(\varphi)\]
+
+\section{Скин эффект}
+Толщина скин-слоя:
+\[l \approx \frac{1}{\sqrt{2\mu_0\mu\lambda\nu}}\]
+
+\section{Разложение Фурье}
+\[f(x)=\frac{a_0}{2} + \sum_{n=1}^{\inf}(a_n \cos (n \omega t) + b_n \sin (n \omega t))\]
+\[a_n = \frac{2}{T}\int_{t_1}^{t_1+T}f(t)cos(n\omega t)dt \qquad b_n = \frac{2}{T}\int_{t_1}^{t_1+T}f(t)sin(n\omega t)dt\]
+\begin{itemize}
+    \item Прямоугольник ($0\le U \le U_0$): $b_n=0 \qquad a_n=2U_0\frac{2U_0}{n\pi}\sin(\frac{\tau}{T}\pi n)$
+\end{itemize}
+
+\end{document}
