@@ -437,8 +437,22 @@ $\vec{j}_{\text{см}}=\partial\vec{D}/\partial t$ - ток смещения, $\
 Циркуляция вектора $H$ не должна зависить от выбора натянутой на контур поверхности. Но если учитывать только токи проводимости это условие не выполняется?!
 Дальше см. прошлый пункт.
 \subsection{Скин-эффект}
-Толщина скин-слоя:
-\[l \approx \frac{1}{\sqrt{2\mu_0\mu\lambda\nu}}\]
+В общем виде диффузионный процесс описывается следующими уравнениями:
+\[\frac{\partial j}{\partial x}=-\frac{\partial n}{\partial t} \qquad j=-D\frac{\partial n}{\partial x}\]
+где $n$ - концентрация, $D$ - диффузионный коэффициент.
+Считая что концентрация равна 0 во всех точка правее l:
+$j \sim Dn/l$, в то же время $j=nv$, где $v$ - скорость распространения, сдеовательно $v\sim D/l$,
+время диффундирования на расстояние $l$: $\tau\approx l/v \approx l^2/D$
+\[l \sim \sqrt{D\tau}\]
+Переходя к проникновению электромагнитного поля в металл:
+\[\nabla \times \vec{H} = \vec{j} + \frac{\partial D_{e}}{\partial t} \qquad \nabla \times \vec{E}=-\frac{\partial \vec{B}}{\partial t}\]
+Для проводников в первом уравнении $j >> \partial D_{e}/\partial t$, в силу высокой проводимости, пренебрегаем вторым слогаемым.
+\[\vec{j}=\lambda\vec{E} \qquad \vec{B}=\mu_0\mu\vec{H}\]
+\[\vec{j}=\frac{1}{\mu_{0}\mu}\nabla \times \vec{B} \qquad \nabla \times \vec{j} = -\lambda\frac{\partial \vec{B}}{\partial t}\]
+Полагая, что ток течёт по оси $Y$, магнитное поле направлено вдоль оси Z, и все величины зависят только от $x$:
+\[\frac{\partial j}{\partial x}=-\lambda \dot B \qquad j=-\frac{1}{\mu_{0}\mu\lambda}\frac{\partial}{\partial x}(\lambda B)\]
+Проводя замену $n\to\lambda/c$ и полагая $D=\frac{1}{\mu_{0}\mu\lambda}$, ток меняется своё направление за $T/2$ тогда толщина скин-слоя:
+\[l\approx\sqrt{D\frac{T}{2}}=\frac{1}{\sqrt{2\mu_0\mu\lambda\nu}}\]
 
 
 
