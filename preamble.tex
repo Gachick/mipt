@@ -1,0 +1,53 @@
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\usepackage{parskip}
+\usepackage{systeme}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
+
+\newcommand\hr{
+    \noindent\rule[0.5ex]{\linewidth}{0.5pt}
+}
+
+% All the environments
+\usepackage{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em}
+\theoremstyle{definition}
+\newmdtheoremenv[nobreak=true]{theorem}{Теорема}
+\newmdtheoremenv[nobreak=true]{lemma}{Лемма}
+\newmdtheoremenv[nobreak=true]{definition}{Определение}
+\newmdtheoremenv[nobreak=true]{corollary}{Следствие}
+\newtheorem*{eg}{Пример}
+\newtheorem*{remark}{Замечание}
+
+% Defs
+\let\phi\varphi
+\let\epsilon\varepsilon
+\let\implies\Rightarrow
+\let\iff\Leftrightarrow
+\let\true\hookrightarrow
+
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial{#2}}}
+\newcommand{\pdd}[2]{\frac{\partial^2{#1}}{\partial{#2^2}}}
+\newcommand{\pdm}[3]{\frac{\partial^2{#1}}{\partial{#2}\partial{#3}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}

@@ -7,7 +7,7 @@ path = os.path.abspath(f"./figures/{filename}.svg")
 pdf_path = os.path.abspath(f"./figures/{filename}.pdf")
 if not os.path.isfile(path):
     exit()
-subprocess.run([r"C:\Program Files\Inkscape\bin\inkscape.exe", path,
+subprocess.run(["inkscape", path,
                 '--export-area-page',
             '--export-dpi', '300',
             '--export-type=pdf',
