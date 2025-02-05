@@ -1,0 +1,134 @@
+\documentclass{article}
+
+\input{~/mipt/preamble}
+
+\begin{document}
+
+% lecture 1
+\section{Некоторые свойства абсолютно инт функций}
+\begin{definition}
+  Функция $f(x)$ называется абсолютно интегрируемой на конечном или бесконечном интервале $(a,b)$,
+  если выполняются два условия:
+  \begin{enumerate}
+    \item $\exists x_0,x_1,\dots,x_k:a=x_0<x_1<x_2<\dots<x_k=b$, что на любом отрезке
+      $[\xi,\eta]$ из $(a,b)$, не содерж $x_i$ функция $f(x)$ интегрируема по Риману.
+    \item $\int_{a}^{b}|f(x)|dx$ сходится
+  \end{enumerate}
+\end{definition}
+\begin{lemma}
+ Пусть $f(x)$ абсолютно интегрируема на конечном или бесконечном $(a,b)$.
+ Пусть $\phi(x)$ - непрерывна и ограничена на $(a,b)$. \\
+ $f(x)\phi(x)$ - абсолютно интегрируемо на $[a,b]$
+\end{lemma}
+\begin{proof}
+  а) Рассмотрим $\forall [\xi,\eta]\subset(x_{i-1},x_i)$. На нём $f(x)$ и $\phi(x)$ - интегрируема
+  по Риману, следовательно $f(x)\phi(x)$ инт. по Риману $\implies$ 1. \\
+  б) Так как $\phi(x)$ - ограничена то $\exists M:|\phi(x)|\le M$ на $(a,b)$.
+  Тогда $|f(x)\phi(x)|\le|f(x)|M$ на $(a,b)$. Т.к. $\int_{a}^{b}|f(x)|dx$ - сход.,
+  то $\int_{a}^{b}|f(x)\phi(x)|dx$ - сход. по признаку сравнения $\implies$ 2. \\
+  $\implies$ $f(x)\phi(x)$ - абс. инт. на $(a,b)$
+\end{proof}
+\begin{definition}
+  Функция $\phi(x)$ определённая на $\R$ называется ступенчатой если
+  $\exists$ числа $x_0,x_1,x_2,\dots,x_k:x_0<x_1<x_2<\dots<x_k$ и
+  $c_1,c_2,\dots,c_k$:
+  \[
+    \phi(x) = \left\{\begin{aligned}
+      & c_i, \; x \in [x_{i-1},x_i) \\ 
+      & 0, \; x \in (-\infty,x_0) \cup [x_k,+\infty)
+    \end{aligned}\right.
+  \]
+\end{definition}
+\incfig{l1_step_f}
+\begin{remark}
+  Если положить
+  \[
+    \phi_i(x) = \left\{\begin{aligned}
+      & 1, \; x \in [x_{i-1}, x_i) \\ 
+      & 0, \; x \notin [x_{i-1}, x_i)
+    \end{aligned}\right.
+  \]
+  то $\phi(x)=c_1\phi_1(x)+\dots+c_k\phi_k(x)$.
+\end{remark}
+\begin{theorem}[О приближении абс инт функций ступенчатыми]
+  Пусть $f(x)$ - абс. инт. на конечном или бесконечном $(a,b)$ тогда
+  $\forall \epsilon >0 \; \exists$ ступенчатая функция $\phi(x):\int_{a}^{b}|f(x)-\phi(x)|dx<\epsilon$
+\end{theorem}
+\begin{proof}
+  Пусть для простоты записи у функции имеются только две особенности в точках $a$ и $b$,
+  т.е. $f(x)$ - инт по Риману на $\forall [\xi,\eta]$ из $(a,b)$. 
+
+  Возьмём $\forall \epsilon>0$. Из абсолютной инт. $f(x)$ следует $\exists$ таких
+  $[\xi,\eta] \in (a,b)$:
+  \[
+    \int_{a}^{\xi}|f(x)|dx+\int_{\eta}^{b}|f(x)|dx< \frac{\epsilon}{2}
+  \]
+  Так как $f(x)$ инт. по Риману на $[\xi,\eta]$ то для рассмотренного $\epsilon>0$ 
+  $\exists \delta:\forall$ разб. отр. $[\xi, \eta]$ $\tau=\{x_i\}_{i=0}^{n_\tau}$
+  ($|\tau|<\delta$), $\forall \xi_i \in [x_{i-1}, x_i]$.
+
+  Выполняется $\left|\int_{\xi}^{\eta}f(x)dx-\sigma_\tau\right|<\epsilon/2$, где
+  $\sigma_\tau$ - сумма Дарбу. 
+
+  $ \left|\int_{\xi}^{\eta}f(x)dx - s_\tau\right|\le \frac{\epsilon}{2}$,
+  где $s_\tau=\sum_{i=1}^{n_\tau}m_i\Delta x_i$ ($m_i=\inf_{x \in [x_{i-1},x_i]} f(x), \; \Delta x_i=x_i-x_{i-1}$).
+
+  Также $\int_{\xi}^{\eta}f(x)dx\ge s_\tau \; \implies \; 0 \le \int_{\xi}^{\eta}f(x)dx - s_\tau \le \epsilon/2$.
+
+  Рассмотрим ступенчатую функцию:
+  \[
+    \phi(x) = \left\{\begin{aligned}
+       & m_i, \; x \in [x_{i-1}, x_i) \\ 
+       & 0, x \notin [\xi,\eta)
+    \end{aligned}\right.
+  \]
+
+  \incfig{l1_step_r}
+  Отметим: $s_\tau=\sum_{i=1}^{n_\tau}m_i\Delta x_i=\int_{\xi}^{\eta}f(x)dx$, $\phi(x)\le f(x)$ на $[\xi,\eta]$
+
+  $\implies \int_{a}^{b}|f(x)-\phi(x)|dx=\int_{a}^{\xi}|f|dx+\int_{\xi}^{\eta}|f-\phi|dx+\int_{\eta}^{b}|f|dx$,
+  но $\int_{\xi}^{\eta}|f-\phi|dx=\int_{\xi}^{\eta}(f-\phi)dx=\int_{\xi}^{\eta}fdx-s_\tau$
+
+  $\implies \int_{a}^{b}|f(x)-\phi(x)|dx<\epsilon/2+\epsilon/2=\epsilon$
+\end{proof}
+\begin{theorem}[Римана (об осциляциях)]
+  Пусть $f(x)$ абс. инт. на конечном или бесконечном интервале $(a,b)$,
+  тогда $\lim\limits_{\nu\to\infty}\int_{a}^{b}f(x)\cos\nu xdx=0$ и
+  $\lim\limits_{\nu\to\infty}\int_{a}^{b}f(x)\sin\nu xdx=0$
+\end{theorem}
+\begin{proof}
+  1) Если 
+  \[
+    \phi(x) = \left\{\begin{aligned}
+      & 1, \; x \in[\xi,\eta) \\ 
+      & 0, \; x \notin [\xi,\eta)
+    \end{aligned}\right. ,\; [\xi,\eta] \in (a,b)
+  \]
+  То:
+  \[
+    \int_{a}^{b}\phi(x)\sin\nu xdx=\int_{\xi}^{\eta}\sin\nu xdx=
+    -\frac{\cos \nu x}{\nu}\bigg|_\xi^{\eta} \underset{\nu\to\infty}{\to}0
+  \]
+  2) Если $\phi(x)$ - ступенчатая, то она является линейно комбинацией
+  расмотренных одноступенчатых функций, поэтому для неё утверждение справедливо.
+
+  3) Рассмотрим абс. инт. на $(a,b)$ функцию $f(x)$. Возьмём $ \underline{\forall\epsilon>0}$.
+
+  По предыдущей теорме $\exists \phi(x)$ - ступенчатая функция: $\int_{a}^{b}|f-\phi|dx<\epsilon/2$.
+
+  Т.к. $\lim\limits_{\nu\to \infty }\int_{a}^{b}\phi(x)\sin\nu x dx =0 $, то
+  $\underline{\exists \nu_\epsilon }: \forall \nu \; (|\nu|>\nu_\epsilon) \true |\int_{a}^{b}\phi(x)\sin \nu x dx|<\epsilon/2$.
+  Тогда $\underline{\forall \nu : \;(|\nu|>\nu_\epsilon}$ выполняется:
+  \begin{gather*}
+    \underline{|\int_{a}^{b}f(x)\sin\nu x dx|}=|\int_{a}^{b}(f(x)-\phi(x))\sin \nu x dx + \int_{a}^{b}\phi(x)\sin \nu xdx|\le  \\
+    \le|\int_{a}^{b}(f(x)-\phi(x))\sin \nu xdx|+|\int_{a}^{b}\phi(x)\sin \nu xdx| < \\
+    <\int_{a}^{b}|f(x)-\phi(x)|dx + \frac{\epsilon}{2} < \underline{\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon}
+  \end{gather*}
+  Подчёркнутое означает,что $\lim\limits_{\nu\to\infty}\int_{a}^{b}f(x)\sin \nu xdx=0$. Аналогично косинус.
+\end{proof}
+\begin{remark}
+  Интервал $(a,b)$ при исследовании абсолютно интегрируемых
+  на другой промежуток $[a,b],[a,b),(a,b]$
+\end{remark}
+
+\end{document}

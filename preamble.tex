@@ -34,11 +34,17 @@
 \mdfsetup{skipabove=1em,skipbelow=0em}
 \theoremstyle{definition}
 \newmdtheoremenv[nobreak=true]{theorem}{Теорема}
+\numberwithin{theorem}{section}
 \newmdtheoremenv[nobreak=true]{lemma}{Лемма}
+\numberwithin{lemma}{section}
 \newmdtheoremenv[nobreak=true]{definition}{Определение}
+\numberwithin{definition}{section}
 \newmdtheoremenv[nobreak=true]{corollary}{Следствие}
+\numberwithin{corollary}{section}
 \newtheorem*{eg}{Пример}
 \newtheorem*{remark}{Замечание}
+
+\numberwithin{equation}{section}
 
 % Defs
 \let\phi\varphi
