@@ -1,0 +1,271 @@
+\documentclass{article}
+
+\input{~/mipt/preamble}
+
+\begin{document}
+
+% lection 1
+\section{Формула Остроградского-Лиувилля (ФОЛ) для лин. сис.}
+
+\begin{gather*}
+  \dot{X}=A(t)x \qquad x\in \R \\
+  A(t)= \begin{pmatrix}
+     a_{11}(t) & \dots & a_{1n}(t) \\ 
+     \vdots & & \vdots \\ 
+     a_{n1}(t) & \dots & a_{nn}(t)
+  \end{pmatrix} \qquad a_{ij}(t) \in C(a,b)
+\end{gather*}
+$x_1(t),\dots, x_n(t)$ - решение системы
+\[
+  W(t) = |x_1(t) \dots x_n(t) = \begin{vmatrix}
+     x_{11}(t) & \dots & x_{1n}(t) \\ 
+     \vdots & & \vdots \\ 
+     x_{n1}(t) & \dots & x_{nn}(t)
+  \end{vmatrix}
+\]
+\begin{theorem}
+  Пусть $x_1(t),\dots,x_n(t)$ решение системы и $W(t)$ - определитель Вронского,
+  тогда:
+  \[
+    W(t)=W(t_0)e^{\int_{t_0}^{t}trA(\tau)d\tau} \qquad \forall t \in (a,b), \; t_0 \in (a,b)
+  \]
+\end{theorem}
+\begin{proof}
+  \[
+    \dot{W}(t)=\underset{=a_{11}W(t)}{\begin{vmatrix}
+      \dot{x}_{11} & \dot{x}_{12} & \dots & \dot{x}_{12} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{22} \\
+      \dots & \dots & \dots & \dots \\
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{n2}
+    \end{vmatrix}} + \dots + \underset{=a_{nn}W(t)}{\begin{vmatrix}
+      {x}_{11} & {x}_{12} & \dots & {x}_{12} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{22} \\
+      \dots & \dots & \dots & \dots \\
+      \dot{x}_{n1} & \dot{x}_{n2} & \dots & \dot{x}_{n2}
+  \end{vmatrix}}
+  \]
+  1) решения лин. завис $\implies \; W(t) =0$ на $(a,b)$
+
+  2) решения лин. независ:
+
+  $\dot{x}_1=Ax_1 \; \dots \; \dot{x}_1=Ax_1$,
+  ФМР $\Phi(t)=(x_1(t),\dots,x_n(t))$, $\dot{\Phi}(t)=A\Phi$
+  \[
+    \begin{pmatrix}
+      \dot{x}_{11} & \dot{x}_{12} & \dots & \dot{x}_{1n} \\
+      \dot{x}_{21} & \dot{x}_{22} & \dots & \dot{x}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      \dot{x}_{n1} & \dot{x}_{n2} & \dots & \dot{x}_{nn} \\
+    \end{pmatrix} = \begin{pmatrix}
+      {a}_{11} & {a}_{12} & \dots & {a}_{1n} \\
+      {a}_{21} & {a}_{22} & \dots & {a}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      {a}_{n1} & {a}_{n2} & \dots & {a}_{nn}
+    \end{pmatrix} \begin{pmatrix}
+      
+      {x}_{11} & {x}_{12} & \dots & {x}_{1n} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn}
+    \end{pmatrix}
+  \]
+  \begin{gather*}
+    \dot{x}_{11}=a_{11}x_{11}+a_{12}x_{21}+\dots+a_{1n}x_{n1} \\
+    \dot{x}_{12}=a_{11}x_{12}+a_{12}x_{22}+\dots+a_{1n}x_{n2} \\
+    \dots \\
+    \dot{x}_{1n}=a_{11}x_{1n}+a_{12}x_{2n}+\dots+a_{1n}x_{nn} \\
+  \end{gather*}
+  \begin{gather*}
+    (\dot{x}_{11} \, \dot{x}_{12} \, \dots \, \dot{x}_{1n})=
+    a_{11}(x_{11}\, x_{12} \, \dots \, x_{1n}) + a_{12}(x_{21}\, x_{22} \, \dots \, x_{2n}) \\
+    + \dots + a_{1n}(x_{n1}\, x_{n2} \, \dots \, x_{nn})
+  \end{gather*}
+  \begin{gather*}
+    W_1 = a_{11} \underset{=W(t)}{\begin{vmatrix}
+      {x}_{11} & {x}_{12} & \dots & {x}_{1n} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn}
+  \end{vmatrix}}
+  + a_{12} \underset{=0}{\begin{vmatrix}
+      {x}_{21} & {x}_{22} & \dots & {x}_{2n} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn}
+  \end{vmatrix}} + \\
+    + \dots
+    + a_{1n} \underset{=0}{\begin{vmatrix}
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn} \\
+      {x}_{21} & {x}_{22} & \dots & {x}_{2n} \\
+      \dots & \dots & \dots & \dots \\
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn}
+  \end{vmatrix}}
+  \end{gather*}
+  \[
+    \dot{W}(t)=trA\cdot W(t) \qquad W(t)=W(t_0)e^{\int_{t_0}^{t}trA(\tau)d\tau}
+  \]
+\end{proof}
+\section{Формула остроградского-Лиувилля для линейного уравнения}
+\[
+  a_n(x)y^{(n)}+ a_{n-1}(x)y^{(n-1)}+ \dots +  a_1(x)y' +  a_0(x)y = 0
+\]
+$a_i(x)/a_n(x) \in C(a,b)$, $y_1,y_2,\dots,y_n$ - решения
+\[
+  W(x) = \begin{vmatrix}
+    y_1 & \dots & y_n \\ 
+    y_1' & \dots & y_n' \\ 
+    \dots & \dots & \dots \\
+    y_1^{(n-1)} & \dots & y_n^{(n-1)}
+  \end{vmatrix} 
+\]
+\begin{theorem}
+  Пусть $y_1, \dots , y_n$ - решения уравнения и $W(x)$ опр. Вронского, тогда
+  \[
+    W(x)=W(x_0)e^{-\int_{x_0}^{x}\frac{a_{n-1}(\xi)}{a_n(\xi)}d\xi}
+  \]
+\end{theorem}
+\begin{proof}
+  1) $y_1,\dots,y_n$ лин завис $\implies \; W(x) = 0$
+
+  2) $y_1,\dots,y_n$ - лин независ
+  \begin{gather*}
+    t=x \; x_1=y\; x_2=y' \; \dots \; x_n=y^{n-1} \\ 
+    \left\{\begin{aligned}
+      & \dot{x}_1=y'=x_2 \\
+      & \dot{x}_2=y''=x_3 \\
+      & \dots \\ 
+      & \dot{x}_n=y^{n}=-\frac{a_{n-1}(t)}{a_n(t)}x_n-\dots- -\frac{a_{0}(t)}{a_n(t)}x_1 \\
+    \end{aligned}\right. \\ 
+    A(t) = \begin{pmatrix}
+      0 & 1 & 0 & \dots & 0 \\ 
+      0 & 0 & 1 & \dots & 0 \\ 
+      \dots & \dots & \dots & \dots & \dots \\ 
+      -\frac{a_0}{a_n} & -\frac{a_1}{a_n} & \dots & \dots & -\frac{a_{n-1}}{a_n}
+    \end{pmatrix} \\ 
+    W(t) = W(t_0) e^{-\int_{t_0}^{t}\frac{a_{n-1}(t)}{a_0(t)}d\tau} \qquad W(x) = W(x_0) e^{-\int_{x_0}^{x}\frac{a_{n-1}(\xi)}{a_0(\xi)}d\xi}
+  \end{gather*}
+\end{proof}
+\begin{remark}
+  \begin{gather*}
+    W(x_0)=0 \rightarrow W(x) =0 \text{ на } (a,b) \\ 
+    W(x_0)\neq0 \rightarrow W(x)\neq0 \text{ на } (a,b) \\ 
+  \end{gather*}
+\end{remark}
+Частные случаи:
+\begin{enumerate}
+  \item $a_1(x)y'+a_0(x)y=0$, $W(x)=y_1(x)=y_1(x_0)e^{-\int_{x_0}^{x}\frac{a_0(\xi)}{x_1(\xi)}d\xi}$
+  \item $a_2(x)y''+a_1(x)y'+a_0(x)y=0$
+    \[
+      W(x)=\begin{vmatrix}
+        y_1(x) & y_2(x) \\ 
+        y_1'(x) & y_2'(x)
+      \end{vmatrix}=y_1y_2'-y_2y_1'=\left(\frac{y_2}{y_1}\right)'y_1^2=W(x_0)e^{-\int_{x_0}^{x}\frac{a_1(\xi)}{a_2(\xi)}d\xi}
+    \]
+\end{enumerate}
+
+\section{Схема решения уравн (линейного) второго порядка}
+\[
+  a_2(x)y''+a_1(x)y'+a_0(x)y=0 \qquad \frac{a_1}{a_2},\frac{a_0}{a_2},\frac{f}{a_2} \in C(a,b)
+\]
+\begin{enumerate}
+\item однородное уравнение
+  \begin{enumerate}
+    \item угадали $y_1(x)$ чаще всего в виде $P_n(x) \quad e^{ax} \quad x^{a}$
+    \item $y_2(x)$ по ФОЛ $\left(\frac{y_2}{y_2}\right)'=\frac{1}{y_1^2}e^{-\int^{x}\frac{a_1(\xi)}{a_2(\xi)}d\xi} \rightarrow y_2(x)$
+      - линейно незав. решение $y_0=C_1y_1+C_2y_2$
+  \end{enumerate}
+\item неоднородное уравнение МВП
+$\tilde y+C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неоднородного
+\[
+  \begin{pmatrix}
+    y_1(x) & y_2(x) \\ 
+    y_1'(x) & y_2'(x)
+  \end{pmatrix}\begin{pmatrix}
+    C_1' \\ 
+    C_2'
+  \end{pmatrix} = \begin{pmatrix}
+    0 \\ 
+    \frac{f(x)}{a_2(x)}
+  \end{pmatrix}
+\]
+\[
+  y=y_0+\tilde y
+\]
+\end{enumerate}
+
+\section{Качественное исследование лин. однор. ур. 2-го порядка}
+\subsection{Виды уравнений}
+\[
+  a_2(x)y''+a_1(x)y'+a_0(x)y=0
+\]
+\begin{enumerate}
+  \item нормальный вид 
+    \[
+  y''+b_1(x)y'+b_0(x)y=0 \qquad b_0(x),b_1(x) \in C(a,b)
+    \]
+  \item самосопряжённый вид
+    \[
+      (p(x)y')'+q(x)y=0
+    \]
+    $p(x)>0$ на $(a,b)$, $p(x)\in C'(a,b)$, $q(x)\in C(a,b)$.
+
+    Как приводить?
+    \begin{gather*}
+      py''+p'y'+qy=0 \\ 
+      y'' + \frac{p'}{p}y'+\frac{q}{p}y=y''+b_1y'+b_0y=0 \\
+      \left\{\begin{aligned}
+        \frac{p'}{p}=b_1 \\ 
+        q=pb_0
+      \end{aligned}\right.
+    \end{gather*}
+    $p(x)=e^{\int_{x_0}^{x}b_1(\xi)d\xi} > 0$, $p(x)\in C'(a,b)$, $q=b_0e^{\int_{x_0}^{x}b_1(\xi)d\xi}\in C(a,b)$
+    \begin{eg}
+      $xy''+2y'+y=0$ нормальный вид $y''+\frac{2}{x}y'+\frac{1}{x}y=0$ 
+      смотрим на $(-\infty,0)$ или $(0,+\infty)$ (у нас второе)
+      самосопр вид $(x^2y')'+xy=0$, $p=x^{2}$, $q=x$
+    \end{eg}
+  \item канонический вид
+    \[
+      y''+r(x)y=0 \qquad r(x) \in C(a,b)
+    \]    
+    \begin{enumerate}
+      \item $b_0$ и $b_1$ $\in C(a,b)$
+
+        если $b_1(x)\in C'(a,b)$ замена $y(x)=\phi(x)z(x)$
+        \begin{eg}
+          $b_1(x)=\frac{2}{x}$, $x>0$, $b_1 \in C'(0,=\infty)$
+          \begin{gather*}
+            y'=\phi'z+\phi z' \qquad y''=\phi''z+2\phi'z'+\phi z'' \\ 
+            x\phi''z+2x\phi'z'+x\phi z''+2\phi z'+\phi z=0
+          \end{gather*}
+          Зануляем коэфициент перед $z'$ $\implies 2x\phi'+2\phi=0$
+          \begin{gather*}
+            \frac{\phi'}{\phi}=-\frac{1}{x} \qquad \phi(x)=\frac{1}{x} \\ 
+            \phi'=-\frac{1}{x^2} \qquad \phi''=\frac{2}{x^2} \\ 
+            \frac{2}{x^2}z+z''-2z\frac{1}{x^2}+\frac{1}{x}z=0 \\ 
+            z''+\frac{1}{x}z=0
+          \end{gather*}
+        \end{eg}
+      \item $b_1(x) \in C(a,b)$, замена $t=\psi(x)$
+        \begin{gather*}
+          y'=\pd{y}{x}=\pd{y}{t}\pd{t}{x}=\dot{y}\psi'  \qquad
+          y''=\dot{y}\psi''+\ddot y \psi'^2 \\
+          py''+p'y'+qy=0 \qquad p \dot{y}\psi''+p \ddot y \psi'^{2}+p'\dot{y}\psi'+qy=0 \\ 
+          p\psi''+p'\psi'=0  \qquad (p\psi')=0 \qquad p\psi'=1 \\ 
+        \end{gather*}
+        $\psi(x)=\int_{x_0}^{x}\frac{d\xi}{p(\xi)}\rightarrow$ сторого монот и непр,
+        $\exists$ обратная функция $x=x(y)$ на $(t_1,t_2)$
+        \[
+          \psi'=\frac{1}{p} \qquad \psi''=-\frac{p'}{p^2}
+        \]
+        \[
+          p\frac{1}{p^2}\ddot y + qy=0
+        \]
+        \[
+          \ddot y(t) + q(x(t))p(x(t))y(t)=0
+        \]
+      
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
