@@ -17,7 +17,7 @@
 \end{gather*}
 $x_1(t),\dots, x_n(t)$ - решение системы
 \[
-  W(t) = |x_1(t) \dots x_n(t) = \begin{vmatrix}
+  W(t) = |x_1(t) \dots x_n(t)| = \begin{vmatrix}
      x_{11}(t) & \dots & x_{1n}(t) \\ 
      \vdots & & \vdots \\ 
      x_{n1}(t) & \dots & x_{nn}(t)
@@ -36,19 +36,19 @@ $x_1(t),\dots, x_n(t)$ - решение системы
       \dot{x}_{11} & \dot{x}_{12} & \dots & \dot{x}_{12} \\
       {x}_{21} & {x}_{22} & \dots & {x}_{22} \\
       \dots & \dots & \dots & \dots \\
-      {x}_{n1} & {x}_{n2} & \dots & {x}_{n2}
+      {x}_{n1} & {x}_{n2} & \dots & {x}_{nn}
     \end{vmatrix}} + \dots + \underset{=a_{nn}W(t)}{\begin{vmatrix}
       {x}_{11} & {x}_{12} & \dots & {x}_{12} \\
       {x}_{21} & {x}_{22} & \dots & {x}_{22} \\
       \dots & \dots & \dots & \dots \\
-      \dot{x}_{n1} & \dot{x}_{n2} & \dots & \dot{x}_{n2}
+      \dot{x}_{n1} & \dot{x}_{n2} & \dots & \dot{x}_{nn}
   \end{vmatrix}}
   \]
   1) решения лин. завис $\implies \; W(t) =0$ на $(a,b)$
 
   2) решения лин. независ:
 
-  $\dot{x}_1=Ax_1 \; \dots \; \dot{x}_1=Ax_1$,
+  $\dot{x}_1=Ax_1 \; \dots \; \dot{x}_n=Ax_n$,
   ФМР $\Phi(t)=(x_1(t),\dots,x_n(t))$, $\dot{\Phi}(t)=A\Phi$
   \[
     \begin{pmatrix}
@@ -105,11 +105,11 @@ $x_1(t),\dots, x_n(t)$ - решение системы
     \dot{W}(t)=trA\cdot W(t) \qquad W(t)=W(t_0)e^{\int_{t_0}^{t}trA(\tau)d\tau}
   \]
 \end{proof}
-\section{Формула остроградского-Лиувилля для линейного уравнения}
+\section{Формула Остроградского-Лиувилля для линейного уравнения}
 \[
   a_n(x)y^{(n)}+ a_{n-1}(x)y^{(n-1)}+ \dots +  a_1(x)y' +  a_0(x)y = 0
 \]
-$a_i(x)/a_n(x) \in C(a,b)$, $y_1,y_2,\dots,y_n$ - решения
+$a_i(x)/a_n(x) \in C(a,b)$; $y_1,y_2,\dots,y_n$ - решения
 \[
   W(x) = \begin{vmatrix}
     y_1 & \dots & y_n \\ 
@@ -171,11 +171,11 @@ $a_i(x)/a_n(x) \in C(a,b)$, $y_1,y_2,\dots,y_n$ - решения
 \item однородное уравнение
   \begin{enumerate}
     \item угадали $y_1(x)$ чаще всего в виде $P_n(x) \quad e^{ax} \quad x^{a}$
-    \item $y_2(x)$ по ФОЛ $\left(\frac{y_2}{y_2}\right)'=\frac{1}{y_1^2}e^{-\int^{x}\frac{a_1(\xi)}{a_2(\xi)}d\xi} \rightarrow y_2(x)$
+    \item $y_2(x)$ по ФОЛ $\left(\frac{y_2}{y_1}\right)'=\frac{1}{y_1^2}e^{-\int^{x}\frac{a_1(\xi)}{a_2(\xi)}d\xi} \rightarrow y_2(x)$
       - линейно незав. решение $y_0=C_1y_1+C_2y_2$
   \end{enumerate}
 \item неоднородное уравнение МВП
-$\tilde y+C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неоднородного
+$\tilde y=C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неоднородного
 \[
   \begin{pmatrix}
     y_1(x) & y_2(x) \\ 
@@ -229,14 +229,13 @@ $\tilde y+C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
       y''+r(x)y=0 \qquad r(x) \in C(a,b)
     \]    
     \begin{enumerate}
-      \item $b_0$ и $b_1$ $\in C(a,b)$
-
-        если $b_1(x)\in C'(a,b)$ замена $y(x)=\phi(x)z(x)$
+      \item $b_0 \in C(a,b)$ 
+        и $b_1(x)\in C'(a,b)$ замена $y(x)=\phi(x)z(x)$
         \begin{eg}
-          $b_1(x)=\frac{2}{x}$, $x>0$, $b_1 \in C'(0,=\infty)$
+          $b_1(x)=\frac{2}{x}$, $b_0=\frac{1}{x}$, $x>0$, $b_1 \in C'(0,+\infty)$
           \begin{gather*}
             y'=\phi'z+\phi z' \qquad y''=\phi''z+2\phi'z'+\phi z'' \\ 
-            x\phi''z+2x\phi'z'+x\phi z''+2\phi z'+\phi z=0
+            x\phi''z+2x\phi'z'+x\phi z''+2\phi'z+2\phi z'+\phi z=0
           \end{gather*}
           Зануляем коэфициент перед $z'$ $\implies 2x\phi'+2\phi=0$
           \begin{gather*}
@@ -246,7 +245,7 @@ $\tilde y+C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
             z''+\frac{1}{x}z=0
           \end{gather*}
         \end{eg}
-      \item $b_1(x) \in C(a,b)$, замена $t=\psi(x)$
+      \item $b_0(x)$ и $b_1(x) \in C(a,b)$, замена $t=\psi(x)$
         \begin{gather*}
           y'=\pd{y}{x}=\pd{y}{t}\pd{t}{x}=\dot{y}\psi'  \qquad
           y''=\dot{y}\psi''+\ddot y \psi'^2 \\
@@ -254,7 +253,7 @@ $\tilde y+C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
           p\psi''+p'\psi'=0  \qquad (p\psi')=0 \qquad p\psi'=1 \\ 
         \end{gather*}
         $\psi(x)=\int_{x_0}^{x}\frac{d\xi}{p(\xi)}\rightarrow$ сторого монот и непр,
-        $\exists$ обратная функция $x=x(y)$ на $(t_1,t_2)$
+        $\exists$ обратная функция $x=x(t)$ на $(t_1,t_2)$
         \[
           \psi'=\frac{1}{p} \qquad \psi''=-\frac{p'}{p^2}
         \]
