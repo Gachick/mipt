@@ -1,0 +1,189 @@
+\documentclass{article}
+
+
+\input{~/mipt/preamble}
+
+\begin{document}
+
+\section{Занятие 1}
+
+\subsection{Основные распределения в Мат Стат}
+\subsubsection{Гамма распределение}
+\begin{gather*}
+  \xi \sim \Gamma(\lambda,a) \; \lambda>0,a>0 \\
+  P(x)=\frac{\lambda^{a}}{\Gamma(a)}x^{a-1}e^{-\lambda x} \; \{(0,+\infty)\}
+\end{gather*}
+
+\incfig{l1_g_distr}
+\begin{gather*}
+  \Gamma(S+1)=S \Gamma(S) \qquad \Gamma(S)= \int_{0}^{\infty}x^{s-1}e^{-x}dx \; x>0 \\
+  M[ \Gamma]=\int_{-\infty}^{\infty} \rho(x)dx= \int_{0}^{\infty}\frac{\lambda^{a}}{ \Gamma(a)}(\frac{t}{\lambda})^{a}e^{-t}\frac{dt}{\lambda}=
+  =\frac{1}{\lambda \Gamma(a)}\int_{0}^{\infty}t^{a}e^{-t}dt=\frac{a}{\lambda} \\
+  D[\xi]=M[\xi^{2}]-M^{2}[\xi]=\frac{a^2+a}{\lambda^2}-(\frac{a}{\lambda})^2=\frac{a}{\lambda^2} \\
+\end{gather*}
+\begin{theorem}[Свойство суммы]
+$\xi_1,\dots,\xi_n$ независимы, $\xi_i \sim \Gamma(\lambda,a_i)$, $\eta=\xi_1+\dots+\xi_n \sim \Gamma(\lambda,a_1+\dots+a_n)$
+\end{theorem}
+\begin{proof}
+$\xi_1 \sim \Gamma(\lambda,a_1)$. $\xi_2 \sim \Gamma(\lambda,a_2)$ - независимые, $\eta=\xi_1+\xi_2$
+\begin{gather*}
+\Phi(y)=P(\eta < y)=P(\xi_2+\xi_2<y)=\iint_{x_1+x_2<y}p(x_1,x_2)dx_1dx_2= \\
+=\int_{0}^{y}dx_2\int_{0}^{y-x_1}\frac{\lambda^{a_1}}{\Gamma(a_1)x_1^{a_1-1}e^{-\lambda x_1}}\frac{\lambda^{a_2}}{\Gamma(a_2)x_2^{a_2-2}e^{-\lambda x_2}}dx_2 \\
+  \phi(y)=\Phi'(y)
+\end{gather*}
+\end{proof}
+
+\subsubsection[Распределение Парсона]{Распределение Парсона $\chi^2$}
+$\xi_i\sim N(0,1)$ - независимы, $\eta=\xi_1^2+\dots+\xi_n^2=\chi^2$
+\begin{gather*}
+  \Phi(y)=P(\xi^2<y)=\left\{\begin{aligned}
+    & y\le0 \quad :0 \\
+    & y > 0 \quad :P(-\sqrt{y}<\xi<\sqrt{y})
+  \end{aligned}\right. \\
+  \phi(x)=   \left\{\begin{aligned}
+      & \frac{1}{2\sqrt{y}}F'(\sqrt{y})+\frac{1}{2\sqrt{y}}F'(-\sqrt{y}), \; y> 0 \\
+      & 0, \; y<0
+    \end{aligned}\right. \\
+  p(x)=\frac{e^{x^2/2}}{\sqrt{2\pi}} \\
+  \phi(y)=\left\{\begin{aligned}
+    & \frac{1}{\sqrt{y}}\frac{e^{-y/2}}{\sqrt{2\pi}}, \; y>0  \\
+    & 0, \; y\le 0
+  \end{aligned}\right. \\
+  p(x)=\frac{\lambda^{a}}{\Gamma(a)}x^{a-1}e^{-\lambda x}\{(0;+\infty)\} \qquad \lambda=\frac{1}{2} \qquad a=\frac{1}{2} \\
+  \xi^{2}\sim \Gamma(\frac{1}{2}, \frac{1}{2}) \qquad \xi_1^{2}+\dots+\xi_n^{2} \sim \Gamma(\frac{1}{2}, \frac{n}{2})=\chi^{2}(n)
+\end{gather*}
+$n$ - число степеней свободы
+\begin{gather*}
+  M[\eta]=\frac{a}{\lambda}=\frac{n/2}{1/2}=n \\
+  D[\eta]=\frac{a}{\lambda^{2}}=\frac{n/2}{1/4}=2n
+\end{gather*}
+
+\begin{theorem}[Свойство суммы]
+  $\xi_1,\dots,\xi_m$ - независ, $\xi_i\sim \chi^{2}(n_i)$, $\xi_1+\dots+\xi_n\sim \chi^2(n_1+\dots+n_m)$
+\end{theorem}
+
+\subsection{Распределение Стьюдента (Госсет)}
+$\xi \sim N(0,1)$, $\eta \sim \chi^2(m)$ - независимы, $\frac{\xi}{\sqrt{\eta/m}}\sim t(m)$ \\
+\incfig{l1_st_distr}
+\[
+  p(x)=\frac{(m)^{m/2}\Gamma(\frac{m+1}{2})}{\sqrt{\pi}\Gamma(\frac{m}{2})(x^2+m)^{\frac{m+1}{2}}}
+\]
+
+\subsection{Распределение Фишера}
+$\xi\sim \chi^2(n)$, $\eta\sim \chi^2(m)$ - независимые, $\frac{\xi/n}{\eta/m}\sim F(n,m)$ \\
+\incfig{l1_fi_distr}
+\subsection{Нормальное распределение}
+\begin{gather*}
+  p(\vec{x})=\frac{1}{(\sqrt{2\pi})^n}\frac{1}{\sqrt{detK}}e^{-\frac{1}{2}(\vec{x}-\vec{a})^T K^{-1}(\vec{x}-\vec{a})} \\
+  \vec{\xi}\sim N(\vec{a},R)\\
+\end{gather*}
+Свойства:
+\begin{itemize}
+  \item $\xi\sim N(0,1)$, $\eta=a\xi+b \sim N(b,a^2)$
+  \item $\xi\sim N(\alpha, \sigma^2)$, $\eta=a\xi+b\sim N(a\alpha+b, \sigma^2a^2)$
+  \item $\xi\sim N(\vec{0},E)$,$\vec{\eta}=A\vec{\xi}+\vec{b}$, $A:n\times n,detA\neq 0$ \\ 
+    \begin{gather*}
+      \Phi(t_1,\dots,t_n)=P(\eta_1<t_1,\dots,\eta_n<t_n)=P(\vec{\eta}<\vec{t})=P(A\vec{\xi}+\vec{b}<\vec{t})= \\
+    = \int\dots\int_{A\vec{x}+\vec{b}<\vec{t}}p(x_1,\dots,x_n)dx_1\dots dx_n= \\
+      \vec{y}=A\vec{x}+\vec{b} \qquad J=\left|\frac{\partial \vec{x}}{\partial \vec{y}}\right| \qquad \frac{1}{J}=detA \\
+    =\idotsint_{\vec{y}<\vec{t}}p(A^{-1}(\vec{y}-\vec{b}))\frac{1}{|detA|}dy_1\dots dy_n \\
+    \phi(\vec{t})=p(A^{-1}(\vec{y}-\vec{b}))\frac{1}{|detA|} \\
+    \phi(\vec{t})=\frac{1}{|detA|}\frac{1}{(\sqrt{2\pi})^n}e^{-\frac{1}{2}(A^{-1}(\vec{y}-\vec{b})^T) (A^{-1}(\vec{y}-\vec{b}))}= \\
+  =\frac{1}{|detA|}\frac{1}{(\sqrt{2\pi})^n}e^{-\frac{1}{2}(\vec{t}-\vec{b})^T (A^T)^{-1} A^{-1}(\vec{t}-\vec{b})} \\
+  K=AA^T \qquad \vec{\eta}=A\vec{\xi}+\vec{b}\sim N(\vec{b}, AA^T) \\
+    \end{gather*}
+\item $\xi\sim N(\vec{a},K)$, $\vec{\eta}=A\vec{\xi}+\vec{b}\sim N(A\vec{a}+\vec{b},AKA^{T})$, $A:n\times n$, $detA\neq 0$
+\item Для $A:m\times n$ два предыдущих свойства так же верны
+\item $\xi,\eta$ - независ $\implies$ $cov(\xi,\eta)=0$, в другую сторону не верно
+\[
+  \left\{\begin{aligned}
+    \xi \sim N(a_1, \sigma_1^2) \\ 
+    \eta \sim N(a_2, \sigma_2^2) \\ 
+    \text{независимые}
+  \end{aligned}\right.
+  \Leftrightarrow
+  (\xi,\eta)\sim N\left(\begin{pmatrix}
+    a_1 \\ a_2
+  \end{pmatrix}\begin{pmatrix}
+  \sigma_1^{2} & 0 \\ 
+  0 & \sigma_2^{2}
+\end{pmatrix}\right)
+\]
+\[
+  \left\{\begin{aligned}
+    \xi \sim N(a_1, \sigma_1^2) \\ 
+    \eta \sim N(a_2, \sigma_2^2) \\ 
+    cov(\xi,\eta)=0
+  \end{aligned}\right.
+  \Leftarrow
+  (\xi,\eta)\sim N\left(\begin{pmatrix}
+    a_1 \\ a_2
+  \end{pmatrix}\begin{pmatrix}
+  \sigma_1^{2} & 0 \\ 
+  0 & \sigma_2^{2} 
+\end{pmatrix}\right)
+\]
+\end{itemize}
+\begin{lemma}[Лемма Фишера]
+Пусть $\vec{\xi}\sim N(\vec{0},E)$ и $C$ ортогональная матрица,
+$\vec{\eta}=C\vec{\xi}$, тогда $\forall k=1\dots n-1$ сл. вел. 
+$\kappa=\sum_{i=1}^{n}\xi_{i}^{2}-\eta_{1}^{2}-\eta_{2}^{2}-\dots -\eta_{k}^{2}\sim \chi^{2}(n-k) $
+и вел $\kappa,\eta_1,\eta_2,\dots ,\eta_k$ независ.
+\end{lemma}
+\begin{proof}
+  \begin{gather*}
+    \vec{\eta}\sim N(\vec{0},\underbrace{CC^{T}}_{E}) \\ 
+    \eta_1^{2}+\dots +\eta_n^{2}=\vec{\eta}^{T}\vec{\eta}=\vec{\xi}^{T}C^{T}C\vec{\xi}=\xi_1^{2}+\dots +\xi_{n}^{2} \\ 
+    \kappa= \eta_{k-1}^{2}+\dots+\eta_{n}^{2} \\ 
+    \kappa=\chi^{2}(n-k)
+  \end{gather*}
+\end{proof}
+
+\begin{theorem}[Фишера]
+  Пусть $\xi_1,\dots ,\xi_n$ независ и $\xi_i\sim N(a,\sigma^{2})$, тогда:
+  \begin{enumerate}
+    \item $\phi=\sqrt{n}\frac{\bar{\xi}-a}{\sigma}\sim N(0,1)$,
+      $\bar{\xi}=\frac{1}{n}\sum_{1}^{n}\xi_i$
+    \item $\psi=\sum_{i=1}^{n}\frac{(\xi_i-\bar{\xi})^2}{\sigma^{2}}\sim \chi^{2}(n-1)$
+    \item $\phi$ и $\psi$ независ.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \phi=\frac{1}{\sqrt{n}}\frac{\sum_{}^{n}\xi_i-na}{\sigma}=\frac{1}{\sqrt{n}}\sum_{}^{n}\left(\frac{\xi_i-a}{\sigma}\right) \\ 
+    \frac{\xi_i-a}{\sigma}=\frac{1}{\sigma}\xi_i-\frac{a}{\sigma} \sim N(\frac{a}{\sigma}-\frac{a}{\sigma}, \sigma^{2}\frac{1}{\sigma^{2}})=N(0,1) \\ 
+  \phi = \frac{1}{\sqrt{n}}\sum_{}^{n}\eta_i=(\frac{1}{\sqrt{n}}\dots \frac{1}{\sqrt{n}})\vec{\eta}\sim N(\vec{0}, AA^{T})=N(0,1)
+  \end{gather*}
+  1) Доказан 
+  \begin{gather*}
+    \psi = \sum_{}^{n}\left(\underbrace{\frac{\xi_i-a}{\sigma}}_{\eta_i\sim N(0,1)}-\underbrace{\frac{\bar{\xi}-a}{\sigma}}_{\bar{\eta}}\right)^{2}=
+    \sum_{}^{n}(\eta_i-\bar{\eta})^{2}=\sum_{}^{n}(\eta_i^2-2\eta_i \bar{\eta}+(\bar{\eta})^2)= \\
+    = \sum_{}^{n}\eta_i^{2}-2\bar{\eta}\sum_{}^{n}\eta_i+n(\bar{\eta})^{2}=\sum_{}^{n}\eta_i^{2}-n(\bar{\eta})^{2} \\ 
+    \eta_i\sim N(0,1) \qquad \zeta^{2}=n\bar{\eta}^{2} \qquad \zeta=\sqrt{n}\bar{\eta}=\frac{1}{\sqrt{n}}\sum_{}^{n}\eta_i=A\vec{\eta}=\phi
+  \end{gather*}
+  $A=\left(\frac{1}{\sqrt{n}}\dots \frac{1}{\sqrt{n}}\right)$ $\implies$ $C$ - ортог. матрица (Грамма-Шмидта)
+  
+  ($A$ получается строчкой матрицы $C$ и тогда $\zeta$ - одна из координат в другом базисе и применима Лемма Фишера)
+
+  По лемме Фишера $\psi\sim \chi^{2}(n-1)$, $\psi$ и $A\bar{\eta}$ независ
+\end{proof}
+
+\begin{theorem}[О проекции]
+  Пусть $\vec{\xi}\sim N(\vec{0},\sigma^{2}E)$, $L_1:dimL_1=m_1$ и $L_2:dimL_2=m_2$ два
+  ортогональных подпространства $\R^{n}$, $\vec{\eta}_1$ - проекция $\vec{\xi}$ на $L_1$,
+  норм. распр., независ. и $\frac{|\eta_1|^{2}}{\sigma^{2}}\sim\chi^{2}(dimL_1)$,
+  $\frac{|\eta_2|^{2}}{\sigma^{2}}\sim\chi^{2}(dimL_2)$
+\end{theorem}
+\begin{proof}
+  $\vec{\eta}_1=A_1\vec{\xi}\sim N(\dots,\dots )$, $\vec{\zeta}=C\vec{\xi}$,
+  $C$ - ортогональная. $\vec{\zeta}\sim N(\vec{0},C\sigma^{2}EC^{T})=N(\vec{0},\sigma^{2}E)$.
+  Новый ортонормированный базис $e_1'\dots e_{m}'$ в $L_1$, 
+  $e_{m+1}'\dots e_{n}'$ в $L_2$, $\vec{\eta_1}=\zeta_1e_1'+\dots +\zeta_{m}e_{m}'$,
+  $\vec{\eta_2}=\zeta_{m+1}e_{m+1}'+\dots +\zeta_{n}e_{n}'$
+\[
+  \frac{\bar{\xi}}{\sigma}\sim N(\vec{0},E) \qquad \frac{|\eta_1|^{2}}{\sigma^{2}}=\sum_{}^{}\frac{\xi_i^{2}}{\sigma^{2}}\sim \chi^{2}(m_1)
+\]
+\end{proof}
+
+
+\end{document}
