@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="l2_lag_eg.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.2700643"
+     inkscape:cx="396.04295"
+     inkscape:cy="245.26318"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1707"
+     inkscape:window-height="888"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999"
+       d="m 74.236412,223.83014 c -9.06196,-31.29578 11.463396,-13.62285 17.295223,-16.76306 2.987759,-1.6088 4.221519,-6.42484 7.450248,-7.71633 10.735447,-4.29418 30.389607,2.37022 39.379887,8.24849 5.81531,3.80232 0.55471,23.05321 6.91809,28.20451 8.045,6.51263 14.45376,13.00177 10.90929,25.54371 -6.4934,22.97666 -49.41651,7.62573 -63.327114,7.98241 -2.838643,0.0728 0.01646,5.68909 -0.266081,8.51457 -0.605612,6.05613 -10.768118,-6.9729 -13.304017,-12.50577 -2.734741,-5.96671 -0.97668,-9.12636 -2.660803,-14.9005 -4.150767,-14.2312 -13.651444,-20.17562 -2.394723,-26.60803 z"
+       id="path1" />
+    <circle
+       style="fill:none;stroke:#000000;stroke-width:0.499999"
+       id="path2"
+       cx="108.02861"
+       cy="236.86807"
+       r="0.79824102" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999"
+       d="m 108.2947,186.57889 v 50.28918 l 26.26485,-45.49205"
+       id="path3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999"
+       d="m 108.56077,194.5613 c 11.17538,0 20.48819,5.32161 20.48819,5.32161"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999"
+       x="116.24412"
+       y="190.54099"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:0.5"
+         x="116.24412"
+         y="190.54099">$\varphi$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.472326;marker-end:url(#Triangle)"
+       d="m 73.337786,191.76634 20.30775,11.3201"
+       id="path5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;marker-end:url(#Triangle)"
+       d="M 156.45041,207.62345 143.5344,233.45548"
+       id="path6" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;marker-end:url(#Triangle)"
+       d="M 110.41108,286.36946 C 108.74449,284.28624 96.245128,268.66203 96.245128,268.66203"
+       id="path7" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;marker-end:url(#Triangle)"
+       d="m 55.622184,266.99544 c 1.458259,-2.08322 18.540727,-21.87389 18.540727,-21.87389"
+       id="path8" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 185.82393,247.20478 -29.79016,14.16595"
+       id="path9" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="66.663292"
+       y="187.20782"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         style="stroke-width:0.5"
+         x="66.663292"
+         y="187.20782">$\vec{F}_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="147.28421"
+       y="202.20706"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="stroke-width:0.5"
+         x="147.28421"
+         y="202.20706">$\vec{F}_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="174.78282"
+       y="241.58006"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="stroke-width:0.5"
+         x="174.78282"
+         y="241.58006">$\vec{F}_2$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 94.578545,203.66532 3.311731,1.91203"
+       id="path11" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 143.5344,233.87212 -2.70819,3.95813"
+       id="path12" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 156.03377,261.16241 -4.79143,2.91651"
+       id="path13" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="95.620155"
+       y="212.83153"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="stroke-width:0.5"
+         x="95.620155"
+         y="212.83153">$\delta \vec{r}_1$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="126.45193"
+       y="243.6633"
+       id="text14"><tspan
+         sodipodi:role="line"
+         id="tspan14"
+         style="stroke-width:0.5"
+         x="126.45193"
+         y="243.6633">$\delta \vec{r}_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="132.90994"
+       y="261.57904"
+       id="text15"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="stroke-width:0.5"
+         x="132.90994"
+         y="261.57904">$\delta \vec{r}_3$</tspan></text>
+  </g>
+</svg>

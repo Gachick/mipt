@@ -5,9 +5,9 @@
 
 \begin{document}
 
-\section{Лекция 1}
+% lecture 1
 
-\subsection{Введение}
+\section{Введение}
 \begin{definition}[Динамическая система]
   Система у которой
   \begin{itemize}
@@ -54,7 +54,7 @@
   \]
 \end{eg}
 
-\subsection{Описание системы}
+\section{Описание системы}
 \begin{definition}[Твёрдое тело]
   Система мат точек, у которых не изменяется расстояние между любыми 2мя точками.
 \end{definition}
@@ -64,7 +64,7 @@
   \vec{r}_\nu(t), \; \nu=1,\dots,N
 \]
 \[
-\vec{v}_\nu(t)=\dot{\vec{r}}_\nu(t) \qquad \vec{w}_\nu(t)=\dot{\vec{v}}_\nu(t) \
+\vec{v}_\nu(t)=\dot{\vec{r}}_\nu(t) \qquad \vec{w}_\nu(t)=\dot{\vec{v}}_\nu(t) 
 \]
 Связи $f(t,\vec{r}_1,\dots,\vec{r}_\nu,\dots,\vec{r}_N, \dot{\vec{r}}_1, \dots,\dot{\vec{r}}_\nu, \dots, \dot{\vec{r}}_N) =0$, кратко $f(t,\vec{r}_\nu,\dot{\vec{r}}_N)=0$. \\ 
 Конечные связи - не зависят от скорости $f(t,\vec{r}_\nu)=0$, 
@@ -72,7 +72,7 @@
 
 \begin{eg}
 \incfig{l1_wheel}
-В колесе без проскальзывания
+В колесе без проскальзывания:
 \[
   \dot{x_1}=R\dot{\phi}_1
 \]
@@ -105,6 +105,97 @@
   \]
 \end{definition}
 
+% lecture 2
+
+\begin{eg}
+  \incfig{l2_wheel}
+
+  Твёрдое тело круг на плоскости, три обощённые координаты $x,y,\varphi$ соответственно
+  $q_1,q_2,q_3$.
+\end{eg}
+\begin{definition}
+  Если нет нестационарных связей то $\vec{r}_\nu(q)$ склерономные системы
+  (не зависят от времени).
+\end{definition}
+
+\section{Лагранжева механика}
+\incfig{l2_lagrange}
+\[
+  \left\{\begin{aligned}
+    y = -x\tan \alpha \\ 
+    m_{\nu}\ddot{\vec{r}}_{\nu}=\sum_{}^{}\vec{F}_{\nu}
+  \end{aligned}\right. \qquad \ddot{q_1}=g\sin\alpha
+\]
+\subsection{Уравнения Лагранжа 2-го рода}
+Применимо к голономным системам.
+\subsubsection{Кинетическая энергия}
+\[
+  \frac{d}{dt}\left(\frac{\partial T}{\partial \dot{q}_i}\right)-\frac{\partial T}{\partial q_i}=Q_i \quad i=1\dots n 
+\]
+$T(\dot{q},q,t)$ - кинетическая энергия, $Q_i(\dot{q},q,t)$ - обобщённые силы
+\[
+  \delta A =\sum_{\nu=1}^{N}\vec{F}_\nu \delta \vec{r}_\nu=\sum_{i=1}^{N}Q_i \delta q_i
+\]
+$\delta \vec{r}_\nu$ - виртуальное перемещение.
+\begin{definition}[Виртуальное перемещение]
+  Виртуальное пермещение - перемещение точек системы с учётом наложенных связей
+  не изменяющихся (замороженных) во времени.
+\end{definition}
+\begin{eg}
+  \incfig{l2_lag_eg}
+  Одна степерь свободы - угол вращения. Начинаем варьировать $\phi$ чтобы выразить
+  $\delta \vec{r}_\nu$ через $\delta q_i$ получаем работу и тогда можем выразить
+  $Q_i$. В случае когда степеней свободы много нужно жёстко
+  фиксировать все кроме одной.
+\end{eg}
+\subsubsection{Потенциальная энергия}
+\[
+  Q_i=-\frac{\partial \Pi(q,t)}{\partial q_i}
+\]
+\subsubsection{Лагранжиан}
+\[
+  L = T - \Pi
+\]
+\[\boxed{
+  \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{q}}\right) - \frac{\partial L}{ \partial q_i}=0 \quad i=1\dots n
+}\]
+\subsubsection{Стректура кинетической энергии}
+Для набора материальных точек ($\vec{r}_\nu=\vec{r}_\nu(q-t)$):
+\begin{gather*}
+  T=\frac{1}{2}\sum_{\nu=1}^{N}m_\nu(\dot{\vec{r}}_\nu)^2=
+  \frac{1}{2}\sum_{\nu=1}^{N}m_\nu\left(\sum_{i=1}^{N}\pd{\vec{r}_\nu}{q_i}\dot{q}_i+\pd{\vec{r}_\nu}{t}\right)^2 \\ 
+  a_{jk}=\sum_{\nu=1}^{N}m_\nu\pd{\vec{r}_\nu}{q_j}\pd{\vec{r}_\nu}{q_k} \qquad 
+  a_{j}=\sum_{\nu=1}^{N}m_\nu\pd{\vec{r}_\nu}{q_j}\pd{\vec{r}_\nu}{t} \qquad
+  a_{0}=\frac{1}{2}\sum_{\nu=1}^{N}m_\nu\left(\pd{\vec{r}_\nu}{t}\right)^{2} \\ 
+  T=\underbrace{\frac{1}{2}\sum_{j,k=1}^{n}a_{jk}\dot{q}_j\dot{q}_k}_{T_2} + \underbrace{\sum_{j=1}^{n}a_j\dot{q}_j}_{T_1}+\underbrace{a_0}_{T_0} \\ 
+  T=T_2+T_1+T_0
+\end{gather*}
+Для склерономной $T=T_2$
+
+\begin{eg}
+  \incfig{l2_kinetic}
+  $q$ - расстояние от начала стержня до точки $a$
+  \begin{gather*}
+    \phi=\omega t \qquad x=q\cos(\omega t) \qquad y=q\sin(\omega t) \\ 
+    \dot{x}=\dot{q}\cos(\omega t) - q \omega \sin(\omega t) \qquad
+    \dot{y}=\dot{q}\sin(\omega t) + q \omega \cos(\omega t) \\ 
+    T=\frac{1}{2}m(\dot{x}^{2}+\dot{y}^{2})^{2}=\frac{m}{2}[\dot{q}^{2}+\omega^{2}q^{2}] \\ 
+    T=\frac{1}{2}m(v_r^{2}+v_{\phi}^{2})=\frac{m}{2}[\dot{q}^{2}+\omega^{2}q^{2}]
+  \end{gather*}
+\end{eg}
+\begin{eg}
+  \incfig{l2_kinetic_dots}
+  Теорема Кёнига:
+  \begin{enumerate}
+    \item Кёнигова система отсчёта
+    \begin{enumerate}
+      \item Центр находится в центре масс
+      \item При движении системы кёнигова система точек движется поступательно
+    \end{enumerate}
+  \item $T=\frac{1}{2}m_cv_c^2+T^{\text{отн}}$, 
+    для твёрдого тела (на плоскости) $T^{\text{отн}}=\frac{1}{2}I_{\text{ось вр}}\omega^{2}$
+  \end{enumerate}
+\end{eg}
 
 \end{document}
 
