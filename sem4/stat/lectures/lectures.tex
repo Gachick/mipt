@@ -63,14 +63,16 @@ $n$ - число степеней свободы
 \end{theorem}
 
 \subsection{Распределение Стьюдента (Госсет)}
-$\xi \sim N(0,1)$, $\eta \sim \chi^2(m)$ - независимы, $\frac{\xi}{\sqrt{\eta/m}}\sim t(m)$ \\
+$\xi \sim N(0,1)$, $\eta \sim \chi^2(m)$ - независимы, $\frac{\xi}{\sqrt{\eta/m}}\sim t(m)$
+
 \incfig{l1_st_distr}
 \[
   p(x)=\frac{(m)^{m/2}\Gamma(\frac{m+1}{2})}{\sqrt{\pi}\Gamma(\frac{m}{2})(x^2+m)^{\frac{m+1}{2}}}
 \]
 
 \subsection{Распределение Фишера}
-$\xi\sim \chi^2(n)$, $\eta\sim \chi^2(m)$ - независимые, $\frac{\xi/n}{\eta/m}\sim F(n,m)$ \\
+$\xi\sim \chi^2(n)$, $\eta\sim \chi^2(m)$ - независимые, $\frac{\xi/n}{\eta/m}\sim F(n,m)$
+
 \incfig{l1_fi_distr}
 \subsection{Нормальное распределение}
 \begin{gather*}
@@ -81,7 +83,8 @@ $\xi\sim \chi^2(n)$, $\eta\sim \chi^2(m)$ - независимые, $\frac{\xi/n
 \begin{itemize}
   \item $\xi\sim N(0,1)$, $\eta=a\xi+b \sim N(b,a^2)$
   \item $\xi\sim N(\alpha, \sigma^2)$, $\eta=a\xi+b\sim N(a\alpha+b, \sigma^2a^2)$
-  \item $\xi\sim N(\vec{0},E)$,$\vec{\eta}=A\vec{\xi}+\vec{b}$, $A:n\times n,detA\neq 0$ \\ 
+  \item $\xi\sim N(\vec{0},E)$,$\vec{\eta}=A\vec{\xi}+\vec{b}$, $A:n\times n,detA\neq 0$
+      
     \begin{gather*}
       \Phi(t_1,\dots,t_n)=P(\eta_1<t_1,\dots,\eta_n<t_n)=P(\vec{\eta}<\vec{t})=P(A\vec{\xi}+\vec{b}<\vec{t})= \\
     = \int\dots\int_{A\vec{x}+\vec{b}<\vec{t}}p(x_1,\dots,x_n)dx_1\dots dx_n= \\
@@ -185,5 +188,192 @@ $\kappa=\sum_{i=1}^{n}\xi_{i}^{2}-\eta_{1}^{2}-\eta_{2}^{2}-\dots -\eta_{k}^{2}\
 \]
 \end{proof}
 
+% lecture 2 
+ 
+\section{Порядковые случайные величины}
+$\xi_1,\xi_2,\dots ,\xi_n$ назавис, $\xi_i \sim F(x)$
+\[
+  \eta=min(\xi_1,\dots \xi_n) \sim ? \qquad
+  \zeta=max(\xi_1,\dots \xi_n) \sim ? 
+\]
+\begin{gather*}
+  \Phi(y)=P(\eta<y)=1-P(\eta \ge y)=1-P(min(\xi_1,\dots ,\xi_n) \ge y)= \\ 
+  =1-P(\xi_1\ge y,\dots ,\xi_n \ge y) = 1 - \prod_{i=1}^{n}P(\xi_i \ge y)= \\ 
+  =1 - \prod_{i=1}^{n}(1-P(\xi_i < y))=1-(1-F(y))^{n}
+\end{gather*}
+\begin{gather*}
+  \Psi(z)=P(\zeta<z)=P(max(\xi_1,\dots ,\xi_n) < z)= \\ 
+  = P(\xi_1 < z, \dots , \xi_n<z)=\prod_{i=1}^{n}P(\xi_i < z)=(F(z))^{n}
+\end{gather*}
+Порядковые величины:
+\begin{gather*}
+  \xi_{(1)}=min(\xi_1, \dots , \xi_n) \\
+  \xi_{(2)}=min(\xi_i:\xi_i\neq \xi_{(1)}) \\
+  \xi_{(3)}=min(\xi_i:\xi_i\neq \xi_{(1)}, \xi_i \neq \xi_{(2)}) \\
+  \dots \\ 
+  \xi_{(n)}=max(\xi_1, \dots , \xi_n)
+\end{gather*}
+Положим $F(x)$ - непрерывна:
+
+\incfig{l2_poryad}
+\begin{gather*}
+  P(t\ \le \xi_{(k)} < t + \Delta t)= \\
+  =nP(t\le \xi<t+\Delta t)C_{n-1}^{k-1}(P(\xi<t))^{k-1}(P(\xi \ge t+\Delta t))^{n-k}C_{n-k}^{n-k}= \\
+  =\kappa(t+\Delta t) - \kappa(t) \\ 
+  n\frac{F(t+\Delta t)-F(t)}{\Delta t}C_{n-1}^{k-1}(F(t))^{k-1}(1-F(t+\Delta t))^{n-k}=\frac{\kappa(t+\Delta t)-\kappa(t)}{\Delta t}\\ 
+  \kappa(t)=np(t)C_{n-1}^{k-1}(1-F(t))^{n-k}(F(t))^{k-1}
+\end{gather*}
+$\kappa(t)$ - плотность распределения $\xi_{(k)}$, $p(t)=F'(t)$
+
+$\xi_{(1)}$ и $\xi_{(n)}$ совместное распр
+\begin{gather*}
+  G(y,z)=P(\xi_{(1)}<y,\xi_{(n)}<z) \\ 
+  P(\xi_{(n)}<z)=P(\xi_{(1)}<y, \xi_{(n)} < z) + P(\xi_{(1)} \ge y, \xi_{(n)} < z) \\ 
+  \Psi(z)=(F(z))^{n}=P(\xi_{(1)}<y,\xi_{(n)}<z)+\prod_{i=1}^{n}\underbrace{P(y \le \xi_i < z)}_{F(z)-F(y)} \\ 
+  G(y,z)=P(\xi_{(1)}<y,\xi_{(n)}<z)=\left\{\begin{aligned}
+      &(F(z))^{n},\; & y > z \\ 
+      &(F(z))^{n}-(F(z)-F(y))^{n}, \; & y\le z
+  \end{aligned}\right.
+\end{gather*}
+
+\section{Моделирование случайных величин}
+\incfig{l2_model}
+$\xi\sim F(x)$, $\eta\sim R(0,1)$, $F(x)=\eta_1 \to x_1$, 
+для псевдослучайных чисел вихрь Мерсенна
+
+\section{Основные задачи статистики}
+Явление $\rightarrow$ математическая модель явления $\rightarrow$ вероятностная модель явления $\xi_i$.
+
+Выборка - n наблюдений над явлением 
+$\rightarrow$описательная статистика (непараметрическая), выбор классов (e.g. $\epsilon \sim N(a,\sigma^{2})$)
+$\rightarrow$ параметрическая статистика (e.g. $\epsilon\sim N(a,\sigma^{2})$, $a-?$, $b-?$)
+
+\begin{eg}
+  Пытаемся понять как остывает чашка чая.
+  \[
+    \frac{dT}{dt}=k(T-T_0)+\epsilon
+  \]
+  Вероятностная модель явления с двумя случайными величинами
+  (погрешности измерений $\epsilon$ и внутри $k$).
+
+  Распределения полагаем нормальными и так далее.
+\end{eg}
+
+\begin{enumerate}
+  \item Определение параметров и оценка их точности
+  \item Проверка статистических гипотиз
+\end{enumerate}
+
+Характеристики модели $\theta$, по выборке оценка $\bar{\theta}(\vec{x}_n)$,
+$n$ - объём выборки.
+
+Статистика - $\forall$ барелевская функция от $\vec{x}_n$
+(борелевская $g:\R\to\R \; \forall B\in \mathbb{B} \true g^{-1}(B)\in \mathbb{B}$).
+
+Воспринимаем $\vec{x}_n$ с двух сторон:
+\begin{enumerate}
+  \item конкретные наблюдения над явлением
+  \item независимые случайные величны с распределением, одинаковым со случайными величинами в вероятностной модели
+\end{enumerate}
+
+\subsection{Свойства оценок}
+$\Theta$ - множество значений $\theta$, $\theta \in \Theta$, 
+$\tilde{\theta}(\vec{x}_n)$ - оценка $\theta$ по выборке
+\begin{enumerate}
+  \item несмещённость $\forall\theta \in \Theta \true M[\tilde{\theta}(\vec{x}_n)]=\theta$
+  \item состоятельность $\forall \theta \in \Theta \true \tilde{\theta} \overset{P}{\to}\theta$
+    (i.e. $\forall \epsilon > 0 \; P(|\tilde{\theta}-\theta|\ge\epsilon)\underset{n\to\infty}{\to}0$)
+  \item сравнение оценок $\tilde{\theta}_1$ эффективнее $\tilde{\theta}_2$,
+    если $\forall \theta \in \Theta \true D[\tilde{\theta}_1] \le D[\tilde{\theta}_2]$
+    и $\exists \theta \in \Theta : \; D[\tilde{\theta}_1] < D[\tilde{\theta}_2]$
+\end{enumerate}
+\begin{theorem}[Достаточное условие состоятельности]
+  Если $\tilde{\theta}$ является несмещённой оценкой $\theta$ и $D[\tilde{\theta}]\underset{n\to\infty}{\to}0$, 
+  то $\tilde{\theta}$ является состоятельной оценкой ($\forall \theta \in \Theta$)
+\end{theorem}
+\begin{proof}
+  $M[\tilde{\theta}]=\theta$, по неравенству Чебышёва:
+  \[
+    \forall \epsilon>0 \true P(|\tilde{\theta}-\underbrace{M[\tilde{\theta}]}_{\theta}| < \epsilon) \ge 1 - \frac{D[\tilde{\theta}]}{\epsilon^{2}} \underset{n\to\infty}{\to} 1
+  \]
+\end{proof}
+\begin{problem}[Т1] Пытаемся понять по двум серийным номерам сколько всего танков.
+
+  $\xi\sim R(0,\theta)$, $\theta >0$ вер. модель., $\vec{x}_n$ - выбрка объёмом $n$
+  \begin{gather*}
+    \tilde{\theta}_1=2\bar{x}=2\frac{1}{n}\sum_{i=1}^{n}x_i \\
+    \tilde{\theta}_2= \min x_i \\
+    \tilde{\theta}_3= \max x_i \\
+    \tilde{\theta}_4= x_1 + \frac{1}{(n-1)}\sum_{i=2}^{n}x_i
+  \end{gather*}
+  \begin{gather*}
+    M[\xi]=\int_{-\infty}^{\infty}xp(x)dx=\int_{0}^{\theta}\frac{x}{\theta}dx=\frac{\theta}{2} \\
+    M[\xi^{2}]=\int_{-\infty}^{\infty}x^{2}p(x)dx=\int_{0}^{\theta}\frac{x^2}{\theta}dx=\frac{\theta^{2}}{3} \\
+  \end{gather*}
+  Рассматриваем $\tilde{\theta}_1$:
+
+  Несмещённость $\forall \theta >0 M[\tilde\theta]=\theta$:
+
+  $M[\frac{\theta}{n}\sum_{i=1}^{n}x_i]=\frac{2}{n}\sum_{i=1}^{n}M[x_i]=2M[\xi]=\theta$ несмещённая
+
+  $D[\tilde\theta_1]=D[\frac{2}{n}\sum_{}^{}x_i]=\frac{1}{n^{2}}\sum_{}^{}D[x_i]=
+  \frac{4}{n}D[\xi]=\frac{\theta^{2}}{3n}\underset{n\to\infty}{\to}0$,
+  по достаточному условия оценка состоятельная
+
+  Рассматриваем $\tilde{\theta}_2$:
+  \begin{gather*}
+    M[\tilde\theta_2]=\int_{-\infty}^{\infty}y\phi(y)dy \\ 
+    \Phi(y)=1-(1-F(y))^{n} \qquad \phi(y)=n(1-F(y))^{n-1}p(y) \\
+    M[\tilde\theta_2]=\int_{0}^{\theta}n(1-\frac{y}{\theta})^{n-1}\frac{1}{\theta}ydy =\\
+    t = 1 - \frac{y}{\theta} \\ 
+    = -\int_{1}^{0}nt^{n-1}(1-t)\theta dt=\int_{0}^{1}n\theta t^{n-1}dt - \int_{0}^{1}n\theta t^{n}dt= \\
+    =n\theta[1-\frac{n}{n+1}]=\frac{\theta}{n+1}\quad \text{  смещённая} \\
+    \tilde\theta_2'=(n+1)x_{min}=(n+1)\tilde\theta_2 \quad \text{несмещённая} \\
+    M[\tilde\theta_2^{2}]=\int_{0}^{\theta}n(1-\frac{y}{\theta})^{n-1}\frac{1}{\theta}y^{2}dy =\\
+    = -\int_{1}^{0}nt^{n-1}(1-t)^{2}\theta^{2} dt= \frac{2\theta^{2}}{(n+1)(n+2)} \\ 
+    D[\tilde\theta_2]=\frac{2\theta^{2}}{(n+1)(n+2)}-\frac{\theta^{2}}{(n+1)^{2}}=
+    \theta^{2}\left[\frac{2(n+1)-(n+2)}{(n+1)^{2}(n+2)}\right]= \\ 
+    =\theta^{2}\left[\frac{n}{(n+1)^{2}(n+2)}\right] \underset{n\to\infty}{\to}0
+    \quad \text{достаточное не выполнятеся} \\ 
+    D[\tilde\theta_2']=(n+1)^{2}D[\tilde\theta_2]=\frac{\theta^{2}n}{n+2}\not\to 0
+  \end{gather*}
+  Смотрим состоятельность $\tilde\theta_2'$ по определению
+  \[
+    \forall \theta >0 \; \forall \epsilon>0 \true P(|\tilde\theta_2'-\theta|\ge\epsilon) \underset{n\to\infty}{\to} 0 
+  \]
+  \begin{gather*}
+    P(|\tilde\theta_2'-\theta|\ge\epsilon) \ge  P(\tilde\theta_2' > \theta +\epsilon)= \\ 
+    = P((n+1)x_{min}\ge \theta + \epsilon)=P(x_{min} \ge \frac{\theta+\epsilon}{n+1}) = \\ 
+    = 1-P(x_{min}<\frac{\theta+\epsilon}{n+1})=1-(1-(1-F(\frac{\theta+\epsilon}{n+1}))^{n})= \\ 
+    =(1-(\frac{\theta+\epsilon}{\theta(n+1)}))^{n}\underset{n\to\infty}{\to}e^{-\frac{\theta+\epsilon}{\theta}} >0
+  \end{gather*}
+  Не является состоятельной!
+
+  Смотрим состоятельность $\tilde\theta_2$ по определению:
+  \begin{gather*}
+    P(\tilde\theta_2<\theta-\epsilon) + \underbrace{P(\tilde\theta_2>\theta+\epsilon)}_{=0, \text{т.к.} \tilde\theta_2=x_{min}} \\ 
+    P(x_{min}<\theta-\epsilon=\Phi(\theta-\epsilon))=1-(1-\frac{\theta-\epsilon}{\theta})^{n}=
+    1-\left(\frac{\epsilon}{\theta}\right)^{n} \underset{n\to\infty}{\to}1
+  \end{gather*}
+  Не является состоятельной!
+
+  Рассматриваем $\tilde\theta_3=x_{max}$:
+  \begin{gather*}
+    M[\tilde\theta_3]=\int_{-\infty}^{+\infty}z\psi(z)dz=\int_{0}^{\theta}n\frac{z^{n}}{\theta^{n}}dz=\frac{n}{n+1}\theta \qquad \text{смешённая}\\
+    \Psi(z)=(F(z))^{n} \qquad \psi(z)=n(F(z))^{n-1}p(z)=n\left(\frac{z}{\theta}\right)^{n-1}\frac{1}{\theta} \{(0;\theta)\} \\
+    D[\tilde\theta_3]\frac{n}{n+2}\theta^{2}-\frac{n^{2}}{(n+1)^{2}}\theta^{2}=\frac{n\theta^{2}}{(n+2)(n+1)^{2}} \\ 
+    D[\tilde\theta_3']\frac{(n+1)^{2}}{n^{2}}D[\tilde\theta_3]=\frac{\theta^{2}}{n(n+2)} \underset{n\to\infty}{\to} 0 \qquad \text{состоятельная} \\
+  \end{gather*}
+  Смотрим состоятельность $\tilde\theta_2'$ по определению
+  \begin{gather*}
+    \forall\theta>0 \; \forall \epsilon > 0 \\ 
+    P(|\tilde\theta_2'-\theta|\ge\epsilon)=P(x_{max}<\theta-\epsilon) + \underbrace{P(x_{max}\ge\theta+\epsilon)}_{=0}= \\ 
+    =(F(\theta-\epsilon))^{n}=\left\{\begin{aligned}
+      & 0<\epsilon<\theta: \; \left(\frac{\theta-\epsilon}{\theta}\right)^{n}\underset{n\to\infty}{to} 0 \\ 
+      & \epsilon \ge \theta: \; (0)^{n} \underset{n\to\infty}{\to} 0 
+    \end{aligned}\right.
+  \end{gather*}
+  Является состоятельной!
+\end{problem}
 
 \end{document}
