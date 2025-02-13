@@ -263,8 +263,157 @@ $\tilde y=C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
         \[
           \ddot y(t) + q(x(t))p(x(t))y(t)=0
         \]
-      
+      % lecture 2 
+      \item Преобразование Фурье-Лиувилля - привидение к канон. виду
+      \begin{enumerate}
+        \item $t=\phi(x)$ к виду $\ddot y +c(t)\dot{y}\pm y =0$
+        \item $c(t)\in C'(t_1,t_2)$, $y(t)=\psi(t)z(t)$ к канон. виду $\ddot y +\alpha(t)y=0$
+      \end{enumerate}
+      \begin{eg}
+        \begin{gather*}
+          xy''+2y'+y=0 \quad x>0 \\ 
+          y'=\dot{y}\phi'(x) \qquad y''=\dot{y}\phi''(x)+\ddot y \phi'^{2} \\ 
+          x \dot{y}\phi'' + x\ddot y \phi'^{2}+2\dot{y}\phi'+y=0 \\ 
+          x\phi'^{2}=1 \qquad \phi'=\frac{1}{\sqrt{x}} \qquad \phi=2\sqrt{x} \\ 
+          t=2\sqrt{x} \qquad \phi''=-\frac{1}{2}\frac{1}{x^{3/2}} \\ 
+          \ddot y + \dot{y}\left(-\frac{1}{2\sqrt{x}}+\frac{2}{\sqrt{x}}\right)+y=0 \\ 
+          \ddot y + \dot{y}\frac{3}{2\sqrt{x}}+y=0 \qquad \ddot y + \dot{y}\underbrace{\frac{3}{t}}_{c(t)}+y=0
+        \end{gather*}
+        При $t>0$ непр дифф., делаем второй шаг
+        \begin{gather*}
+          y(t)=z(t)\psi(t) \\ 
+          \ddot z \psi(t)+2 \dot{z}\dot{\psi} + z \ddot \psi + \frac{3}{t}\dot{z}\psi+\frac{3}{t}z\dot{\psi}+z\psi =0 \\
+          2\dot{\psi}+\frac{3}{t}\psi = 0 \qquad \psi=\frac{1}{t^{3/2}} \\ 
+          \dot{\psi} = -\frac{3}{2}\frac{1}{t^{5/2}} \qquad \ddot \psi=\frac{15}{4}\frac{1}{t^{7/2}} \\ 
+          \ddot z \frac{1}{t^{3/2}}+z\left(\frac{15}{4}\frac{1}{t^{7/2}}-\frac{9}{2}\frac{1}{t^{7/2}}+\frac{1}{t^{3/2}}\right)=0 \\ 
+          \ddot z + z\left(1-\frac{3}{4t^{2}}\right)=0 \qquad t>0
+        \end{gather*}
+      \end{eg}
     \end{enumerate}
 \end{enumerate}
+
+\subsection{Асимптотический вид решения}
+\[
+  \ddot y + y(m+\beta(t))=0 \qquad m \neq 0
+\]
+\begin{theorem}
+  Если $\beta(t)$ непр на $[t_0,+\infty)$ и $\beta(t)=O(\frac{1}{t^{1+\epsilon}})$ при $t\to\infty$, $\epsilon>0$, то 
+  \begin{itemize}
+    \item $m>0$: $y(t)=C_1\cos\sqrt{m}t+C_2\sin \sqrt{m}t+O(\frac{1}{t^{\epsilon}})$
+    \item $m<0$: $y(t)=C_1e^{\sqrt{|m|}t}\left(1+O(\frac{1}{t^{\epsilon}})\right) + C_2e^{-\sqrt{|m|}t}\left(1+O(\frac{1}{t^{\epsilon}})\right)$
+  \end{itemize}
+\end{theorem}
+\begin{eg}
+  \begin{gather*}
+    \ddot z + z\left(1-\frac{3}{4t^{2}}\right)=0 \qquad t>0 \\ 
+    m=1 \qquad \beta(t)=-\frac{3}{4t^{2}} \quad \text{непр} \; (0,+\infty) \quad \epsilon=1 \\ 
+    z(t)=C_1\cos t + C_2\sin t +O(t) \\ 
+    t=2\sqrt{x} \qquad y(t)=z(t)\frac{1}{t^{3/2}} \\
+    y(t)=C_1\frac{\cos t }{3^{3/2}}+C_2\frac{\sin t}{t^{3/2}}+O\left(\frac{1}{t^{5/2}}\right) \\ 
+    y(x)=\tilde C_1 \frac{\cos 2\sqrt{x}}{x^{3/4}}+ \tilde C_2 \frac{\sin 2\sqrt{x}}{x^{3/4}} + O\left(\frac{1}{x^{3/4}}\right) \\ 
+  \end{gather*} 
+  Верно при $x\to \infty$
+\end{eg}
+
+\subsection{Исследование нулей решения уравн. второго порядка}
+\[
+  y''+b_1(x)y'+b_0(x)y=0 \qquad b_0,b_1\in C(a,b)
+\]
+\begin{definition}
+  Точка $x_0$ называется нулём решения $y(x)$, если $y(x_0)=0$
+\end{definition}
+\begin{theorem}
+  Пусть $y(x)$ нетривиальное решение и $y(x_0)=0$ тогда $y'(x_0)\neq 0$
+\end{theorem}
+\begin{proof}
+  Пусть $y'(x_0)=0$, получаем задачу Коши $y(x_0)=0$, $y'(x_0)=0$ $\implies y\equiv 0$
+  единст. реш., противоречит с нетрив реш.
+\end{proof}
+\begin{theorem}
+  Любое нетривиальное решение может иметь на отрезке $[c,d]\subset (a,b)$
+  не более конечного числа нулей.
+\end{theorem}
+\begin{proof}
+  Пусть число нулей бесконечно на $[c,d]$, счётное подмнож $x_1,x_2,\dots , x_n$ -
+  ограниченная послед, выделяем сход. подпослед. $x_{n_{k}}\to x_0\in [c,d]$.
+
+  $y(x_{n_{k}})=0$, $y(x_{n_{k}})\to y(x_0)=0$ непр. $y(x)$
+
+  $y(x)$ - решение $\implies \exists y'(x_0)$
+  \[
+    y'(x_0)=\lim\limits_{k\to\infty}\frac{y(x_{n_{k}})-y(x_0)}{x_{n_{k}}-x_0}=0
+  \]
+  Противоречие с пред. теоремой.
+\end{proof}
+
+\begin{theorem}[Теорема сравнения Штурма]
+  Пусть $(p(x)z')'+q(x)z=0$, $(p(x)y')'+Q(x)y=0$, $p(x)\in C'(a,b)$, $q,Q\in C(a,b)$,
+  $p(x)>0$ на $(a,b)$ и пусть $x_1$ и $x_2$ $\in (a,b)$ 
+  два последовательных нуля нетривиального решения $z(x)$
+  и $q(x)\le Q(x)$ на $[x_1,x_2]$.
+
+  Тогда любое решение $y(x)$ имеет хотя бы один нуль на $[x_1,x_2]$.
+
+\end{theorem}
+
+\begin{proof}
+  \phantom{.}
+
+  \incfig{l2_shturm}
+  Пусть $y(x)\neq 0$ на $[x_1,x_2]$
+  \begin{gather*}
+    (pz')'y+qzy'-(py')'z-Qyz=0 \\ 
+    \underbrace{p'z'y+pz''y-p'y'z-py''z}_{(p(z'y-zy'))'}+yz(q-Q) = 0 \quad \int_{x_1}^{x_2} \\ 
+    p(z'y-zy')\big|_{x_1}^{x_2}+\int_{x_1}^{x_2}yz(q-Q)dx=0 \\ 
+    \underbrace{\underbrace{p(x_2)}_{>0}(\underbrace{z'(x_2)}_{<0}\underbrace{y(x_2)}_{>0}-\underbrace{z(x_2)}_{=0}y'(x_2))-\underbrace{p(x_1)}_{>0}(\underbrace{z'(x_1)}_{>0}\underbrace{y(x_1)}_{>0}-\underbrace{z(x_1)}_{=0}y'(x_1))}_{<0}+ \\ 
+    +\underbrace{\int_{x_1}^{x_2}\underbrace{yz}_{\ge0}\underbrace{(q-Q)}_{<0}dx}_{\le 0}=0
+  \end{gather*}
+  Противоречие.
+\end{proof}
+\begin{corollary}[Теорема о премежаемости нулей]
+  Пусть $y_1(x)$ и $y_2(x)$ два линейно независимых решения $(p(x)y(x))'+q(x)y=0$,
+  $p\in C'(a,b)$, $p>0$ на $(a,b)$, $q\in C(a,b)$ и $x_1$ и $x_2$ два последовательных
+  нуля $y_1(x)$ тогда $y_2(x)$ имеет ровно один нуль на $(x_1,x_2)$.
+\end{corollary}
+\begin{proof}
+  Пусть $y_1(x_0)=0$ и $y_2(x_0)=0$
+  \[
+    W(x_0)=\begin{vmatrix}
+      y_1(x_0) & y_2(x_0) \\
+      y_1'(x_0) & y_2'(x_0) \\
+    \end{vmatrix}=0
+  \]
+  Противоречие с линейной независ.
+  \[
+    (py_1')'+qy_1=0 \qquad (py_2')'+qy_2=0
+  \]
+  По теореме Штурма $y_2$ имеет хотя бы один нуль на $(x_1,x_2)$.
+  
+  Пусть два нуля $y_2(x_3)=y_2(x_4)=0$, тогда по теореме сравнения Штурма
+  $\exists x_5: y_1(x_5)=0$ противоречит с соседством $x_1$ и $x_2$.
+\end{proof}
+
+\subsection{Оценка расстояние между нулями}
+\begin{theorem}
+  Пусть $y''+qy=0$, $q\in C(a,b)$,
+  тогда для любого нетривиального решения расстояние между соседними нулями
+  удовлетворяет неравенству:
+  \[
+    \frac{\pi}{\sqrt{M}} \le \Delta \le \frac{\pi}{\sqrt{m}} \qquad 0<m\le q(x) \le M \; \text{на} \; (a,b)
+  \]
+\end{theorem}
+\begin{proof}
+  Пусть $\Delta > \frac{\pi}{\sqrt{m}}$
+  \begin{gather*}
+    z''+mz=0 \qquad z(x)=\sin(\sqrt{m}(x+\alpha)) \qquad \forall \alpha
+  \end{gather*}
+  \phantom{.}
+
+  \incfig{l2_dist}
+  $m\le q$ по т. ср. Штурма между двумя нулями $z(x)$ $\exists$ нуль $y(x)$.
+  Противоречие.
+
+  Аналогично $\Delta<\frac{\pi}{\sqrt{M}}$
+\end{proof}
 
 \end{document}
