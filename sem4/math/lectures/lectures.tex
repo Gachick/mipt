@@ -15,7 +15,7 @@
     \item $\int_{a}^{b}|f(x)|dx$ сходится
   \end{enumerate}
 \end{definition}
-\begin{lemma}
+\begin{lemma} \label{l1_abs_prod}
  Пусть $f(x)$ абсолютно интегрируема на конечном или бесконечном $(a,b)$.
  Пусть $\phi(x)$ - непрерывна и ограничена на $(a,b)$. \\
  $f(x)\phi(x)$ - абсолютно интегрируемо на $[a,b]$
@@ -130,5 +130,193 @@
   Интервал $(a,b)$ при исследовании абсолютно интегрируемых
   на другой промежуток $[a,b],[a,b),(a,b]$
 \end{remark}
+
+% lecture 2
+
+\section{Тригонометрические ряды Фурье}
+\begin{definition}
+  Ряд вида $\frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos(nx)+b_n\sin(nx)$
+  называется тригонометрическим рядом, где $a_k,b_k\in\R$
+\end{definition}
+\begin{definition}
+  Множество функций $\{u_n(x)\}=\{1/2, \cos(x), \sin(x),$ $ \cos(2x), \sin(2x),\dots\} $
+  называется тригонемтрической системой
+\end{definition}
+Свойства тригоном. сист.
+\begin{enumerate}
+  \item Триг. сист. "ортогональна" в смысле $\int_{-\pi}^{\pi}u_n(x)u_k(x)dx=0$,
+    $\forall n,k:n\neq k$
+  \item $\int_{-\pi}^{\pi}u_n^{2}(x)dx=\pi$, при $n \ge 2$
+\end{enumerate}
+\begin{proof} 1) Например
+      \[
+        \int_{-\pi}^{\pi}\sin nx \cos kx dx = 
+        \frac{1}{2}\int_{-\pi}^{\pi}(\sin(n-k)x+\sin(n+k)x)dx=0
+      \]
+\end{proof}
+\begin{proof} 2)
+  Например \[
+    \int_{-\pi}^{\pi}\cos^{2}(x)dx=\int_{-\pi}^{\pi}\frac{1+\cos(2nx)}{2}dx=\pi + 0=\pi
+  \]
+\end{proof}
+
+\begin{lemma} \label{l2_f_lemma}
+  Пусть
+  \begin{equation} \label{l2_fourier}
+    f(x)=\frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx+b_n\sin nx
+  \end{equation}
+  и ряд сходится равномерно тогда:
+  \begin{equation}
+    \begin{gathered} \label{l2_f_coef}
+      a_n=\frac{1}{\pi}f(x)\int_{-\pi}^{\pi}\cos nx dx, \; n=0,1,2,\dots \\ 
+      b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin nx dx, \; n\in\mathbb{N} 
+    \end{gathered}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  Домножим \ref{l2_fourier} на $\cos mx$. 
+  Полученный ряд будет равномерно сходится.
+
+  \hr
+  \begin{gather*}
+    \left|\sum_{k=1}^{n+p}\cos mx(a_k\cos kx + b_k \sin kx)\right|= 
+    |\cos mx|\cdot\left|\sum_{k=n+1}^{n+p}a_k\cos kx + b_k\sin kx\right| \le  \\
+    \left|\sum_{n+1}^{n+p}a_k\cos kx + b_k \sin kx\right|
+  \end{gather*}
+  Из выполнения усл. Коши равномерной сходимости для исходного ряда \ref{l2_fourier}
+  следует выполнение усл. Коши равномерной сходимости полученного в результате умножения ряда.
+
+  \hr
+  Тогда имеем право интегрировать равнество (по $x$ от $-\pi$ до $\pi$)
+  \begin{gather*}
+    f(x)\cos mx = \frac{a_0}{2}\cos mx + \sum_{n=1}^{\infty}\cos mx (a_n \cos nx + b_n \sin nx) \\
+    \implies \int_{-\pi}^{\pi}f(x)\cos mx dx = a_m \pi \\ 
+    \implies a_m=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos mx dx
+  \end{gather*}
+  Второе равество в \ref{l2_f_coef} получается аналогично.
+\end{proof}
+\begin{definition}
+  Пусть $f(x)$ - $2\pi$ периодическая абсолютно интегрируемая на $[-\pi;\pi]$ функция.
+  Тригонометрический ряд с коэффицентами \ref{l2_f_coef} называется
+  тригонометрическим рядом Фурье функции $f(x)$, а коэффициенты $a_k,b_k$ - коэффициетами Фурье.
+  Имеет место запись (здесь $\sim$ означает соответствие):
+  \[
+    f(x)\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n\sin nx
+  \]
+\end{definition}
+Перефразируем лемму:
+\begin{lemma}[\ref{l2_f_lemma}']
+  Рамномерно сходящийся тригонометрический ряд является рядом Фурье своей суммы. 
+\end{lemma}
+\begin{eg}
+  \[
+    \sum_{n=1}^{\infty}\frac{\cos nx}{n^{\alpha}}
+  \]
+  где $\alpha>1$ является рядом Фурье своей суммы, так  как он
+  равномерно сходдится по признаку Веерштрасса
+\end{eg}
+\begin{remark}
+  Если функция абсолютно интегрируема на $[-\pi,\pi]$, то интегралы
+  в \ref{l2_f_coef} сходятся абсолютно по \ref{l1_abs_prod}
+\end{remark}
+\begin{remark}
+  Если $f(x)$ - $2\pi$ периодична и абс. инт. на каком-либо $[a-\pi,a+\pi]$,
+  то она будет абс. инт. на $\forall$ другом таком отрезке и
+  интегралы (\ref{l2_f_coef}) не зависят от отрезка.
+\end{remark}
+\begin{remark}
+  Любую абсолютно интегрируемую на $[a-\pi,a+\pi]$($(a-\pi,a+\pi);(a-\pi,a+\pi], [a-\pi,a+\pi)$)
+  можно продолжить до $2\pi$ периодической функции,
+  возможно доопределив или переопределив функцию в граничных точках.
+  Интегралы при этом не меняются.
+\end{remark}
+\begin{corollary}
+  Пусть $\{a_k\}, \{b_k\}$ - посл. коэфф. Фурье $2\pi$ периодической 
+  и абсолютно инт. на $[-\pi,\pi]$ функции \[
+    \implies \lim\limits_{k\to\infty} a_k=0 \qquad \lim\limits_{k\to\infty} b_k=0
+  \]
+  По \ref{l1_abs_prod} 
+  $f(x)\cos nx$, $f(x) \sin nx $ - абс. инт.. По Т. Римана получаем нужный результат.
+\end{corollary}
+\begin{eg}
+  \[
+    \sum_{n=1}^{\infty}\sin nx
+  \]
+  Не может быть рядом Фурье какой-либо абсолютно инт. на $[-\pi,\pi]$ функции.
+\end{eg}
+
+\subsection{Ядро Дирихле. Принцип локализации}
+Пусть $f(x)$ - $2\pi$ периодическая и абсолютно интегрируема на $[-\pi,\pi]$ и
+\[
+  f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n \cos nx + b_n \sin nx
+\]
+Рассмотрим частичные суммы ряда Фурье
+\[
+  S_n(x)=S_n(x,b)=\frac{a_0}{2}+\sum_{k=1}^{n}a_k \cos kx + b_k \sin kx
+\]
+Преобразуем:
+\begin{gather*}
+  S_n(x)= \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)dt+ \\ 
+  +\sum_{k=1}^{n}\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\cos kx dt \cdot \cos kx +
+  \frac{1}{\pi}\int_{-\pi}^{\pi}f(t)\sin kt dt \cdot \sin kx =\\
+  \frac{1}{\pi}\int_{-\pi}^{\pi}f(t)
+  \left(\frac{1}{2}+\sum_{k=1}^{n}\cos k(t-x)\right)dt \\ 
+  S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(t)D_n(t-x)dt
+\end{gather*}
+\begin{definition}
+  Функция 
+  \[
+    D_n(t)=\left(\frac{1}{2}+\sum_{k=1}^{n}\cos k(t)\right)
+  \]
+  называется ядром Дирихле
+\end{definition}
+\incfig{l2_dirichle}
+Свойства ядра Дирихле:
+\begin{enumerate}
+  \item $D_n(t)$ - четная, $2\pi$ период. и непр. функция
+  \item $\int_{-\pi}^{\pi}D_n(t)dt=\pi$
+  \item $\max|D_n(t)|=\max D_n(t)=D_n(0)=n+\frac{1}{2}$
+  \item $D_n(t)=\cfrac{\sin (n+\frac{1}{2})t}{2\sin \frac{t}{2}}$, при $t\neq 2\pi m, m\in \mathbb{Z}$
+\end{enumerate}
+\begin{proof} \phantom{.} 
+
+  \begin{enumerate}
+    \item Следует из аналогичных свойств слогаемых
+    \item Очев
+    \item $\frac{1}{2}-n\le D_n(t) \le \frac{1}{2}+n = D_n(0)$
+    \item
+      \begin{gather*}
+        D_n(t)=\frac{1}{2}+\cos t + \cos 2t + \dots + \cos nt = \\ 
+        = \cfrac{\sin \frac{t}{2}+2\sin\frac{t}{2}\cos t + 2\sin\frac{t}{2}\cos 2t + \dots + 2\sin \frac{t}{2}\cos nt}{2\sin\frac{t}{2}}= \\
+        =\cfrac{\sin \frac{t}{2}-\sin \frac{t}{2}+\sin \frac{3t}{2} - \sin \frac{3t}{2} + \dots - \sin (n-\frac{1}{2})t + \sin (n+\frac{1}{2})t}{\sin\frac{t}{2}}= \\ 
+        =\cfrac{\sin (n+\frac{1}{2})t}{2\sin\frac{t}{2}} 
+      \end{gather*}
+  \end{enumerate}
+\end{proof}
+\begin{theorem}[Принцип локализации]
+  Пусть $f(x)$ - $2\pi$ периодическая абсолютно интегрируема на $[-\pi,\pi]$ функция.
+  Пусть $x_0\in\R$, $0<\delta<\pi$. Тогда: $\lim\limits_{n\to\infty}S_n(x_0)$ и
+  $\lim\limits_{n\to\infty}\frac{1}{\pi}\int_{0}^{\delta}D_n(t)(f(x_0+t)+f(x_0-t))dt$
+  существуют или нет одновременно. В случае существования равны.
+\end{theorem}
+\begin{remark}
+  Таким образом сходимость и значение суммы ряда Фурье $2\pi$ пер. и абс. инт.
+  на $[-\pi,\pi]$ зависит только от свойств функции в сколь угодно малой окрестности.
+\end{remark}
+\begin{proof}
+  Преобр. $S_n$:
+  \begin{gather*}
+    S_n(x_0)\underset{t=\tau+x_0}{=}\frac{1}{\pi}\int_{-\pi-x_0}^{\pi-x_0}f(x_0+\tau)D_n(\tau)d\tau \\ 
+    S_n(x_0)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x_0+\tau)D_n(\tau)d\tau \\ 
+    S_n(x_0)=\frac{1}{\pi}(\underbrace{\int_{-\pi}^{0}}_{\tau=-t}+\underbrace{\int_{0}^{\pi}}_{\tau=t})f(x_0+\tau)D_n(\tau)d\tau = \\ 
+    =\frac{1}{\pi}(\int_{0}^{\pi}f(x_0-t)D_n(-t)dt + \int_{0}^{\pi}f(x_0+t)D_n(t)dt) \\ 
+    S_n(x_0)=\frac{1}{pi}\int_{0}^{\pi}D_n(t)(f(x_0-t)+f(x_0+t))dt \\ 
+    S_n(x_0)=\frac{1}{\pi}(\int_{0}^{\delta}+\int_{\delta}^{\pi})\frac{\sin(n+\frac{1}{2}t)}{2\sin \frac{t}{2}}(f(x_0-t)+f(x_0+t))dt \\
+    \frac{1}{2\sin\frac{t}{2}} \le \frac{1}{2\sin \frac{\delta}{2}} \qquad \text{на} [\delta,\pi]
+  \end{gather*}
+  Тогда $\frac{(f(x_0-t)+f(x_0+t))}{2\sin \frac{t}{2}}$ - абс. инт на $[\delta,\pi]$ (см \ref{l1_abs_prod}).
+
+  Тогда 2-ой инт. $\to0$ при $n\to\infty$ (Т. Римана) и получаем нужный результат.
+\end{proof}
 
 \end{document}
