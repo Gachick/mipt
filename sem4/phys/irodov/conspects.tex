@@ -1,0 +1,192 @@
+\documentclass{article}
+
+\input{~/mipt/preamble}
+
+\begin{document}
+
+\section{Уравнение волны}
+Упругая волна - процесс распротранения возмущения в упругой среде,
+различают продольные и поперечные. \\
+Для распространения волны в положительном направлении неоходимо,
+чтобы аргументы $t$ и $x$ входили в функцию в виде комбинации $t-x/v$,
+ведь тогда $dx/dt=v$ следовательно функция возмущения имеет следующий вид:
+\[
+ \xi(x,t)=f(t-x/v) 
+\]
+Особую роль играет гармоническая волна:
+\begin{gather*}
+  \xi(x,y)=a\cos \omega(t-x/v)
+  T=2\pi/\omega \qquad \lambda=vT=v/\nu
+\end{gather*}
+Вводя волновое число $k=2\pi/\lambda$ получаем симметричный вид:
+\[
+  \xi=a\cos(\omega t-kx)
+\]
+Если волна затухающая, вводим коэфициент затухания волны $\gamma$ и получаем:
+\[
+  \xi=a_0 e^{-\gamma x}\cos(\omega t -kx)
+\]
+\subsection{Плоская волна}
+Для плоской волны распростроняющейся в произвольном направлении ($\vec{n}$):
+\[
+  \xi=f(t-\vec{r}\vec{n}/v) \qquad \xi=a\cos(\omega t - \vec{k}\vec{r}) \qquad \vec{k}=(\omega/v)\vec{n}=(2\pi/\lambda)\vec{n}
+\]
+\subsection{Сферическая и цилиндрическая волны}
+Продольная волна от точечного источника:
+\[
+  \xi=\frac{1}{r}f(t-r/v) \qquad \xi=\frac{a_0}{r}\cos(\omega t - kr)
+\]
+Цилиндрическая волна:
+\[
+  \xi=\frac{1}{\sqrt{R}}f(t-R/v) \qquad \xi=\frac{1}{\sqrt{R}}\cos(\omega t - kR)
+\]
+
+\section{Волновые уравнения}
+\begin{equation} \label{eq:2.1}
+  \pd{\xi}{t}=\pd{\xi}{\phi}\pd{\phi}{t}=\xi_\phi' \qquad \pd{\xi}{x}=\pd{\xi}{\phi}\pd{\phi}{x}=-\xi_\phi'/v \\ 
+\end{equation}
+\begin{equation} \label{eq:wave_diff}
+  \pd{\xi}{x}=-\frac{1}{v}\pd{\xi}{t}
+\end{equation}
+Если волна распространяется в отрицательном напрвлении по оси $x$ знак справа меняется на $+$. \\ 
+Физический смысл производных, $\partial\xi/\partial t=u_x$ - проекция скорости частицы среды,
+$\partial\xi/\partial x=\epsilon$ - отностельная деформация среды.
+\subsection{Общее волновое уравнение}
+Продифференцировав (\ref{eq:2.1}) по соответствующим переменным ещё раз получим:
+\begin{equation} \label {eq:2.2}
+  \frac{\partial^{2}\xi}{\partial x^{2}}=\frac{1}{v^{2}}\frac{\partial^{2}\xi}{\partial t^{2}}
+\end{equation}
+Это уравнение удовлетворяет уравнениям распростанения в обе стороны и справедливо для однородных изотропных сред,
+затухание в которых пренебрежимо мало. \\
+В трёхмерном пространстве: 
+\[
+  \nabla^{2}\xi=\frac{1}{v^{2}}\frac{\partial^{2}\xi}{\partial t^{2}}
+\]
+
+\section{Скорость упругих волн}
+\subsection{Скорость волны в тонком стержне} \label{subs:rod_speed}
+По закону Гука: $\sigma=E\epsilon$, где $\epsilon=\partial\xi/\partial x$.
+Примения к малому растянутому элементу второй закон Ньютона:
+$\rho \Delta x S \ddot \xi =F_x(x+\Delta)+F_x(x)=S\sigma(x+\Delta x)-S\sigma(x)=S\pd{\sigma}{x}\Delta x$,
+после сокращения получаем:
+\[
+  \rho \frac{\partial^{2}\xi}{\partial t^{2}}=E\frac{\partial^{2}\xi}{\partial x^{2}}
+\]
+Сопоставив с (\ref{eq:2.2}) получим $v=\sqrt{E/\rho}$ для продольной волны
+\subsection{Скорость волны в гибком шнуре}
+\begin{equation} \label {eq:wire_wave}
+  \frac{\partial^{2}\xi}{\partial t^{2}}=\frac{F}{\rho_1}\frac{\partial^{2}\xi}{\partial x^{2}}
+  \qquad v=\sqrt{F/\rho_1}
+\end{equation}
+где $F$ - сила натяжения, $\rho_1$ - линейная плотность шнура
+\subsection{Скорость звука в жидкостях и газах}
+Можно заново использовать формулу для волны с стержне, нужно только разобраться что
+такое модуль Юнга. В данном случае закон Гука - связь избыточного давления с относительным
+изменением длины: $\Delta p=-E \Delta\xi/\Delta x$, получаем $\Delta p = -E \Delta V/V$,
+где $\Delta V/V$ - относительное приращение объёма. Так как масса - константа имеем
+$dV=-V d\rho/\rho$, подставляя $v=\sqrt{dp/d\rho}$. \\ 
+Учитывая что $pV^{\gamma}=const$, $E=\gamma p$, получаем $v=\sqrt{\gamma p/\rho}=\sqrt{\gamma RT/\mu}$,
+
+\section{Энергия упругой волны}
+\subsection{Плотность энергии упругой волны}
+Приложим к торцу стержня растягивающую силу $F(x)$, растущую от $0$ до $F_0$.
+Тогда по закону Гука $F(x)=\kappa x$, где $\kappa$ - коэф. упругости
+\[
+  A=\int_{0}^{x}F(x)dx=\kappa\int_{0}^{x}xd=\frac{\kappa x^{2}}{2}
+\]
+Работа идёт на увеличение упругой энергии $U$, тогда с учётом того что
+$\kappa x=F=\sigma F$, $\sigma=E\epsilon$ и $\epsilon=x/l$, можем найти
+плотность упругой энергии $w_p$
+\begin{gather*}
+  U=\frac{Fx}{2}=\frac{\sigma S\epsilon l}{2}=\frac{E \epsilon^{2}}{2}Sl \\ 
+  w_p=\frac{U}{Sl}=\frac{E\epsilon^{2}}{2}
+\end{gather*}
+Но каждая единица объёма обладает и кинетической и потенциальной энергией:
+\[
+  w=w_k+w_p=\rho \dot{\epsilon}^{2}/2 + E \epsilon^{2}/2
+\]
+Согласно главе \ref{subs:rod_speed}
+$E=\rho V^{2}$:
+\[
+  w=\frac{\rho}{2}\left[\left(\pd{\epsilon}{t}\right)^{2}+v^{2}\left(\pd{\epsilon}{x}\right)^{2}\right]
+\]
+Однако согласно \ref{eq:wave_diff} слогаемые равны:
+\[
+  w=\rho \dot{\epsilon}^{2}
+\]
+Тогда для гармонической волны:
+\begin{gather*}
+  w=\rho a^{2}\omega^{2}\sin^{2}(\omega t - kx) \\ 
+  \langle w \rangle = \rho a^{2} \omega^{2} / 2
+\end{gather*}
+
+\subsection{Плотность потока энергии}
+Поток энергии - кол-во энергии переносимое волной
+через поверхность $S$ за единицу времени:
+\[
+  \Phi=dW/dt
+\]
+Плотность потока энергии - поток энергии через единичную площадку,
+перепендикулярную направлению переноса энергии:
+\[
+  j=d\Phi/dS_\perp
+\]
+Рассматривая косой цилиндр с основанием $dS$ и длиной $vdt$:
+\begin{gather*}
+  dW=wdV=wvdtdS\cos\alpha=wvdtdS_\perp \\ 
+  j = wv
+\end{gather*}
+Для определения направления вводят вектор Умова:
+\[
+  \vec{j}=w\vec{v}
+\]
+где $v$ - вектор скорости нормальный к волновой поверхности в данном месте.
+
+В случае гармонической волны:
+\begin{gather*}
+  \vec{v}=(\omega/k)\vec{n} \\ 
+  \langle \vec{j} \rangle=\frac{1}{2}\rho a^{2} \omega^{2} \vec{v}
+\end{gather*}
+Среднее по времени значение плотности потока энергии называют интенсивностью:
+\[
+  I=\langle j \rangle
+\]
+
+Если мы имеем дело с суперпозицией волн формула становится сложнее:
+\begin{gather*}
+  \vec{j}=-\sigma\vec{u} \\ 
+  j_x=-E \pd{\xi}{x}\pd{\xi}{t}=-\sigma u_x
+\end{gather*}
+где $\sigma$ - напряжение, $\vec{u}$ - скорость частиц (вывод стр 24)
+
+\section{Стоячие волны}
+\subsection{Уравнение стоячей волны}
+При наложение волн они не возмущают друг друга,
+колебания частиц оказываются векторной суммой колебаний.
+Рассмотрим случай когда две гармонических волны с одинаковыми
+частотой и амплитудой распростроняются в противоположных направлениях
+\begin{gather*}
+  \xi_1=a\cos(\omega t - kx) \qquad \xi_1=a\cos(\omega t + kx) \\ 
+  \xi=\xi_1+\xi_2=A\cos(kx)\cos(\omega t) \qquad A=2a
+\end{gather*}
+\subsection{Энергия стоячей волны}
+\begin{gather*}
+  \dot{\xi}=-A\omega \cos(kx)\sin(\omega t) \\ 
+  \epsilon=-Ak \sin(kx)\cos(\omega t) \\ 
+\end{gather*}
+В стоячей волне происходят превращения энергии то польностью в потенциальную,
+то полностью в кинетическую.
+\subsection{Колебания струны (стержня)}
+Образование стоячей волны возможно если на закреплённых концах струны
+смещение $\xi=0$. То есть на длине струны $l$ должно укладываться целое число $n$
+полуволн: $l=n\cdot \lambda/2$. Тогда возможные длины волн и их частоты:
+\begin{gather*}
+  \lambda_n=2l/n \qquad n=1,2,\dots  \\ 
+  \nu_n=\frac{v}{\lambda_n}=\frac{n}{2l}n
+\end{gather*}
+где $v$ - фазовая скорость волны определяемая согласно \ref{eq:wire_wave}.
+
+Частоты $\nu_n$ называеют собственными, $\nu_0$ - основной, $\nu_2,n_3,\dots $ - обертонами
+
+
+\end{document}
