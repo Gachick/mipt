@@ -71,6 +71,8 @@
 стационарные - не зависят от времени $f(\vec{r}_\nu)=0$, интегрируемые $f(t,\vec{r}_\nu)=G$
 
 \begin{eg}
+\phantom{.}
+
 \incfig{l1_wheel}
 В колесе без проскальзывания:
 \[
@@ -79,6 +81,8 @@
 \end{eg}
 
 \begin{eg}
+  \phantom{.}
+
   \incfig{l1_rod}
   Стационарная и нестационарная связи:
   \[
@@ -108,8 +112,9 @@
 % lecture 2
 
 \begin{eg}
-  \incfig{l2_wheel}
+  \phantom{.}
 
+  \incfig{l2_wheel}
   Твёрдое тело круг на плоскости, три обощённые координаты $x,y,\varphi$ соответственно
   $q_1,q_2,q_3$.
 \end{eg}
@@ -119,7 +124,7 @@
 \end{definition}
 
 \section{Лагранжева механика}
-\incfig{l2_lagrange}
+\incfig{l2_lagrange} \phantom{.}
 \[
   \left\{\begin{aligned}
     y = -x\tan \alpha \\ 
@@ -142,6 +147,8 @@ $\delta \vec{r}_\nu$ - виртуальное перемещение.
   не изменяющихся (замороженных) во времени.
 \end{definition}
 \begin{eg}
+  \phantom{.}
+
   \incfig{l2_lag_eg}
   Одна степерь свободы - угол вращения. Начинаем варьировать $\phi$ чтобы выразить
   $\delta \vec{r}_\nu$ через $\delta q_i$ получаем работу и тогда можем выразить
@@ -152,6 +159,19 @@ $\delta \vec{r}_\nu$ - виртуальное перемещение.
 \[
   Q_i=-\frac{\partial \Pi(q,t)}{\partial q_i}
 \]
+\begin{eg}
+  \phantom{.}
+  \begin{itemize}
+    \item Гравитационное поле: $\Pi=mgh$ или $\Pi=-\frac{\gamma Mm}{r}$ при нескольких телах.
+    \item Пружина $\Pi=\frac{c(\Delta x)^{2}}{2}$. 
+    \item Точка на стержне прикреплённого к оси вращения: возникает цетробежная сила
+    если рассматривать систему отсчёта связанную с осью и стрежнем $F_x(x)=m\omega^{2}x$
+    тогда потенциальная энергия центробежной силы $\Pi=-\-\frac{m\omega^{2}x^{2}}{2}$
+  \end{itemize}
+\end{eg}
+\begin{remark}
+  Потенциальная энергия всегда увеличивается в сторону обратную направлению силы.
+\end{remark}
 \subsubsection{Лагранжиан}
 \[
   L = T - \Pi
@@ -173,6 +193,8 @@ $\delta \vec{r}_\nu$ - виртуальное перемещение.
 Для склерономной $T=T_2$
 
 \begin{eg}
+  \phantom{.}
+
   \incfig{l2_kinetic}
   $q$ - расстояние от начала стержня до точки $a$
   \begin{gather*}
@@ -184,6 +206,8 @@ $\delta \vec{r}_\nu$ - виртуальное перемещение.
   \end{gather*}
 \end{eg}
 \begin{eg}
+  \phantom{.}
+
   \incfig{l2_kinetic_dots}
   Теорема Кёнига:
   \begin{enumerate}
@@ -196,6 +220,101 @@ $\delta \vec{r}_\nu$ - виртуальное перемещение.
     для твёрдого тела (на плоскости) $T^{\text{отн}}=\frac{1}{2}I_{\text{ось вр}}\omega^{2}$
   \end{enumerate}
 \end{eg}
+
+%lecture 3
+
+\subsubsection{Алгоритм решения}
+\begin{enumerate}
+  \item Определить количество степеней свободы
+  \item Выбрать обобщённую систему координат
+  \item $T(\dot{q},q,t)$
+  \item $\Pi(q,t)$
+  \item $L=T-\Pi$
+  \item $\frac{d}{dt}\left(\pd{L}{q_i}\right)-\pd{L}{q_i}=0$, $i=1,\dots ,n$
+  \item Вычислить производные
+\end{enumerate}
+
+\subsection{Классификация обобщённых сил}
+\[
+  Q_i=-\pd{\Pi}{q_i}+\tilde Q_i(\dot{q},q,t)
+\]
+$\tilde Q$ - непотенциальная сила
+\[
+  N=\sum_{i=1}^{n}Q_i\dot{q_i}
+\]
+- мощность обобщённых сил.
+  \begin{gather*}
+    \vec{Q}=-Q_qq-Q_{\dot{q}}\dot{q} \\ 
+    C=\frac{1}{2}(Q_q+Q_q^{T})=C^{T} \qquad B=\frac{1}{2}(Q_{\dot{q}}+Q_{\dot{q}}^{T})=B^{T} \\
+    P=\frac{1}{2}(Q_q-Q_q^{T})=-P^{T}  \qquad G=\frac{1}{2}(Q_{\dot{q}}-Q_{\dot{q}}^{T})=-G^{T} \\
+    \vec{Q}=-Cq-Pq-B\dot{q}-G\dot{q}
+  \end{gather*}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline
+  матрица & $q$ & $\dot{q}$ \\ 
+  \hline
+  симметричные & консервативные $C$ & диссипативные $B$ \\ 
+  \hline
+  кососимметричные & существенно непотенц. $P$ & гироскопические $G$ \\
+  \hline
+\end{tabular}
+\end{center}
+\[
+  T(\dot{q},q,t)=T_2+T_1+T_0
+\]
+Индекс показывает степень с которой $T_i$ зависит от $\dot{q}$. В склерономной 
+$T_1$ и $T_0$ нет.
+\[
+  E=T+\Pi=T_2+T_1+T_0+\Pi
+\]
+\subsubsection{Изменение полной энергии}
+\[
+  \frac{dE}{dt}=\sum_{i=1}^{n}\tilde Q_i \dot{q}_i + \frac{d}{dt}(T_1+2T_0)-\pd{T}{t}+\pd{\Pi}{t}
+\]
+Условия консервативной системы (не учитывая экзотику когда слогаемые сокращаются):
+\begin{enumerate}
+  \item Если система склерономная $T_1=T_0=0 \; \implies \; \pd{T}{t}=0$
+  \item Если $\pd{\Pi}{t}=0$.
+  \item Если $\sum_{i=1}^{n}\tilde Q_i \dot{q}_i=0$
+\end{enumerate}
+\section{Гамильтонова механика}
+\begin{gather*}
+  L(\dot{q},q,t)=T-\Pi \\ 
+  \frac{d}{dt}\left(\pd{L}{q_i}\right)-\pd{L}{q_i}=0 \\ 
+  \left\{\begin{aligned}
+      & a_{11}\ddot{q}_1 + a_{12}\ddot{q}_2 + \dots =0 \\ 
+      & \dots 
+  \end{aligned}\right.
+\end{gather*}
+В лагранжевой механике на очевидно что такое лагранжиан и итоговые
+уравнения получаются в ненормальном виде из-за чего их сложно решать.
+\subsection{Переход к новым переменным}
+$q,\dot{q},t$ ($\dot{q}$-обобщённые скорости) $\Rightarrow$ $q,p,t$ ($p$ - обобщённый импульс)
+
+$L(\dot{q},q,t) \Rightarrow H(q,p,t)$ функция гамильтона (гамильтониан)
+\[
+  p_i=\pd{L}{q_i} \qquad \dot{\hat{q}}=\dot{\hat{q}}(q,p,t)
+\]
+Преобразование Лежандра:
+\[
+  H(q,p,t)=\sum_{i=1}^{n}p_i \dot{\hat{q}}_i - L(q, \dot{\hat q},t)
+\]
+На место $\dot{\hat q}$ нужно подставить зависимость выше.
+
+Канонические уравнения Гамильтона:
+\[
+  \left\{\begin{aligned}
+    \dot{q}_i=\pd{H}{p_i} \\ 
+    \dot{p}_i=-\pd{H}{q_i}
+  \end{aligned}\right. \qquad i=1,\dots ,n
+\]
+Уравнения 1го порядка в нормальном виде!
+
+\[
+  H=T_2-T_0+\Pi
+\]
+В склерономной систему $T_0=0$ $\implies$ $H=T_2+\Pi=T+\Pi=E$
 
 \end{document}
 

@@ -46,7 +46,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99437388"
-     inkscape:cx="283.59554"
+     inkscape:cx="437.46121"
      inkscape:cy="182.52692"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -94,99 +94,99 @@
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="path1"
-       cx="100.53092"
-       cy="227.12413"
+       cx="73.124649"
+       cy="235.90479"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse1"
-       cx="120.95314"
-       cy="218.68886"
+       cx="93.546867"
+       cy="227.46951"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse2"
-       cx="120.95314"
-       cy="233.3396"
+       cx="93.546867"
+       cy="242.12025"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse3"
-       cx="109.41014"
-       cy="241.3309"
+       cx="82.003868"
+       cy="250.11156"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse4"
-       cx="94.759422"
-       cy="247.1024"
+       cx="67.353149"
+       cy="255.88306"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse5"
-       cx="105.4145"
-       cy="252.8739"
+       cx="78.008224"
+       cy="261.65454"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse6"
-       cx="124.94881"
-       cy="243.5507"
+       cx="97.542534"
+       cy="252.33136"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse7"
-       cx="132.94011"
-       cy="227.12413"
+       cx="105.53384"
+       cy="235.90479"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse8"
-       cx="139.59953"
-       cy="244.43863"
+       cx="112.19326"
+       cy="253.21928"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse9"
-       cx="132.94011"
-       cy="251.98596"
+       cx="105.53384"
+       cy="260.7666"
        rx="0.66594225"
        ry="1.0775172" />
     <ellipse
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.83426"
        id="ellipse10"
-       cx="120.06522"
-       cy="258.20145"
+       cx="92.658951"
+       cy="266.98209"
        rx="0.66594225"
        ry="1.0775172" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-end:url(#Triangle);marker-start:url(#Triangle)"
-       d="m 117.53523,215.04949 v 26.24406 h 30.76889"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-start:url(#Triangle);marker-end:url(#Triangle)"
+       d="M 90.128956,223.83014 V 250.0742 H 120.89785"
        id="path10" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-end:url(#Triangle)"
-       d="m 117.35424,241.11255 -16.83241,16.8324"
+       d="m 89.947966,249.8932 -16.83241,16.8324"
        id="path11" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-start:url(#Triangle);marker-end:url(#Triangle)"
-       d="m 163.83321,186.84497 v 26.24406 h 30.76889"
+       d="m 136.42694,195.62562 v 26.24406 h 30.76889"
        id="path12" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-end:url(#Triangle)"
-       d="m 163.65222,212.90803 -16.83241,16.8324"
+       d="m 136.24595,221.68868 -16.83241,16.8324"
        id="path13" />
     <path
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.34;stroke-dasharray:none;marker-end:url(#Triangle)"
-       d="m 135.43489,232.07863 10.90929,-9.31281"
+       d="m 108.02862,240.85928 10.90929,-9.31281"
        id="path14" />
   </g>
 </svg>
