@@ -297,6 +297,8 @@ $\tilde{\theta}(\vec{x}_n)$ - оценка $\theta$ по выборке
     \forall \epsilon>0 \true P(|\tilde{\theta}-\underbrace{M[\tilde{\theta}]}_{\theta}| < \epsilon) \ge 1 - \frac{D[\tilde{\theta}]}{\epsilon^{2}} \underset{n\to\infty}{\to} 1
   \]
 \end{proof}
+
+\hr
 \begin{problem}[Т1] Пытаемся понять по двум серийным номерам сколько всего танков.
 
   $\xi\sim R(0,\theta)$, $\theta >0$ вер. модель., $\vec{x}_n$ - выбрка объёмом $n$
@@ -374,6 +376,133 @@ $\tilde{\theta}(\vec{x}_n)$ - оценка $\theta$ по выборке
     \end{aligned}\right.
   \end{gather*}
   Является состоятельной!
+
+  % lecture 3
+
+  Рассматриваем $\tilde\Theta_4$:
+  \begin{gather*}
+    M[\tilde\theta_4]=M[x_1+\sum_{i=2}^{n}x_i]=
+    M[x_1]+\frac{1}{n-1}\sum_{i=1}^{n}M[x_i] =\frac{\theta}{2}+\frac{\theta}{2}=\theta \\ 
+    D[\tilde \theta_4]=D[\xi]+\frac{1}{(n-1)^{2}}(n-1)D[\xi]=\frac{\theta^{2}}{12}\frac{n}{n-1} \underset{n\to\infty}{\not \to} 0
+  \end{gather*}
+  Достаточое усл. не работает.
+
+  Используем теорему $\xi_n \overset{p}{\to} \xi$, $\eta_n \overset{p}{\to}\eta$, $\xi_n+\eta_n \overset{p}{\to}\xi+\eta$.
+
+  И ЗБЧ Хинчина: $\xi_1,\dots ,\xi_n$ незав., одинак распр. $\implies$ $\frac{1}{n}\sum_{i=1}^{n}\xi_i \overset{p}{\to} M[\xi]$.
+  \begin{gather*}
+    x_1 \overset{p}{\to} x_1 \qquad \frac{1}{n-1}\sum_{i=2}^{n}x_i \overset{p}{\to} \frac{\theta}{2} \\ 
+    \tilde \theta_4 \overset{p}{\to} x_1 + \frac{\theta}{2}
+  \end{gather*}
+  Не состоятельна!
+ 
+  Адекватные остались $\tilde\theta_1=2 \bar x$, $\tilde\theta_3'=\frac{n+1}{n}x_{max}$
+  \[
+    D[\tilde\theta_1]=\frac{\theta^{2}}{3n} > D[\tilde{\theta}_3']=\frac{\theta^{2}}{n(n+2)}
+  \]
+  Лучшая оценка $\tilde{\theta}_3$.
 \end{problem}
+\hr
+
+\subsection{Оптимальность и эффективность оценок}
+\begin{definition}
+  Несмещённая оценка $\tilde{\theta}(\vec{x}_n)$ характеристики $\theta$ называется
+  оптимальной $\tilde{\theta}_{opt}$ если для $\forall \theta \in \Theta$ $\implies$
+  $D[\tilde{\theta}_{opt}=\inf D[\tilde{\theta}]$,
+  $\inf$ по всем несмещённым оценкам $\theta$.
+\end{definition}
+\begin{theorem}[Единственность оптимальной оценки]
+  Если оптимальная оценка существует, то она единственна.
+\end{theorem}
+\begin{proof}
+  Пусть $\tilde{\theta}_1$ и $\tilde{\theta}_2$ разные оптимальные оценки
+  \begin{gather*}
+    \tilde{\theta}_3=\frac{\tilde{\theta}_{1}+\tilde{\theta}_{2}}{2} \qquad M[\tilde{\theta}_{3}]=\theta \\
+    D[\tilde{\theta}_{3}]=\frac{1}{4}D[\tilde{\theta}_{1}]+D[\tilde{\theta}_{2}]+\frac{1}{2}cov(\tilde{\theta}_{1},\tilde{\theta}_{2})=
+    \frac{1}{2}D[\tilde{\theta}_{1}]+\frac{1}{2}cos(\tilde{\theta}_{1},\tilde{\theta}_{2}) \\ 
+    D[a\xi+b\eta]=a^{2}D[\xi]+b^{2}D[\eta]+2abcov(\xi,\eta) \\ 
+    |cov(\tilde{\theta}_{1},\tilde{\theta}_{2})|\le \sqrt{D \tilde{\theta}_{1} D \tilde{\theta}_{2}}=D[\tilde{\theta}_{1}] \\
+    D[\tilde{\theta}_{3}]\le D[\tilde{\theta}_{1}] \qquad D[\tilde{\theta}_{3}]=D[\tilde{\theta}_{1}] \\ 
+    cov(\tilde{\theta}_{1},\tilde{\theta}_{2})=D[\tilde{\theta}_{1}] \quad \implies \quad r=1 \iff \tilde{\theta}_{1}=a \tilde{\theta}_{2}+b \\ 
+    M[\tilde{\theta}_{1}]=M[\tilde{\theta}_{2}]=\theta \qquad D[\tilde{\theta}_{1}]=D[\tilde{\theta}_{2}] \\ 
+    \left\{\begin{aligned}
+      & \theta=a\theta+b \\ 
+      & a^{2}D[\tilde{\theta}_{2}]=D[\tilde{\theta}_{2}]
+    \end{aligned}\right. \implies 
+    \left\{\begin{aligned}
+      & a = 1 \\ 
+      & b=0
+    \end{aligned}\right. \\
+    \implies \tilde{\theta}_{1}=\tilde{\theta}_{2}
+  \end{gather*}
+  Противоречие.
+\end{proof}
+Будем рассматриватть параметрические вероятностные модели:
+\begin{gather*}
+  \xi \sim \rho(x,\theta) , \, \theta\in\Theta\subset \R, \,x\in A(\theta)\\
+  \xi \sim \rho(x, \vec{\theta}) , \, \vec{\theta}\in\Theta\subset \R^{m}, \,x\in A(\vec{\theta})\\ 
+  \rho(x,\theta)=\underbrace{p(x,\theta)\{E\}}_{\text{непр. часть}} + \underbrace{\sum_{k}^{}p_k(\theta)\{x_k\}}_{\text{дискр. часть}}
+\end{gather*}
+
+\incfig{l3_rho}
+\subsection{Информация Фишера}
+\begin{gather*}
+  I(\theta)=M\left[(\frac{\partial \ln \rho(x,\theta)}{\partial\theta})^{2}\right]= \\ 
+  = \int_{E}^{}\left(\frac{\partial \ln p(x,\theta)}{\partial\theta}\right)^{2}p(x,\theta)dx+\sum_{k}^{}\left(\frac{\partial \ln p_k(x,\theta)}{\partial\theta}\right)^{2}p_k(\theta)
+\end{gather*}
+$I(\vec{\theta})$ - информационная матрица Фишера
+\[
+  I_{ij}(\vec{\theta})=M\left[\frac{\partial \ln p(x,\theta)}{\partial\theta_i}\frac{\partial \ln p(x,\theta)}{\partial\theta_j}\right]
+\]
+\begin{definition}
+  Вероятностьная модель $\xi\sim \zeta(x,\theta)$, $\theta\in\Theta\subset \R$, $x\in A$
+  называется регулярной, если
+  \begin{enumerate}
+    \item $\rho(x,\theta)$ непр дифф по $\theta$ на $\Theta$
+    \item $\frac{\partial}{\partial\theta}\int_{A}^{}\rho(x,\theta)dx=\int_{A}^{}\frac{\partial}{\partial\theta}\rho(x,\theta)dx$ на $\Theta$
+    \item $I(\theta)$ непр на $\Theta$ и $I(\theta)>0$ на $\Theta$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Вероятностьная модель $\xi\sim \zeta(x,\vec{\theta})$, $\vec{\theta}\in\Theta\subset \R^{m}$, $x\in A$
+  называется регулярной, если
+  \begin{enumerate}
+    \item $\rho(x,\vec{\theta})$ непр дифф по $\vec{\theta}$ на $\Theta$
+    \item $\frac{\partial}{\partial\theta_i}\int_{A}^{}\rho(x,\vec{\theta})dx=\int_{A}^{}\frac{\partial}{\partial\theta_i}\rho(x,\vec{\theta})dx$ на $\Theta$, $i=1,\dots ,m$
+    \item $I(\vec{\theta})$ положительно определена на $\Theta$ и $I_{ij}(\vec{\theta})$ непрер. на $\Theta$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Вероятностная модель $\xi\sim\rho(x,\theta)$,  $\vec{\theta}\in\Theta\subset \R^{m}$, $x\in A$
+  называется сильно регулярной, если эта модель регулярна и
+  \begin{enumerate}
+    \item $\rho(x,\theta)$ $k$ раз непрерывно дифф по $\theta$ на $\Theta$ ($k\ge 2$)
+    \item $\frac{\partial^{l}}{\partial\theta^{l}}\int_{A}^{}\rho(x,\theta)dx=\int_{A}^{}\frac{\partial^{l}}{\partial\theta^{l}}\rho(x,\theta)dx$, $l=1,\dots ,k$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Вероятностная модель $\xi\sim \zeta(x,\vec{\theta})$, $\vec{\theta}\in\Theta\subset \R^{m}$, $x\in A$
+  называется сильно регулярной, если эта модель регулярна и
+  \begin{enumerate}
+    \item $\rho(x,\vec{\theta})$ $k$ раз непрерывно дифф по $\theta$ на $\Theta$ ($k\ge 2$)
+    \item все производные по $\vec{\theta}$ перестановочные с $\int_{}^{}$ по $x$
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Статистика $\tilde{g}(\vec{x}_n)$ называется регулярной оценкой функции $g(\theta)$,
+  если она является несмещённой оценкой и 
+  \begin{gather*}
+    \frac{\partial}{\partial\theta}\int_{B}^{}\tilde{g}(\vec{x}_n)L(\vec{x}_n,\theta)d\vec{x}_n=
+    \int_{B}^{}\tilde{g}(\vec{x}_n)\frac{\partial}{\partial \theta}L(\vec{x}_n,\theta)d\vec{x}_n
+  \end{gather*}
+  где $L(\vec{x}_n,\theta)$ - плотность распределения случайного вектора $\vec{x}_n$ \\ 
+  ($L(\vec{x}_n,\theta)=\prod_{i=1}^{n}\rho(x_i,\theta)$), $B=\underbrace{A\times A\times\dots \times A}_{n}$
+\end{definition}
+\begin{theorem}[Достаточное условие регулярности оценки]
+  Если модель регулярна, $\tilde{g}(\vec{x}_n)$ является несмещ. оценкой $g(\theta)$
+  и $D[\tilde{g}(\vec{x}_n]$ ограничена на $\forall$ компакте из $\Theta$ по $\theta$,
+  тогда оценка регулярна.
+\end{theorem}
 
 \end{document}
