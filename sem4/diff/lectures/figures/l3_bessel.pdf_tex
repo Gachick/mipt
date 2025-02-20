@@ -60,8 +60,8 @@
     \put(0.12971418,0.30709178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$J_1(x)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{l3_bessel.pdf}}%
     \put(0.62972349,0.46008797){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Y_\nu(x)$\end{tabular}}}}%
-    \put(0.65300547,0.38026384){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$J_0(x)$\end{tabular}}}}%
-    \put(0.75056826,0.40354589){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$J_1(x)$\end{tabular}}}}%
+    \put(0.65300547,0.38026384){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Y_0(x)$\end{tabular}}}}%
+    \put(0.76165492,0.30709178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$Y_1(x)$\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{l3_bessel.pdf}}%
   \end{picture}%
 \endgroup%

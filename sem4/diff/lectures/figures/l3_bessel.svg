@@ -46,7 +46,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99437388"
-     inkscape:cx="470.64792"
+     inkscape:cx="469.64226"
      inkscape:cy="182.52692"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -173,18 +173,18 @@
          id="tspan8"
          style="stroke-width:0.5"
          x="156.72131"
-         y="205.73668">$J_0(x)$</tspan></text>
+         y="205.73668">$Y_0(x)$</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="180.13638"
-       y="200.14899"
+       x="182.79718"
+       y="223.29797"
        id="text9"><tspan
          sodipodi:role="line"
          id="tspan9"
          style="stroke-width:0.5"
-         x="180.13638"
-         y="200.14899">$J_1(x)$</tspan></text>
+         x="182.79718"
+         y="223.29797">$Y_1(x)$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
        d="m 149.27107,287.15726 c 0,-17.29522 1.06432,-75.8329 16.76306,-75.8329 15.69873,0 12.77235,41.47826 23.94748,41.47826 11.17512,0 12.74157,-22.33549 22.33548,-22.33549 9.5939,0 7.38735,6.82234 11.81663,6.82234"
