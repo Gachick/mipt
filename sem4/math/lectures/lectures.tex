@@ -91,7 +91,7 @@
 
   $\implies \int_{a}^{b}|f(x)-\phi(x)|dx<\epsilon/2+\epsilon/2=\epsilon$
 \end{proof}
-\begin{theorem}[Римана (об осциляциях)]
+\begin{theorem}[Римана (об осциляциях)] \label{l1_r_osc}
   Пусть $f(x)$ абс. инт. на конечном или бесконечном интервале $(a,b)$,
   тогда $\lim\limits_{\nu\to\infty}\int_{a}^{b}f(x)\cos\nu xdx=0$ и
   $\lim\limits_{\nu\to\infty}\int_{a}^{b}f(x)\sin\nu xdx=0$
@@ -306,17 +306,158 @@
 \begin{proof}
   Преобр. $S_n$:
   \begin{gather*}
-    S_n(x_0)\underset{t=\tau+x_0}{=}\frac{1}{\pi}\int_{-\pi-x_0}^{\pi-x_0}f(x_0+\tau)D_n(\tau)d\tau \\ 
-    S_n(x_0)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x_0+\tau)D_n(\tau)d\tau \\ 
+    S_n(x_0)\underset{t=\tau+x_0}{=}\frac{1}{\pi}\int_{-\pi-x_0}^{\pi-x_0}f(x_0+\tau)D_n(\tau)d\tau 
+  \end{gather*}
+  \begin{equation}\label{l2_3a}
+    S_n(x_0)=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x_0+\tau)D_n(\tau)d\tau 
+  \end{equation}
+  \begin{gather*}
     S_n(x_0)=\frac{1}{\pi}(\underbrace{\int_{-\pi}^{0}}_{\tau=-t}+\underbrace{\int_{0}^{\pi}}_{\tau=t})f(x_0+\tau)D_n(\tau)d\tau = \\ 
-    =\frac{1}{\pi}(\int_{0}^{\pi}f(x_0-t)D_n(-t)dt + \int_{0}^{\pi}f(x_0+t)D_n(t)dt) \\ 
-    S_n(x_0)=\frac{1}{pi}\int_{0}^{\pi}D_n(t)(f(x_0-t)+f(x_0+t))dt \\ 
+    =\frac{1}{\pi}(\int_{0}^{\pi}f(x_0-t)D_n(-t)dt + \int_{0}^{\pi}f(x_0+t)D_n(t)dt)
+  \end{gather*}
+  \begin{equation}\label{l2_3b}
+    S_n(x_0)=\frac{1}{\pi}\int_{0}^{\pi}D_n(t)(f(x_0-t)+f(x_0+t))dt
+  \end{equation}
+  \begin{gather*}
     S_n(x_0)=\frac{1}{\pi}(\int_{0}^{\delta}+\int_{\delta}^{\pi})\frac{\sin(n+\frac{1}{2}t)}{2\sin \frac{t}{2}}(f(x_0-t)+f(x_0+t))dt \\
     \frac{1}{2\sin\frac{t}{2}} \le \frac{1}{2\sin \frac{\delta}{2}} \qquad \text{на} [\delta,\pi]
   \end{gather*}
   Тогда $\frac{(f(x_0-t)+f(x_0+t))}{2\sin \frac{t}{2}}$ - абс. инт на $[\delta,\pi]$ (см \ref{l1_abs_prod}).
 
   Тогда 2-ой инт. $\to0$ при $n\to\infty$ (Т. Римана) и получаем нужный результат.
+\end{proof}
+
+% lecture 3 
+
+\subsection{Признаки сходимости ряда Фурье в точке}
+\begin{theorem}[Признак Дини]
+  Пусть $f(x)$ - $2\pi$ периодическая и абсолютно инт. на $[-\pi,\pi]$ функция.
+  Пусть  в точке $x_0$ существуют $f(x_0+0)$ и $f(x_0-0)$.
+  Пусть для некоторого $\delta>0$ $\int_{0}^{\delta}\frac{|f^*_{x_0}(t)|}{t}dt$
+  (где $f^*_{x_0}(t)=f(x_0+t)+f(x_0-t)-f(x_0+0)-f(x_0+0)$) сходится.
+  Тогда ряд Фурье сходится в точке $x_0$ к значению $\frac{f(x_0+0)+f(x_0-0)}{2}$.
+\end{theorem}
+\begin{proof}
+  Рассматриваем
+  \begin{gather*}
+    S_n(x_{0})-\frac{f(x_0+0)+f(x_0-0)}{2}= \\
+     \frac{1}{\pi}\int_{0}^{\delta}D_n(t)(f(x_0+t)+f(x_0-t))dt-\frac{f(x_0+0)+f(x_0-0)}{2}\frac{2}{\pi}\int_{0}^{\pi}D_n(t)dt = \\ 
+    = \frac{1}{\pi}\int_{0}^{\pi}f^*_{x_0}(t)D_n(t)dt=\frac{1}{\pi}\int_{0}^{\pi}f^*_{x_0}(t)\frac{\sin(n+.5)t}{2\sin.5t}dt = \\
+    = \frac{1}{\pi}\int_{0}^{\pi}\frac{f^*_{x_0}(t)}{t}\frac{.5t}{\sin .5t}\sin(n+.5)t dt
+  \end{gather*}
+  Функция $f^{*}_{x_0}$ абс. инт. на $[0,\pi]$ (т.к. по сравнению с абс. инт функциями
+  $f(x_0+t)$ и $f(x_0-t)$) у функции $f^{*}_{x_0}(t)$ появивлась лишь одна
+  особенность при $t=0$, в окр. кот. функция по условию абс. инт.
+  Функция $\frac{t/2}{\sin t/2}$ доопределима в до непрерывной и ограниченной на
+  $[0,\pi]$ функции.
+
+  По лемме \ref{l1_abs_prod} 
+  $\frac{f_{x_0}^{*}}{t}\frac{t/2}{\sin t/2}$ - абс. инт. на $[0,\pi]$.
+  По Т. Римана \ref{l1_r_osc} 
+  интеграл $\to 0$ при $n \to \infty$
+  \[
+    \implies S_n(x_0) \underset{n\to\infty}{\to}\frac{f(x_0+0)+f(x_0-0)}{2}
+  \]
+\end{proof}
+\begin{definition}
+  Функция $f(x)$ удовлетворяет в точке $x_0$ правостороннему (левостороннему)
+  условия Гёльдера с показателем $\alpha$ ($\alpha \in (0,1]$)
+  если $\exists \delta>0, M>0 :\, \forall t\in(0,\delta) \true |f(x_0\underset{(-)}{+}t)-f(x_0\underset{(-)}{+}0)|<Mt^{\alpha}$.
+\end{definition}
+\begin{remark}
+  При $\alpha$ это условие называется также условием Липшица.
+\end{remark}
+\begin{definition}
+  Пусть $\exists$ $f(x_0+0)$ и $f(x_0-0)$. Введём обобщение односторонней производной
+  \[
+    f_{\pm}'(x_0)=\lim\limits_{t\to \pm 0} \frac{f(x_0+t)-f(x_0\pm0)}{t}
+  \]
+\end{definition}
+\begin{lemma}
+  Если $\exists$ (конечная) $f_{\underset{(-)}{+}}'(x_0)$, то $f(x)$ удовл.
+  правостороннему (левостороннему) усл. Липшица.
+\end{lemma}
+\begin{proof}
+  (для $f'(x_0)$)
+
+  $\exists f_{+}'(x_0)=\lim\limits_{t\to+0}\frac{f(x_0+t)-f(x_0+0)}{t}$
+  $\implies \frac{f(x_0+t)-f(x_0+0)}{t}=f_{+}'(x_0)+\underset{t\to +0}{o(1)}$
+
+  $\implies$ В некоторой окр. $(0,\delta)$ выполнится
+  $\frac{|f(x_0+t)-f(x_0+0)|}{t}\le |f_{+}'(x_{0})|+1$
+
+  $\implies$ $|f(x_{0}+t)-f(x_{0}+0)|\le (|f_{+}'(x_{0})|+1)t$
+\end{proof}
+\begin{theorem}[Признак Липшица]
+  Пусть $f(x)$ - $2\pi$ периодическая и абсолютно инт. на $[-\pi,\pi]$ функция.
+  Пусть  в точке $x_0$ у функции $f(x)$ выполняются оба условия Гёльдера.
+  Тогда ряд Фурье сходится в $x_{0}$ к значению $\frac{f(x_{0}+0)-f(x_{0}-0)}{2}$.
+\end{theorem}
+\begin{proof}
+  Пусть выполняются оба условия Гёльдера.
+  Тогда на $(0,\delta)$ выполняются:
+  \[
+    \frac{|f^{*}_{x_{0}}|}{t}\le \frac{|f(x_0+t)+f(x_0+0)|}{t}+\frac{|f(x_0-t)+f(x_0-0)|}{t}
+    \le \frac{2Mt^{\alpha}}{t}=\underbrace{\frac{2M}{t^{1-\alpha}}}_{\text{абс.инт.}}
+  \]
+  $\implies$ по признаку сравнения $\int_{0}^{\delta}\frac{|f_{x_{0}}^{*}(t)|dt}{t}$ сход
+
+  $\implies$ по признаку Дини  $S_n(x_{0})\underset{n\to\infty}{\to}\frac{f(x_{0}+0)-f(x_{0}-0)}{2}$
+\end{proof}
+\begin{corollary}
+  Пусть $f(x)$ - $2\pi$ периодическая и абсолютно инт. на $[-\pi,\pi]$ функция.
+  Пусть $\exists f(x_{0}\pm 0)$ и $f'_{\pm}(x_{0})$.
+
+  $\implies$ $\lim\limits_{n\to \infty}S_n(x_{0})=\frac{f(x_{0}+0)-f(x_{0}-0)}{2}$.
+\end{corollary}
+\begin{proof}
+  Следует из признака Липшица и леммы.
+\end{proof}
+
+\section{Суммирование рядов методом ср. арифм.}
+Пусть $f(x)$ - $2\pi$ периодическая и абсолютно инт. на $[-\pi,\pi]$ функция.
+\begin{definition}
+  $\sigma_{n}(x)=\frac{S_0(x)+S_1(x)+\dots +S_n(x)}{n+1}$
+  - сумма Фейера, где $S_k(x)$ - частичная сумма ряда Фурье.
+\end{definition}
+\begin{definition}
+  $\Phi_n(x)=\frac{D_0(x)+D_1(x)+\dots +D_n(x)}{n+1}$ - ядро Фейера,
+  где $D_k(x)$ - ядра Дирихле.
+\end{definition}
+Из формулы \ref{l2_3a} (принцип локализации) 
+$S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
+следует $\sigma_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}\Phi_n(t)f(x+t)dt$.
+
+\incfig{l3_phi_n}
+Свойства ядра Фейереа:
+\begin{enumerate}
+  \item $\Phi_n(t)$ - четная, $2\pi$ периодичекая, непр функция
+  \item $\int_{-\pi}^{\pi}\Phi_n(t)dt=\pi$
+  \item $\max \Phi_n(t)=\Phi_n(0)=\frac{n+1}{2}$
+  \item $\Phi_n(t)$ - неотр.
+  \item $\Phi_n(t)=\frac{\sin^{2}\frac{n+1}{2}t}{2(n+1)\sin^{2}\frac{t}{2}}$
+    при $t\neq 2\pi m$, $m\in \mathbb{Z}$
+\end{enumerate}
+\begin{proof}
+  \begin{enumerate}
+    \item из св. ядра Дирихле
+    \item из св. ядра Дирихле
+    \item Т.к. $\max D_n(t)=D_n(0)=n+\frac{1}{2}$, то
+      \begin{gather*}
+        \max \Phi_n(t)=\Phi_n(0)=\frac{1}{n+1}(D_0(0)+D_1(0)+\dots +D_n(0))= \\
+        =\frac{1}{n+1}\left(\frac{1}{2}+\left(\frac{1}{2}+1\right)+\dots +\left(\frac{1}{2}+n\right)\right)= \\
+        =\frac{1}{n+1}\frac{\frac{1}{2}+\frac{1}{2}+n}{2}(n+1)=\frac{n+1}{2}
+      \end{gather*}
+    \item из 5)
+    \item
+      \begin{gather*}
+        (n+1)\Phi_n=D_0(t)+D_1(t)+\dots +D_n(t)=\\
+        =\frac{\sin \frac{t}{2}+\sin \frac{3}{2}t + \dots +\sin(n+\frac{1}{2})t}{2\sin \frac{t}{2}} = \\
+        =\frac{2\sin \frac{t}{2} \sin \frac{t}{2}+2\sin\frac{3}{2}t\sin\frac{t}{2}+\dots +2\sin(n+\frac{1}{2})t\sin\frac{t}{2}}{4\sin^{2}\frac{t}{2}} = \\
+        =\frac{\cos 0 - \cos t + \cos t - \cos 2t +\dots + \cos nt - \cos (n+1)t}{4\sin^{2}\frac{t}{2}} = \\ 
+        =\frac{1-\cos (n+1)t}{4\sin^{2}\frac{t}{2}}=\frac{\sin^{2}\frac{n+1}{2}t}{2\sin^{2}\frac{t}{2}}
+      \end{gather*}
+  \end{enumerate}
 \end{proof}
 
 \end{document}
