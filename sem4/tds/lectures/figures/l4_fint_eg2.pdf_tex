@@ -1,6 +1,6 @@
 %% Creator: Inkscape 1.4 (e7c3feb100, 2024-10-09), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'l2_kinetic.pdf' (pdf, eps, ps)
+%% Accompanies image file 'l4_fint_eg2.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -53,14 +53,8 @@
   \begin{picture}(1,0.5)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{l2_kinetic.pdf}}%
-    \put(0.41685918,0.31374378){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\omega$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{l2_kinetic.pdf}}%
-    \put(0.47672726,0.40354589){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$y$\end{tabular}}}}%
-    \put(0.77052428,0.222833){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{l2_kinetic.pdf}}%
-    \put(0.57096405,0.31596107){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$a$\end{tabular}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{l2_kinetic.pdf}}%
-    \put(0.58870271,0.26607107){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\varphi$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{l4_fint_eg2.pdf}}%
+    \put(0.86808707,0.28380973){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\phi$\end{tabular}}}}%
+    \put(0.28492769,0.42682788){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$h$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

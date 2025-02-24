@@ -8,7 +8,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
-   sodipodi:docname="l2_kinetic.svg"
+   sodipodi:docname="l4_fint_eg2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99437388"
-     inkscape:cx="449.5291"
+     inkscape:cx="431.42726"
      inkscape:cy="182.52692"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -92,85 +92,71 @@
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.499999"
-       d="m 119.47007,203.07587 v 72.10777"
+       style="fill:none;stroke:#000000;stroke-width:0.499999;marker-end:url(#Triangle)"
+       d="M 10.643212,267.73339 H 110.42334"
        id="path1" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.499999"
-       d="m 119.20398,237.9324 52.41783,-31.92964"
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="M 60.400236,277.31228 V 197.2221"
        id="path2" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
-       d="m 130.91152,230.48214 c -6.11985,-10.64321 -19.42386,-2.92688 -19.42386,-2.92688"
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 19.956024,197.75426 c 0,59.86808 40.178132,69.97913 40.178132,69.97913"
        id="path3" />
-    <text
-       xml:space="preserve"
-       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="100.0462"
-       y="221.70149"
-       id="text3"><tspan
-         sodipodi:role="line"
-         id="tspan3"
-         style="stroke-width:0.5"
-         x="100.0462"
-         y="221.70149">$\omega$</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       d="M 58.803754,237.40024 H 182.79719"
+       d="m 100.38938,197.75426 c 0,59.86808 -40.178134,69.97913 -40.178134,69.97913"
        id="path4" />
-    <text
-       xml:space="preserve"
-       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="114.41454"
-       y="200.14899"
-       id="text4"><tspan
-         sodipodi:role="line"
-         id="tspan4"
-         style="stroke-width:0.5"
-         x="114.41454"
-         y="200.14899">$y$</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="184.92583"
-       y="243.52008"
-       id="text5"><tspan
-         sodipodi:role="line"
-         id="tspan5"
-         style="stroke-width:0.5"
-         x="184.92583"
-         y="243.52008">$x$</tspan></text>
-    <circle
+    <ellipse
        style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
        id="path5"
-       cx="140.49042"
-       cy="224.89445"
-       r="0.79824102" />
-    <text
-       xml:space="preserve"
-       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="137.03137"
-       y="221.16934"
-       id="text6"><tspan
-         sodipodi:role="line"
-         id="tspan6"
-         style="stroke-width:0.5"
-         x="137.03137"
-         y="221.16934">$a$</tspan></text>
+       cx="60.134155"
+       cy="218.24245"
+       rx="38.315567"
+       ry="12.771856" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       d="m 134.10448,228.3535 c 4.52337,4.78945 4.52337,9.31281 4.52337,9.31281"
+       d="m 179.8703,206.801 v 60.13415"
        id="path6" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 149.27106,236.60199 h 60.13416"
+       id="path7" />
+    <circle
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       id="path8"
+       cx="180.00334"
+       cy="236.46896"
+       r="19.556906" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 180.13638,235.80375 27.49855,-15.87629"
+       id="path9" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 204.08361,236.33591 c 0.53216,-7.71633 -3.45904,-12.23969 -3.45904,-12.23969"
+       id="path10" />
     <text
        xml:space="preserve"
        style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
-       x="141.28865"
-       y="233.14294"
-       id="text7"><tspan
+       x="208.3409"
+       y="228.88567"
+       id="text10"><tspan
          sodipodi:role="line"
-         id="tspan7"
+         id="tspan10"
          style="stroke-width:0.5"
-         x="141.28865"
-         y="233.14294">$\varphi$</tspan></text>
+         x="208.3409"
+         y="228.88567">$\phi$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="68.382645"
+       y="194.56131"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan11"
+         style="stroke-width:0.5"
+         x="68.382645"
+         y="194.56131">$h$</tspan></text>
   </g>
 </svg>
