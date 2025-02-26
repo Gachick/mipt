@@ -438,7 +438,8 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
   \item $\Phi_n(t)=\frac{\sin^{2}\frac{n+1}{2}t}{2(n+1)\sin^{2}\frac{t}{2}}$
     при $t\neq 2\pi m$, $m\in \mathbb{Z}$
 \end{enumerate}
-\begin{proof}
+\begin{proof} \phantom{.}
+
   \begin{enumerate}
     \item из св. ядра Дирихле
     \item из св. ядра Дирихле
@@ -458,6 +459,152 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
         =\frac{1-\cos (n+1)t}{4\sin^{2}\frac{t}{2}}=\frac{\sin^{2}\frac{n+1}{2}t}{2\sin^{2}\frac{t}{2}}
       \end{gather*}
   \end{enumerate}
+\end{proof}
+
+% lecture 4
+
+\begin{theorem}[Фейера]
+  Пусть $f(x)$ - $2\pi$ периодическая, непрерывная
+  $\implies \sigma_n(x) \underset{\R}{\rightrightarrows} f(x)$
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    |\sigma_n(x)-f(x)|=\frac{1}{\pi}\int_{-\pi}^{\pi}\Phi_n(t)f(x+t)dt-f(x)\int_{-\pi}^{\pi}\Phi_n(t)dt| = \\ 
+  = \frac{1}{\pi}|\int_{-\pi}^{\pi}\Phi_n(t)(f(x+t)-f(x))dt|
+  \le \frac{1}{\pi}\int_{-\pi}^{\pi}\Phi_n(t)|f(x+t)-f(x)|dt
+  \end{gather*}
+  Т.к. $f(x)$ - непр., $2\pi$ период, то она ограничена и существует $C>0:|f(x)|\le C$.
+  Также $f(x)$ равномерно непрерывна на $\R$.
+  
+  Возьмём $\forall \epsilon>0$ (в силу равн. непр.) 
+  \begin{gather*}
+    \exists \delta \in (0,\pi): \forall x, x':|x-x'|<\delta \true |f(x)-f(x')|<\frac{\epsilon}{3} \\ 
+    \frac{1}{\pi}\int_{-\pi}^{\pi}\Phi_n(t)|f(x+t)-f(x)|dt=\underbrace{\frac{1}{pi}\int_{-\pi}^{-\delta}\dots dt}_{I_1} + \underbrace{\frac{1}{\pi}\int_{-\delta}^{\delta}\dots dt}_{I_2} + \underbrace{\frac{1}{\pi}\int_{\delta}^{\pi}\dots dt}_{I_3} \\ 
+    I_2= \frac{1}{\pi}\int_{-\delta}^{\delta}\Phi_n(t)|f(x+t)-f(x)|dt < \frac{\epsilon}{3}\frac{1}{\pi}\int_{-\delta}^{\delta}\Phi_n(t)dt 
+    < \frac{\epsilon}{3}\frac{1}{\pi}\int_{-\pi}^{\pi}\Phi_n(t)dt < \frac{\epsilon}{3} \\ 
+    I_3=\frac{1}{\pi}\int_{\delta}^{\pi}\Phi_n(t)|f(x+t)-f(x)|dt \le 
+    \frac{1}{\pi}\int_{\delta}^{\pi}\Phi_n(t)(|f(x+t)|+|f(x)|)dt \le  \\
+    \le \frac{2C}{\pi}\int_{\delta}^{\pi}\Phi_n(t)dt \le
+    \frac{2C}{\pi}\pi \max \limits_{[\delta,\pi]} \Phi_n(t) \le 
+    2C\frac{1}{2(n+t)\sin^{2}\frac{\delta}{2}} \underset{n\to\infty}{\to}0
+  \end{gather*}
+  Тогда $\exists n_3: \forall n \ge n_3 \true I_3<\frac{\epsilon}{3} \forall x$.
+  Аналогично $\exists n_1: \forall n \ge n_1 \true I_1<\frac{\epsilon}{3} \forall x$.
+  $\underline{\exists n_0}=\max{n_1,n_3}: \underline{\forall n \ge n_0 \true |\sigma_n(t)-f(x)|<\epsilon \, \forall x}$.
+
+  Подчёркнутое означает $\sigma_n(t)\underset{\R}{\rightrightarrows}f(x)$
+\end{proof}
+\begin{corollary}
+  Если ряд Фурье непр., $2\pi$ периодической функции сходится в точке $x$,
+  то он сходится к $f(x)$.
+\end{corollary}
+\begin{proof}
+  Пусть $\lim \limits_{n\to\infty} S_n(t)=A \implies \lim \limits_{n\to\infty}\sigma_n(x)=A$.
+
+  По Т. (Фейера) $\lim\limits_{n\to\infty}\sigma_n(x)=f(x)$
+  $\implies A=f(x) \implies \lim\limits_{n\to\infty}S_n(t)=f(x)$.
+\end{proof}
+
+\section{Приближение непр. функ. многочленами}
+\begin{definition}
+  Функция вида
+  \[
+    T(x)=\frac{A_0}{2}+\sum_{k=1}^{n}A_k\cos kx + B_k \sin kx
+  \]
+  называются тригонометрическим многочленом.
+\end{definition}
+\begin{theorem}[Т1 Веерштрасса]
+  Пусть $f(x)$ - $2\pi$ период., непр функция.
+
+  Тогда $\forall \epsilon>0 \exists$ триг. многочлен $T(x): \max \limits_{x\in \R} |f(x)-T(x)| < \epsilon$.
+\end{theorem}
+\begin{proof}
+  Т.к. $\sigma_n(x)\underset{x\in \R}{\rightrightarrows} f(x)$,
+  то $\underline{\forall \epsilon >0} \exists N : \forall n\ge N, \forall x\in \R \true |\sigma_n(x)-f(x)|<\epsilon$
+  и $\underline{\exists T(x)}=\sigma_n(x)\underline{:\max\limits_{x\in \R} |T(x)-f(x)|<\epsilon}$.
+\end{proof}
+\begin{theorem}[Т1' (перефразирование)]
+  Пусть $f(x)$ - непр на $[-\pi,\pi]$ и $f(-\pi)=f(\pi)$
+  $\implies \forall \epsilon > \exists$ триг. многочлен $T(x): \max \limits_{x\in \R} |f(x)-T(x)| < \epsilon$.
+\end{theorem}
+\begin{proof}
+  Такая функция продолжаема до $2\pi$ периодической, непр. функции, можем применять Т1.
+\end{proof}
+\begin{theorem}[Т2 Веерштрасса]
+  Пусть $f(x)$- непр. на $[a,b]$.
+  $\implies \forall \epsilon>0 \exists$ алгебраический многочлен
+  $P(x):\max \limits_{x\in[a,b]}|f(x)-P(x)|<\epsilon$.
+\end{theorem}
+\begin{proof}
+  Отобразим отрезок $[0,\pi]$ на отрезок $[a,b]$:
+  $x=a+\frac{b-a}{\pi}t$, обозначим $f^{*}(t)=f(a+\frac{b-a}{\pi}t)$, $t\in[0,\pi]$.
+
+  Продолжим $f^{*}(t)$ чётно на $[-\pi,\pi]$ и $2\pi$ периодически на $\R$,
+  сохранив обозначение $f^{*}(t)$.
+
+  По Т1 $\forall \epsilon>0 \exists$ тр. мн.
+  $T(t): \max \limits_{t\in[0,\pi]}|f^{*}(t)-T(t)| \le \max \limits_{t\in \R}|f^{*}(t)-T(t)| < \frac{\epsilon}{2}$.
+
+  Ряды Тейлора для $\cos kt$ и $\sin kt$ и, следовательно, для $T(t)$
+  имеют радиус сходимости $+\infty$, и следовательно равномерно сходятся на любом отрезке.
+  
+  Таким образом $\exists$ алг. многочлен $P(t):\max\limits_{t\in[0,\pi]} |T(t)-P(t)|<\frac{\epsilon}{2}$.
+
+  Тогда $\max \limits_{t\in[0,\pi]}|f^{*}(t)-P(t)|< \epsilon$ или 
+  $\max \limits_{x\in[a,b]} |f(x)-P(\pi\frac{x-a}{b-a})|<\epsilon$.
+\end{proof}
+\subsection{Минимальное св-во коэфф. Фурье}
+\begin{lemma}
+  Если $f(x)$ инт (в несобственном смысле) на $[a,b]$ вместе с квадратом $f^{2}(x)$.
+  $\implies$ $f(x)$ абс. инт на $[a,b]$.
+\end{lemma}
+\begin{proof}
+  Следует из неравенства $|f(x)|\le \frac{1+f^{2}}{2}$.
+\end{proof}
+\begin{remark}
+  \[
+    \exists f=\left\{\begin{aligned}
+      &0, & x=0 \\ 
+      &\frac{1}{\sqrt{x}}, & x\in (0, 1]
+    \end{aligned}\right.
+  \]
+  абс. инт на $[0,1]$ но не явл. инт с кв.
+\end{remark}
+\begin{theorem}
+  Пусть $f(x))$ - $2\pi$ период. и инт. вместе с квадратом функция на $[-\pi,\pi]$.
+
+  Пусть $S_n(x)$ - частичные суммы ряда Фурье, $a_n$ и $b_n$ - коэф. Фурье.
+
+  Тогда:
+  \begin{enumerate}
+    \item $\int_{-\pi}^{\pi}(f(x)-S_n(x))^{2}dx=\min\limits_{T_n(x)}\int_{-\pi}^{\pi}(f(x)-T_n(x))^{2}dx$,
+      где $T_n(x)$ - триг. многочлены степени не выше $n$.
+    \item $\frac{a_0^{2}}{2}+\sum_{n=1}^{\infty}a^{2}_n+b^{2}_{n}\le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx$
+      - нарвенство Бесселя
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Пусть $T_n(x)=\frac{A_0}{2}+\sum_{k=1}^{n}A_k\cos kx + B_k\sin kx$.
+
+  Рассмотрим
+  \begin{gather*}
+    \int_{-\pi}^{\pi}(f(x)-T_n(x))^{2}dx=\int_{-\pi}^{\pi}f^{2}(x)dx - 2\int_{-\pi}^{\pi}f(x)T_n(x)dx+\int_{-\pi}^{\pi}T_n^{2}(x)dx = \\ 
+    = \int_{-\pi}^{\pi} f^{2}(x)dx -2\pi (\frac{a_0A_0}{2}+\sum_{k=1}^{n}a_kA_k+b_kB_k)+\pi(\frac{A_0^{2}}{2}+\sum_{k=1}^{n}A_k^{2}+B_k^{2})= \\ 
+    = \int_{-\pi}^{\pi}f^{2}(x)dx-\pi\left(\frac{a_0^{2}}{2}+\sum_{k=1}^{n}a_k^{2}+b_k^{2}\right) +\\
+    +\pi\left(\frac{(A_0-a_0)^{2}}{2}+\sum_{k=1}^{n}(A_k-a_k)^{2}+(B_k-b_k)^{2}\right)
+  \end{gather*}
+  Видно, что последнее выражение минимально при $A_k=a_k$, $B_k=b_k$,
+  что доказывает $1$.
+
+  Для доказательства $2$ возьмём $T_n=S_n$:
+  \begin{gather*}
+    \int_{-\pi}^{\pi}(f(x)-S_n(x))^{2}dx=\int_{-\pi}^{\pi}f^{2}(x)dx-\pi\left(\frac{a_0}{2}+\sum_{k=1}^{n}a_k^{2}+b_k^{2}\right) \ge 0\\
+    \int_{-\pi}^{\pi}f^{2}(x)dx \ge \pi\left(\frac{a_0}{2}+\sum_{k=1}^{n}a_k^{2}+b_k^{2}\right)
+  \end{gather*}
+  Частичн. суммы ряда $\sum_{k=1}^{\infty}a_k^{2}+b_k^{2}$ составляют неубывающую,
+  ограниченную последовательность, следовательно ряд сходится.
+
+  Переходим в последнем неравенстве к пределу при $n\to\infty$ и получаем 2.
 \end{proof}
 
 \end{document}
