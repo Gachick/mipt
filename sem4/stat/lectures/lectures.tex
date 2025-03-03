@@ -404,11 +404,11 @@ $\tilde{\theta}(\vec{x}_n)$ - оценка $\theta$ по выборке
 \end{problem}
 \hr
 
-\subsection{Оптимальность и эффективность оценок}
+\section{Оптимальность и эффективность оценок}
 \begin{definition}
   Несмещённая оценка $\tilde{\theta}(\vec{x}_n)$ характеристики $\theta$ называется
   оптимальной $\tilde{\theta}_{opt}$ если для $\forall \theta \in \Theta$ $\implies$
-  $D[\tilde{\theta}_{opt}=\inf D[\tilde{\theta}]$,
+  $D[\tilde{\theta}_{opt}]=\inf D[\tilde{\theta}]$,
   $\inf$ по всем несмещённым оценкам $\theta$.
 \end{definition}
 \begin{theorem}[Единственность оптимальной оценки]
@@ -501,8 +501,257 @@ $I(\vec{\theta})$ - информационная матрица Фишера
 \end{definition}
 \begin{theorem}[Достаточное условие регулярности оценки]
   Если модель регулярна, $\tilde{g}(\vec{x}_n)$ является несмещ. оценкой $g(\theta)$
-  и $D[\tilde{g}(\vec{x}_n]$ ограничена на $\forall$ компакте из $\Theta$ по $\theta$,
+  и $D[\tilde{g}(\vec{x}_n)]$ ограничена на $\forall$ компакте из $\Theta$ по $\theta$,
   тогда оценка регулярна.
 \end{theorem}
+
+% lecture 5
+
+
+\subsection{Неравенство Крамера-Рао}
+\begin{theorem}
+Пусть модель является регулярной, $\tilde{g}(\vec{x}_n)$
+является регулярной оценкой оценкой дифф функции $g(\theta)$.
+Тогда
+\[
+  \forall \theta \in \Theta \true D[\tilde{g}]\ge \frac{g^{2'}(\theta)}{nI(\theta)}
+\]
+\end{theorem}
+\begin{proof}
+  $\xi \sim \rho(x,\theta)$, $\theta\in\Theta\subset \R$, $x\in A(\theta)$,
+  $\vec{x}_n$ независ. выборка
+
+  $L(\vec{x}_n,\theta)=\prod_{i=1}^{n}\rho(x_i,\theta)$ - распр. выборки $\vec{x}_n$,
+  $B=A\times\dots \times A$
+  \[
+    \frac{\partial}{\partial\theta}\idotsint \limits_{B} L(\vec{x},\theta)d\vec{x}=\frac{\partial}{\partial\theta}1=0
+  \]
+  в силу регулярности модели
+  \[
+    \idotsint \limits_{B}\frac{\partial}{\partial\theta}Ld\vec{x}=0 \\ 
+  \]
+  Домножаем и делим на $L$, там где $L=0$ считаем что интеграл $0$
+  \begin{gather*}
+    \int_{B}^{}\frac{\partial\ln L}{\partial \theta}Ld\vec{x}=0 \\ 
+    M[\tilde{g}]=g(\theta) \\ 
+    \int_{B}^{}\tilde{g}(\vec{x}_n)L(\vec{x}_n,\theta)d\vec{x}_n=g(\theta) \\
+    \frac{\partial}{\partial \theta}\int_{B}^{}\tilde{g}(\vec{x}_n)L(\vec{x}_n,\theta)d\vec{x}_n=\frac{\partial}{\partial \theta}g(\theta) \\ 
+    \int_{B}^{}\tilde{g}(\vec{x}_n)\frac{\partial}{\partial \theta}Ld\vec{x}_n=g'(\theta) \\ 
+    \int_{B}^{}\tilde{g}(\vec{x}_n)\frac{\partial \ln L}{\partial \theta}Ld\vec{x}_n=g'(\theta) \\ 
+    \int_{B}^{}(\tilde{g}(\vec{x}_n)-g(\theta))\frac{\partial \ln L}{\partial \theta}Ld\vec{x}_n=g'(\theta) \\ 
+  \end{gather*}
+  $\eta=\tilde{g}(\vec{x}_n)-g(\theta)$ - сл. вел
+
+  $\zeta=\frac{\partial \ln L(\vec{x}_n,\theta)}{\partial \theta}$ - сл. вел.
+  \begin{gather*}
+    M[\eta]=0 \qquad M[\zeta]=0 \\
+    M[\eta\zeta]=g'(\theta) \\ 
+    cov(\eta,\zeta)=M[\eta\zeta]-M[\eta]M[\zeta]=g'(\theta) \\ 
+    r=\frac{cov(\eta,\zeta)}{\sqrt{D\eta D\zeta}} \qquad |r|\le 1 \\ 
+    \frac{cov^{2}(\zeta,\eta)}{D\zeta D\eta} \le 1 \\ 
+    g'^{2}(\theta) \le D\zeta \underbrace{D[\tilde{g}]}_{D[\tilde{g}]} \\ 
+    D\zeta=M[\zeta^{2}]-M^{2}[\zeta]=M[\zeta^{2}] \\ 
+    D\zeta=D\left[\frac{\partial\ln L}{\partial\theta}\right] 
+    =D\left[\sum_{i=1}^{n}\frac{\partial\ln \rho(x_i,\theta)}{\partial\theta}\right]
+    =\sum_{i=1}^{n}D\left[\frac{\partial\ln \rho(x_i,\theta)}{\partial\theta}\right]= \\
+    =nD\left[\frac{\partial\ln \rho(x_i,\theta)}{\partial\theta}\right]
+    =nM\left[\left(\frac{\partial \ln \rho}{\partial\theta}\right)^{2}\right] - n\underbrace{M^{2}\left[\frac{\partial \ln \rho}{\partial \theta}\right]}_{0}=nI(\theta)
+  \end{gather*}
+\end{proof}
+\begin{corollary}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item оценка параметра $\theta$, $g(t)=\theta$,
+      \[
+        D[\tilde{\theta}]\ge\frac{1}{nI(\theta)}
+      \]
+    \item многомерный аналог нер. Крамера-Рао
+      \[
+        D[\tilde{g}(\vec{x}_n)]\ge \frac{1}{n}\nabla^{T}g(\vec{\theta})I^{-1}(\vec{\theta})\nabla g(\vec{\theta})
+      \]
+  \end{enumerate}
+\end{corollary}
+
+\begin{definition}[Эффективная оценка]
+  Регулярная оценка $\tilde{g}(\vec{x}_n)$ функции $g(\theta)$ называется 
+  эффективной ($\tilde{g}_{eff}$), если 
+  $\forall \theta\in\Theta \true D[\tilde{g}_{ef f}]=\inf D[\tilde{g}]$,
+  $\inf$ берётся по всем регулярным оценкам.
+\end{definition}
+\begin{theorem}
+  Если эффективная оценка $\exists$,
+  то она единственна.
+\end{theorem}
+\begin{proof}
+  Так же как и оптимальная только нужно доказать что
+  $\tilde{\theta}_{3}=\frac{\tilde{\theta}_{1}+\tilde{\theta}_{2}}{2}$ - регулярная.
+\end{proof}
+\begin{theorem}[Достаточное условие эффективности]
+  Пусть выполнены условия нер. Крамера-Рао и
+  $D[\tilde{g}]=\frac{g'^{2}}{nI(\theta)}$, тогда
+  $\tilde{g}$ эффективная оценка $g(\theta)$.
+\end{theorem}
+\begin{theorem}[Теорема о частоте]
+  Частота появления события $A$ в $n$ независимых опытах является несмещённой,
+  состоятельной и эффективной оценкой вероятности появления этого события.
+\end{theorem}
+\begin{proof} (на примере)
+  \begin{gather*}
+    \xi \sim \rho(x,\theta)=\theta\{1\} + (1-\theta)\{0\} \qquad \theta \in (0,1) \\ 
+    \xi \sim Bi(1,\theta) \qquad \nu=\frac{m}{n} \\ 
+    \vec{x}_n=(0,0,1,\dots ) \qquad \nu=\frac{1}{n}\sum_{}^{}x_i=\bar{x} \qquad \tilde{\theta}=\bar{x} \\ 
+  \end{gather*}
+  \begin{enumerate}
+    \item несмещённость ($\xi\sim Bi(l,\theta)$, $M[\xi]=l\theta$, $D[\xi]=l\theta(1-\theta)$)
+      \[
+        M[\bar{x}]=\frac{1}{n}M[\sum_{}^{}x_i]=M[\xi]
+      \]
+    \item состоятельность 
+      \[
+        D[\tilde{\theta}]=D[\frac{1}{n}\sum_{}^{}x_i]=\frac{1}{n^{2}}nD[\xi]=\frac{1}{n}\theta(1-\theta) \underset{n\to\infty}{\to}0
+      \]
+      состоятельна по достаточному условию
+    \item эффективность, модель регулярна
+      \[
+        I(\theta)=\frac{l}{\theta(1-\theta)}\Big|_{l=1}=\frac{1}{\theta(1-\theta)}
+      \]
+      $\tilde{\theta}=\bar{x}$ - регулярная оценка?
+
+      $D[\tilde{\theta}]=\frac{1}{n}\theta(1-\theta)$ огран на $\forall$ компакте из $(0,1)$
+
+      Является регулярной $\checkmark$
+
+      Неравенство Крамера-Рао:
+      \[
+        D[\tilde{\theta}]=\frac{1}{n}\theta(1-\theta) \ge \frac{1}{nI(\theta)}=\frac{\theta(1-\theta)}{n}
+      \]
+      достигает нижней грани $\implies$ эффективная (в данном случае ещё и оптимальная)
+  \end{enumerate}
+\end{proof}
+
+\section{Описательная стат. (непараметр. стат.)}
+$\vec{x}_n$ - выборка
+
+Вероятностная модель - все распределения, кроме сингулярных и вырожденных.
+\begin{enumerate}
+  \item Вариационный ряд - упорядоченная ваборка
+    \[
+      x_{min}=x_{(1)}\le x_{(2)}\le x_{(3)} \le \dots \le x_{(n)}=x_{max}
+    \]
+    $x_{(k)}$ - k-ая порядковая сл. вел
+  \item Размах выборки $l=x_{max}-x_{min}$
+  \item Медиана выборки $med$
+    \[
+      mes =\left\{\begin{aligned}
+        & x_{(k+1)}, \mu n=2k+1 \\ 
+        & \frac{x_{(k+1)}+x_{(k)}}{2}, \; n=2k
+      \end{aligned}\right.
+    \]
+  \item Мода - эл. выборки, который встречается чаще всего
+  \item Квартили $q_1$, $q_2$ (медианы половинок)
+  \item Boxplot
+
+    \incfig{l5_boxplot}
+    $\epsilon=q_2-q_1$, если $x_{min}<q_1-1.5\epsilon$ или $x_{max}>q_2+1.5\epsilon$
+    рисуем усики до $q_1-1.5\epsilon$ или $q_2+1.5\epsilon$ соответственно,
+    а дальше выбросы обозначаем точками для каждого значения
+  \item эмпирическая функция распределения
+    \[
+      \tilde{F}(x)=\frac{m(x)}{n}
+    \]
+    где $m(x)$ число элементов выборки, которые $<x$.
+    \begin{gather*}
+      F(x)=P(\underbrace{\xi<x}_{A})
+    \end{gather*}
+    $\tilde{F}$ является несмещённой, состоятельной и эффективной оценкой $F(x)$
+    (по Т. о частоте).
+  \item Гистограмма
+
+    Статистический ряд
+    \[
+      \underbrace{[y_1,y_2)}_{\nu_1=\frac{m_1}{n}}, \underbrace{[y_2,y_3)}_{\nu_2}\dots \underbrace{[y_k,y_{k+1})}_{\nu_k}
+    \]
+    Эмперически $k=1+\log_2 n$
+    
+    \incfig{l5_histo}
+    
+    $\nu_m=P(y_m \le \xi < y_{m+1})=\int_{y_m}^{y_{m+1}}p(x)dx=p(\bar{x})\Delta_m$
+  \item числовые характеристики
+
+    $\alpha_k=M[\xi^{k}]$ момент к-го порядка
+    \[
+      \tilde{\alpha}_k=\frac{1}{n}\sum_{i=1}^{n}x_i^{k} \qquad \tilde{\alpha}_1=\bar{x} \\ 
+    \]
+    \hr
+    \begin{itemize}
+      \item несмещ: $M[\alpha_k]=\frac{1}{n}M[\sum_{}^{}x_i^{k}]=M[\xi^{k}]=\alpha_k$
+      \item состоятельность: ЗБЧ Хинчина $\tilde{\alpha}_k \overset{p}{\to}\alpha_k=M[\xi^{k}]$
+    \end{itemize}
+    \hr
+
+    $\mu_k=M[(\xi-M\xi)^{K}]$ - центральный момент k-го порядка
+    \[
+      \tilde{\mu}_k=\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^{k} \\ 
+    \]
+    \hr
+    \begin{itemize}
+      \item состоятельность
+        \begin{gather*}
+           \mu_k=M[\sum_{m=0}^{k}C_k^{m}\xi^{m}(-1)^{k-m}(M\xi)^{k-m}]= \\
+           = \sum_{m=0}^{k}C_k^{m}(-1)^{k-m}\alpha_m (\alpha_1)^{k-m} \\ 
+           \tilde{\mu}_k=\sum_{m=0}^{k}C_k^{m}(-1)^{k-m}\tilde{\alpha}_m (\tilde{\alpha}_1)^{k-m} 
+        \end{gather*}
+
+        Теорема наследования сходимости:
+
+        $\xi_n \overset{p}{\to} \xi$, $f(x)$ непр на $\R$ $\implies f(\xi_n) \overset{p}{\to} f(\xi)$
+
+        $\xi_n \overset{p}{\to} C$, $f(x)$ непр в точке $x=C$ $\implies f(\xi_n) \overset{p}{\to} f(C)$
+
+        $\tilde{\alpha}_k \overset{p}{\to} \alpha_k$, $f(x_1,\dots ,x_n)$ непр $\implies$
+        $\tilde{\mu}_k \overset{p}{\to} \mu_k$ 
+      \item несмещённость 
+        \begin{gather*}
+          \mu_2=D\xi \qquad \tilde{\mu}_2=\tilde{\alpha}_2 - (\tilde{\alpha})^{2} \\ 
+          M[\tilde{\mu}_2]
+          =M\left[\frac{1}{n}\sum_{}^{}x_i^{2}\right]-M\left[(\frac{1}{n}\sum_{}^{}x_i)^{2}\right] = \\
+          = M\xi^{2}-(D[\bar{x}]+(M[\bar{x}])^{2})
+          = M\xi^{2}-\frac{1}{n^{2}}nD\xi - (M\xi)^{2}= \\
+          = D\xi \left[1-\frac{1}{n}\right]=\mu_2\frac{n-1}{n}
+        \end{gather*}
+        $S^{2}=\frac{n}{n-1}\tilde{\mu}_2$, $M[S^{2}]=\mu_2$ несмещ оценка дисперсии
+        \[
+          S^{2}=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^{2}
+        \]
+    \end{itemize}
+    \hr
+    коэффициент асимметрии
+    \begin{gather*}
+      \gamma=\frac{\mu_3}{\sigma^{3}}=\frac{\mu_3}{\mu_2^{3/2}} \\ 
+      \tilde{\gamma}=\frac{\tilde{\mu}_3}{\tilde{\mu}_2^{3/2}} \overset{p}{\to}\gamma
+    \end{gather*}
+  \item оценка распределения статистики
+    \[
+      \vec{x}_n \qquad \tilde{g}(\vec{x}_n)
+    \]
+    $\vec{x}_n$ становится вероятностной моделью,
+    вытаскиваем 1000 подвыбоок с повторением элементов того же объёма $\vec{x}_n^{*}$,
+    $\vec{x}_n^{*} \rightarrow \tilde{g}_i^{*}(\vec{x}_n^{*})$,
+    строим гистограмму из $\tilde{g}_1^{*}\dots \tilde{g}_{10 0 0}^{*}$
+\end{enumerate}
+
+\section{Методы нахожд. параметров модели}
+\[
+  \xi\sim \rho(x,\vec{\theta}), \ \vec{\theta}\in\Theta \subset \R^{m}, \ x\in A
+\]
+Парметрическая модель, $\vec{x}_n$ выборка
+\begin{enumerate}
+  \item Метод моментов (Пирсон)
+    \[
+      \alpha_k(\vec{\theta})=M[\xi^{k}] \rightarrow \tilde{\alpha}_k=\alpha_k(\vec{\theta})
+    \]
+    Если можем решить систему получаем $\tilde{\vec{\theta}}$ оценку методом моментов (ОММ)
+\end{enumerate}
 
 \end{document}
