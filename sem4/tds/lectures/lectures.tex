@@ -390,7 +390,6 @@ $L(\dot{q},q,t) \Rightarrow H(q,p,t)$ функция гамильтона (га�
   \]
 \end{eg}
 \begin{eg}
-  \phantom{.}
 
   \incfig{l4_fint_eg1}
   Материальная точка в постоянном поле тяжести.
@@ -413,7 +412,6 @@ $L(\dot{q},q,t) \Rightarrow H(q,p,t)$ функция гамильтона (га�
   \[
     H(q,p)=T_2-T_0+\Pi=const
   \]
-  \phantom{.}
 
   \incfig{l2_kinetic}
   \begin{center}
@@ -464,6 +462,115 @@ $L(\dot{q},q,t) \Rightarrow H(q,p,t)$ функция гамильтона (га�
   \item Если $n$ координат отделимы. То гамильт. сист инт.
     Если сист. 2-го порядка имеет 1-интеграл $\implies$ интегрируема.
 \end{enumerate}
+
+% lecture 5 
+
+\subsection{Теорема Лиувилля (траектории в фазовом пр-ве)}
+
+\incfig{l5_traj}
+\begin{theorem}[Лиувилля о сохранении фаз. объёма] \phantom{.}
+
+  Если
+  \[
+    \left\{\begin{aligned}
+      \dot{x}_j=f_j(x,t)
+    \end{aligned}\right.
+  \]
+  удовлетворяет условию
+  \[
+    div \vec{f}=\sum_{j=1}^{m}\pd{f_j}{x_j}=0
+  \]
+  в системе сохраняется фазовый объём:
+  \[
+    J=\iiint \limits_V \delta x_1\dots \delta x_m
+  \]
+\end{theorem}
+\begin{remark}
+  Фазовый объём в гамильтоновых системах:
+  \[
+    \sum_{i=1}^{n}\left(\frac{\partial^{2}H}{\partial p_i\partial q_i}-\frac{\partial^{2}H}{\partial q_i \partial p_i}\right)=0
+  \]
+\end{remark}
+
+\section{Теория устойчивости}
+
+\incfig{l5_pend}
+\begin{gather*}
+  \ddot{\phi}+\omega^{2}\sin \phi = 0 \qquad \omega^{2}=\frac{g}{l} \\ 
+  x_1 = \phi \qquad x_2 = \dot{\phi} \\ 
+  \left\{\begin{aligned}
+    & \dot{x}_1=x_2 \\ 
+    & \dot{x}_2 = -\omega^{2}\sin x_1
+  \end{aligned}\right.
+\end{gather*}
+Особые точки $x_2=0$ и $\sin x_1=0$
+\[
+  \left\{\begin{aligned}
+    & x_1=k\pi, \, k \in \mathbb{z} \\ 
+    & x_2 = 0
+  \end{aligned}\right.
+\]
+
+\begin{definition}[Положение равновесия]
+  Такое положение механической системы при котором не изменяются
+  положения мат точек при условии того,
+  что в начальный момент времени она находилась в этом положении
+  и скорости мат. точек были равны нулю.
+\end{definition}
+\begin{remark}
+  В кратце:
+  \[
+    \vec{R}(0)=\vec{R}_0 \ \dot{\vec{R}}(0)=0 \; \implies \; \vec{R}(t)=\vec{R}(0) \ \forall t>0
+  \]
+\end{remark}
+
+\subsection{Стационарные заданные системы}
+\begin{definition}
+  Если система стационарно задана \\ 
+  ($\vec{R}=\vec{R}(q_1,\dots ,q_n)$),
+  положение $q^{0}$ называется положением равновесия,
+  если из $q(0)=q^{0}$ и $\dot{q}(0) = 0$ $\implies$ $q(t)=q^{0} \ \forall t>0$.
+\end{definition}
+\begin{theorem}[Критерий положения равновесия]
+  \[
+    q^{0} \text{- полож. равн} \; \Leftrightarrow \; Q_i(q^{0},\dot{q}=0)=0, \; i=1,\dots ,n
+  \]
+  \[
+    Q_i=-\pd{\Pi}{q_i} \qquad \left\{\begin{aligned}
+      \pd{\Pi}{q_i}=0
+    \end{aligned}\right.
+  \]
+\end{theorem}
+\begin{eg}
+
+  \incfig{l5_eg1}
+  
+  \begin{gather*}
+    \Pi_{c}=-\int_{}^{}F(x)dx=-\frac{m\omega^{2}x^{2}}{2} \\ 
+    \Pi = mgy - \frac{m\omega^{2}x^{2}}{2}=-mgr\sin \phi - \frac{m\omega^{2}r^{2}\sin^{2}\phi}{2} \\ 
+    \pd{\Pi}{\phi}=0 \implies mgr\sin\phi - m\omega^{2}r^{2}\sin^{2}\phi\cos\phi =0 \\
+    mr\sin\phi(g-\omega^{2}r\cos \phi)=0 \\ 
+    \phi_1 = 0 \qquad \phi_2=\pi \\ 
+    \phi_{3,4}= \left\{\begin{aligned}
+      & \pm \arccos \frac{q}{\omega^{2}r}, \; \frac{q}{\omega^{2}r} \le 1 \\ 
+      & \emptyset, \; \frac{q}{\omega^{2}r}>1
+    \end{aligned}\right.
+  \end{gather*}
+\end{eg}
+\begin{definition}[Усточивость по Ляпунову]
+  \begin{enumerate}
+    \item
+    \begin{gather*}
+        (\forall \epsilon<0)(\exists \delta>0)(\forall|\vec{x}(0)|=|\vec{x}_0|<\delta)(\forall t>0)\true |\vec{x}(t)|<\epsilon \\
+        (\forall \epsilon<0)(\exists \delta>0)(\forall|q(0)<\delta, \forall |\dot{q}|<\delta)(\forall t>0) \true |q(t)|<\epsilon, |\dot{q}(t)|<\epsilon\\
+    \end{gather*}
+    Неустойчивость:
+    \[
+      (\exists \epsilon>0)(\forall \delta>0)(\exists|\vec{x}(0)|=\vec{x}_0<\delta)(\exists t_1>0)\true |\vec{x}(t)|>\epsilon
+    \]
+  \end{enumerate}
+\end{definition}
+  
 
 \end{document}
 
