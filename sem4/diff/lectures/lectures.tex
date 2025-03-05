@@ -357,8 +357,6 @@ $\tilde y=C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
 \end{theorem}
 
 \begin{proof}
-  \phantom{.}
-
   \incfig{l2_shturm}
   Пусть $y(x)\neq 0$ на $[x_1,x_2]$
   \begin{gather*}
@@ -407,7 +405,6 @@ $\tilde y=C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
   \begin{gather*}
     z''+mz=0 \qquad z(x)=\sin(\sqrt{m}(x+\alpha)) \qquad \forall \alpha
   \end{gather*}
-  \phantom{.}
 
   \incfig{l2_dist}
   $m\le q$ по т. ср. Штурма между двумя нулями $z(x)$ $\exists$ нуль $y(x)$.
@@ -467,7 +464,6 @@ $\tilde y=C_1(x)y_1(x)+C_2(x)y_2(x)$ - частное решение неодн�
   Пусть 3 нуля на $[-2,2]$.
 
   \incfig{l3_eg_zeros}
-  \phantom{.}
   \begin{gather*}
     z''+2z=0 \\ 
     z=\sin \sqrt{2}(x+\alpha) \qquad \frac{\pi}{\sqrt{2}}\approx 2.22
@@ -551,8 +547,196 @@ $y_2=Y_\nu(x)$ функция Бесселя второго рода.
 \[
   y(x)=C_1J_\nu(x)+C_2Y_\nu(x)
 \]
-\phantom{.}
 
 \incfig{l3_bessel}
+
+% lecture 4 
+
+\section{Автономные системы дифф. ур.}
+\begin{definition}
+  Нормальная система называется автономной, если правая часть
+  не зависит явно от t.
+  \begin{gather*}
+    \dot{x}=F(x) \\ 
+    \left\{\begin{aligned}
+      & \dot{x}_1=f_1(x) \\ 
+      & \dots \\
+      & \dot{x}_2=f_2(x)
+    \end{aligned}\right.
+    \qquad f_i(x)\in C^{1}(D) \quad D\in \R^{n} \quad t\in(a,b)
+  \end{gather*}
+  через $\forall t_0 \in (a,b)$ и $\forall x_{0}\in D$ проходит единственная
+  интегральная кривая.
+\end{definition}
+\begin{definition}
+  Точка $\tilde{x} \in D$ называется положением равновесия автономной системы,
+  если $F(\tilde{x})=0$.
+\end{definition}
+
+\incfig{l4_auto_bl}
+\begin{definition}
+  Фазовая траектория - проекция инт. кр. на $\R^{n}$, где $\R^{n}$
+  - фазовое пространство.
+\end{definition}
+
+\subsection{Свойства фазовых траекторий}
+\begin{enumerate}
+  \item Если $x=\phi(t)$ решение системы на $(a,b)$ (автономн.),
+    то $\forall c$ $x=\phi(t+c)$ тоже решение на $(a-c,b-c)$.
+    \begin{proof}
+      \begin{gather*}
+        \frac{d\phi(t)}{dt}=F(\phi(t)) \qquad t= \tau+c \\ 
+        \frac{d\phi(\tau+c)}{d(\tau+c)}=F(\phi(\tau+c))
+      \end{gather*}
+      $\phi(\tau+c)$ $\rightarrow$ решение
+    \end{proof}
+  \item Фазовые траектории не могут пересекаться
+    \begin{proof}
+      Пусть есть два решения $\phi(t)$ и $\psi(t)$ на $(a,b)$
+      
+      \hbox{\incfig{l4_intr}}
+      $\exists t_1,t_2\in (a,b): \phi(t_1)=\psi(t_2)=x_0$,
+      $\chi(t)=\phi(t+t_1-t_2)$ - решение 
+
+      $\chi(t_2)=\phi(t_1)=\psi(t_2)=x_0$ противоречит Т. единст.
+    \end{proof}
+  \item Пусть $\tilde{x}$ положение равновесия, тогда $x=\phi(t)=\tilde{x}$
+    - решение системы, а точка $\tilde{x}\in \R^{n}$ - фазовая траектория. 
+    \begin{proof}
+      \[
+        F(\tilde{x})=0 \qquad \dot{x}=0
+      \]
+      Проекция фазовой троектории - точка.
+    \end{proof}
+  \item Фазовая траектория, отличная от положения равн. является гладкой кривой.
+    \begin{proof}
+      $x=\phi(t)$ - параметрически заданная кривая в фазовом простаранстве
+
+      $\dot{x}=F(x)$, $F\in C'$, $\phi(t)$ - непр. дифф. на $(a,b)$,
+
+      $\dot{x}=\dot{\phi}(t)\neq 0$ т.к. не явл. полож. равн.
+    \end{proof}
+  \item Фазовые траектории:
+    \begin{itemize}
+      \item точки
+      \item незамкнутые гладкие кривые без самопересечения
+      \item замкнутые гладкие кривые без самопересечения
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Классификация положений равновесия}
+\subsubsection{n=1}
+\[
+  \dot{x}=-x \qquad x(t)=Ce^{-t} \qquad \tilde{x}=0
+\]
+
+  \incfig{l4_n1}
+    
+  \incfig{l4_n1_v}
+\subsubsection{n=2}
+\[
+  \dot{x}=Ax \qquad
+  A=\begin{pmatrix}
+    a_{11} & a_{12} \\ 
+    a_{21} & a_{22}
+  \end{pmatrix}
+\]
+\subsubsection{Изолированные положения равновесия при n=2}
+\begin{gather*}
+  det A \neq0 \qquad Ax=0 \qquad \tilde{x}=0 \\ 
+  \lambda_1\neq 0 \qquad \lambda_2 \neq 0
+\end{gather*}
+
+\hr
+$\lambda_1$ и $\lambda_2$ действительны, $\lambda_1 \neq \lambda_2$,
+$h_1$ и $h_2$ - базис
+\begin{gather*}
+  x(t)=C_1 e^{\lambda_1 t} h_1 + C_2 e^{\lambda_2 t} h_2 \\ 
+  \xi_1 = C_1 e^{\lambda_1 t} \qquad \xi_2 = C_2 e^{\lambda_2 t} \\ 
+  \left\{\begin{aligned}
+    & \xi_2 = C_2 \left(\frac{\xi_1}{C_1}\right)^{\lambda_2/\lambda_1} &,\, C_1 \neq0 \\ 
+    & \xi_1=0 &,\, C_1 = 0
+  \end{aligned}\right. \qquad \alpha = \frac{\lambda_2}{\lambda_1}
+\end{gather*}
+\begin{enumerate}
+  \item $\alpha>0$,
+
+    \incfig{l4_knot}
+    $h_1$ и $h_2$ - фазовые траектории
+
+    $\lambda_2>0$ и $\lambda_2>0$ неустойчивый узел
+
+    $\lambda_2<0$ и $\lambda_2<0$ устойчивый узел
+  \item $\alpha<0$, $\xi_2=A\xi_1^{\alpha}$
+
+    $\lambda_1$ и $\lambda_2$ разные знаки, седло
+
+    \incfig{l4_saddle}
+\end{enumerate}
+
+\hr
+  $\lambda_1$, $\lambda_2$ - действ., $\lambda_1=\lambda_2=\lambda$
+    \begin{enumerate}
+      \item Два собственных вектора $h_1$ и $h_2$
+         
+        \begin{gather*}
+          x(t)=C_1 e^{\lambda t} h_1 + C_2 e^{\lambda t} h_2 \\ 
+          \xi_1 = C_1 e^{\lambda t} \qquad \xi_2 = C_2 e^{\lambda t} \\ 
+          \left\{\begin{aligned}
+            & \xi_2 = \frac{C_2}{C_1}\xi_1 &,\, C_1 \neq0 \\ 
+            & \xi_1=0 &,\, C_1 = 0
+          \end{aligned}\right. 
+        \end{gather*}
+
+        \incfig{l4_dknot}
+
+        $\lambda>0$ неустойчивый дикритический узел
+
+        $\lambda<0$ устойчивый дикритический узел
+        \item $h_1$ - собственный вектор, $h_2$ - присоед.
+          \begin{gather*}
+          x(t)=C_1 h_1 e^{\lambda t} + C_2(h_1 t+h_2)e^{\lambda t} \\ 
+          \xi_1 = (C_1+C_2 t) e^{\lambda t} \qquad \xi_2 = C_2 e^{\lambda t} \\ 
+          \left\{\begin{aligned}
+            & \xi_1=C_1\frac{\xi_2}{C_2}+\xi_2\frac{1}{\lambda}\ln \frac{\xi_2}{C_2} &, \; C_2 \neq 0 \\ 
+            & \xi_2=0 &, \; C_2=0
+          \end{aligned}\right.
+        \end{gather*}
+
+        \incfig{l4_prop}
+        $h_1$ - фазовая таектория, $h_2$ - не явл. фаз. тр.
+
+        $\lambda>0$ неустойчивый вырожденный узел 
+
+        $\lambda<0$ устойчивый вырожденный узел 
+    \end{enumerate}
+
+\hr
+  $\lambda_1$, $\lambda_2$ - комплексные, $\lambda_{1,2}=a\pm ib$, $b>0$
+    \begin{gather*}
+      \lambda_1=a+ib \; \rightarrow \; h\\ 
+      h_1=Re\, h \quad h_2=Im \, h \\ 
+      x(t)=C_1 Re(he^{\lambda_1 t}) + C_2 Im(he^{\lambda_1t}) \\ 
+      he^{\lambda t}=(h_1+ih_2)e^{at}(\cos bt + i\sin bt)= \\ 
+      =e^{at}[(h_1\cos bt - h_2 \sin bt)+i(h_2\cos bt + h_1 \sin bt)] \\ 
+      x(t)=h_1( \underbrace{C_1e^{at}\cos bt + C_2 e^{at} \sin bt}_{\xi_1}) + h_2 (\underbrace{-C_1 e^{at}\cos bt + C_2 e^{at} \cos bt}_{\xi_2} ) \\ 
+      C_1 = A\cos \theta \qquad A\ge 0 \\ 
+      C_2= A\sin \theta \qquad \theta \in [0, 2\pi) \\ 
+      \xi + e^{at}\cos (\theta-bt)A \\ 
+      \xi_2=e^{at}\sin (\theta-bt)A
+    \end{gather*}
+    \begin{enumerate}
+      \item $a=0$, центр
+
+        \incfig{l4_center}
+      \item $a\neq 0$, фокус
+
+        \incfig{l4_focus}
+
+        $a>0$ неустойчивый фокус
+
+        $a<0$ устойчивый фокус
+    \end{enumerate}
+
 
 \end{document}
