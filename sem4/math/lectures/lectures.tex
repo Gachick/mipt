@@ -580,7 +580,7 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
     \item $\int_{-\pi}^{\pi}(f(x)-S_n(x))^{2}dx=\min\limits_{T_n(x)}\int_{-\pi}^{\pi}(f(x)-T_n(x))^{2}dx$,
       где $T_n(x)$ - триг. многочлены степени не выше $n$.
     \item $\frac{a_0^{2}}{2}+\sum_{n=1}^{\infty}a^{2}_n+b^{2}_{n}\le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx$
-      - нарвенство Бесселя
+- неравенство Бесселя
   \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -606,5 +606,189 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
 
   Переходим в последнем неравенстве к пределу при $n\to\infty$ и получаем 2.
 \end{proof}
+
+% lecture 5
+
+\begin{theorem} [Равентсво Парсеваля]
+  Пусть $f(x)$ - $2\pi$ периодична, непрерывна,
+  $a_n$ и $b_n$ её коэф. Фурье, тогда
+  \[
+    \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx=\frac{a_0^{2}}{2}+\sum_{n=1}^{\infty}a_n^{2}+b_n^{2}
+  \]
+\end{theorem}
+\begin{remark}
+  Равенство верно и для интегрируемой функции вместе с квадратом.
+\end{remark}
+\begin{remark}
+  Равенство Парсеваля получается при формальной подстановке $S(x)$ вместо $f(x)$.
+\end{remark}
+\begin{proof}
+  Возьмём $\underline{\forall \epsilon > 0}$. По Т. Вейерштрасса
+  $\exists T_n(x)$ - триг. многочлен, такой что
+  $\max \limits_{[-\pi,\pi]}|f(x)-T_n(x)|<\frac{\sqrt{\epsilon}}{2}$, тогда
+  \[
+    \frac{1}{\pi}\int_{-\pi}^{\pi}(f(x)-T_n(x))^{2}dx<\epsilon
+  \]
+  Из минимального свойства коэф. Фурье:
+  \[
+    \frac{1}{\pi}\int_{-\pi}^{\pi}(f(x)-S_n(x))^{2}dx
+    \le \frac{1}{\pi}\int_{-\pi}^{\pi}(f(x)-T_n(x))^{2}dx < \epsilon \tag{$1$}
+  \]
+  Тогда:
+  \begin{gather*}
+    \underline{0\overset{\text{нер. Б.}}{\le }\frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx-\left[\frac{a_0^{2}}{2}+\sum_{n=1}^{\infty}a_n^{2}+b_n^{2}\right]} \le \\
+    \le \frac{1}{\pi}\int_{-\pi}^{\pi}f^{2}(x)dx- \left[\frac{a_0^{2}}{2}+\sum_{k=1}^{n}a_k^{2}+b_k^{2}\right]
+    = \frac{1}{\pi}\int_{-\pi}^{\pi}(f(x)-S_n(x))^{2}dx \underline{\overset{(1)}{<} \epsilon}
+  \end{gather*}
+  Из подчёркнутого получаем равенство Парсвеваля.
+\end{proof}
+
+\begin{definition}[Кусочно непр. дифф.]
+  Функция $f(x)$ называется кусочно непрерывно дифф. на отрезке $[a,b]$,
+  если $\exists$ такое разбиение отрезка, что на каждом отрезке разбиения,
+  функция непрерывно дифф. (в концевых точках односторонне).
+\end{definition}
+\begin{theorem}[О почленном дифф. ряда Фурье]
+  Пусть $f(x)$ - $2\pi$ период., непр на $\R$ и кусочно непр. дифф. на $[-\pi,\pi]$.
+
+  Пусть $f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n \sin nx$.
+
+  Тогда $f'(x) \sim \sum_{n=1}^{\infty} nb_n\cos nx - na_n\sin nx$.
+  (т.е. ряд можно формально дифф.)
+\end{theorem}
+\begin{remark}
+  О сходимости ничего не говорится.
+\end{remark}
+\begin{proof}
+  Пусть $f'(x)\sim \frac{\alpha_0}{2}+\sum_{n=1}^{\infty}\alpha_n\cos nx + \beta_n\sin nx$
+  \begin{gather*}
+    \alpha_0=f(\pi) - f(-\pi)= 0 \\ 
+    \alpha_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f'(x)\cos nx dx = \frac{1}{\pi}\int_{-\pi}^{\pi}\cos nx df(x) \\ 
+    = \underbrace{\frac{1}{\pi}f(x)\cos nx \Big|_{-\pi}^{\pi}}_{0}- \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)(-n)\sin nx df = nb_n \\
+    \beta_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f'(x)\sin nx dx = \frac{1}{\pi}\int_{-\pi}^{\pi}\sin nx df(x) \\ 
+    = \underbrace{\frac{1}{\pi}f(x)\sin nx \Big|_{-\pi}^{\pi}}_{0}- \frac{1}{\pi}\int_{-\pi}^{\pi}f(x)(-n)\cos nx df = -na_n
+  \end{gather*}
+\end{proof}
+
+\begin{lemma}[О порядке убывания коэф. Фурье]
+  Пусть $f(x)$ - $2\pi$ периодична и непр. на $\R$.
+
+  Пусть $f(x)$ имеет непр. производную до порядка $k-1$ включительно на $\R$
+  и кусочно непр. производную порядка $k$ ($k\ge 1$) на $[-\pi,\pi]$.
+
+  Пусть $f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n \sin nx$.
+
+  $\implies$ $|a_n| \le \frac{\epsilon_n}{n^{k}}$, $|b_n| \le \frac{\epsilon_n}{n^{k}}$,
+  где $\sum_{n=1}^{\infty}\epsilon_n^{2}$ - сход.
+\end{lemma}
+\begin{proof}
+  Пусть $f^{*}(x)\sim \sum_{n=1}^{\infty}\alpha_n\cos nx + \beta_n \sin nx$.
+
+  Применяем предыдущую Т. $k$ раз, получим
+  либо
+  \[
+    \alpha_n=\pm n^{k}a_n \qquad
+    \beta_n=\pm n^{k} b_n \tag{$1$}
+  \]
+  либо
+  \[
+    \alpha_n=\pm n^{k}b_n \qquad
+    \beta_n=\pm n^{k} a_n \tag{$2$}
+  \]
+  При этом $\sum_{n=1}^{\infty}\alpha_n^{2}+\beta_n^{2} \le \frac{1}{\pi}\int_{-\pi}^{\pi}(f^{(k)})^{2}dx$
+  (нер. Бесселя) и ряд $\sum_{n=1}^{\infty}\epsilon_n^{2}$ (где $\epsilon_n = \sqrt{\alpha_n^{2}+\beta_n^{2}}$)
+  сходится.
+
+  Если справедл $(1)$, то
+  \[
+    |a_n|=\frac{\alpha_n}{n^{k}} \le \frac{\alpha_n^{2}+\beta_n^{2}}{n^{k}}=\frac{\epsilon_n}{n^{k}} \qquad |b_n| \le \frac{\epsilon_n}{n^{k}}
+  \]
+  Аналогично в случае $(2)$.
+\end{proof}
+
+\begin{theorem}[О скорости сходимости ряда Ф. к функ.]
+  Пусть $f(x)$ - $2\pi$ периодична и непр. на $\R$.
+
+  Пусть $f(x)$ имеет непр. производную до порядка $k-1$ включительно на $\R$
+  и кусочно непр. производную порядка $k$ ($k\ge 1$) на $[-\pi,\pi]$.
+  
+  Тогда ряд Фурье равномерно и абсолютно сходится к $f(x)$ на $\R$
+  и выполняется 
+  \[
+    |f(x)-S_n(x)| \le \frac{\eta_n}{n^{k-.5}}
+  \]
+  гле $\lim \limits_{n\to \infty} \eta_n =0$ и $\{\eta_n\}$ - числовая посл.
+\end{theorem}
+\begin{proof}
+  Пусть $f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n \sin nx$
+  и $S_n(x)$ - сумма Фурье порядка $n$.
+
+  Выполняются достаточные условия сходимости ряда Фурье к функции,
+  т.е. $\lim \limits_{n\to \infty} S_n(x)=f(x)$.
+
+  Рассмотрм остаток ряда Фурье
+  \[
+    r_n(x)=f(x)-S_n(x)=\sum_{m=n+1}^{\infty}a_m\cos mx + b_m \sin mx
+  \]
+  \hr
+  При анализе остатка будем использовать неравенства Коши-Буняковского-Шварца
+  для ряда
+  \[
+    \sum_{n=1}^{\infty}u_nv_n \le \sqrt{\sum_{n=1}^{\infty}u_n^{2}}\sqrt{\sum_{n=1}^{\infty}v_n^{2}} \tag{$1$}
+  \]
+  которое получается из нер. К.-Б.-Ш. для конечной суммы
+  \[
+    \sum_{n=1}^{N}u_nv_n \le \sqrt{\sum_{n=1}^{N}u_n^{2}}\sqrt{\sum_{n=1}^{N}v_n^{2}}
+  \]
+  после применения предельного перехода $N\to\infty$.
+
+  Также будем использовать нер.
+  \[
+    \frac{1}{m^{p}} \le \int_{m-1}^{m}\frac{dx}{x^{p}}, \ p>0 \tag{$2$}
+  \]
+  которое получается инт. нерав. $\frac{1}{m^{p}}\le \frac{1}{x^{p}}$
+  по отрезку $[m-1,m]$.
+
+  \hr
+  \begin{gather*}
+    |r_n(x)| \le \sum_{m=n+1}^{\infty}|a_m \cos mx| +|b_m\sin mx|
+    2\sum_{m=n+1}^{\infty}\frac{\epsilon_m}{m^{k}} \le \\
+    \overset{(1)}{\le} \sqrt{\sum_{m=n+1}^{\infty}\epsilon_m^{2}}\sqrt{\sum_{m=n+1}^{\infty}\frac{1}{m^{2k}}}
+    \overset{(1)}{\le} \sqrt{\sum_{m=n+1}^{\infty}\epsilon_m^{2}}\sqrt{\sum_{m=n+1}^{\infty}\int_{m-1}^{m}\frac{dx}{x^{2k}}} = \\
+    = 2\sqrt{\sum_{m=n+1}^{\infty}\epsilon_m^{2}}\sqrt{\sum_{m=n+1}^{\infty}\int_{n}^{\infty}\frac{dx}{x^{2k}}}
+    = \underbrace{\frac{2}{\sqrt{2k-1}}\sqrt{\sum_{m=n+1}^{\infty}\epsilon_m^{2}}}_{\eta_n \underset{n\to\infty}{\to}0}\sqrt{\frac{1}{n^{2k-1}}}
+    = \frac{\eta_n}{n^{k-\frac{1}{2}}}
+  \end{gather*}
+  $\implies$ Ряд сходится равномерно, т.к. $\eta_n$ не зависит от $x$.
+
+  Т.к. получилась оценка
+  \[
+    \sum_{m=n+1}^{\infty}|a_m\cos mx| + |b_m\sin mx| \le \frac{\eta_n}{n^{k-\frac{1}{2}}}
+  \]
+  из которой следует абсолютная сход. остатка, заключаем, что ряд сход. абс.
+\end{proof}
+\begin{corollary}[Достаточное усл. равн. сход. ряда]
+  Пусть $f(x)$ - $2\pi$ период., непр на $\R$, имеет кус. непр.
+  производную на $[-\pi,\pi]$
+
+  $\implies$ Ряд Фурье равномерно на $\R$ и абс. сходится к $f(x)$.
+\end{corollary}
+\begin{proof}
+  Следует из Т. при $k=1$.
+\end{proof}
+
+\begin{theorem}[О почленном инт. ряда Фурье]
+  Пусть $f(x)$ - $2\pi$ период. и кусочно непр. на $[-\pi, \pi]$.
+
+  Пусть $f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n \sin nx$.
+
+  $\implies$
+  \begin{gather*}
+    \int_{0}^{x}f(t)dt=\int_{0}^{x}\frac{a_0}{2}dt+\sum_{n=1}^{\infty}\int_{0}^{x}(a_n\cos nt + b_n\sin nt)dt = \\
+    = \frac{a_0x}{2}+\sum_{n=1}^{\infty}\frac{a_n}{n}\sin nx + \frac{b_n}{n}(1-\cos nx)
+  \end{gather*}
+  и ряд в правой части сх. равн. на $\R$.
+
+\end{theorem}
 
 \end{document}
