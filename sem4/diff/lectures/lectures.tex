@@ -737,6 +737,201 @@ $h_1$ и $h_2$ - базис
 
         $a<0$ устойчивый фокус
     \end{enumerate}
+\hr
+
+% lecture 5
+
+\subsubsection{Неизолированные полож равн. при n=2}
+\begin{gather*}
+  \dot{x}=Ax \qquad x \in \R^{2} \\ 
+  Ax=0 \qquad det A =0
+\end{gather*}
+Хотя бы одно $\lambda=0$
+
+\hr 
+$\lambda_1=0$, $\lambda_2 \neq 0$, собст. век, $h_1$ и $h_2$
+\begin{gather*}
+  x=C_1h_1+C_2h_2e^{\lambda_2 t} \\ 
+  J = S^{-1}AS = \begin{pmatrix}
+    0 & 0 \\ 
+    0 & \lambda_2
+  \end{pmatrix} \\ 
+  \begin{pmatrix}
+    0 & 0 \\ 
+    0 & \lambda_2
+  \end{pmatrix} \begin{pmatrix}
+    \xi_1 \\ 
+    \xi_2
+  \end{pmatrix} = \begin{pmatrix}
+    0 \\ 0
+  \end{pmatrix} \\
+  \xi_2 = 0 \\ 
+  \xi_1=C_1 \qquad \xi_2=C_2e^{\lambda_2 t}
+\end{gather*}
+
+\incfig{l5_1}
+
+$\lambda_2 > 0$ нестабильная "антенна"
+
+$\lambda_2 < 0$ стабильная "антенна"
+
+\hr 
+$\lambda_1=\lambda_2=0$, $h_1$ и $h_2$ собст. век.
+\[
+  x=C_1h_1 + C_2h_2
+\]
+Положение равновесия все точки фызовой плоскости.
+
+\incfig{l5_dots}
+"Точки"
+
+\hr 
+$\lambda_1=\lambda_2=0$, $h_1$ обст. век., $h_2$ присоед
+\begin{gather*}
+  x=C_1h_1+C_2(h_1t+h_2) \\ 
+  S^{-1}AS=\begin{pmatrix}
+    0 & 1 \\ 
+    0 & 0 
+  \end{pmatrix} \\ 
+  \begin{pmatrix}
+    0 & 1 \\ 
+    0 & 0 
+  \end{pmatrix}\begin{pmatrix}
+    \xi_1 \\ 
+    \xi_2
+  \end{pmatrix} = \begin{pmatrix}
+    0 \\ 0
+  \end{pmatrix} \qquad \xi_2=0 \\ 
+  \xi_1=C_1+C_2t \qquad \xi_2=C_2
+\end{gather*}
+$h_1$ - положение равновесия
+
+\incfig{l5_street}
+"Улица"
+
+\hr
+
+\subsection{Второй взгляд на классификацию}
+\begin{gather*}
+  det \begin{pmatrix}
+    a_{11}-\lambda & a_{12} \\ 
+    a_{21} & a_{22} - \lambda
+  \end{pmatrix} \\ 
+  \lambda^{2}-\lambda \underbrace{a_{11}+a_{22}}_{Tr A}+\underbrace{a_{11}a_{22}-a_{12}a_{21}}_{detA=0}=0 \\ 
+  \lambda^{2}-T\lambda+D=0 \\ 
+  \lambda_{1,2}=\frac{T\pm \sqrt{T^{2}-4D}}{2}
+\end{gather*}
+
+\incfig{l5_class}
+
+\subsection{Третий взгляд на классификацию}
+Насколько влияют нелинейные коэффициенты?
+
+Грубые: седло, узел, фокус
+
+Негрубые: остальные
+
+\subsection{Устойчивость по Ляпунову}
+\[
+  \dot{x}=F(t,x) \qquad x \in \R^{n}
+\]
+$x(t_0)=x_0$, $\phi(t)$ - решение задачи Коши, продолжаемое на $[t_0, +\infty)$
+
+\begin{definition}
+Решение $\phi(t)$ задачи Коши называется устойчивым по Ляпунову,
+если $\forall \epsilon >0 \, \exists \delta>0: \, \forall x(t)$ реш.
+$: \, |x(t_0)-x_0|<\delta \; \forall t \ge t_0 \true x(t)$ определено на $[t_0, +\infty)$
+и $|x(t)-\phi(t)|<\epsilon$.
+\end{definition}
+\begin{definition}
+  Решение $\phi(t)$ з. К. называется асимпотически уст.,
+  если оно устойчиво и $\exists \delta_0: \; \forall x(t)$ реш. с
+  $|x(t_0)-x_0|<\delta_0 \true \lim \limits_{t \to +\infty} |x(t)-\phi(t)|=0$
+\end{definition}
+\begin{definition}[Неустойчивость]
+  Решение $\phi(t)$ называется неуст. по Ляпунову,
+  если $\exists \epsilon_0>0: \, \forall \delta>0 \; \exists x(t)$ реш.
+  $: \, |x(t_0)-x_0|<\delta \; \exists \tilde{t} \ge t_0 \true x(\tilde{t})$
+  неопределено или $|x(\tilde{t})-\phi(\tilde{t})|\ge \epsilon_0$.
+\end{definition}
+\begin{remark}
+  \[
+    |x(t_0)-x_0|=\sqrt{(x_1(t_0)-x_{01})^{2}+\dots +(x_n(t_0)-x_{0n})^{2}}
+  \]
+\end{remark}
+\begin{eg}[889]
+  \phantom{.}
+ 
+  \incfig{l5_889}
+  \[
+    \left\{\begin{aligned}
+      \dot{x}=P(x,y) \\ 
+      \dot{y}=Q(x,y)
+    \end{aligned}\right.
+  \]
+  $\phi(t)=0$ - тривиальное решение, $\phi(t_0)=0$, $x_0=0$
+
+  Выполняются условия отрицания.
+\end{eg}
+
+\subsubsection{Исследование на устойчивость}
+\[
+  \dot{x}=F(t,x) \qquad x(t_0)=x_0
+\] 
+$\phi(t)$ - решение з. К., $x(t)=\phi(t)+\epsilon(t)$
+\[
+  \dot{\phi}+\dot{\epsilon}=F(t, \phi+\epsilon) \qquad \epsilon(t_0)=0 \\ 
+\]
+Система уравнений возмущений:
+\[
+\dot{\epsilon}=F(t,\phi(t)+\epsilon(t))-\dot{\phi}(t) \qquad \epsilon(t)=0
+\]
+\subsubsection{Теоремы об уст. (неуст.) полож. равн. авт. сис.}
+\[
+  \dot{x}=F(x) \qquad x \in \R^{n}
+\]
+$F(x)=0 \rightarrow\tilde{x}$ полож. равн., $\phi(t)=\tilde{x}$
+\begin{theorem}[Об уст. по линейному прибл.]
+  Пусть $\dot{x}=F(x)$, $F(\tilde{x})=0$, $F'(\tilde{x})$ матрица Якоби,
+  $\lambda_i$ - собст. числа $F'(\tilde{x})$, тогда
+  \begin{enumerate}
+    \item Если $\forall \lambda_i: \, Re \lambda_i < 0$, то $\tilde{x}$ асимпт. уст.
+    \item Если $\exists \lambda_i: \; Re \lambda_i>0$, то $\tilde{x}$ неуст.
+  \end{enumerate}
+\end{theorem}
+\begin{definition}[Функция Ляпунова]
+  $v(x)$ опр. и непр. дифф. в $O_{\epsilon}(\tilde{x})$ (окрестности)
+  и $v(\tilde{x})=0$.
+
+  Производная в силу системы:
+  \[
+    \frac{dv}{dt}=\pd{v}{x_1}\pd{x_1}{t}+\dots +\pd{v}{x_n}\pd{x_n}{t}=\pd{v}{x_1}f_1(x)+\dots +\pd{v}{x_n}f_n(x)
+  \]
+\end{definition}
+\begin{theorem}[Ляпунова об устойчивости]
+  Пусть $\exists v(x): \; v(x)>0$ в $\dot{O}_\epsilon(\tilde{x})$
+  и $\frac{dv}{dt}\le 0$ в $O_{\epsilon}(\tilde{x})$,
+  тогда $\tilde{x}$ - уст. по Ляпунову.
+\end{theorem}
+\begin{theorem}[Ляпунова об асимпт. уст.]
+  Пусть $\exists v(x): \; v(x)>0$ в $\dot{O}_\epsilon(\tilde{x})$
+  и $\frac{dv}{dt}< 0$ в $\dot{O}_{\epsilon}(\tilde{x})$,
+  тогда $\tilde{x}$ - асимпт. уст. по Ляпунову.
+\end{theorem}
+\begin{theorem}[Ляпунова о неустойчивости]
+  Пусть $\exists v(x):$ в $\forall O_\delta(\tilde{x})\in O_\epsilon(\tilde{x})$
+  $\exists x^{*}: \; v(x^{*})>0$ и $\frac{dv}{dt}>0$ в $\dot{O}_\epsilon(\tilde{x})$,
+  тогда $\tilde{x}$ - неуст.
+\end{theorem}
+\begin{theorem}[Четаева о неустойчивости]
+  \phantom{.}
+
+  \incfig{l5_chet}
+  Пусть $\exists$ область $D\subset O_\epsilon(\tilde{x})$ и $\exists v(x)$,
+  $\tilde{x}\in \partial_1 D$, $v(x)=0$ на $\partial_1 D$,
+  $v(x)>0$ в D, $\frac{dv}{dt}>0$ в D,
+  тогда $\tilde{x}$ неуст.
+\end{theorem}
 
 
 \end{document}

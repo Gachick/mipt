@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="l5_dots.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.99437388"
+     inkscape:cx="429.41595"
+     inkscape:cy="182.52692"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1707"
+     inkscape:window-height="888"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="M 110.27937,277.12684 V 197.8349"
+       id="path2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 79.94621,266.30457 60.2672,-60.26719"
+       id="path3" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="104.6917"
+       y="192.33423"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:0.5"
+         x="104.6917"
+         y="192.33423">$h_2$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="135.55701"
+       y="202.1792"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.5"
+         x="135.55701"
+         y="202.1792">$h_1$</tspan></text>
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.499999;fill-opacity:1"
+       id="path1"
+       cx="92.595955"
+       cy="221.16934"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle1"
+       cx="102.17485"
+       cy="230.21608"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle2"
+       cx="120.00224"
+       cy="235.27161"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle3"
+       cx="119.204"
+       cy="213.98518"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle4"
+       cx="93.394211"
+       cy="235.27161"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle5"
+       cx="103.50526"
+       cy="256.82413"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle6"
+       cx="106.69822"
+       cy="247.24524"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle7"
+       cx="121.33263"
+       cy="247.7774"
+       r="0.79824102" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999"
+       id="circle8"
+       cx="129.58112"
+       cy="226.2249"
+       r="0.79824102" />
+  </g>
+</svg>

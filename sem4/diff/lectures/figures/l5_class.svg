@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240mm"
+   height="120mm"
+   viewBox="0 0 240 120"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   sodipodi:docname="l5_class.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.99437388"
+     inkscape:cx="440.47818"
+     inkscape:cy="224.76455"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showborder="true"
+     width="200mm"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1707"
+     inkscape:window-height="888"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid815"
+       units="mm"
+       spacingx="10"
+       spacingy="10"
+       empspacing="4"
+       dotted="false"
+       originx="0"
+       originy="0" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-177)">
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.499999;marker-end:url(#Triangle)"
+       d="M 119.73615,286.6251 V 187.11105"
+       id="path1" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="M 39.645968,236.60199 H 200.09241"
+       id="path2" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="201.6889"
+       y="242.72183"
+       id="text2"><tspan
+         sodipodi:role="line"
+         id="tspan2"
+         style="stroke-width:0.5"
+         x="201.6889"
+         y="242.72183">$T$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000000;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="123.72736"
+       y="186.57889"
+       id="text3"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="stroke-width:0.5"
+         x="123.72736"
+         y="186.57889">$D$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 120.00223,236.60199 c -39.37989,0 -39.91205,-49.22486 -39.91205,-49.22486"
+       id="path3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       d="m 119.48617,236.60199 c 39.37989,0 39.91205,-49.22486 39.91205,-49.22486"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="112.55198"
+       y="274.9176"
+       id="text4"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         style="stroke-width:0.5"
+         x="112.55198"
+         y="274.9176">седло</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="172.42004"
+       y="223.83014"
+       id="text5"><tspan
+         sodipodi:role="line"
+         id="tspan5"
+         style="stroke-width:0.5"
+         x="172.42004"
+         y="223.83014">узел неуст.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="51.087414"
+       y="223.83014"
+       id="text6"><tspan
+         sodipodi:role="line"
+         id="tspan6"
+         style="stroke-width:0.5"
+         x="51.087414"
+         y="223.83014">узел уст.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="141.28865"
+       y="185.24849"
+       id="text7"><tspan
+         sodipodi:role="line"
+         id="tspan7"
+         style="stroke-width:0.5"
+         x="141.28865"
+         y="185.24849">$T^2-4D=0$</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 64.923601,191.36834 15.69874,11.17537"
+       id="path7" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="29.506792"
+       y="192.43265"
+       id="text8"><tspan
+         sodipodi:role="line"
+         id="tspan8"
+         style="text-align:center;text-anchor:middle;stroke-width:0.5"
+         x="29.506792"
+         y="192.43265">дикрит. или вырожд.</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;stroke-width:0.5"
+         x="29.506792"
+         y="198.60628"
+         id="tspan9">узел устойчивый</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.32115;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 128.77562,197.87927 -8.30714,8.71268"
+       id="path9" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="210.54153"
+       y="191.90048"
+       id="text11"
+       inkscape:transform-center-x="2.394723"
+       inkscape:transform-center-y="-0.26608033"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         style="text-align:center;text-anchor:middle;stroke-width:0.5"
+         x="210.54153"
+         y="191.90048">дикрит. или вырожд.</tspan><tspan
+         sodipodi:role="line"
+         style="text-align:center;text-anchor:middle;stroke-width:0.5"
+         x="210.54153"
+         y="198.07411"
+         id="tspan11">узел неустойчивый</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="130.91153"
+       y="195.35954"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="stroke-width:0.5"
+         x="130.91153"
+         y="195.35954">центр</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="133.57233"
+       y="215.58165"
+       id="text13"><tspan
+         sodipodi:role="line"
+         id="tspan13"
+         style="stroke-width:0.5"
+         x="133.57233"
+         y="215.58165">фокус</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.5"
+         x="133.57233"
+         y="221.75528"
+         id="tspan14">неуст.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="104.56957"
+       y="215.58165"
+       id="text16"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="stroke-width:0.5"
+         x="104.56957"
+         y="215.58165">фокус</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.5"
+         x="104.56957"
+         y="221.75528"
+         id="tspan16">уст.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 64.923601,248.60338 15.69874,-11.17537"
+       id="path16" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="56.409027"
+       y="252.8329"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="stroke-width:0.5"
+         x="56.409027"
+         y="252.8329">&quot;антенна&quot;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.5"
+         x="56.409027"
+         y="259.00653"
+         id="tspan18">уст.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="M 172.64405,248.60338 156.94531,237.42801"
+       id="path18" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="183.55336"
+       y="252.8329"
+       id="text20"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         style="stroke-width:0.5"
+         x="183.55336"
+         y="252.8329">&quot;антенна&quot;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.5"
+         x="183.55336"
+         y="259.00653"
+         id="tspan20">неуст.</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 134.10448,248.04345 -11.17537,-9.31282"
+       id="path20" />
+    <circle
+       style="fill:#000000;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none;fill-opacity:1"
+       id="path21"
+       cx="120.00223"
+       cy="236.33591"
+       r="2.1286426" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-dasharray:none"
+       x="143.4173"
+       y="253.36505"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="stroke-width:0.5"
+         x="143.4173"
+         y="253.36505">&quot;точки&quot;</tspan><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.5"
+         x="143.4173"
+         y="259.53867"
+         id="tspan22">или &quot;улица&quot;</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-dasharray:none;marker-end:url(#Triangle)"
+       d="m 174.78587,191.36834 -15.69874,11.17537"
+       id="path22" />
+  </g>
+</svg>

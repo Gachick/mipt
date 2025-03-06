@@ -1,0 +1,79 @@
+%% Creator: Inkscape 1.4 (e7c3feb100, 2024-10-09), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'l5_class.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{680.31496063bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.5)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{l5_class.pdf}}%
+    \put(0.84037043,0.22615903){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T$\end{tabular}}}}%
+    \put(0.51553068,0.46008797){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$D$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{l5_class.pdf}}%
+    \put(0.46896658,0.09200999){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}седло\end{tabular}}}}%
+    \put(0.71841685,0.30487442){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}узел неуст.\end{tabular}}}}%
+    \put(0.21286422,0.30487442){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}узел уст.\end{tabular}}}}%
+    \put(0.58870271,0.46563129){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$T^2-4D=0$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{l5_class.pdf}}%
+    \put(0.12294496,0.4356973){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}дикрит. или вырожд.\\узел устойчивый\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{l5_class.pdf}}%
+    \put(0.87725639,0.43791466){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}дикрит. или вырожд.\\узел неустойчивый\end{tabular}}}}%
+    \put(0.54546471,0.4235019){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}центр\end{tabular}}}}%
+    \put(0.55655136,0.33924313){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}фокус\\неуст.\end{tabular}}}}%
+    \put(0.43570655,0.33924313){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}фокус\\уст.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{l5_class.pdf}}%
+    \put(0.23503761,0.18402958){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}"антенна"\\уст.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{l5_class.pdf}}%
+    \put(0.76480567,0.18402958){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}"антенна"\\неуст.\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{l5_class.pdf}}%
+    \put(0.59757207,0.18181229){\color[rgb]{0,0,0}\makebox(0,0)[t]{\lineheight{1.25}\smash{\begin{tabular}[t]{c}"точки"\\или "улица"\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{l5_class.pdf}}%
+  \end{picture}%
+\endgroup%
