@@ -752,6 +752,142 @@ $\vec{x}_n$ - выборка
       \alpha_k(\vec{\theta})=M[\xi^{k}] \rightarrow \tilde{\alpha}_k=\alpha_k(\vec{\theta})
     \]
     Если можем решить систему получаем $\tilde{\vec{\theta}}$ оценку методом моментов (ОММ)
+
+% lecture 6
+
+    \begin{remark}
+    ОММГ (ОММ Групированная) для статистического ряда:
+    \begin{gather*}
+      \underbrace{[y_1,y_2)}_{\nu_1}\dots \underbrace{[y_k,y_{k+1})}_{\nu_k} \qquad \nu_i=\frac{m_i}{n} \\ 
+      z_1=\frac{y_1+y_2}{2},\dots ,z_k=\frac{y_k+y_{k+1}}{2} \\ 
+      \tilde{\alpha}_l=\sum_{i=1}^{k}z_i^{l}\nu_i
+    \end{gather*}
+    \end{remark}
+  \item Оценка Методом Правдоподобия (Фишер):
+
+    \hr 
+    монета 10 раз, 6 орлов, 4 решки
+    \begin{enumerate}
+      \item $p=\frac{1}{2}$
+      \item $p=\frac{1}{3}$ - орёл, $p=\frac{2}{3}$ - решка
+        \[
+          \left(\frac{1}{2}\right)^{10}=0.0 0 098 \qquad \left(\frac{1}{3}\right)^{6}\left(\frac{2}{3}\right)^{4}=0.0 0 027
+        \]
+    \end{enumerate}
+    \hr
+    \[
+      L(\vec{x}_n,\theta)=\prod_{i=1}^{n}\rho(x_i,\theta)
+    \]
+    $fix \, \theta$, $L(\vec{x}_n)$ - плотность распределения выборки
+
+    $fix \, \vec{x}_n$, $L(\theta)=\prod_{i=1}^{n}\rho(x_i, \theta)$ - функция правдоподобия
+    (здесь $x_i$ - элемент выборки), пытаемся максимизировать $L(\theta)\to\max$
+    \begin{remark}
+      ОМПГ для статистического ряда 
+      \begin{gather*}
+        \underbrace{[y_1,y_2)}_{\nu_1}\dots \underbrace{[y_k,y_{k+1})}_{\nu_k} \qquad \nu_i=\frac{m_i}{n} \\ 
+        P_1(\theta)=\int_{-\infty}^{y_2}\rho(x,\theta)dx \\
+        P_2(\theta)=\int_{y_2}^{y_3}\rho(x,\theta)dx \\
+        \dots \\
+        P_k(\theta)=\int_{y_k}^{+\infty}\rho(x,\theta)dx \\
+        L(\theta)=P_1^{m_1}\dots P_k^{m_k} \qquad L(\theta)\to\max
+      \end{gather*}
+    \end{remark}
+
 \end{enumerate}
+
+\section{Асимптотические свойства оценок}
+$n\to\infty$
+\begin{enumerate}
+  \item состоятельность $\forall \theta \in \Theta \true \tilde{g}(\vec{x}_n)\overset{p}{\to}g(\theta)$
+  \item асимптотическая несмещённость $\forall \theta \in \Theta \true M[\tilde{g}(\vec{x}_n)] \underset{n\to \infty}{\to}g(\theta)$
+  \item асимптотическая эффективность $\forall \theta\in\Theta\true nD[\tilde{g}(\vec{x}_n)] \underset{n\to\infty}{\to}\frac{g'^{2}(\theta)}{I(\theta)}$
+  \item асимпотическая нормальность $\forall \theta \in \Theta \true \sqrt{n}(\tilde{g}(\vec{x}_n)-g(\theta)) \overset{F}{\to} \eta\sim N(0,\sigma^{2})$
+\end{enumerate}
+
+\subsection{Асимптотические свойства ОММ}
+\begin{gather*}
+  \alpha_k(\vec{\theta})=\tilde{\alpha}_k \to \tilde{\vec{\theta}}=f(\tilde{\alpha}_1,\dots ,\tilde{\alpha}_k) \\ 
+  \tilde{\alpha}_k \overset{p}{\to}\alpha_k
+\end{gather*}
+$f$ - непр в $\alpha_1,\dots ,\alpha_k$, тогла по теореме наследования 
+$\tilde{\vec{\theta}}\overset{p}{\to}f(\alpha_1,\dots ,\alpha_k)=\vec{\theta}$ состоятельная
+
+Теорема о наследовании нормальности:
+
+$\sqrt{n}(\xi_n-a) \rightsquigarrow N(0,\sigma^{2})$ и $f(x)\in C'(r)$ и $f'(a)\neq 0$,
+тогда
+\[
+  \sqrt{n}(g(\xi_n)-g(a)) \rightsquigarrow N(0,g'^{2}(a)\sigma^{2})
+\]
+
+ЦПТ:
+\begin{gather*}
+  \frac{\sum_{}^{}x_i^{k}-nM[\xi^{k}]}{\sqrt{nD[\xi^{k}]}} \rightsquigarrow N(0,1) \\ 
+  \frac{\tilde{\alpha}_k-a_k}{\sqrt{\alpha_{2k}-a_k^{2}}}\sqrt{m}\rightsquigarrow N(0, \underbrace{\alpha_{2k}-a_k^{2}}_{\sigma_k^{2}}) \\ 
+  (f(\tilde{\alpha}_k)-f(\alpha_j))\sqrt{n} \rightsquigarrow N(0,f'^{2}(\alpha_k)\sigma_k^{2}) \\ 
+  (\tilde{\theta}-\theta)\sqrt{n} \rightsquigarrow N(0,f'^{2}(\alpha_k)\sigma_k^{2})
+\end{gather*}
+
+\subsubsection{Многомерное ЦПТ}
+\begin{gather*}
+  \alpha=\begin{pmatrix}
+    \alpha_{s_1} \\ \vdots \\ \alpha_{s_k}
+  \end{pmatrix}
+  \qquad 
+  \tilde\alpha=\begin{pmatrix}
+    \tilde{\alpha}_{s_1} \\ \vdots \\ \tilde{\alpha}_{s_k}
+  \end{pmatrix}
+  \qquad
+  \tilde{\alpha}_{s_1}=\frac{1}{n}\sum_{i=1}^{n}x_i^{s_1} \\ 
+  (\tilde{\alpha}-\alpha)\sqrt{n}\rightsquigarrow N(\vec{0},K) \qquad K_{ij}=\alpha_{s_i+s_j}-\alpha_{s_i}\alpha_{s_j}
+\end{gather*}
+$f(x)\in C'(R^{k})$ и $\nabla f(\alpha)\neq 0$
+\[
+  (f(\tilde{\alpha})-f(\alpha))\sqrt{n} \rightsquigarrow N(0, \nabla^{T}f(\alpha)K\nabla f(\alpha))
+\]
+
+\subsection{Асимптотические свойства ОМП}
+\begin{theorem}
+  Пусть вероятностная модель сильно регулярна и множество $\Theta$ открыто.
+
+  Тогда ОМП является состоятельной, асимп. несмещ., асимп. эффект. и асимп. нормальной.
+\end{theorem}
+\begin{proof}
+  $L(\theta)\to\max$, $\ln L\to\max$, $\frac{d\ln L(\tilde{\theta})}{d\theta}=0$
+  Ряд Тёйлора с остаточным членом в форме Лагранжа:
+  \begin{gather*}
+    \underbrace{\frac{d\ln L(\theta)}{d\theta}}_{0}=\frac{d \ln L}{d\theta}(\theta)+\frac{d^{2} \ln L}{d\theta^{2}}(\theta^{*})(\tilde{\theta}-\theta) \\ 
+    \tilde{\theta}-\theta=-\frac{(\ln L)'(\theta)}{(\ln L)''(\theta^{*})} \\ 
+    \frac{d \ln L}{d \theta}=\frac{d}{d\theta}(\ln \prod_{}^{}p(x_i,\theta))=\sum_{i=1}^{n}\frac{d \ln p(x_i,\theta)}{d\theta}
+  \end{gather*}
+  ЗБЧ Хинчина:$\frac{1}{n}\sum_{}^{}\frac{d\ln p}{d\theta}\overset{p}{\to}M\left[\frac{d \ln p(\xi, \theta)}{d\theta}\right]$
+  \begin{gather*}
+    \int_{-\infty}^{+\infty}p(x,\theta)dx=1 \\ 
+    \int_{-\infty}^{+\infty}\frac{d}{d\theta}p(x,\theta)dx=1 \\ 
+    \int_{-\infty}^{+\infty}\frac{d \ln p}{d\theta}p dx =0 \\ 
+    M\left[\frac{d \ln p}{d\theta}\right]=0
+  \end{gather*}
+  \begin{gather*}
+    \frac{d}{d\theta}\int_{-\infty}^{+\infty}\frac{d \ln p}{d\theta}p dx =0 \\ 
+    \int_{-\infty}^{+\infty}\frac{d^{2}\ln p}{d\theta^{2}}p dx + \int_{-\infty}^{+\infty}\frac{d \ln p}{d\theta}\frac{dp}{d\theta}dx=0 \\ 
+    M\left[\frac{d^{2} \ln p}{d\theta^{2}}\right] + \underbrace{M\left[\left(\frac{d \ln p}{d\theta}\right)^{2}\right]}_{I(\theta)>0} = 0 \\ 
+    \frac{d^{2} \ln L}{d\theta^{2}}=\sum_{i=1}^{n}\frac{d^{2}\ln p(x_i,\theta^{*})}{d\theta^{2}} \\ 
+    \frac{1}{n}\sum_{}^{}\frac{d\ln p(x_i,\theta^{*})}{d\theta^{2}} \overset{p}{\to}-I(\theta^{*}) \neq 0
+  \end{gather*}
+  Состоятельность доказана: $\theta^{*}\overset{p}{\to}\theta$
+  \begin{gather*}
+    \frac{\sum_{}^{}\frac{d\ln p}{d\theta}-\overbrace{nM[\frac{d \ln p}{d \theta}]}^{=0}}{\sqrt{nD[\frac{d\ln p}{d\theta}]}} \rightsquigarrow N(0,1)
+  \end{gather*}
+  Лемма Слуцкого: $\xi_n \overset{F}{\to}\xi$, $\eta_n \overset{p}{\to} C$, $x_n\eta_n \overset{F}{\to}\xi C$
+  \begin{gather*}
+    \tilde{\theta}-\theta=-\cfrac{\frac{\sum_{}^{}\frac{d\ln p}{d\theta}}{\sqrt{nI(\theta)}}\sqrt{nI(\theta)}}{\frac{1}{-nI(\theta)}\sum_{}^{}\frac{d^{2} \ln p}{d \theta^{2}}(-nI(\theta))} \\ 
+    a = \frac{\sum_{}^{}\frac{d\ln p}{d\theta}}{\sqrt{nI(\theta)}}\rightsquigarrow N(0,1) \qquad b =\frac{1}{-nI(\theta)}\sum_{}^{}\frac{d^{2} \ln p}{d \theta^{2}} \rightsquigarrow1 \\ 
+    (\tilde{\theta}-\theta)\sqrt{nI(\theta)}=\frac{a}{b} \rightsquigarrow N(0,1) \\ 
+    (\tilde{\theta}-\theta)\sqrt{n} \rightsquigarrow N(0, \frac{1}{I(\theta)}) \\ 
+    D[(\tilde{\theta}-\theta)\sqrt{n}]=nD[\tilde{\theta}] \underset{n\to \infty}{\to} \frac{1}{I(\theta)}
+  \end{gather*}
+  Асимптотическая эффективность.
+\end{proof}
 
 \end{document}
