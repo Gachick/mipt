@@ -782,7 +782,7 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
 
   Пусть $f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n \sin nx$.
 
-  $\implies$
+  Тогда:
   \begin{gather*}
     \int_{0}^{x}f(t)dt=\int_{0}^{x}\frac{a_0}{2}dt+\sum_{n=1}^{\infty}\int_{0}^{x}(a_n\cos nt + b_n\sin nt)dt = \\
     = \frac{a_0x}{2}+\sum_{n=1}^{\infty}\frac{a_n}{n}\sin nx + \frac{b_n}{n}(1-\cos nx)
@@ -790,5 +790,189 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
   и ряд в правой части сх. равн. на $\R$.
 
 \end{theorem}
+
+% lecture 6
+
+\begin{proof}
+  Введём $F(x)=\int_{0}^{x}f(t)dt-\frac{a_0x}{2}=\int_{0}^{x}(f(t)-\frac{a_0}{2})dt$,
+  $F(x)$ - непр. на $\R$, её производная $F'(x)=f(x) - \frac{a_0}{2}$
+  - кусочно непрерывная функция на $[-\pi,\pi]$.
+
+  \[
+    F(x+2\pi)=F(x)+\underbrace{\int_{x}^{x+2\pi}(f(t)-\frac{a_0}{2})dt}_{0}=F(x)
+  \]
+  т.е. $F(x)$ - $2\pi$ периодична
+
+  $\implies$ ряд Фурье $F(x)$ сх. равн. к $F(x)$ на $\R$.
+  \begin{gather*}
+    F(x)=\frac{A_0}{2}+\sum_{1}^{\infty}A_n\cos nx + B_n\sin nx \tag{$1$} \\ 
+    A_n=\frac{1}{\pi}\int_{-\pi}^{\pi}F(x)\cos nx dx=\frac{1}{\pi n}\int_{-\pi}^{\pi}F(x)d\sin nx =\\
+    =\frac{1}{\pi n}F(x)\sin nx \Big|_{-\pi}^{\pi} - \frac{1}{\pi n}\int_{-\pi}^{\pi}(f(x)-\frac{a_0}{2})\sin nx dx 
+    = -\frac{b_n}{n} \\ 
+    B_n=\frac{a_n}{n}
+  \end{gather*}
+  Положим в $(1)$ $x=0$:
+  \begin{gather*}
+    \frac{A_0}{2}+\sum_{n=1}^{\infty}A_n=0 \implies \frac{A_0}{2}=\sum_{n=1}^{\infty}\frac{b_n}{n} \\ 
+    F(x)=\sum_{n=1}^{\infty}\frac{a_n}{n}\sin nx + \frac{b_n}{n}(1-\cos nx)
+  \end{gather*}
+\end{proof}
+
+\subsection{Запись р. Фурье в комплексной форме}
+Рассмотрим $f(x)$ - $2\pi$ периодическую, абс. инт на $[-\pi,\pi]$ функцию
+\[
+  f(x) \sim \frac{a_0}{2}+\sum_{n=1}^{\infty}a_n\cos nx + b_n\sin nx
+\]
+Подставим $\cos nx =\frac{e^{inx}+e^{-inx}}{2}$ и $\sin nx = \frac{e^{inx}-e^{-inx}}{2}$ (ф. Эйлера)
+\[
+  f(x)\sim \frac{a_0}{2}+\sum_{n=1}^{\infty}\frac{a_n-ib_n}{2}e^{inx}+\frac{a_n+ib_n}{2}e^{-inx}
+\]
+Введём обозначения $c_0=\frac{a_{0}}{2}$; $c_n=\frac{a_n-ib_n}{2}$; $c_{-n}=\frac{a_n+ib_n}{2}$.
+
+Тогда $f(x)\sim \sum_{n=-\infty}^{\infty}c_ne^{inx}$, где $S_n(x)=\sum_{k=-n}^{n}c_ke^{ikx}$.
+
+Ряд сходится, если $\exists\lim \limits_{n\to\infty}S_n$.
+\begin{gather*}
+  c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)(\cos nx - i \sin nx)dx 
+  = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}dx \\ 
+  c_{-n}=\frac{1}{2\pi} \int_{-\pi}^{\pi}f(x)(\cos nx + i\sin nx)dx 
+  = \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{inx}dx
+\end{gather*}
+Общая формула:
+\[
+  c_n=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)e^{-inx}dx
+\]
+\begin{remark}
+  $c_{-n}=\bar{c}_n$, если $f(x)$ - действительное.
+\end{remark}
+
+\section{Метрические пространства}
+\begin{definition}
+  Множество $X$ называется метрическим пространством,
+  если любой паре $x,y\in X$ поставлено в соответствие $\rho(x,y)$ (метрика или расстояние),
+  такая что выполняются аксиомы:
+  \begin{enumerate}
+    \item $\rho(x,y)=\rho(y,x)$
+    \item $\rho(x,y) \le \rho(x,z)+\rho(z,y)$ - неравенство треугольника
+    \item $\rho(x,y)=0 \iff x=y$
+  \end{enumerate}
+\end{definition}
+\begin{property}
+  $\rho(x,y) \ge 0$.
+\end{property} 
+\begin{proof}
+  $0=\rho(x,x) \le \rho(x,y)+\rho(y,x)=2\rho(x,y) \;$ $\forall x,y\in X$
+\end{proof}
+\begin{remark}
+  Любое подмнож. метрического пространства является метрическим пространством.
+\end{remark}
+\begin{eg}
+  Мн. $\R$ - метр. пр-во $\rho(x,y)=|x-y|$
+\end{eg}
+\begin{eg}
+  Арифметическое евклидово пр-во $\R^{n}$, $\rho(x,y)=\sqrt{\sum_{k=1}^{n}(x_k-y_k)^{2}}$
+\end{eg}
+\begin{eg}
+  Мн-во $B([a,b])$ ограниченных на $[a,b]$ функций,
+  \begin{gather*}
+    \rho(\phi(x), \psi(x))=\sup \limits_{x\in[a,b]}|\phi(x)-\psi(x)| \\ 
+    |\phi(x)-\psi(x)|=|\phi(x)-\alpha(x)+\alpha(x)-\psi(x)|
+    \le |\phi - \alpha| + |\alpha - \psi| \le\\
+    \le \sup \limits_{[a,b]}|\phi-\alpha| + \sup \limits_{[a,b]}|\alpha-\psi| 
+    =\rho(\phi,\alpha)+\rho(\alpha,\psi)
+  \end{gather*}
+  Перейдём в неравенстве к $\sup$:
+  \begin{gather*}
+  \rho(\phi,\psi)=\sup \limits_{[a,b]}|\phi -\psi| \le \rho(\phi,\alpha)+\rho(a,\psi)
+  \end{gather*}
+  Доказали неравенство треугольника.
+\end{eg}
+\begin{eg}
+  Мн-во $CL([a,b])$ непр. функций на $[a,b]$ с метрикой
+  $\rho(\phi, \psi)=\int_{a}^{b}|\phi(x)-\psi(x)|dx$
+  является метр. пр-вом.
+
+  2 аксиома: $|\phi-\psi|\le |\phi-\alpha|+|\alpha-\psi|\implies \rho(\phi,\psi)\le \rho(\phi,\alpha)+\rho(\alpha,\psi)$
+
+  3 аксиома: $0=\rho(\phi,\psi)=\int_{a}^{b}|\phi(x)-\psi(x)|dx \implies \phi \equiv \psi$
+
+  Если не требуем не непрерывности, то $\rho(\phi,\psi)=0 \not \implies \phi \equiv \psi$,
+  т.к. функции могут отличатся в отдельных точках.
+\end{eg}
+\begin{definition}
+  Посл. $\{x_{n}\}$ элементов метр. пр-ва $X$ называется сходящимся, если
+  \[
+    \exists x_0\in X: \forall \epsilon>0  \;\exists N: \forall n\ge N \true \rho(x_n,x_0)<\epsilon
+  \]
+  (или $\lim \limits_{n\to\infty} \rho(x_n,x_0)=0$).
+
+  В этом случае считаем, что $\lim \limits_{n\to\infty}x_n=x_0$.
+\end{definition}
+\begin{definition}
+  Посл. $\{x_n\}$ называется фундаментальной, если
+  \[
+    \forall \epsilon>0 \; \exists N:\forall n,m \ge N\true \rho(x_n,x_m) < \epsilon
+  \]
+\end{definition}
+\begin{definition}
+  Метр. пр-во $X$ называется полным, если в нём любая фундаментальная посл. сходится.
+\end{definition}
+\begin{theorem}
+  Любая сходящаяся последовательность фундаментальна.
+\end{theorem}
+\begin{eg}
+  Полные метр. пр-ва: $\R$, $\R^{n}$.
+\end{eg}
+\begin{eg}
+  Неполные метр. пр-ва: $(0,1)$, где $\rho(x,y)=|x-y|$. 
+  Здесь $\{\frac{1}{n}\}$ -фунд, но не сход.
+\end{eg}
+\begin{eg}
+  $Q$ - мн. рац. чисел не явл. полным метр. пр.
+  $\{(1+\frac{1}{n})^{n}\}$ - фунд., но не сход.
+\end{eg}
+\begin{remark}
+  В метр. пр-ве, так же как и в $\R^{n}$, можно ввести понятия окрестности,
+  внутр. точки, граничной т., т. прикосновения., предельной т.,
+  замыкания, отк. множества и т.д.
+\end{remark}
+
+\subsection{Линейные нормированные пространства}
+\begin{definition}
+  Множество $X$ называется линейным пр-вом,
+  если в нём определены сложение $(x+y)$ и умножение на число $(\alpha x)$:
+  \begin{enumerate}
+    \item $x+y=y+x$
+    \item $(x+y)+z=x+(y+z)$
+    \item $\exists 0: \: x+0=x$
+    \item $\forall x \in X \; \exists (-x): \: x+(-x)=0$
+    \item $(\lambda+\mu)x=\lambda x+ \mu x$
+    \item $\lambda \mu)x=\lambda(\mu x)$
+    \item $1 \cdot x=x$
+  \end{enumerate}
+  Определено вычитание $x-y=x+(-y)$.
+\end{definition}
+\begin{definition}
+  Система векторов называется линейно независимой, если
+  любая конечная подсистема линейно независима.
+\end{definition}
+\begin{definition}
+  Линейное пространство $X$ называется нормированным, если
+  на нём определенна действительная функция (функционал) $\Vert x \Vert$,
+  такая что выполняются аксиомы:
+  \begin{enumerate}
+    \item $\Vert \lambda x \Vert=|\lambda|\Vert x \Vert   $
+    \item $\Vert x+y \Vert \le \Vert x \Vert + \Vert y \Vert$
+    \item $\Vert x \Vert=0 \implies x=0$
+  \end{enumerate}
+\end{definition}
+\begin{property}
+  $\Vert x \Vert \ge 0$
+\end{property}
+\begin{proof}
+  \begin{gather*}
+    0 = \Vert x-x \Vert \le \Vert x \Vert+\Vert x \Vert = 2 \Vert x \Vert
+  \end{gather*}
+\end{proof}
 
 \end{document}
