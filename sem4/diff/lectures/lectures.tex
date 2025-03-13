@@ -933,5 +933,228 @@ $F(x)=0 \rightarrow\tilde{x}$ полож. равн., $\phi(t)=\tilde{x}$
   тогда $\tilde{x}$ неуст.
 \end{theorem}
 
+% lecture 6 
+
+\subsection{Примеры на устойчивость}
+\begin{eg}
+  \begin{gather*}
+    \left\{\begin{aligned}
+      \dot{x}=y-x^{3} \\ 
+      \dot{y}=-x-y^{3}
+    \end{aligned}\right. \\ 
+    A(0,0) \qquad F'(A)=\begin{pmatrix}
+      0 & 1 \\ 
+      -1 & 0
+    \end{pmatrix} \qquad \lambda_{1,2}=\pm i \; \text{(центр)} \\ 
+    v=x^{2}+y^{2} \\ 
+    \frac{dv}{dt}=2x\dot{x}+2y\dot{y}=-2x^{4}-2y^{4} < 0
+  \end{gather*}
+  $v>0$ в $\dot{O}_\epsilon(A)$ и $\frac{dv}{dt}<0$ там же $\implies$ асимп. уст.
+\end{eg}
+\begin{eg}
+  \begin{gather*}
+    \left\{\begin{aligned}
+      \dot{x}=-x \\ 
+      \dot{y}=x+y^{2}
+    \end{aligned}\right. \\ 
+    A(0,0) \qquad F'(A)=\begin{pmatrix}
+      -1 & 0 \\ 
+      1 & 0
+    \end{pmatrix} \\ 
+    v=y(y+2x)
+  \end{gather*}  
+  В т. Четаева берём за $D$ область где $v>0$:
+  $v(A)=0$, $v \big|_{\partial_1 D}=0$, $v>0$ в $D$
+  \begin{gather*}
+    \frac{dv}{dt}=2y^{3}+2x^{2}+2xy^{2}=y^{3}+2x^{2}+y^{2}(y+2x)>0 \; \text{в} \;D
+  \end{gather*}
+  Выполнены условия для Четаева $\implies$ неустойчива.
+\end{eg}
+
+\subsection{Исследование фаз. тр. нелин. автоном. сист.}
+\[
+  \dot{x}=F(x) \qquad x\in \R^{n} \qquad F(x)\in C'(D) \qquad D\in \R^{n}
+\]
+\begin{enumerate}
+  \item полож. равновесия, иссл. методом линеаризации
+    \begin{gather*}
+      F(x)=\underbrace{F(\tilde{x})}_{0}+\underbrace{F'(x)}_{\text{м. Якоби}}(x-\tilde{x})+o(|x-\tilde{x}|) \\ 
+      y=x-\tilde{x} \qquad \dot{y}=F'(\tilde{x})y+o(|y|)
+    \end{gather*}
+    (важно учитывать грубые или негрубые)
+  \item иссл. устойчивость пол. равновесия
+  \item иссл. предельные множества.
+  \item иссл. фазовые траектории вне предельных множеств, метод первых интегралов
+\end{enumerate}
+
+\subsection{Первые интегралы автономных систем}
+\[
+  \dot{x}=F(x) \qquad x\in \R^{n} \qquad F(x)\in C'(D) \qquad D\in \R^{n}
+\]
+\begin{definition}
+  Функция $u(x)\in C'(D)$ называется первым интегралом автономной системы,
+  если для любого решения $g(t)$, фазовая траектория которого лежит в $D$
+  $\true u(g(t))=const$.
+\end{definition}
+\begin{eg}
+  $u=const$ - тривиальный первый интеграл
+\end{eg}
+\begin{theorem}[Критерий первого интеграла]
+  Функция $u(x)\in C'(D)$ является первым интегралом тогда и только тогда,
+  когда $(\nabla u,F(x))=0$ в $D$.
+\end{theorem}
+\begin{proof}
+  $\rightarrow$: Пусть $u(x)$ первый инт:
+
+  \incfig{l6_fi1}
+  Возьмём $x_0 \in D$, $x(0)=x_0$ $\implies \; \exists$ решение $g(t)$,
+  $u(g(t))=const$
+  \begin{gather*}
+    \frac{du}{dt}\Big|_{t=0}=\sum_{i=1}^{n}\underbrace{\pd{u}{x_i}}_{(\nabla u)_{i}}\underbrace{\frac{dx_i}{dt}\Big|_{t=0}}_{f_i(x_0)}=0 \\ 
+    (\nabla u, F(x))=0
+  \end{gather*}
+  В силу произвольности $x_0$ выполнено в $D$.
+
+  $\leftarrow$: Пусть $(\nabla u, F(x))=0$ в $D$.
+
+  \incfig{l6_fi2}
+  Произвольное решение $x=g(t)$
+  \begin{gather*}
+    \frac{du}{dt}\Big|_{\gamma}=\sum_{i=1}^{n}\pd{u}{x_i}f_{i}(x)=(\nabla u, F)\Big|_{\gamma}=0
+  \end{gather*}
+  Т.е. $u(g(t))=const$ на $\gamma$.
+\end{proof}
+
+\subsection{Независимость функция}
+\begin{definition}
+Система функций $u_1(x),\dots ,u_m(x)\in C'(D)$, $x\in R^{n}$, $m \le n$, $D \in \R^{n}$
+- область., называется зависимой в $D$, если в $D$
+\[
+  \exists K, \exists G \in C': \: u_k(x)=G(u_1(x),\dots , u_{k-1}(x), u_{k+1}(x),\dots ,u_m(x))
+\]
+Если так сделать нельзя, то система называется независимой в $D$.
+\end{definition}
+\begin{theorem}[Необход. усл. зависимости]
+  Пусть $u_1,\dots ,u_m$ зависимы в $D$, тогда $\nabla u_1,\dots , \nabla u_m$
+  линейно зависимы в каждой точке $D$.
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \nabla u_k(x)=\pd{G}{u_1}\nabla u_1+\dots +\pd{G}{u_m}\nabla u_m
+  \end{gather*}
+  Получили опредление линейной зависимости $\nabla u_i$.
+\end{proof}
+\begin{corollary}[Достаточное условие независимости]
+  Пусть $\exists x_0\in D$, в которой $\nabla u_i$ линейно незав.,
+  тогда система $u_1,\dots, u_m$ незав. в $D$.
+\end{corollary}
+\begin{eg}
+  \begin{gather*}
+    u_1=x_1 \qquad u_2=x_2 \qquad u_3=x_1^{2}+u_2^{2} \\ 
+    u_3=u_1^{2}+u_2^{2} \\ 
+    \begin{pmatrix}
+      2x_1 \\ 2x_2 \\ 0
+    \end{pmatrix} = 2x_1 \begin{pmatrix}
+      1 \\ 0 \\ 0
+    \end{pmatrix} + 2x_2 \begin{pmatrix}
+      0 \\ 1 \\ 0
+    \end{pmatrix}
+  \end{gather*}
+\end{eg}
+\begin{theorem}[Достаточное условие зависимости]
+  Пусть в каждой точке области $D \true \nabla u_1,\dots ,\nabla u_m$ лин. зав.
+  и не обращаются $0$ одновременно, тогда для каждой точки $D$
+  существует окрестность, в которой $u_1, \dots ,u_m$ зависимы.
+\end{theorem}
+\begin{proof}(для $n=2$)
+
+  $f(x,y)$, $g(x,y)$, $\nabla f$ и $\nabla g$ лин. зав. в $D$
+
+  $(x_0,y_0)\in D$ пусть $\nabla f\big|_{A} \neq \vec{0}$, пусть $\pd{f}{x}\big|_A\neq 0$
+  \begin{gather*}
+    \xi=f(x,y) \qquad \eta=y \qquad J=\begin{vmatrix}
+      \pd{f}{x} & \pd{f}{y} \\ 
+      0 & 1
+    \end{vmatrix}=\pd{f}{x}\big|_{A}\neq 0
+  \end{gather*}
+  $\exists O_{\epsilon}(A)$, $J\neq 0$, значит есть взаимооднозначное отображение
+  \begin{gather*}
+    x=x(\xi,\eta) \qquad y=y(\xi, \eta) \\ 
+    f(x(\xi,\eta),y(\xi,\eta))=\xi \qquad g(x(\xi,\eta),y(\xi,\eta))  \\ 
+    \underbrace{\begin{pmatrix}
+          \pd{f}{\xi} & \pd{f}{\eta} \\ 
+          \pd{g}{\xi} & \pd{g}{\eta}
+          \end{pmatrix}}_{det = 0 \, \text{в} \, O_\delta(B)} = \underbrace{\begin{pmatrix}
+          \pd{f}{x} & \pd{f}{y} \\ 
+          \pd{g}{x} & \pd{g}{y}
+        \end{pmatrix}}_{det = 0 \, \text{в}\, D} \begin{pmatrix}
+      \pd{x}{\xi} & \pd{x}{\eta} \\ 
+      \pd{y}{\xi} & \pd{y}{\eta}
+    \end{pmatrix} \\ 
+    \begin{vmatrix}
+      1 & 0 \\ 
+      \pd{g}{\xi} & \pd{g}{\eta}
+    \end{vmatrix} = 0
+  \end{gather*}
+  $\pd{g}{\eta}=0$ в $O_\delta(B)$ $\implies$ $g=g(\eta)=h(f)$ завис в $O_\epsilon(A)$.
+\end{proof}
+\begin{theorem}[О существовании первых инт.]
+  Пусть точка $a$ не является положением равновесия автономной системы,
+  тогда в некоторой окрестности этой точки $\exists$ первые интегралы $u_1(x),\dots ,u_{n-1}(x)$
+  и она независимы.
+\end{theorem}
+\begin{proof}
+  \[
+    \dot{x}=F(x) \qquad F(x) \in C'(x) \qquad F(a)\neq \vec{0}
+  \]
+  Пусть $f_n(a)\neq0$.
+
+  \incfig{l6_fie}
+  \begin{gather*}
+    x(0)=b \qquad b = \begin{pmatrix}
+      b_1 \\ \vdots \\ b_{n-1} \\\ a_n
+    \end{pmatrix}
+  \end{gather*}
+  $x=g(t,b)$ - реш. задачи Коши
+  \[
+    \left\{\begin{aligned}
+      & x_1 = g_1(t, b_1, \dots , b_{n-1}, a_n) \\ 
+      & \dots \\
+      & x_n = g_n(t, b_1, \dots , b_{n-1}, a_n) \\ 
+    \end{aligned}\right.
+  \]
+  Можем смотреть как на решение з. К. и как на систему уравнений.
+
+  Значит $g_i(t,b_1,\dots ,b_{n-1},a_n$ - по $t$ напр дифф как решение,
+  а также по $b_j$ непр. дифф. по теор. о дифф. решения по параметру.
+  \begin{gather*}
+    A: t=0 \quad b_1=a_1, \dots , b_{n-1}=a_{n-1}
+  \end{gather*}
+  Дифф. по $b_j$, $t=0$:
+  \[
+    \left\{\begin{aligned}
+      & b_1=g_1(0,b_1,\dots ,b_{n-1},a_n) \\ 
+      & \dots \\ 
+      & a_n=g_n(0,b_1,\dots ,b_{n-1},a_n) \\ 
+    \end{aligned}\right. \qquad 
+    \pd{g_1}{b_1}\Big|_{A}=1; \; \pd{g_1}{b_j}\Big|_{A}=0;\; \pd{g_n}{b_i}\Big|_{A}=0
+  \]
+  Дифф. по $t$ в $A$: $b_i=a_i$
+  \[
+    \left\{\begin{aligned}
+      & x_1=g_1(t,a_1,\dots ,a_n) \\ 
+      & \dots \\
+      & x_n=g_n(t,a_1,\dots ,a_n) \\ 
+    \end{aligned}\right. \qquad \dot{g}_1(t)=f_1(a)
+  \]
+  \[
+    J=\frac{\partial(g_1,\dots ,g_n)}{\partial(b_1,\dots ,b_{n-1},t)}=\begin{vmatrix}
+      1 & 0 & \dots & 0 & f_1(a) \\
+      0 & 1 & \dots & 0 & f_2(a) \\
+      \dots & \dots & \dots & \dots & \dots \\
+      0 & 0 & \dots & 0 & f_n(a) \\
+    \end{vmatrix}
+  \]
+\end{proof}
 
 \end{document}
