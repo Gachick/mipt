@@ -890,4 +890,279 @@ $f(x)\in C'(R^{k})$ и $\nabla f(\alpha)\neq 0$
   Асимптотическая эффективность.
 \end{proof}
 
+% lecture 7
+
+\begin{corollary}
+  $\tilde{\theta}\overset{p}{\to}\theta$ - сост. $\tilde{\theta}$ ОМП, $\theta \in \Theta \subset \R$
+\[
+  \sqrt{n}(\tilde{\theta}-\theta) \rightsquigarrow N(0, \frac{1}{I(\theta)})
+\]
+  \begin{itemize}
+    \item $g(\theta)\in C'(\Theta)$ и $g'(\theta)\neq 0$ на $\Theta$
+      \begin{gather*}
+        \sqrt{n}(g(\theta)-g(\theta)) \rightsquigarrow N(0, g'^{2}(\theta)\frac{1}{I(\theta)}) \\ 
+        g(\tilde{\theta}) \overset{p}{\to} g(\theta)
+      \end{gather*}
+      $g(\tilde{\theta})$ сост. оценка $g(\theta)$, асим. несмещ., асим. эффект., асим. норм.
+    \item многомерный аналог
+      \begin{gather*}
+        \sqrt{n}(\tilde{\vec{\theta}}-\vec{\theta}) \rightsquigarrow N(\vec{0}, I^{-1}(\vec{\theta})) \\ 
+        g(\vec{\theta}) \in C'(\R^{m}) \qquad \nabla g(\vec{\theta}) \neq 0 \; \theta \in \Theta \subset \R^{m} \\ 
+        \sqrt{n}(g(\tilde{\vec{\theta}})-g(\vec{\theta})) \rightsquigarrow N(\vec{0}, \nabla ^{T} g(\vec{\theta})I^{-1}(\vec{\theta})\nabla g(\vec{\theta}))
+      \end{gather*}
+  \end{itemize}
+\end{corollary}
+\begin{eg}
+  $\xi \sim R(0,\theta)$, $\theta>0$, ОМП: $\tilde{\theta}=x_{max}$
+
+  $\tilde{\theta}'=\frac{n+1}{n}x_{max}$ несмещ
+
+  $M[x_{max}]=\frac{n}{n+1}\theta \underset{n\to\infty}{\to} \theta$ асим. несм.
+
+  $x_{max} \overset{p}{\to} \theta$ сост.
+
+  $D[x_{max}]=\frac{n\theta^{2}}{(n+1)^{2}(n+2)}$, $I(\theta)=\frac{1}{\theta^{2}}$,
+  $nD[x_{max}] \underset{n\to\infty}{\not \to}\frac{1}{I(\theta)}$,
+  значит не является эффективной
+  (на самом деле оценка сверхэффективная, модель нерегулярна условия теоремы не выполнены)
+
+  Пусть асим. норм.
+  \begin{gather*}
+    \sqrt{n}(\underbrace{\tilde{\theta}}_{x_{max}}-\theta) \rightsquigarrow N(0,\sigma^{2}) \\ 
+    P(\sqrt{n}(x_{max}-\theta) < x) \underset{n\to\infty}{\to} \Phi(x) \; \forall x\in \R \\ 
+    P(\sqrt{n}(x_{max}-\theta)<0)=1 \to 1 \qquad \Phi(0)=\frac{1}{2} 
+  \end{gather*}
+  Противоречие $\implies$ не является асим. нормальной.
+\end{eg}
+
+\section{Доверительный интервал}
+\begin{definition}
+  Доверительным интервалом величины $h$ вероятностной модели называется
+  случайный интервал, который накрывает значение $h$ с вероятностью,
+  не меньшей $\beta$.
+  \begin{gather*}
+    I=(g_{1}(\vec{x}_n), g_2(\vec{x}_n)) \\ 
+    P((g_1,g_2)\ni \theta) \ge \beta
+  \end{gather*}
+  $\beta$ - доверительная вероятность, чаще всего $0.9, 0.95, 0.99$.
+\end{definition}
+
+\subsection{Методы построения доверит. инт.}
+\begin{itemize}
+  \item точный
+  \item асимптотический
+    \begin{itemize}
+      \item по ОММ
+      \item по ОМП
+    \end{itemize}
+  \item численные
+    \begin{itemize}
+      \item параметрический бутстрап
+      \item непараметрический бутстрап
+    \end{itemize}
+\end{itemize}
+\subsubsection{Точный метод}
+$h, \vec{x}_n \to f(g,\vec{x}_n) \sim g(t)$ (созерцание)
+\begin{enumerate}
+  \item $g(t)$ - плотность распр. (сл. вел. непр.)
+
+    \incfig{l7_1}
+    $\alpha+\beta=1$, квантиль $F(x_{p})=p$, $x_p$ - квантиль порядка $p$, $F(x_p)=\int_{-\infty}^{x_p}q(t)dt$
+
+    \begin{gather*}
+      t_1=g_{\alpha/2}=g_{\frac{1-\beta}{2}} \qquad t_2=g_{\beta+\frac{\alpha}{2}}=g_{\frac{1+\beta}{2}} \\ 
+      P(t_1<f(h,\vec{x}_n)<t_2)=\beta \\ 
+      g_1(\vec{x}_n) < h < g_2(\vec{x}_n)
+    \end{gather*}
+  \item $g(t)$ содержит дискр. части, сдвигаем $\beta$ так чтобы получить точное равенство
+\end{enumerate}
+\begin{eg}
+  $\xi\sim N(\theta_1, \theta_2^{2})$, $\theta_1\in \R$, $\theta_2>0$
+  \begin{gather*}
+    \tilde{\theta}_1=\bar{x} \qquad \tilde{\theta}_{2}^{2}=S^{2}
+  \end{gather*}
+  Теорема Фишера:
+  \[
+    \sqrt{n}\frac{\bar{x}-\theta_1}{\theta_2} \sim N(0,1) \qquad \frac{S^{2}(n-1)}{\theta_2^{2}} \sim \chi^{2}(n-1) 
+  \]
+  \begin{gather*}
+    t_1=\chi^{2}_{\frac{1-\beta}{2}}(n-1) \qquad t_2=\chi^{2}_{\frac{1+\beta}{2}}(n-1)  \\ 
+    P(t_1<\frac{S^{2}(n-1)}{\theta_2^{2}}<t_2) = ;B \\ 
+    \frac{S^{2}(n-1)}{t_2} < \theta^{2}_2 < \frac{S^{2}(n-1)}{t_1} \\
+    \sqrt{\frac{S^{2}(n-1)}{t_2}} < \theta_2 < \sqrt{\frac{S^{2}(n-1)}{t_1}}
+  \end{gather*}
+  \begin{gather*}
+    \cfrac{\sqrt{n}\frac{\bar{x}-\theta_1}{\theta_2}}{\sqrt{\frac{S^{2}(n-1)}{\theta_2^{2}(n-1)}}} \sim t(n-1) \\ 
+    \sqrt{n}\frac{\bar{x}-\theta_1}{S} \sim t(n-1)
+  \end{gather*}
+
+  \incfig{l7_2}
+  \begin{gather*}
+    t_1=t_{\frac{1-\beta}{2}}(n-1) \qquad t_2=t_{\frac{1+\beta}{2}}(n-1) \\ 
+    P(t_1 < \sqrt{n}\frac{\bar{x}-\theta_1}{S} < t_2)= \beta \\ 
+    \bar{x}-\frac{S t_2}{\sqrt{n}} < \theta_1 < \bar{x} - \frac{S t_1}{\sqrt{n}}
+  \end{gather*}
+\end{eg}
+\subsection{Асимптотический метод}
+$h, \vec{x}_n \rightarrow f(h,\vec{x}_n) \rightsquigarrow g(t)$
+
+По ОММ
+  \begin{gather*}
+    \sqrt{n}(g(\tilde{\vec{\theta}})-g(\vec{\theta})) \rightsquigarrow N(\vec{0}, \nabla ^{T} g(\vec{\theta})I^{-1}(\vec{\theta})\nabla g(\vec{\theta})) \\ 
+    \alpha=\begin{pmatrix}
+      \alpha_{s_1} \\ \vdots \\ \alpha_{s_k}
+    \end{pmatrix}
+    \qquad 
+    \tilde\alpha=\begin{pmatrix}
+      \tilde{\alpha}_{s_1} \\ \vdots \\ \tilde{\alpha}_{s_k}
+    \end{pmatrix} \qquad K_{ij}=\alpha_{s_i+s_j}-\alpha_{s_i}\alpha_{s_j} \\ 
+    (\tilde{\alpha}_j-\alpha_j)\sqrt{n} \rightsquigarrow N(0, \alpha_{2k}-\alpha_k^{2}) \\ 
+    \frac{\tilde{a}_k-\alpha_k}{\sqrt{\alpha_{2k}-\alpha_k^{2}}}\sqrt{n} \rightsquigarrow N(0,1) \\ 
+    \tilde{\alpha}_k \overset{p}{\to} \alpha_k \qquad \sqrt{\tilde{\alpha}_{2k}-\tilde{\alpha}_k^{2}} \overset{p}{\to} \sqrt{\alpha_{2k}-\alpha_k^{2}} \\ 
+    \frac{\sqrt{\alpha_{2k}-\alpha_k^{2}}}{\sqrt{\tilde{\alpha}_{2k}-\tilde{\alpha}_k^{2}} } \overset{ p}{ \to} 1
+  \end{gather*}
+  Лемма Слуцкого $\xi_n \overset{F}{\to} \xi$, $\eta_n \overset{p}{\to} C$, $\xi_n\eta_n \overset{F}{\to} C\xi$
+  \begin{gather*}
+    \frac{\tilde{a}_k-\alpha_k}{\sqrt{\alpha_{2k}-\alpha_k^{2}}}\sqrt{n}\frac{\sqrt{\alpha_{2k}-\alpha_k^{2}}}{\sqrt{\tilde{\alpha}_{2k}-\tilde{\alpha}_k^{2}} } \rightsquigarrow N(0,1) \\ 
+    \boxed{
+      \frac{\sqrt{n}(g(\tilde{\alpha})-g(\alpha))}{\sqrt{\nabla ^{T} g(\tilde{\alpha})K(\tilde{\alpha})\nabla g(\tilde{\alpha})}} \rightsquigarrow N(0,1)
+    \qquad \text{ОММ} }\\ 
+    \boxed{
+      \frac{\sqrt{n}(g(\tilde{\vec{\theta}})-g(\vec{\theta}))}{\sqrt{\nabla ^{T} g(\tilde{\vec{\theta}})I^{-1}(\tilde{\vec{\theta}})\nabla g(\tilde{\vec{\theta}})}} \rightsquigarrow N(0,1)
+    \qquad \text{ОМП} }
+  \end{gather*}
+\begin{eg}
+  $\xi \sim \rho(x)=x\theta\{(0,1)\}+(1-\frac{\theta}{2})\{2\}$, $\theta\in(0,2)$
+
+  $\vec{x}_n=\{0.53, 0.84, 0.1, 0.83, \underbrace{2,\dots ,2}_{16}\}$, $n=20$
+  \begin{enumerate}
+    \item ОММ $\tilde{\theta}=\frac{3}{2}(2-\bar{x})$, $\tilde{\theta}=0.4275$, $S=0.6$, $\beta=0.95$
+      \begin{gather*}
+        \tilde{\theta}=\frac{3}{2}(2-\tilde{\alpha}_1)=g(\tilde{\alpha}_1) \qquad \theta=g(\alpha_1) \\ 
+        \frac{\sqrt{n}(g(\tilde{\alpha}_1)-g(\alpha_1))}{\sqrt{\nabla ^{T} g(\tilde{\alpha})K(\tilde{\alpha})\nabla g(\tilde{\alpha})}} \rightsquigarrow N(0,1) \\ 
+        \nabla g =0\frac{3}{2} \qquad K_{11}=\alpha_2-\alpha_1^{2} \\ 
+        \frac{\sqrt{n}(\tilde{\theta}-\theta)}{\sqrt{-\frac{3}{2}(-\frac{3}{2})(\tilde{\alpha}_2-\tilde{\alpha}_1^{2})}} \rightsquigarrow N(0,1) \\ 
+        \tilde{\mu}_2=\tilde{\alpha}_2-\tilde{\alpha}_1^{2}=0.342 \qquad \tilde{\mu}_2=S^{2}\frac{n-1}{n} \\ 
+      t_1=u_{\frac{1-0.95}{2}}=u_{0.025}=-1.96 \qquad t_2=u_{\frac{1+0.95}{2}}=u_{0.025}=1.96 
+      \end{gather*}
+      \begin{gather*}
+        -1.96 < \frac{\sqrt{20}(0.4275-\theta)}{\sqrt{\frac{9}{4}\cdot 0.342}} < 1.96 \\ 
+        0.0435 < \theta < 0.811 \qquad l=0.768
+      \end{gather*}
+    \item ОМП $\tilde{\theta}=2(1-\nu)=2(1-\frac{16}{20})=0.4$
+      \begin{gather*}
+        \frac{\sqrt{n}(\tilde{\theta}-\theta)}{\sqrt{I^{-1}(\theta)}} \rightsquigarrow N(0,1) \\ 
+        I(\theta)=\frac{1}{\theta(2-\theta)} \\ 
+        \frac{\sqrt{n}(\tilde{\theta}-\theta)}{\sqrt{\tilde{\theta}(2-\tilde{\theta})}} \rightsquigarrow N(0,1) \\ 
+        -1.96 < \frac{\sqrt{20}(0.4-\theta)}{\sqrt{0.4 \cdot 1.6}} < 1.96 \\ 
+        0.049 < \theta < 0.751 \qquad l=0.702
+      \end{gather*}
+      ОМП довер. инт. дисперсии
+      \begin{gather*}
+        D\xi=\frac{11}{12}\theta-\frac{4}{9}\theta^{2} \\ 
+        \tilde{D\xi}=\frac{11}{12}\cdot 0.4 - \frac{4}{9} \cdot 0.4 ^{2}=0.296 \\
+        \frac{\sqrt{n}(g(\tilde{{\theta}})-g({\theta}))}{\sqrt{\nabla ^{T} g(\tilde{{\theta}})I^{-1}(\tilde{{\theta}})\nabla g(\tilde{{\theta}})}} \rightsquigarrow N(0,1) \\ 
+        \nabla g(\theta)=\frac{11}{12}-\frac{8}{9}\theta \\ 
+        -1.96 < \frac{\sqrt{20}(\tilde{D\xi}-D\xi)}{\sqrt{(\frac{11}{12}-\frac{8}{9}\cdot 0.4)^{2}\cdot 0.4 \cdot 1.6}} < 1.96 \\ 
+        0.1 < D\xi < 0.492
+      \end{gather*}
+  \end{enumerate}
+\end{eg}
+\subsection{Численные методы}
+\begin{enumerate}
+  \item Непараметрические методы
+
+    $h, \vec{x}_n \rightarrow \tilde{h}$, берём выборку за вероятностную модель,
+    из выборки формируем подвыборку $N=1000$, $\tilde{h}-h=\tilde{\Delta}$
+    \begin{enumerate}
+      \item $\vec{x}_n^{*}$ с повторение элем. $\Delta^{*}_1=\tilde{h}^{*}-\tilde{h}$
+      \item ...
+      \item ???
+      \item ...
+      \item $\vec{x}_n^{*}$ с повторение элем. $\Delta^{*}_{1000}=\tilde{h}^{*}-\tilde{h}$
+      \item Profit!
+    \end{enumerate}
+    Вариационный ряд $\Delta^{*}_{(1)},\dots ,\Delta^{*}_{(1000)}$
+    \begin{gather*}
+      K_1=\left[\frac{1-\beta}{2}\cdot 10 0 0\right] \qquad K_2=\left[\frac{1+\beta}{2}\cdot 10 0 0\right] \\ 
+      t_1=\Delta_{(k_1)} \qquad t_2=\Delta_{(k_2)} \\ 
+      P(t_1< \tilde{h}^{*}-\tilde{h}<t_2) \approx \beta \\ 
+      P(t_1< {h}^{*}-{h}<t_2) \approx \beta \\ 
+      \tilde{h}-t_2 < h < \tilde{h} - t_1
+    \end{gather*}
+  \item Параметричекий бутстрап
+
+    $h, \tilde{h}, \Delta=\tilde{h}-h$, $\xi \sim \rho(x,h)$, $\vec{x}_n \to \tilde{h}$ - сост. и несм. оценка
+
+    $\xi \sim \rho(x, \tilde{h})$ моделируем выборки $\vec{x}_n^{*}$, $N=50000$
+
+    $\Delta^{*}_i=\tilde{h}^{*}-\tilde{h}$, $\Delta_{(1)}^{*}\dots \Delta_{(N)}^{*}$
+    \begin{gather*}
+      K_1=\left[\frac{1-\beta}{2}\cdot N\right] \qquad K_2=\left[\frac{1+\beta}{2}\cdot N \right] \\ 
+      t_1=\Delta_{(k_1)}^{*} \qquad t_2=\Delta_{(k_2)}^{*} \\ 
+      P(t_1< \tilde{h}^{*}-\tilde{h}<t_2) \approx \beta \\ 
+      P(t_1< {h}^{*}-{h}<t_2) \approx \beta
+    \end{gather*}
+\end{enumerate}
+
+\begin{eg}
+  $\vec{x}_n=\{0.53, 0.84, 0.1, 0.83, \underbrace{2,\dots ,2}_{16}\}$, $n=20$
+  \begin{enumerate}
+    \item Непараметрический бутсрап $\tilde{\theta}=0.4$ ОМП $\tilde{\theta}=2(1-\nu)$
+      \begin{itemize}
+        \item $\vec{x}_n^{*}={0.53,\dots }$, $m=14$, $\Delta_1^{*}=\tilde\theta^{*}-\tilde{\theta}=0.2$
+        \item ...
+        \item $\Delta_{1 0 0 0}^{*}=0$
+      \end{itemize}
+      \begin{gather*}
+        \beta=0.95 \qquad k_1=25 \qquad k_2=975 \\ 
+        t_1=\Delta_{(25)}^{*}=-0.3 \qquad t_2=\Delta_{(975)}^{*}=0.4 \\ 
+        P(-0.3<\tilde{\theta}^{*}-\tilde{\theta}<0.4)\approx 0.95 \\ 
+        P(-0.3<\tilde{\theta}-\theta<0.4)\approx 0.95 \\ 
+        0<\theta<0.7 \qquad l=0.7
+      \end{gather*}
+    \item Параметрический бутстрап $\tilde{\theta}=0.4$
+      \[
+        \xi \sim \rho(x,\theta)=x\theta\{(0,1)\} + (1-\frac{\theta}{2})\{2\} 
+        =x \cdot 0.4 \{(0,1)\}+0.8\{2\}\\ 
+      \]
+      $N=10 0 0 0$, делаем выборки из модели и дальше так же как и непарам.
+  \end{enumerate}
+\end{eg}
+\subsection{Доверительный интервал для частоты}
+$\nu=\frac{m}{n}$ хорошая оценка $P(A)$
+
+Интегральная теорема Муавра-Лапласа:
+\begin{gather*}
+  \frac{m-np}{\sqrt{np(1-p)}} \rightsquigarrow N(0,1) \\ 
+  \frac{\nu-p}{\sqrt{p(1-p)}}\sqrt{n} \rightsquigarrow N(0,1) \\ 
+  \frac{\nu-p}{\sqrt{\nu(1-\nu)}}\sqrt{n} \rightsquigarrow N(0,1)
+\end{gather*}
+\subsection{Доверительный интервал функции распределения}
+$F$, $\tilde{F}(x)=\frac{m}{n}$, где $m$ - кол-во элементов меньше $x$
+\[
+  \frac{\tilde{F}(x)-F(x)}{\sqrt{\tilde{F}(x)(1-\tilde{F}(x))}}\sqrt{n}\rightsquigarrow N(0,1)
+\]
+
+\section{Проверка статистических гипотез}
+\begin{definition}
+  Гипотеза - любое высказывание о вероятностной модели.
+\end{definition}
+\begin{definition}
+  Простая гипотеза - однозначное определение вероятностной модели.
+\end{definition}
+\begin{definition}
+  Сложная гипотеза - неоднозначное определение вер. модели.
+\end{definition}
+$\rho \sim N(0,a)$, $H:a=2$ - простая, $H:a>2$ - сложная
+\begin{definition}
+  $H_0$ - основная гипотеза, $H_1$ - альтернативная (отклонение от основной)
+\end{definition}
+$H_0:a=2$, $H_1:a>2$
+
+\subsection{Принцип от маловеороятного}
+Пусть $H_0$ - верна. Событие $A$. $P(A|H_0)$ - мала. Событие $A$ наблюдаемо.
+Отвергаем $H_0$, иначе нет оснований отвергнуть $H_0$.
+
+
 \end{document}
