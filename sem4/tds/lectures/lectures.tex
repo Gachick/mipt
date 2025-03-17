@@ -682,5 +682,117 @@ $\Pi-2=\frac{1}{2}q^{T}Cq$ приводим $C$ к диаг. виду
   Нулевое решение называется асимпт. уст., если оно уст. и притягивающее.
 \end{definition}
 
+% lecture 7
+
+\subsection{Влияние гироскопических и диссипативных сил}
+\subsubsection{Изначально устойчива}
+Если в полож. равн. потенц. энергия  имеет строгий локальный минимум,
+при добавл. гироскопических  и диссипативных сил оно останется устойчивым.  
+
+При добавлении дисс. сил с полной диссипацией  полож. равн. становится асимпт. уст. 
+\subsubsection{Изначально неустойчива}
+Если среди коэфф. устойивости $r_i$ хотя бы один является отрицательным,
+изолированное пол. равновесия на может быть стабилизировано
+диссипативной силой с полной диссипацией.
+
+Если положение равновесия стабилизировано с помощью гироскопических сил,
+то добавление диссипативных сил с полной диссипацией разрушает устойчивость.
+
+Если степень неустойчивости чётная, то возможна стабилицазия с помощью
+гироскопических сил.
+
+\section{Решения линейных систем}
+\[
+  \left\{\begin{aligned}
+      \dot{x}_j=\sum_{k=1}^{m}a_{jk}x_k
+  \end{aligned}\right. \qquad \dot{\vec{x}}=D\vec{x}
+\]
+$\vec{x}\equiv \vec{0}$ - тривиальное решение.
+
+Решение $\vec{x}=\vec{u}e^{\lambda t}$, $\lambda \vec{u}e^{\lambda t}=D\vec{u}e^{\lambda t}$, $det(D-\lambda E)=0$
+
+$\implies$ $\lambda_j$ имеет $m$ решений, если кратные корни $s$, перечисляем $s$ раз
+\[
+  a_0 \lambda^{m}+a_1 \lambda^{m-1} + \dots + a_{m-1}\lambda + a_m=0
+\]
+\begin{enumerate}
+  \item Нет кратных корней
+    \begin{gather*}
+      (D-\lambda E)\vec{u}=0 \qquad rang(D-\lambda m) < m \\ 
+      \vec{x}=\sum_{j=1}^{m}C_j \vec{u}_j e^{\lambda_j t}
+    \end{gather*}
+  \item Есть кратные корни
+    $rang(D-\lambda E)=m-1$ присоед. вектора
+
+    $rang(D-\lambda E)=m-s$ получим $s$ собственных векторов
+\end{enumerate}
+При $\lambda_j=\mu_j + i\nu_j$ общее решение:
+\[
+  \vec{x}=\sum_{j=1}^{m}C_j[e^{\mu_j t}(\vec{h}_j(t)\cos \nu_j t + \vec{H}_j(t)\sin \nu_j t)]
+\]
+\begin{itemize}
+  \item $\forall j \true \mu_j=Re \lambda_j <0 \iff \vec{x}=0$ $\rightarrow$ асимпт уст
+  \item $\exists j: \: \mu_j=Re \lambda_j >0 \Rightarrow \vec{x}=0$ $\rightarrow$ неуст.
+  \item $\forall j \true \mu_j=Re \lambda_j <0, \, j=1,\dots ,r, \, r<m$ и $\exists j: \: \mu_j=Re \lambda_j=0, \, j=r+1,\dots ,m$
+    - уст. или неуст.
+\end{itemize}
+\begin{theorem}[Критерий Рауса-Гурвица]
+  \phantom{.}
+
+  Матрица Гурвица $(m\times m)$:
+  \[
+    \begin{pmatrix}
+      a_1 & a_3 & a_5 & \dots & 0 \\ 
+      a_0 & a_2 & a_4 & \dots & 0 \\
+      0 & a_1 & a_3 & \dots & 0 \\ 
+      0 & a_0 & a_2 & \dots & 0 \\
+      \dots & \dots  &\dots &\dots &\dots \\ 
+      \dots & \dots &\dots &\dots & a_m
+    \end{pmatrix}
+  \]
+  Для того, чтобы действ. части всех корней хар. ур. были отрицательными
+  ($\forall j \true Re\lambda_j<0$), необходимо и достаточно чтобы все
+  главные миноры матрицы Гурвица были положительны.
+\end{theorem}
+\begin{theorem}[Необходимое усл. устойчивости системы]
+  \[
+    \forall j \true a_j > 0
+  \]
+\end{theorem}
+\begin{theorem}[Критерий Льенара-Шипара]
+  При выполнении необходимого условия устойчивости для устойчивых систем
+  необходимо и достаточно, чтобы все определители Гурвица с нечетными (четными)
+  номерами были положительны.
+\end{theorem}
+\begin{theorem}[Ляпунова об устойчивости по лин. приближению]
+  \[
+    \left\{\begin{aligned}
+      \dot{x}_j=f_j(x)
+    \end{aligned}\right. \qquad \dot{\vec{x}}=D\vec{x}+g(\vec{x})
+  \]
+  \begin{enumerate}
+    \item $\forall j \true \mu_j=Re \lambda_j<0 \iff \vec{x}=0$ - асимпт. уст. у нел. сис.
+    \item $\exists j: \: Re\lambda_j>0 \Rightarrow \vec{x}=0$ - неуст. у нел. сист.
+    \item $\forall j \true \mu_j=Re \lambda_j <0, \, j=1,\dots ,r, \, r<m$ и
+      $\exists j: \: \mu_j=Re \lambda_j=0, \, j=r+1,\dots ,m$ 
+      - критич., нельзя переходить к лин. прибл
+  \end{enumerate}
+\end{theorem}
+\subsection{Прямой метод Ляпунова}
+В $\Delta$ - окрестности $\vec{x}=0$ определяется непр. дфф. функция $V(\vec{x})$:
+\begin{itemize}
+  \item $V(\vec{0})=0$
+  \item $V(\vec{x})>0$ при $|\vec{x}|<\Delta$ и $|\vec{x}|\neq 0$
+\end{itemize}
+\[
+  \frac{dV(\vec{x})}{dt}=\sum_{j=1}^{m}\pd{V}{x_j}\dot{x}_j
+\]
+Если существует $V(x)$ и во всей окрестности $0$ выполняется:
+\begin{enumerate}
+  \item $\frac{dV}{dt}\le 0$ - уст.
+  \item $\frac{dV}{dt}<0$ - асимпт. уст.
+  \item $\frac{dV}{dt}>0$ - неуст
+\end{enumerate}
+
 \end{document}
 
