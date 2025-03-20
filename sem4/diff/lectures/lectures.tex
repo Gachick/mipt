@@ -1155,6 +1155,218 @@ $F(x)=0 \rightarrow\tilde{x}$ полож. равн., $\phi(t)=\tilde{x}$
       0 & 0 & \dots & 0 & f_n(a) \\
     \end{vmatrix}
   \]
+  %lecture 7
+  \begin{gather*}
+    b_1=u_1(x),\dots ,b_{n-1}=u_{n-1}(x), t=v(x)
+  \end{gather*}
+  $u_i(x) \in C'(O_{\epsilon}(a))$ по Т. о неявной функции
+  
+  $\forall g(t,b)$ решение $u_i(g(t,b))=b_i$
+
+  $\implies$ $u_i$ - первый интеграл
+
+  \[
+    t=0 \quad u_1(b)=b_1 \quad \implies \quad \nabla u_1=\begin{pmatrix}
+      1 \\ 0 \\ \vdots \\ 0
+      \end{pmatrix} \; \dots \; \nabla u_{n-1}=\begin{pmatrix}
+      0 \\ 0 \\ \vdots \\ 1
+    \end{pmatrix}
+  \]
+  Градиенты линейно независыми $\implies$ первые интегралы независимы.
 \end{proof}
+\begin{eg}
+  Дикритический узел $\rightarrow$ не существует нетрив. первый инт.
+  
+  Пусть существует нетрив. первй инт. $u(x)$, $u(x)\in C'$, 
+  что возможно по всем лучам только если $u \equiv C$.
+  Противоречие.
+\end{eg}
+\begin{corollary}
+  Пусть $u(x)$ - первый интеграл в некоторой окрестности точки $a$,
+  тогда $\exists G \in C': \: u(x)=G(u_1(x),\dots ,u_{n-1}(x))$.
+\end{corollary}
+\begin{proof} 
+  $(\nabla u, F(x))=0$, $(\nabla u_i, F(x))=0$ по критерию
+  \begin{gather*}
+    \left\{\begin{aligned}
+      &\pd{u}{x_1}f_1(x) + \dots + \pd{u}{x_n}f_n(x)=0 \\ 
+      &\pd{u_1}{x_1}f_1(x) + \dots + \pd{u_1}{x_n}f_n(x)=0 \\ 
+      &\dots \\
+      &\pd{u_{n-1}}{x_1}f_1(x) + \dots + \pd{u_{n-1}}{x_n}f_n(x)=0 \\ 
+    \end{aligned}\right. \\
+  \end{gather*}
+  $F(a) \neq 0$ значит $\exists$ окрестность $F(x)\neq 0$ 
+  \begin{gather*}
+    BF(x)=0
+  \end{gather*}
+  $|B|=0$ в этой окрестности $\implies$ $\nabla u, \nabla u_1,\dots , \nabla u_{n-1}$
+  - лин. зав. в этой окр.
+
+  При этом $\nabla u_i \neq 0$ из теоремы $\implies$ $\exists$ окрестность $\nabla u_i \neq 0$
+
+  По теореме о достаточном условии зависимости 
+  $u, u_1, \dots , u_{n-1}$ зависимы в некоторой окрестности точки $a$.
+
+  $\implies \ \exists G: \: u=G(u_1,\dots ,u_{n-1})$
+\end{proof}
+
+\subsection{Применение первых интегралов}
+\begin{enumerate}
+  \item Понижение порядка системы
+    \[
+      u_1(x)=C_1 \qquad \pd{u_1}{x_k}\neq0
+    \]
+    по Т. о неявной функции $x_k=h(x_1, \dots, x_{k-1}, x_{k+1}, \dots x_n, C_1)$,
+    подставляем в систему
+  \item Изображение фазовых траекторий
+
+    \incfig{l7_phase}
+    Решение лежит на поверхности уровня любого из своих первых инт.
+  \item Законы сохранения
+\end{enumerate}
+
+\subsection{Методы нахождения первых интегралов}
+Выделение интегрируемых комбинаций
+\begin{gather*}
+  \dot{x}=F(x) \rightarrow \text{симметричный вид} \\ 
+  \dot{x}_i=f_i(x) \\ 
+  dt=\frac{dx_1}{f_1}=\frac{dx_2}{f_2}=\dots =\frac{dx_n}{f_n}
+\end{gather*}
+Поиск интегрируемых комбинаций:
+\begin{enumerate}
+  \item Свойство пропорций - сложный-простой
+    \begin{gather*}
+      0\neq \gamma = \frac{a_1}{b_1}=\frac{a_2}{b_2}=\dots =\frac{a_n}{b_n} \qquad b_i\neq 0\\ 
+      \frac{k_1a_1+\dots +k_na_n}{k_1b_1+\dots + k_nb_n}=\gamma=\frac{a_i}{b_i}
+    \end{gather*}
+    \hr
+    \begin{proof}
+      \phantom{.}
+
+      \begin{enumerate}
+        \item знам $\neq0$
+          \begin{gather*}
+            k_1a_1+\dots +k_na_n=\gamma(k_1b_1+\dots +k_nb_n) \\ 
+            k_1(a_1-\gamma b_1) + \dots +k_n(a_n-\gamma b_n) = 0
+          \end{gather*}
+        \item знам $=0$
+          \begin{gather*}
+            k_1b_1+\dots +k_nb_n=0 \\ 
+            b_1=\frac{a_1}{\gamma} \dots b_n=\frac{a_n}{\gamma} \\ 
+            k_1a_1 + \dots + k_na_n = 0 \\ 
+            b_i=0 \rightarrow a_i=0
+          \end{gather*}
+      \end{enumerate}
+    \end{proof}
+    \hr
+  \item простой-сложный - исключаем переменные, успользуя уже найденные первые инт.
+\end{enumerate}
+
+\section{Уравнения в частных производных первого порядка}
+\[
+  F(x_1, x_2,\dots ,x_n, u, \pd{u}{x_1},\dots ,\pd{u}{x_n})=0
+\]
+\begin{definition}[Решение]
+  $u(x) \in C'(D)$, $D \subset \R^{n}$, после подстановки $\equiv 0$ в $D$.
+\end{definition}
+\subsection{Классификация}
+\begin{enumerate}
+  \item Линейные уравнения
+    \[
+      \sum_{i=1}^{n}a_i(x)\pd{u}{x_i}+b(x)u=f(x)
+    \]
+  \item Квазилинейные уравнения
+    \[
+      \sum_{i=1}^{n}a_i(x,u)\pd{u}{x_i}=b(x,u)
+    \]
+  \item Нелинейные
+\end{enumerate}
+\begin{remark}
+  Внутри класса линейных выделим класс линейных однородных:
+  \[
+    \sum_{i=1}^{kn}a_i(x)\pd{u}{x_i}=0
+  \]
+\end{remark}
+
+\subsection{Линейные однородные уравнения}
+\[
+  \sum_{i=1}^{n}a_i(x)\pd{u}{x_i}=0
+\]
+Пусть $a_i(x) \in C'(D)$, $D\subset \R^{n}$ - область,
+$\sum_{i=1}^{n}a_i^{2}(x) \neq 0$ в $D$.
+\begin{definition}[Характеристичекая система]
+\[
+  \left\{\begin{aligned}
+    & \dot{x_1} = a_1(x) \\ 
+    & \dots  \\ 
+    & \dot{x_n} = a_n(x)
+  \end{aligned}\right. 
+\]
+\end{definition}
+Не положение равновесия по усл. $\implies$ можем найти
+$u_1, \dots , u_{n-1}$ - первые инт. (независ.) в окр точки из $D$.
+\begin{definition}
+  Фазовые траектории этой системы называются характеристиками.
+\end{definition}
+\begin{theorem}
+  Пусть $\tilde{x}\in D$, тогда $\exists$ некоторая окрестность этой точки,
+  в которой любое решение лин. однородного. уравн. имеет вид
+  \[
+    u(x)=G(u_1(x),\dots ,u_{n-1}(x)) \qquad G \in C'
+  \]
+\end{theorem}
+\begin{proof}
+  $\tilde{x}$ - не явл. пол. равн $\rightarrow$ $\exists$ окрест.,
+  в которой $\exists$ независ. $u_1,\dots ,u_{n-1}$.
+
+  $\forall$ первый. инт. $u(x)=G(u_1, \dots , u_{n-1})$, $G\in C'$ (по следствию)
+
+  Критерий первого инт. $(\nabla u, F)=0$
+  \[
+    \sum_{i=1}^{n}a_i(x)\pd{u}{x_i}=0 \iff u(x)
+  \]
+  $u(x)=G(u_1,\dots ,u_{n-1})$ - общее решение лин. однородного ур. в ч.п.
+\end{proof}
+\subsection{Квазилинейные уравнения}
+\[
+  \sum_{i=1}^{n}a_i(x,u)\pd{u}{x_i}=b(x,u)
+\]
+$a_i(x,u),b(x,u)\in C'(\tilde{D})$, $\tilde{D}\subset \R^{n+1}$,
+$\sum_{i=1}^{n}a_i^{2}(x,y)\neq 0$ в $\tilde{D}$.
+\[
+  \left\{\begin{aligned}
+    & \dot{x_1}=a_1(x,u) \\ 
+    & \dots  \\
+    & \dot{x_n}=a_n(x,u) \\ 
+    & \dot{u}=b(x,u)
+  \end{aligned}\right. \qquad \text{харак. сист.}
+\]
+Фазовые трактории этой сист. называются характеристиками.
+
+Вводим вспомогательное лин. ур.
+\[
+  \sum_{i=1}^{n}a_i(x,u)\pd{W}{x_i}+b(x,u)\pd{W}{u}=0
+\]
+$W(x,u)=G(W_1(x,u),\dots ,W_n(x,u))$ - общее реш, $G\in C'$
+\begin{theorem}
+  Пусть в некоторой т. из $\tilde{D}$ $W(x,u)=0$ и $\pd{W}{u}\neq 0$,
+  тогда уравнение $W(x,u) =0$ в некоторой окрестности этой точки
+  определяет решение квазилинейного уравнения.
+\end{theorem}
+\begin{proof}
+  $W(x,u)=0$, $W\in C'$, $W(x,u)=0$, $\pd{W}{u}\neq0$
+
+  $\implies$ по Т. о неявной функции $u(x)\in C'(D)$
+  \begin{gather*}
+    \pd{W}{x_i}+\pd{W}{u}\pd{u}{x_i}=0 \rightarrow \pd{u}{x_i}=-\cfrac{\pd{W}{x_i}}{\pd{W}{u}}\\ 
+    \sum_{i=1}^{n}a_i(x,u)(-\cfrac{\pd{W}{x_i}}{\pd{W}{u}})=b(x,u) \\ 
+    \sum_{i=1}^{n}a_i(x,u)\pd{W}{x_i}+b(x,u)\pd{W}{u}=0
+  \end{gather*}
+\end{proof}
+\begin{definition}[Общий интеграл квазилинейного ур.]
+  \[
+  G(W_1,\dots ,W_{n})=0 \qquad G\in C' \qquad \pd{G}{u}\neq 0
+\]
+\end{definition}
 
 \end{document}
