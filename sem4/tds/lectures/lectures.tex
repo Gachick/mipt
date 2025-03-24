@@ -794,5 +794,130 @@ $\implies$ $\lambda_j$ имеет $m$ решений, если кратные к
   \item $\frac{dV}{dt}>0$ - неуст
 \end{enumerate}
 
+% lecture 8 
+
+\section{Малые колебания консервативных систем}
+\begin{gather*}
+  \dot{\vec{x}}=D\vec{x} \\ 
+  \frac{d}{dt}(\pd{L}{\dot{q}_i})-\pd{L}{q_i}=0 \qquad L = T-\Pi \\ 
+  T=\frac{1}{2}\dot{q}^{T}A\dot{q} \qquad \Pi=\frac{1}{2}q^{T}Cq
+\end{gather*}
+Кинетческая скорость может зависить не только от скоростей, но и от координат 
+(полагаем $q=0$ - устойчивое положение равновесия):
+\begin{gather*}
+  T(q, \dot{q})=\frac{1}{2}\sum_{i,k=1}^{n}a_{ik}(q)\dot{q}_i\dot{q}_k
+  = \frac{1}{2}\sum_{i,k=1}^{n}a_{ik}(0)\dot{q}_i\dot{q}_k + \dots \\ 
+  \Pi(q) = \underbrace{\Pi(0)}_{0} + \underbrace{\sum_{i=1}^{n}\pd{\Pi}{q_i}\Big|_{q=0} q_i}_{0}
+  + \frac{1}{2}\sum_{i,k=1}^{n}\frac{\partial^{2}\Pi}{\partial q_i \partial q_k}\Big|_{q=0} q_iq_k + \dots 
+\end{gather*}
+Разложив в ряды получаем $n$ уравнений:
+\begin{gather*}
+  \left\{\begin{aligned}
+    \sum_{k=1}^{n}(a_{ik}\ddot q_k + c_{ik}q_k)=0
+  \end{aligned}\right. \\ 
+  A\ddot q + Cq=0
+\end{gather*}
+- основное уравнение малых колебаний, ищем решения в виде:
+\begin{gather*}
+  q=\vec{u}\sin (\omega t + \alpha) \qquad \rho=\omega^{2} \\ 
+  (C-\rho A)\vec{u}=0
+\end{gather*}
+Тривиальное решение $\vec{u}=0$ - нахождение в положении равновесия.
+\begin{gather*}
+  det(C-\rho A)=0 \\ 
+  a_0 \rho^{n}+a_1 \rho^{n-1} + \dots + a_n=0
+\end{gather*}
+- вековое уравнение, из него получаем $n$ корней для $\rho$.
+
+Подставляя в наше уравнение получаем общее решение:
+\[
+  q=\sum_{i=1}^{n}C_i\vec{u}_i \sin (\sqrt{\rho_i}t+\alpha_i)
+\]
+Если $\rho_k$ кратности $s$, если $rang(C-\rho A)=n-s$,
+можем найти $s$ амплитудных векторов $\vec{u}$.
+
+В нашем случае это условие выполняется так как обе матрицы можно
+привести к диагональному виду (одну даже к единичному):
+\begin{gather*}
+  q=U \theta \qquad \dot{q}=0U\dot{\theta} \\ 
+  T=\frac{1}{2}\sum_{i=1}^{n}\dot{\theta}_i^{2} \qquad \Pi = \frac{1}{2}\sum_{i=1}^{n}r_i\theta_i \\ 
+  \left\{\begin{aligned}
+    \ddot \theta_i + \omega_i\theta_i=0
+  \end{aligned}\right.
+\end{gather*}
+
+Матрица $U$ состоит из нормированных амплитудных вект.
+$U=(u_1 \; \dots \; u_n)$, $u_i^{T}Au_k=\delta_{ik}$ ($\delta_{ik}$ - символ Кронекера).
+
+\begin{eg}
+  \incfig{l8_eg1}
+
+  \begin{gather*}
+    \Pi=\frac{c}{2}q_1^{2}+\frac{c}{2}(q_2-q_1)+\frac{c}{2}q_2^{2}= \frac{1}{2}(2cq_1^{2}-2cq_1q_2+2cq_2^{2})
+    \qquad C = \begin{pmatrix}
+      2c & -c \\ 
+      -c & 2c
+    \end{pmatrix} \\ 
+    T=\frac{m}{2}\dot{q}_1^{2} + \frac{m}{2}\dot{q}_2^{2}+\frac{m}{4}\dot{q}_1^{2}+\frac{m}{4}\dot{q}_2^{2}=\frac{1}{2}(\frac{3m}{2}\dot{q}_1^{2}+\frac{3m}{2}\dot{q}_2^{2})
+    \qquad A = \begin{pmatrix}
+      \frac{3m}{2} & 0 \\ 
+      0 & \frac{3m}{2}
+    \end{pmatrix} \\ 
+    det(C-\rho A)=0 \\ 
+    det\begin{pmatrix}
+      2c-\frac{3m}{2}\rho & -c \\ 
+      -c & 2c-\frac{3m}{2}\rho
+    \end{pmatrix}=0 \; \implies \; \rho_1=\frac{2c}{3m} \quad \rho_2=\frac{2c}{m} \\ 
+    u_1=\begin{pmatrix}
+      u_{11} \\ u_{21} \\ \vdots \\ u_{n1}
+    \end{pmatrix} \qquad \begin{pmatrix}
+      c & -c \\ 
+      -c & c
+    \end{pmatrix} \begin{pmatrix}
+      u_{11} \\ u_{21}
+    \end{pmatrix} = 0 \\ 
+    cu_{11} - c u_{21} =0 \qquad u_1=\begin{pmatrix}
+      1 \\ 1
+    \end{pmatrix}
+  \end{gather*}
+  Аналогично получаем $u_2=(1 \ \ -1)^{T}$. 
+
+  Общее решение:
+  \[
+    \begin{pmatrix}
+      q_1 \\ q_2
+    \end{pmatrix} = C_1 \begin{pmatrix}
+      1 \\ 1
+    \end{pmatrix} \sin(\sqrt{\frac{2c}{3m}}t+\alpha_1) + C_2 \begin{pmatrix}
+      1 \\ -1
+    \end{pmatrix} \sin(\sqrt{\frac{2c}{m}}t+\alpha_2)
+  \]
+  \begin{gather*}
+    \tilde{u}_i^{T}A\tilde{u}_i=1 \qquad \tilde{u}_i=k_i u_i \\ 
+    \tilde{u}_1=\frac{1}{\sqrt{3m}}\begin{pmatrix}
+      1 \\ 1
+    \end{pmatrix} \qquad
+    \tilde{u}_2=\frac{1}{\sqrt{3m}}\begin{pmatrix}
+      1 \\ -1
+    \end{pmatrix} \qquad
+    U=\frac{1}{\sqrt{3m}}\begin{pmatrix}
+      1 & 1 \\ 
+      1 & -1
+    \end{pmatrix} \\ 
+    \left\{\begin{aligned}
+      q_1=\frac{1}{\sqrt{3m}}(\theta_1+\theta_2) \\ 
+      q_2=\frac{1}{\sqrt{3m}}(\theta_1-\theta_2)
+    \end{aligned}\right. \qquad \left\{\begin{aligned}
+      \ddot \theta_1 + \frac{2c}{3m}\theta_1 =0 \\ 
+      \ddot \theta_2 + \frac{2c}{m}\theta_2 =0
+    \end{aligned}\right.
+  \end{gather*}
+
+  \incfig{l8_eg12}
+
+  Если $\exists$ целые $k_1, k_2: \; k1_1\omega_1=k_2\omega_2$ - частотые соизмеримы,
+  внутри тора есть множество схожих траекторий, иначе весь тор покрыт одной траекторией.
+\end{eg}
+
 \end{document}
 
