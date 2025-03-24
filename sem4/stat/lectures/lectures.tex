@@ -1164,5 +1164,368 @@ $H_0:a=2$, $H_1:a>2$
 Пусть $H_0$ - верна. Событие $A$. $P(A|H_0)$ - мала. Событие $A$ наблюдаемо.
 Отвергаем $H_0$, иначе нет оснований отвергнуть $H_0$.
 
+% lecture 8 
+
+\section{Критерии согласия}
+\subsection{Критерий Пирсона}
+Вероятностная модель, $\vec{x}_n$
+
+$H_0: \xi \sim F(x)$ - простая гипотеза
+
+$H_1: \bar{H_0}$ - сложная 
+
+Полная группа событий: $A_1\dots A_k$ - конечная группа событий, $A_1+\dots + A_n=\Omega$,
+$A_iA_j = \emptyset \ i\neq j$, $P(A_i)>0$
+
+$H_0: P_i=P(A_i)$, $\tilde{P_i}=\nu_i=\frac{m_i}{n}$
+\begin{gather*}
+  \Delta = n \sum_{i=1}^{k}\frac{(p_i - \nu)^{2}}{p_i} \\
+  \Delta = n \sum_{i=1}^{k}\frac{(p_i - \frac{m_i}{n})^{2}}{p_i}
+  = \sum_{i=1}^{k}\frac{(np_i - m_i)^{2}}{np_i} \\
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна, то $\Delta \rightsquigarrow \chi^{2}(k-1)$
+\end{theorem}
+\begin{remark}
+  Нормальная аппроксимация при $n \ge 50$, $ np_i \ge 5$
+  (можно мухлевать: $np_i \ge 1$ и в $20\%$ случаев можем разрешить $np_i < 5$)
+\end{remark}
+\begin{eg}
+  $H_0:$ красные автомобили штрафуют в 2 раза чаще остальных
+
+  $H_1: \bar{H_0}$
+
+  Выборка: $150$ штрафов, $90$ красные, $A_{red}$, $A_{other}$
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline
+   & $A_{r}$ & $A_o$ \\ 
+  \hline
+  $p_i$ & $2/3$ & $1/3$ \\
+  \hline
+  $np_i$ & $100$ & $50$ \\
+  \hline
+  $np_i$ & $90$ & $60$ \\
+  \hline
+\end{tabular}
+\end{center}
+\begin{gather*}
+  \tilde{\Delta} = \frac{(10 0 -90)^{2}}{10 0} + \frac{(50-60)^{2}}{50}=3
+\end{gather*}
+$\alpha$ - уровень значимости, $\alpha=.1; \boxed{.05}; .01$
+
+$H_0: \Delta \rightsquigarrow \chi^{2}(1)$, $k=2$
+
+p-value $= P(\Delta \ge \tilde{\Delta}| H_0)=\int_{3}^{\infty}q(t)dt=0.083$
+
+Нет веских оснований отвергнуть $H_0$.
+
+\hr
+\begin{remark}
+  Правила использования p-value:
+  \begin{enumerate}
+    \item Если p-value $\le \alpha$, то $H_0$ отвергается, результаты значимы,
+      p-value - мера значимости
+    \item Если p-value $>\alpha$, то нет оснований отвергать $H_0$,
+      результаты незначимы.
+
+      Либо гипотеза верна (отклонения объясняются случайными факторами),
+      либо критерий недостаточно мощный.
+  \end{enumerate}
+  p-value не является вероятностью $H_0$ и не является вероятностью случайных факторов!
+\end{remark}
+\hr
+
+\begin{eg}[Закон Бенфорда]
+  В больших массивах данных, полученных ествественным путём, следуют определённому распределению.
+  \[
+    P_i = \log_{10}(1+\frac{1}{d_i}) \qquad d_i=1,\dots ,9
+  \]
+  Рассмотрим числа Фибоначи (первые 100 штпук)
+\end{eg}
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c| c | c | c |}
+  \hline
+  & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+  \hline
+  $m_i$ & 29 & 18 & 13 & 9 & 8 & 6 & 5 & 7 & 5 \\
+  \hline
+  $p_i$ & 0.3 & 0.18 & 0.12 & 0.1 & 0.08 & 0.07 & 0.06 & 0.05 & 0.04 \\ 
+  \hline
+  $np_i$ & 3 & 18 & 12 & 10 & 8 & 7 & 6 & 5 & 4 \\ 
+  \hline
+\end{tabular}
+\end{center}
+8 и 9 объединяем чтобы попадать под условия приминимости
+\begin{gather*}
+  \tilde{\Delta} = \frac{(30-29)^{2}}{30} + \dots + \frac{(9-12)^{2}}{9}=1.53 \qquad \Delta \rightsquigarrow \chi^{2}(7) \\ 
+  \text{p-value}=P(\Delta \ge \tilde{\Delta} | H_0)=\int_{1.53}^{\infty}q(t)dt=0.981
+\end{gather*}
+Нет оснований отвергать $H_0$.
+\end{eg}
+
+\subsection{Критерий Колмогорова (непр. распр.)}
+$H_0:\xi \sim F(x)$, $H_1:\bar{H_0}$, $\vec{x}_n$
+\[
+  \Delta = \sqrt{n}\sup \limits_{x\in\R} |\tilde{F}(x)-F(x)|
+\]
+- где $\tilde{F}$ - империческая функция распределения.
+\begin{theorem}
+  Если $H_0$ верна, то $\Delta \rightsquigarrow K(x)$
+  $K(x)$ - функ. распределения Колмогорова
+  \[
+    K(x)=P(\Delta<x)=1+2\sum_{k=1}^{\infty}(-1)^{k}e^{-2k^{2}x^{2}}\{(0, \infty)\}
+  \]
+\end{theorem}
+
+\incfig{l8_kolm}
+\[
+  \sup \limits_{\R}|\tilde{F}(x)-F(x)|=
+  \max \limits_{i=1,\dots ,n} \max(|\tilde{F}(x_i-0)-F(x_i)|,|\tilde{F}(x_i+0)-F(x_i)| )
+\]
+\begin{eg}
+  $H_0:\xi \sim R(0,1)$, $H_1:\bar{H_0}$, $\vec{x}_n=(0.2; 0.5; 0.8; 0.9)$
+  \begin{gather*}
+    \tilde{\Delta} = \sqrt{4} \max (0.2;0,25; 0.3; 0.15)=2*0.3=0.6
+  \end{gather*}
+  $H_0: \Delta \rightsquigarrow K(x)$
+
+  p-value $=P(\Delta \ge \tilde{\Delta} | H_0)=1-K(\tilde{\Delta})=-2\sum_{k=1}^{\infty}(-1)^{j}e^{-2k^{2}\tilde{\Delta}^{2}}=0.8642$
+
+  4 элемента - вообще беда, используем бутстрап, так как считаем в вероятности,
+  что верна $H_0$ по хорошему бутстрап параметрический
+  \begin{itemize}
+    \item $x_4^{*} \rightarrow \Delta_1^{*}=\sqrt{n}\sup|\tilde{F}^{*}(x)-F(x)|$
+    \item ...
+    \item $x_4^{*} \rightarrow \Delta_{N}^{*}=\sqrt{n}\sup|\tilde{F}^{*}(x)-F(x)|$
+  \end{itemize}
+  $N=10 0 0 0-50 0 0 0$, вариационный ряд $\Delta_{(1)}^{*}\dots \Delta_{(N)}^{*}$
+
+  p-value $=\frac{K}{N}$, $K$ - число $\Delta^{*}_{(i)} \ge \tilde{\Delta}$
+
+  p-value $=0.47$
+\end{eg}
+
+\subsection{Критерий Пирсона для слож. гипотезы}
+$H_0: \xi \sim F(x, \vec{\theta})$, $\vec{\theta} \in \Theta \subset \R^{m}$,
+$H_1:\bar{H_0}$, $\vec{x}_n$, $A_1\dots A_k$ - полная группа событий
+\begin{gather*}
+  P_i(\vec{\theta})=P(A_i) \qquad P_i=\nu_i \\ 
+  \Delta=\sum_{i=1}^{n}\frac{(np_i(\vec{\theta})-m_i)^{2}}{np_i(\vec{\theta})}
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верная и $\tilde{\vec{\theta}}$ есть ОМПГ,
+  то $\Delta \rightsquigarrow  \chi^{2}(k-1-m)$
+\end{theorem}
+
+\begin{eg}
+  $H_0: \xi \sim R(0,\theta)$, $\theta > 0$, $H_1: \bar{H_0}$
+\begin{center}
+  \begin{tabular}{| c | c | c | c| c| c|}
+    \hline
+    & $[0,1)$ &$[1,2)$ &$[2,3)$ &$[3,4)$ &$[4,\infty)$ \\ 
+    \hline
+    $m_1$ & 25 & 10 & 15 & 30 & 20 \\
+    \hline
+    $p_i$ & 1/5 & 1/5 & 1/5 & 1/5 & 1/5 \\ 
+    \hline
+    $np_i$ & 20 & 20 & 20 & 20 & 20 \\ 
+    \hline
+  \end{tabular}
+\end{center}
+\begin{gather*}
+  P_i=\int_{a_i}^{b_i}\frac{1}{\theta}dx \qquad P_1=P_2=P_3=P_4=\frac{1}{\theta} \\
+  P_5 = \int_{4}^{\infty}p(x,\theta)dx=\int_{4}^{\theta}\frac{1}{\theta}dx=\frac{\theta-4}{\theta} \\ 
+  L(\theta)=\left(\frac{1}{\theta}\right)^{25+10+15+30}\left(\frac{\theta-4}{\theta}\right)^{20} \to \max \\ 
+  \ln L = -80 \ln \theta + 20 \ln(\theta-4) - 20 \ln \theta= -100 \ln \theta + 20 \ln (\theta-4) \to \max \\ 
+  (\ln L)'=-\frac{10 0}{\theta}+\frac{20}{\theta-4}=0 \qquad \tilde{\theta}=5
+\end{gather*}
+\begin{gather*}
+  \Delta \rightsquigarrow \chi^{2}(5-1-1)=\chi^{2}(3) \\ 
+  \tilde{\Delta}=\frac{(25-20)^{2}}{20} + \dots + \frac{(20-20)^{2}}{20}=12.5 \\ 
+  \text{p-value}=P(\Delta \ge \tilde{\Delta}|H_0)=\int_{12.5}^{\infty}q(t)dt=0.0 0585
+\end{gather*}
+Отвергаем $H_0$.
+\end{eg}
+\begin{eg}
+  $H_0:$ распределение Эрланга $\xi \sim p(x)=\frac{1}{\lambda^{2}}x e^{-x\ln x}\{(0, +\infty)\}$,
+  $\lambda > 0$, $H_1:\bar{H_0}$
+  \begin{center}
+  \begin{tabular}{| c | c | c | c | c | c | c |}
+    \hline
+    & $[0;2.5)$ &$[2.5; 5)$ &$[5; 7.5)$ &$[7.5;10)$ &$[10; 12.5)$ & $[12.5; 15)$ \\ 
+    \hline
+    $m_i$ & 12 & 17 & 12 & 4 & 3 & 2\\
+    \hline
+    $np_i$ & 12.9 & 16.4 & 10.4 & 5.5 & 2.6 & 2.2 \\ 
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{gather*}
+    \int_{a}^{b}p(x)dx=\frac{a}{\lambda}e^{-a/\lambda}-\frac{b}{\lambda}e^{-b/\lambda}+e^{-a/\lambda}-e^{-b/\lambda} \\ 
+    P_1=\int_{0}^{2.5}p(x)dx \qquad \dots \qquad P_6=\int_{12.5}^{\infty}p(x)dx \\ 
+    L(\lambda)=P_1^{12}\dots P_6^{2} \to \max
+  \end{gather*}
+  Считаем экстремум численно.
+  \begin{gather*}
+    \tilde{\lambda}=2.531
+  \end{gather*}
+  После объединения и пересчёта:
+  \begin{gather*}
+    \tilde{\lambda}=2.542 \qquad \tilde{\Delta}=0.756 \\ 
+    \text{p-value}=P(\Delta \ge \tilde{\Delta}|H_0)=0.86
+  \end{gather*}
+\end{eg}
+
+\subsection{Критерий Колмогорова для сл. гип. (непр. распр.)}
+$H_0: \xi \sim F(x, \vec{\theta})$, $\vec{\theta} \in \Theta \subset \R^{m}$,
+$H_1:\bar{H_0}$, $\vec{x}_n$, $A_1\dots A_k$ - полная группа событий
+\begin{gather*}
+  \Delta = \sqrt{n}\sup \limits_{x\in \R}|\tilde{F}(x)-F(x, \vec{\theta})|
+\end{gather*}
+Параметрический бутстрап: $\vec{x}_n \rightarrow \tilde{\vec{\theta}}$ - сост. оценка (любой метод)
+\begin{gather*}
+  \tilde{\Delta} = \sqrt{n}\sup \limits_{x\in \R}|\tilde{F}(x)-F(x, \tilde{\vec{\theta}})|
+\end{gather*}
+$\xi \sim F(x, \tilde{\vec{\theta}})$, $N=10 0 0 0 - 50 0 0 0$
+\begin{itemize}
+  \item $\vec{x}_n^{*} \rightarrow \tilde{\vec{\theta}}^{*} \rightarrow \Delta_1^{*}=\sqrt{n}\sup \limits_{x\in\R}|\tilde{F}^{*}(x)-F(x, \tilde{\vec{\theta}})|$
+  \item ...
+\end{itemize}
+Вариационный ряд $\Delta_{(1)}^{*}\dots \Delta_{(N)}^{*}$, p-value $=\frac{K}{N}$,
+$K$ - число элементов $\Delta_{(i)}^{*} \ge \tilde{\Delta}$
+\begin{eg}[Эрланг]
+  \[
+    \tilde{\Delta}=0.3982 \qquad \text{p-value}=0.9284
+  \]
+\end{eg}
+
+\subsection{Проверка гипотезы однородности}
+$A_1\dots A_{k}$ - полная группа
+\begin{itemize}
+  \item 1 выборка $m_{11}\dots m_{1k}$
+  \item ...
+  \item l выборка $m_{l1}\dots m_{lk}$
+\end{itemize}
+$H_0:$ все выборки из одного распределения, $H_1:\bar{H_0}$
+\begin{gather*}
+  n = n_1 + \dots  + n_l \qquad \nu_{j}=\frac{\sum_{i=1}^{l}m_ij}{n} \\ 
+  \Delta_1=\sum_{j=1}^{k}\frac{(m_{1j}-n_1\nu_j)^{2}}{n_1\nu_j} \qquad
+  \Delta_s=\sum_{j=s}^{k}\frac{(m_{sj}-n_s\nu_j)^{2}}{n_s\nu_j} \\ 
+  \Delta = \Delta_1+ \dots + \Delta_l
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна, то $\Delta \rightsquigarrow \chi^{x}((k-1)(l-1))$
+\end{theorem}
+
+\begin{eg}[Коллоквиум 2023]
+  \phantom{.}
+
+  \begin{center}
+  \begin{tabular}{| c | c | c | c | c | c |}
+    \hline
+    & 2 & 3 & 4 & 5 & \\
+    \hline
+    1гр & 0 & 1 & 10 & 5 & 16 \\ 
+    \hline
+    2гр & 1 & 0 & 9 & 1 & 11 \\ 
+    \hline
+    3гр & 2 & 4 & 6 & 4 & 16 \\ 
+    \hline
+    4гр & 1 & 0 & 8 & 6 & 15 \\ 
+    \hline
+        & 4 & 5 & 33 & 16 & \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{center}
+  \begin{tabular}{| c | c |}
+    \hline
+    2 и 5 & 3 и 4 \\ 
+    \hline
+    5 & 11 \\
+    \hline
+    2 & 9 \\ 
+    \hline
+    6 & 10 \\
+    \hline
+    7 & 8 \\
+    \hline
+    $\frac{20}{58}$ & $\frac{38}{58}$ \\
+    \hline
+  \end{tabular}
+  \end{center}
+  \begin{gather*}
+    \Delta_1=0.074 \qquad \Delta_2=1.294 \qquad \Delta_3=0.064 \qquad \Delta_4=0.986 \\ 
+    \tilde{\Delta}=2.418 \qquad \chi^{2}(1 \cdot 3) \\ 
+    \text{p-value}=P(\Delta \ge \tilde{\Delta}|H_0)=0.49
+  \end{gather*}
+\end{eg}
+
+\subsection{Проверка гипотезы независимости}
+$(\xi, \eta)$, $H_0:$ $\xi$ и $\eta$ - независимы, $H_1:\bar{H_0}$, $A_i$ и $B_j$ - полные группы событий
+\begin{center}
+  \begin{tabular}{| c | c | c | c |}
+    \hline 
+    & $A_1$ & $\dots $ & $A_k$ \\ 
+    \hline 
+    $B_1$ & $m_{11}$ & $\dots $ & $m_{1k}$ \\ 
+    \hline 
+    $\vdots$ &$\vdots$ &$\vdots$ &$\vdots$ \\
+    \hline 
+    $B_l$ & $m_{l1}$ & $\dots $ & $m_{lk}$ \\ 
+    \hline 
+  \end{tabular}
+\end{center}
+\begin{gather*}
+  P_1 = \frac{m_{11}+\dots +m_{1k}}{n} \qquad q_1 = \frac{m_{11}+\dots +m_{l1}}{n} \\ 
+  \Delta = \sum_{i,j}^{}\frac{(m_{ij}-np_iq_j)^{2}}{np_iq_j}
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна, то $\Delta \rightsquigarrow \chi^{2}((k-1)(l-1))$.
+\end{theorem}
+\begin{eg}
+  $n=246$, зависимость успеваемости от родного города
+  \begin{center}
+    \begin{tabular}{| c | c | c | c | c |}
+      \hline 
+      & Москва & Подмоск & Остальное & \\
+      \hline 
+      2 & 13 & 10 & 17 & $\frac{40}{246}$ \\ 
+      \hline 
+      3 & 35 & 38 & 19 & $\frac{92}{246}$ \\ 
+      \hline 
+      4 & 21 & 21 & 26 & $\frac{68}{246}$ \\ 
+      \hline 
+      5 & 16 & 11 & 19 & $\frac{46}{246}$ \\ 
+      \hline 
+        & $\frac{85}{246}$ & $\frac{80}{246}$ & $\frac{81}{246}$ & \\ 
+      \hline
+    \end{tabular}
+  \end{center}
+  \begin{gather*}
+    \tilde{\Delta}=11.05 \qquad \text{p-value}=\int_{11.05}^{\infty}q(t)dt=0.087
+  \end{gather*}
+  Нет оснований отвергать $H_0$.
+\end{eg}
+\subsection{Проверка гипотезы случайности}
+$H_0:$ элементы выборки независимы и одинакого распределены, $H_1:\bar{H_0}$,
+$I_n$ - число инверсий в выборке
+\begin{theorem}
+  Если $H_0$ верно, то
+\[
+  \Delta=\frac{I_n-\frac{n(n-1)}{4}}{\sqrt{\frac{n^{3}}{36}}} \rightsquigarrow N(0,1)
+\]
+\end{theorem}
+\begin{eg}
+  $n=10$, $\vec{x}_n=(4, 10, 8, 8, 6, 7, 7, 9, 8, 9)$
+  \begin{gather*}
+    I_n=0+8+3+3+\dots + 0 = 15 \\ 
+    \tilde{\Delta}=\frac{15-\frac{10\cdot 9}{4}}{\sqrt{\frac{10^3}{36}}}=-1.42 \\ 
+    \text{p-value}=P(|\Delta| \ge |\tilde{\Delta}| \big| H_0)=2P(\Delta \ge |\tilde{\Delta}| \big| H_0)
+    = 2 \int_{ 1.42}^{\infty}q(t)dt=0.155
+  \end{gather*}
+  Нет оснований отвергать $H_0$.
+\end{eg}
 
 \end{document}
