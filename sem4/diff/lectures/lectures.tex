@@ -1369,4 +1369,197 @@ $W(x,u)=G(W_1(x,u),\dots ,W_n(x,u))$ - общее реш, $G\in C'$
 \]
 \end{definition}
 
+% lecture 9
+
+\section{Задача Коши для линейного уравнения в ч. п. (n=2)}
+\begin{gather*}
+  a(x,y)\pd{u}{x}+b(x,y)\pd{u}{y}=0 \\ 
+  a,b \in C'(D) \qquad D\subset \R^{n} \qquad a^{2}+b^{2}\neq 0 \ \text{в} \ D
+\end{gather*}
+
+\incfig{l9_k}
+
+\begin{definition}[Задача Коши]
+\phantom{.}
+
+$\gamma: x=\phi(s), y=\psi(s)$, $s\in(s_1,s_2)$, гладкая
+
+$\phi,\psi \in C'(s_1,s_2)$, $\phi^{2}+\psi^{2}\neq 0$
+
+$u|_{\gamma}=u_0(s)$, $u_0\in C'(s_1,s_2)$, $\Gamma$ - гладкая кривая
+
+  Найти решения $u(x,y)$, проходящие через $\Gamma$.
+\end{definition}
+
+\begin{theorem}[Существование и единственность решения задачи Коши]
+  \phantom{.}
+
+  Пусть кривая $\gamma$ не касается характеристик уравнения,
+  тогда Решение задачи Коши существует и единственно в некоторой
+  окрестности кривой $\gamma$.
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \dot{x}=a(x,y) \qquad x(0)=\phi(s) \\ 
+    \dot{y}=b(x,y) \qquad y(0)=\psi(s)
+  \end{gather*}
+
+  \incfig{l9_kp}
+
+  $\exists ! \; x=x(t,s), y=y(t,s)$, по теореме о дифф. решения по параметру
+  $x(t,s)$, $y(t,s)$ непр. дифф. по $s$, $u=u_0(s)$, получаем параметрически
+  заданную поверхность
+
+  По построению поверхности на решении $u$ сохраняет своё значение
+  \[
+    J=\begin{vmatrix}
+      \pd{x}{t} & \pd{x}{s} \\ 
+      \pd{y}{t} & \pd{y}{s}
+    \end{vmatrix}\Big|_{\gamma} = \begin{vmatrix}
+      a(x,y) & \phi' \\ 
+      b(x,y) & \psi'
+    \end{vmatrix} \neq 0
+  \] 
+  Первый столбец - касательная к характеристике, второй - касательная к $\gamma$.
+  \[
+    t=t(x,y) \qquad s=s(x,y)
+  \]
+  По теореме о неявной функции в некоторой окрестности кривой $\gamma$;
+  $t,s$ непр. дифф.
+  \[
+    u=u_0(s(x,y))
+  \]
+  Непр. дифф. в некоторой корестности $\gamma$ как суперпозиция.
+
+  $\implies u=u_0(x,y)$ решение  задачи Коши.
+  
+  Единственность следует из единст. решения з. Коши для харак. системы и
+  единственности неявной функции.
+\end{proof}
+\begin{definition}[Общий случай задачи Коши]
+  \begin{gather*}
+    \sum_{i=1}^{n}a_i(x)\pd{u}{x_i}=0 \qquad x \in \R^{n} \\ 
+    a_i(x) \in C'(D) \qquad D\subset \R^{n} \qquad \sum_{}^{}a_i^{2}\neq0 \ \text{в} \ D
+  \end{gather*}
+  $s$ - гладкая поверхность. (гиперповерхность)
+  \begin{gather*}
+    u|_{s}=u_0(s) \qquad u_0(s) \in C'(s)
+  \end{gather*}
+  Найти решение, удовлетворяющие условия.
+\end{definition}
+\begin{theorem}[Общий случай сущ. и ед. решения]
+  \phantom{.}
+
+  Пусть гиперповерхность $S$ не касается характеристик,
+  тогда $\exists !$ решение з. К., опрделённое в некоторой окрестности
+  гиперповерхность $S$.
+\end{theorem}
+
+\section{Задача Коши для квазилинейного уравнения в ч. п. (n=2)}
+\begin{gather*}
+  a(x,y,u)\pd{u}{x}+b(x,y,u)\pd{u}{y}=c(x,y,u) \\ 
+  a,b,c \in C'(D) \qquad D \subset \R^{n} \qquad a^{2}+b^{2}\neq0 \ \text{в} \ D
+\end{gather*}
+\begin{definition}
+  \phantom{.}
+
+$\gamma: x=\phi(s), y=\psi(s)$, $s\in(s_1,s_2)$, гладкая
+
+$\phi,\psi \in C'(s_1,s_2)$, $\phi^{2}+\psi^{2}\neq 0$
+
+$u|_{\gamma}=u_0(s)$, $u_0\in C'(s_1,s_2)$, $\Gamma$ - гладкая кривая
+
+Найти решение проходящее через $\Gamma$.
+\end{definition}
+\begin{remark}[Характ. сист.]
+  \[
+    \left\{\begin{aligned}
+      \dot{x}=a(x,y,u) \\ 
+      \dot{y}=b(x,y,u) \\ 
+      \dot{u}=c(x,y,u) \\ 
+    \end{aligned}\right.
+  \]
+\end{remark}
+\begin{theorem}[Существование и единственность решения задачи Коши]
+  \phantom{.}
+
+  Пусть $\gamma$ не касается \underline{проекций} характеристик на $XY$,
+  тогда $\exists !$ решение задачи Коши, определённое в некоторой окрестности кривой $\gamma$.
+\end{theorem}
+\begin{eg}
+  \begin{gather*}
+    x\pd{u}{x}+y\pd{u}{y}=2xy \\ 
+    x\pd{W}{x}+y\pd{W}{y}+2xy\pd{W}{u}=0 \\ 
+    \left\{\begin{aligned}
+      & \dot{x}=x \\ 
+      & \dot{y} = y \\ 
+      & \dot{u} = 2xy
+    \end{aligned}\right. \\ 
+    \frac{dx}{x}=\frac{dy}{y}=\frac{du}{2xy} \\ 
+    C_1=\frac{y}{x} \qquad u-xy=C_2 \\ 
+    W=G(\frac{y}{x}, u-xy) \qquad G\in C'
+  \end{gather*}
+  - общее решение вспомогательного уравнения.
+
+  Общий интеграл квазилинейного уравнения:
+  \begin{gather*}
+    G(\frac{y}{x}, u-xy)=0 \qquad G\in C'  \qquad \pd{G}{u}\neq 0 \\ 
+    \underbrace{\pd{G}{u}}_{\neq0}=\underbrace{\pd{G}{(u-xy)}}_{\neq0}\underbrace{\pd{u-xy}{u}}_{1}
+  \end{gather*}
+  По теореме о неявной функции $x-xy=g(\frac{y}{x})$, $g \in C'$
+  \[
+    u=xy+g(\frac{y}{x}) \qquad g \in C'
+  \]
+\end{eg}
+\begin{eg}
+  $u=3x^{3} + 1$ при $y=2x^{2}$, $x>0$
+  \begin{gather*}
+    3x^{3}+1=x(2x^{2})+g(2x) \\ 
+    g(2x) = 1 + x^{3} \qquad g(\xi)=1+\frac{\xi^{3}}{8} \\ 
+    u=xy+1+\frac{1}{8}\left(\frac{y}{x}\right)^{3}
+  \end{gather*}
+\end{eg}
+\begin{eg}
+  $u=x^{2}$ при $y=x$, $x>0$
+  \begin{gather*}
+    x^2=x^2+g(1) \qquad g(1)=0 \\ 
+    \left\{\begin{aligned}
+      & \dot{x}=x \\ 
+      & \dot{y}=y \\ 
+      & \dot{u}=2xy
+    \end{aligned}\right. \ \rightarrow \ \left\{\begin{aligned}
+      & x= C_1e^{t} \\ 
+      & y= C_2e^{t} \\ 
+      & u=C_1C_2e^{2t} + C_3
+    \end{aligned}\right.
+  \end{gather*}
+  Проекция: $y=Ax$, нарушена теорема единственности, $\gamma$ касается проекции характеристики.
+\end{eg}
+
+\section{Вариационное исчисление}
+\[
+  J[y]\to extr
+\]
+\subsection{Функционал и первая вариация функционала}
+$C^{1}[a,b]$, $\Vert y \Vert=\max \limits_{[a,b]} |y(x)| + \max \limits_{[a,b]}|y'(x)|$
+\begin{definition}[Функционал]
+  Отображение $J: \: Y\in C'[a,b] \to \R$, $Y$ - область определения функционала
+\end{definition}
+$fix \, y\in Y$, $fix\, h \in C'[a,b]$, определим множество $A\in \R$ так,
+чтобы
+\begin{gather*}
+  \forall \alpha \in A \true y+ah\in Y \\ 
+  \Psi(\alpha)=J[y+\alpha h]
+\end{gather*}
+Если $\exists$ конечная производная $\Psi'(0)$, то она называется
+первой вариацией функционала и обозначается $\Psi'(0)=\delta J[y,h]$
+\begin{eg}
+  $C[a,b]$
+  \begin{gather*}
+    y(x) =0 \qquad h=\sin x \qquad C[0,\pi] \\ 
+    \Psi(\alpha)=\max \limits_{[a,b]}|\alpha \sin x|=|\alpha|
+  \end{gather*}
+  $\Psi(\alpha)$ не существует
+\end{eg}
+
 \end{document}
