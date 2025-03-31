@@ -1415,7 +1415,7 @@ $H_0:$ все выборки из одного распределения, $H_1:
   \Delta = \Delta_1+ \dots + \Delta_l
 \end{gather*}
 \begin{theorem}
-  Если $H_0$ верна, то $\Delta \rightsquigarrow \chi^{x}((k-1)(l-1))$
+  Если $H_0$ верна, то $\Delta \rightsquigarrow \chi^{2}((k-1)(l-1))$
 \end{theorem}
 
 \begin{eg}[Коллоквиум 2023]
@@ -1526,6 +1526,280 @@ $I_n$ - число инверсий в выборке
     = 2 \int_{ 1.42}^{\infty}q(t)dt=0.155
   \end{gather*}
   Нет оснований отвергать $H_0$.
+\end{eg}
+
+% lecture 9 
+
+\subsection{Критерий Смирнова для проверки гипотезы однородности (непр. расп.)}
+$H_0: F(x)=G(x)$, $H_1: \bar{H_0}$ 
+Выборки $\vec{x}_n$, $\vec{y}_m$
+\[
+  \Delta = \sqrt{\frac{nm}{n+m}}\sup \limits_{R}|\tilde{F}(x)-\tilde{G}(x)|
+\]
+где $\tilde{F}$ и $\tilde{G}$ - эмпирические функции распределения
+\begin{theorem}
+  Если $H_0$ верна, то $\Delta \rightsquigarrow K(x)$
+\end{theorem}
+
+\section{Использование доверительных интервалов для проверки гипотез}
+Вероятностная модель, $h$ - характеристика вероятностной модели, $\tilde{h}$ - оценка
+
+$H_0: h \in T_0$, $H_1: h \in T_1$, $T_0 \cap T_1 = \emptyset$
+
+$\tilde{h} \ \rightarrow$  доверительный интервал (точный, асимптотический или непараметрический бутстраповский)
+
+Если $I \subset T_1$, то $H_0$ отвергаем
+\begin{eg}
+  $H_0: h\le 3$, $H_1: h > 3$
+
+  \begin{itemize}
+    \item Если $\tilde{h} \le 3$ сразу говорим что нет оснований отвергать гипотезу
+    \item Если $\tilde{h} > 3$, считаем доверительный интервал (правосторонний):
+      $\tilde{h} \rightarrow I=[h_0, +\infty)$
+  \end{itemize}
+\end{eg}
+\begin{eg}
+  $H_0: h=3$, $H_1: h\neq 3$, в таком случае интервал двухсторонний: $I=(\tilde{h}-\delta, \tilde{h}+\delta)$
+\end{eg}
+
+\section{Методы построения критериев}
+$G_{\text{кр}}$ ($G_{cr}$) - критическая область
+
+$H_0$ отвергаем $\iff$ $\vec{x}_n \in G_{cr}$
+
+$P(\vec{x}_n \in G \, | \, H_0) \le \alpha$ 
+
+Ошибка I рода $\alpha_1=P(H_1 | H_0)$.
+
+Ошибка II рода $\alpha_0=P(H_0 | H_1)$.
+
+Если $H_0$ и $H_1$ сложные, то $\alpha_1=\sup \limits_{H_0} P(\vec{x}_n \in G| H_0)$,
+$\alpha_2 = \sup \limits_{H_1} P(\vec{x}_n \not \in G | H_1)$
+
+\begin{definition}[Мощность критерия]
+  \[
+    W(H_1)= P(\vec{x}_n \in G | H_1)
+  \]
+  Для простой гипотезы $W=1-\alpha_2$
+\end{definition}
+
+\begin{definition}[Состоятельность критерия]
+  Критерий называется состоятельным, если 
+  \[
+    \forall H_1 \true W(H_1) \underset{n\to\infty}{\to} 1
+  \]
+\end{definition}
+
+\begin{remark}
+  $\alpha_1$ - наиболее опасная ошибка 
+
+  $\alpha_1 \le \alpha$ обязательно, $\alpha_2 \to \min$,
+  решаем оптимизационную задачу $ \ \rightarrow \ G_{opt}$
+\end{remark}
+\begin{eg}
+  $H_0:$ болен, $H_1:$ здоров
+
+  $\alpha_1=P(H_1|H_0)$ - признали больного здоровым - беда
+
+  $\alpha_2=P(H_0|H_1)$ - признали здорового больным - не так критично
+\end{eg}
+
+\subsection{Теорема Неймана-Пирсона для проверки простой H0 против простой H1}
+$\alpha_2 \to \min$, $\alpha_1 \le \alpha$
+\begin{gather*}
+  W=1 - \alpha_2=P(\vec{x}_n \in G | H_1) \to \max \\ 
+  \int_{G}^{}L_1(\vec{x}_n)d\vec{x}_n= \int_{G}^{}\underbrace{\frac{L_1}{L_0}}_{l}L_0d\vec{x}_n \to \max \\ 
+  G: l \ge C \qquad \int_{G}^{}L_0 d \vec{x}_n \le L
+\end{gather*}
+
+$l$ - отношение правдоподобия
+
+\begin{eg}
+  $n=25$, $\vec{x}=9.3$, $\alpha=0.02$
+
+  $H_0: \xi  \sim N(10, 4)$, $H_1: \xi \sim N(9, 4)$
+  \begin{gather*}
+    l = \frac{L_1}{L_0}=\frac{\prod_{i=1}^{n}p_1(x_i)}{\prod_{i=1}^{n}p_0(x_i)}
+    = \frac{\left(\frac{1}{\sqrt{2\pi}\cdot2}\right)^{n}e^{-\frac{1}{8}\sum_{i=1}^{n}(x_i-9)^{2}}}{\left(\frac{1}{\sqrt{2\pi}\cdot2}\right)^{n}e^{-\frac{1}{8}\sum_{i=1}^{n}(x_i-10)^{2}}} =\\
+    = e^{-\frac{1}{8}\sum_{i=1}^{n}(2x_i-10)}=e^{-\frac{1}{4}n\bar{x}+\frac{19}{8}n} \ge C \\ 
+    -\frac{1}{4}n \bar{x}+\frac{19}{8}n \ge \ln C \qquad G:\bar{x} \le A \\ 
+    P(\bar{x} \le A | H_0) \le \alpha
+  \end{gather*}
+  По Т. Фишера:
+  \begin{gather*}
+    \frac{\bar{x}-a}{\sigma}\sqrt{n} \sim N(0,1) \\ 
+    P(\frac{\bar{x}-10}{2}\sqrt{25}\le \frac{A-10}{2}\sqrt{25}) \le \alpha
+  \end{gather*}
+  $\frac{5}{2}(A-10)=U_{\alpha}$ - квантиль порядка $\alpha$ для нормального распределения
+  \begin{gather*}
+    \frac{A-10}{2}5=U_{\alpha}=-2.054 \\ 
+    G: \bar{x} \le 9.18
+  \end{gather*}
+  $\bar{x} \not \in G$ нет оснований отвергунть $H_0$
+  \begin{gather*}
+    W=P(\bar{x}\in G | H_1)=P(\frac{\bar{x}-9}{2}5 \le \frac{9.18-9}{2}5)
+    =\int_{-\infty}^{0.45}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx=0.67 \\ 
+    \alpha_1=0.02 \qquad \alpha_2=1-W=0.33
+  \end{gather*}
+  Сколько нужно $n$ чтобы имело смысл
+  \begin{gather*}
+    \alpha_1=0.01 \qquad \alpha_2=0.1 \\ 
+    G\cdot \bar{x} \le B \\ 
+    \alpha_1=P(\bar{x}\le B | H_0) = P(\frac{\bar{x}-10}{2}\sqrt{n} \le \frac{B-10}{2}\sqrt{n})=0.01 \\
+    \alpha_2=P(\bar{x}> B | H_0) = P(\frac{\bar{x}-9}{2}\sqrt{n} \le \frac{B-10}{2}\sqrt{n})=0.1 \\
+    \left\{\begin{aligned}
+      & \frac{B-10}{2}\sqrt{n}=U_{0.01}=-2.33\\
+      & \frac{B-9}{2}\sqrt{n}=U_{0.9}=1.28
+    \end{aligned}\right. \\ 
+    B=9.36 \qquad n=53
+  \end{gather*}
+\end{eg}
+
+\begin{eg}
+  $\xi \sim \xi(x)=(2-2\theta){x}\{(0,1)\}+\theta\{0\}$
+
+  $H_0:\theta=\frac{1}{3}$, $H_1:\theta=\frac{1}{2}$, $n=1$, $\alpha=0.35$
+  \begin{gather*}
+    l=\frac{L_1}{L_0}=\frac{\rho_1(x)}{\rho_0(x)}
+  \end{gather*}
+  \begin{center}
+    \begin{tabular}{| c | c | c |}
+      \hline
+      x & $(0,1)$ & 2 \\
+      \hline 
+      l & $\frac{x}{4x/3}=\frac{3}{4}$ & $\frac{1/2}{1/3}=\frac{3}{2}$\\ 
+      \hline 
+      $H_0, p$ & $\frac{2}{3}$ & $\frac{1}{3}$ \\ 
+      \hline
+      $H_1, p$ & $\frac{1}{2}$ & $\frac{1}{2}$ \\
+      \hline
+    \end{tabular}
+  \end{center}
+  \begin{gather*}
+    G:l \ge C \qquad P(l \ge C | H_0) \le 0.35
+  \end{gather*}
+  $G: l\ge \frac{3}{2}$, $\alpha_1=\frac{1}{3}$, $\alpha_2=P(l < C|H_1)=\frac{1}{2}$
+\end{eg}
+\begin{eg}
+  Те же условия что и в прошлом но $n=2$
+  l:
+  \begin{center}
+    \begin{tabular}{| c | c | c |}
+      \hline
+      & $(0,1)$ & 2 \\
+      \hline 
+      $(0,1)$ & $\frac{1\cdot 1 \cdot x_1 \cdot x_2}{\frac{4}{3}x_1\frac{4}{3}x_2}=\frac{9}{16}$ & $\frac{x_2 \cdot \frac{1}{2}}{\frac{4}{3}x_2 \frac{1}{3}}=\frac{9}{8}$ \\
+      \hline 
+      $2$ & $\frac{9}{8}$ & $\frac{\frac{1}{2}\frac{1}{2}}{\frac{1}{3}\frac{1}{3}}=\frac{9}{4}$ \\
+      \hline 
+    \end{tabular}
+  \end{center}
+  $H_0$:
+  \begin{center}
+    \begin{tabular}{| c | c | c |}
+      \hline
+      & $(0,1)$ & 2 \\
+      \hline 
+      $(0,1)$ & $\frac{4}{9}$& $\frac{2}{9}$ \\
+      \hline 
+      $2$ & $\frac{2}{9}$& $\frac{1}{9}$ \\
+      \hline 
+    \end{tabular}
+  \end{center}
+  $H_1$:
+  \begin{center}
+    \begin{tabular}{| c | c | c |}
+      \hline
+      & $(0,1)$ & 2 \\
+      \hline 
+      $(0,1)$ & $\frac{1}{4}$& $\frac{1}{4}$ \\
+      \hline 
+      $2$ & $\frac{1}{4}$& $\frac{1}{4}$ \\
+      \hline 
+    \end{tabular}
+  \end{center}
+  \begin{gather*}
+    G:l \ge C \qquad P(l \ge C | H_0) \le 0.35
+  \end{gather*}
+  $G: l\ge \frac{9}{4}$, $\alpha_1=\frac{1}{9}$, $\alpha_2=P(l < C|H_1)=\frac{3}{4}$, $W=\frac{1}{4}$
+
+  Асимптотический критерий $n\to\infty$
+  \begin{gather*}
+    l=\frac{L_1}{L_0}=\prod_{i=1}^{n}\frac{\rho_1(x_i)}{\rho_0(x_i)} \ge C \\ 
+    \ln l = \sum_{i=1}^{n}\ln \underbrace{\frac{\rho_1(x_i)}{\rho_0(x_i)}}_{\eta_i} \ge \ln C
+  \end{gather*}
+  ЦПТ
+
+  Параметрический бутстрап
+
+  $m$ - число появлений $2$
+  \begin{gather*}
+    l=\frac{L_1}{L_0}=\frac{\prod_{}^{}x_i\cdot \left(\frac{1}{2}\right)^{2}}{\left(\frac{4}{3}\right)^{n-m}\prod_{}^{}x_i\left(\frac{1}{3}\right)^{m}} \\ 
+    l=\left(\frac{3}{4}\right)^{n-m}\left(\frac{3}{2}\right)^{n} \ge C \qquad P(l\ge C | H_0) \le \alpha \\ 
+    \rho_0(x)=\frac{4}{3}x\{(0,1)\}+\frac{1}{3}\{2\}
+  \end{gather*}
+  \begin{itemize}
+    \item $\vec{x}_n^{*} \rightarrow m_{1}^{*} \rightarrow l_1^{*}$
+    \item ...
+    \item $\vec{x}_n^{*} \rightarrow m_{N}^{*} \rightarrow l_N^{*}$
+  \end{itemize}
+  Вариационный ряд $l_{(1)}^{*}\dots l_{(N)}^{*}$, $k=[(1-\alpha)N]$, $C=l_{(k)}^{*}$
+
+  $n=1$, $\alpha=0.02$, $N=50 0 0 0$, $C=4$
+
+  $W=P(l \ge C|H_1)$, те же самые процедуры с другим распределением $W=\frac{k}{N}$, $W=0.17$
+\end{eg}
+\begin{eg}[Т11 из задания]
+  $H_0: \xi \sim p_0(x)=1\{(0,1)\}$
+  $H_1: \xi \sim p_0(x)=\frac{e}{e-1}e^{-x}\{(0,1)\}$
+
+  \hr 
+  a) $n=1$, $\alpha$
+  \begin{gather*}
+    l=\frac{L_1}{L_0}=\frac{\frac{e}{e-1}e^{-x}}{1} \ge C \qquad e^{-x} \ge B \qquad x \le A \\ 
+    P(x \le A | H_0) = \alpha \qquad \int_{0}^{A}1dx=A=\alpha \\ 
+    G: x \le \alpha \qquad \alpha_1= \alpha \\ 
+    W=P(x \le A | H_1) = \int_{0}^{\alpha}\frac{e}{e-1}e^{-x}dx=\frac{e}{e-1}(1-e^{-\alpha}) \qquad \alpha_2=1-W
+  \end{gather*}
+  \hr 
+  b) $n=2$, $\alpha$
+  \begin{gather*}
+    l = \frac{L_1}{L_0}=\frac{\left(\frac{e}{e-1}\right)^{2}e^{-x_1}e^{-x_2}}{1 \cdot 1} \ge C 
+    \qquad x_1+x_2\le A \\ 
+    P(x_1+x_2 \le A | H_0) =\alpha \qquad \iint\limits_{x_1+x_2 \le A}1dx_1dx_2=\frac{A^{2}}{2}=\alpha \qquad A=\sqrt{2\alpha}  \\ 
+    G:x_1+x_2 \le \sqrt{2\alpha} \qquad \alpha_1=\alpha \\ 
+    W=P(x_1 + x_2 \le A | H_1) =\iint\limits_{x_1+x_2 \le A} \left(\frac{e}{e-1}\right)^{2}e^{-x_1-x_2}dx_1dx_2=\\
+    =\left(\frac{e}{e-1}\right)^{2}\int_{0}^{A}dx_1\int_{0}^{A-x_1}e^{-x_1}e^{-x_2}dx_2= \\ 
+    =\left(\frac{e}{e-1}\right)^{2}\int_{0}^{A}e^{-x_1}(1-e^{-(A-x_1)})dx_1= \\ 
+    =\left(\frac{e}{e-1}\right)^{2}\int_{0}^{A}(e^{-x_1}-e^{-A})dx_1 
+    =\left(\frac{e}{e-1}\right)^{2}(1-e^{-A}-Ae^{-A}) \qquad A=\sqrt{2\alpha} \\ 
+    \alpha=1-W
+  \end{gather*}
+  \hr
+  c)
+  \begin{gather*}
+    l = \frac{L_1}{L_0} = \prod\frac{p_1(x_i)}{p_0(x_i)} \ge C \\ 
+    \ln l = \sum_{}^{}\ln \underbrace{\frac{p_1(x_i)}{p_0(x_i)}}_{\eta_i} \ge \ln C \\ 
+    \frac{\sum_{}^{}\eta_i-nM\eta_i}{\sqrt{nD\eta_i}} \rightsquigarrow N(0,1) \\ 
+    P(\ln l \ge \ln C|H_0) = \alpha \qquad \eta=\ln(\frac{e}{e-1}e^{-x})=\ln \frac{e}{e-1}-x \\ 
+    \ln l = \sum_{}^{}\ln \frac{e}{e-1}-\sum_{}^{}x_i \ge \ln C \qquad G:\sum_{}^{}x_i \le A \\ 
+    P(\sum_{}^{}x_i \le A | H_0) = \alpha \qquad P(\frac{\sum_{}^{}x_i-nMx}{\sqrt{nDx}}\le \frac{A-nMx}{\sqrt{nDx}}|H_0)=\alpha \\ 
+    Mx=\frac{1}{2} \qquad Dx = \frac{1}{2}(b-a)^{2}=\frac{1}{12} \\ 
+    \frac{A-n\frac{1}{2}}{\sqrt{n\frac{1}{2}}}=u_\alpha \qquad A = n\frac{1}{2}+\sqrt{n\frac{1}{12}}u_\alpha \\ 
+    G: \sum_{}^{}x_i \le n\frac{1}{2} + u_\alpha\sqrt{\frac{n}{12}} \qquad \alpha_1=\alpha \\
+    W=P(\sum_{}^{}x_i \le A | H_1)=P(\frac{\sum_{}^{}x_i-nMx}{\sqrt{nDx}}\le \frac{A-nMx}{\sqrt{nDx}}|H_1) \\ 
+    Mx = \int_{0}^{1}x \frac{e}{e-1}e^{-x}dx = \frac{e-2}{e-1} \qquad Mx^{2}=\frac{2e-5}{e-1} \qquad Dx=\frac{e^{2}-3e+1}{(e-1)^{2}} \\ 
+    W = \int_{-\infty}^{B}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx \qquad B=\frac{\frac{n}{2}+U_\alpha\sqrt{\frac{n}{12}}-n\frac{e-2}{e-1}}{\sqrt{n\frac{e^{2}-3e+1}{(e-1)^{2}}}} \qquad \alpha_2 = 1- W \\
+    B=\frac{\sqrt{n}\cdot 0.082 + U_\alpha \sqrt{\frac{1}{12}}}{\sqrt{\frac{e^{2}-3e+1}{(e-1)^{2}}}} \underset{n\to\infty}{\to}\infty
+  \end{gather*}
+  Критерий состоятелен.
+
+  \hr
+  $\alpha=0.05$, $n=1$, $x \le 0.05$, $W=0.077$, $\alpha_2=0.923$
+
+  $\alpha=0.05$, $n=2$, $x_1+x_2 \le 0.316$, $W=0.102$, $\alpha_2=0.898$
+
+  $\alpha=0.05$, $n=10$, $\sum_{}^{}x_i \le 3.5$, $B=-0.78$, $W=0.22$, $\alpha_2=0.78$
 \end{eg}
 
 \end{document}
