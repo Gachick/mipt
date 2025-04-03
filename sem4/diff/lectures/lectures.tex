@@ -1369,7 +1369,7 @@ $W(x,u)=G(W_1(x,u),\dots ,W_n(x,u))$ - общее реш, $G\in C'$
 \]
 \end{definition}
 
-% lecture 9
+% lecture 8
 
 \section{Задача Коши для линейного уравнения в ч. п. (n=2)}
 \begin{gather*}
@@ -1561,5 +1561,157 @@ $fix \, y\in Y$, $fix\, h \in C'[a,b]$, определим множество $A
   \end{gather*}
   $\Psi(\alpha)$ не существует
 \end{eg}
+
+% lecture 9 
+
+\subsection{Функционалы в вариационном исчислении}
+\begin{gather*}
+  y=C^{1}[a,b] \rightarrow J[y]=\int_{a}^{b}F(x,y,y')dx \\ 
+  F(x,y,y')\in C^{2}(D) \qquad D \subset \R^{3} \ \text{область} \\ 
+  Y=\{y \in C'[a,b]: \forall x \in [a,b] \true (x, y(x), y'(x)) \in D\}
+\end{gather*}
+
+\begin{lemma}[О существовании первой вариации]
+  Пусть $J(y)$ - функционал в вариационном исчислении,
+  тогда $\forall y \in Y$ и $\forall h \in C'[a,b]$
+  $\exists \epsilon > 0: \: \forall |\alpha| \le \epsilon \true \Psi(\alpha)=J[y+\alpha h]$
+  непр. дифф и $\Psi'(0)=\delta J[y,h]=\int_{a}^{b}(\pd{F}{y}h + \pd{F}{y'}h')dx$
+\end{lemma}
+  
+\incfig{l9_fv}
+\begin{proof}
+  $\Gamma$ - ограниченное и замкнутое множ. из обл. $D$
+  $\rightarrow$ существует окрестность кр. $\Gamma \subset D$
+  $\rightarrow$ $\forall \in C'[a,b] \exists \epsilon : \: \forall |\alpha|\le \epsilon 
+  \forall x \in [a,b]: \ (x,y(x)+\alpha h(x), y'(x) + \alpha h'(x)) \in$ окр. $\subset D$,
+  $\implies$ на $\alpha \le \epsilon$ определена $\Psi(\alpha)= J[y+ \alpha h]$
+  \begin{gather*}
+    \Psi(\alpha)=\int_{a}^{b}\underbrace{F(x,y+\alpha h, y' + \alpha h')}_{f(x,\alpha)}dx
+  \end{gather*}
+  $f(x,\alpha)$ непр. на $[a,b]\times [-\epsilon,\epsilon]$
+  \begin{gather*}
+    \pd{f}{\alpha}=\pd{F(x,y+\alpha h, y'+ \alpha h')}{y+\alpha h}h+\pd{F(x,y+\alpha h, y'+ \alpha h')}{y'+\alpha h'}h'
+  \end{gather*}
+  непр. на $[a,b] \times [-\epsilon, \epsilon]$ как суперпозиция непр. функ.
+
+  По теореме о дифф. собственного инт. по параметру $\Psi(\alpha)$ непр. дифф. 
+  на $[-\epsilon, \epsilon]$ и 
+  \begin{gather*}
+    \Psi'(\alpha)=\int_{a}^{b}\pd{f}{\alpha}dx \\ 
+    \Psi'(0)=\delta J[y,h]=\int_{a}^{b}(\pd{F}{y}h+\pd{F}{y'}h')dx
+  \end{gather*}
+\end{proof}
+\begin{eg}
+  \begin{gather*}
+    J[y]=\int_{1}^{2}(2y+yy'+x^{2}y'^{2)})dx \\ 
+    Y=\{y \in C'[1,2]\} \qquad D=\R^{3} \\ 
+    \delta J[y,h]=\int_{1}^{2}((2+y')h+(y+2x^{2}y')h')dx \\ 
+    y=x^{2} \qquad \delta J[x^{2},h]=\int_{1}^{2}((2+2x)h+(x^{2}+4x^{3})h')dx
+  \end{gather*}
+\end{eg}
+\begin{lemma}[Дюбуа-Реймона]
+  Пусть $a_0(x)$ и $a_1(x)$ $\in C[a,b]$ и $\forall h \in C'[a,b]$ и $h(a)=h(b)=0$, 
+  $\int_{a}^{b}(a_0(x)h(x)+a_1(x)h'(x))dx=0$, тогда 
+  $a_1(x) \in C'[a,b]$ и $a_1'=a_0$ на $[a,b]$.
+\end{lemma}
+\begin{proof}
+  $p(x) \in C'[a,b]$, $p'(x)=a_0(x)$ и $\int_{a}^{b}p(x)dx=\int_{a}^{b}a_1(x)dx$
+
+  $\forall h \in C'[a,b]$ и $h(a)=h(b)=0$,
+  \begin{gather*}
+    \int_{a}^{b}(p'h+a_1h')dx=\underbrace{ph\big|_{a}^{b}}_{0}+\int_{a}^{b}(a_1h'-h'p)dx=0 \\ 
+    \int_{a}^{b}h'(a_1-p)dx=0 \qquad h(x)=\int_{a}^{x}(a_1(t)-p(t))dt \\ 
+    \int_{a}^{b}(a_1-p)^{2}dx=0 \ \implies \ a_1 \equiv p \ \text{на} \ [a,b]
+  \end{gather*}
+  $\implies$ $a_1 \in C'[a,b]$ и $a_1'=a_0$
+\end{proof}
+\begin{corollary}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Основная лемма вариационного исчисления $a_1 \equiv 0$
+      
+      Пусть $a_0(x) \in C[a,b]$ и $\forall h \in C'[a,b], h(a)=h(b)=0$,
+      $\int_{a}^{b}a_0hdx=0$, тогда $a_0 \equiv 0$
+    \item ($a_0 \equiv 0$) Пусть $a_1(x) \in C[a,b]$ и $\forall h \in C'[a,b], h(a)=h(b)=0$,
+      $\int_{a}^{b}a_1 h'dx=0$, тогда $a_1 \equiv const$
+  \end{enumerate}
+\end{corollary}
+\begin{remark}
+  Неравенство Стеклова: Пусть $h(x) \in C'[a,b]$ и $h(a)=h(b)=0$, тогда
+  \[
+    \int_{a}^{b}h^{2}dx \le \frac{(b-a)^{2}}{\pi^{2}}\int_{a}^{b}h'^{2}dx
+  \]
+  Неравенство Виртингера: Пусть $h(x) \in C'[a,b]$ и $h(a)=0$ (либо $h(b)=0$), тогда
+  \[
+    \int_{a}^{b}h^{2}dx \le \frac{4(b-a)^{2}}{\pi^{2}}\int_{a}^{b}h'^{2}dx
+  \]
+\end{remark}
+\subsection{Простейшая задача вариационного исчисления}
+Постановка задачи 
+\begin{gather*}
+  J[y]=\int_{a}^{b}F(x,y,y')dx \\
+  F(x,y,y')\in C^{2}(D) \qquad D \subset \R^{3} \ \text{область} \\ 
+  y(a)=A \qquad y(b)=B \\
+  Y=\{y \in C'[a,b]: \forall x \in [a,b] \true (x, y(x), y'(x)) \in D, y(a)=A, y(b)=B\} \\ 
+  J[y] \rightarrow extr \qquad y \in Y
+\end{gather*}
+\begin{definition}[Экстремум]
+  $\tilde{y}\in Y$ называется точкой абсолютного минимума (максимума),
+  если
+  \[
+    \forall y \in Y \true J[\tilde{y}] \le J[y] \ (\ge)
+  \]
+\end{definition}
+\begin{definition}
+  $\tilde{y}\in Y$ называется точкой локального минимума (максимума),
+  если
+  \[
+    \exists \epsilon>0 : \: \forall y\in Y: \: 0 < \Vert y-\tilde{y} \Vert \underset{C'[a,b]}{<} \epsilon \true J[\tilde{y}] \le J[y] \ (\ge)
+  \]
+\end{definition}
+\begin{remark}
+  $\tilde{y}\in Y$ не экстремум
+  \[
+    \forall \epsilon > 0 \ \exists y_1, y_2 \in Y0 < \Vert y-\tilde{y} \Vert \underset{C'[a,b]}{<} \epsilon \true J[y_1]<J[\tilde{y}]<J[y_2]
+  \]
+\end{remark}
+\begin{theorem}[Необходимое условие экстремума]
+  Пусть $\tilde{y}\in Y$ решение простейшей задачи, тогда $\delta J[\tilde{y},h]=0$,
+  $\forall h \in C'[a,b] :\: h(a)=h(b)=0$ и эта функция удовлетворяет уравнению Эйлера (Эйлера-Лагранжа)
+  \[
+    \pd{F}{y}-\frac{d}{dx}\pd{F}{y'}=0
+  \]
+\end{theorem}
+\begin{proof}
+  Пусть $\tilde{y}\in Y$ - locmin
+  \begin{gather*}
+    \exists \epsilon>0 : \: \forall y\in Y: \: 0 < \Vert y-\tilde{y} \Vert < \epsilon \true J[\tilde{y}] \le J[y]  \\
+    y=\tilde{y}+\delta y \in Y \rightarrow \delta y \in C'[a,b] \\ 
+    \underbrace{\tilde{y}(a)}_{A}+\delta y(a)=A \qquad \underbrace{\tilde{y}(b)}_{B}+\delta y(b)=B \\ 
+    \delta y(a)=\delta y(b)=0 \qquad 0 < \Vert \delta y \Vert < \epsilon
+  \end{gather*}
+  $\delta y$ - вариация. аргумента 
+  \begin{gather*}
+    \delta y=\alpha h \qquad h \in C'[a,b], \  \alpha \in \R \\ 
+    h(a)=h(b)=0 \qquad 0 < |a| \Vert h \Vert < \epsilon \\ 
+   \forall h \in C'[a,b] \qquad |\alpha| < \frac{\epsilon}{\Vert h \Vert}
+  \end{gather*}
+  По лемме о существовании первой вариации $\exists \epsilon_1 > 0 \ \forall |\alpha| < \epsilon_1$
+  функция $\Psi(\alpha)=J[\tilde{y}+\alpha h]$ непр. дифф. $|\alpha| < \epsilon_1$
+  
+  $\epsilon_2=\min (\frac{\epsilon}{\Vert h \Vert}, \epsilon_1)$, $|\alpha| < \epsilon_2$,
+  $\Psi(\alpha)$ непр. дифф и $\Psi(0) \le \Psi(\alpha)$
+
+  $\implies$ $\alpha=0$ т. $\min \Psi(\alpha)$, по Т. Ферма $\Psi'(0)=0$, $\delta J[\tilde{y},h]=0$
+  \begin{gather*}
+    \delta J[\tilde{y}, h]=\int_{a}^{b}\left(\pd{F}{y}h+\pd{F}{y'}h'\right)\Big|_{\tilde{y}}dx=0 \\ 
+    \forall h \in C'[a,b] \qquad h(a)=h(b)=0
+  \end{gather*}
+  По лемме Дюбуа-Реймона:
+  \begin{gather*}
+    a_1=\pd{F}{y'}\Big|_{\tilde{y}} \in C'[a,b] \qquad \frac{d}{dx}\pd{F}{y'}\Big|_{\tilde{y}}=\pd{F}{y}\Big|_{\tilde{y}}
+  \end{gather*}
+\end{proof}
 
 \end{document}
