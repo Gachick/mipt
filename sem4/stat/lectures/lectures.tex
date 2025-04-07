@@ -33,7 +33,7 @@ $\xi_1 \sim \Gamma(\lambda,a_1)$. $\xi_2 \sim \Gamma(\lambda,a_2)$ - незав�
 \end{gather*}
 \end{proof}
 
-\subsubsection[Распределение Парсона]{Распределение Парсона $\chi^2$}
+\subsubsection[Распределение Пирсона]{Распределение Пирсона $\chi^2$}
 $\xi_i\sim N(0,1)$ - независимы, $\eta=\xi_1^2+\dots+\xi_n^2=\chi^2$
 \begin{gather*}
   \Phi(y)=P(\xi^2<y)=\left\{\begin{aligned}
@@ -1800,6 +1800,277 @@ $l$ - отношение правдоподобия
   $\alpha=0.05$, $n=2$, $x_1+x_2 \le 0.316$, $W=0.102$, $\alpha_2=0.898$
 
   $\alpha=0.05$, $n=10$, $\sum_{}^{}x_i \le 3.5$, $B=-0.78$, $W=0.22$, $\alpha_2=0.78$
+
+% lecture 10 
+
+  \hr 
+  d) $G: x_{max} \le C$
+  \begin{gather*}
+    P(\vec{x}_n \in G | H_0)=\alpha \qquad P(x_{max} \le G | H_0)=\alpha \\ 
+    \xi \sim F(x) \qquad \xi_{max} \sim (F(x))^{n} \\ 
+    P(x_{max} \le C | H_0) = (\underbrace{F_0(C)}_{C})^{n}=\alpha \qquad C = \sqrt[n]{\alpha} \\ 
+    G: x_{max} \le \sqrt[n]{\alpha} \qquad \alpha_1=\alpha \\ 
+    W=P(\vec{x}_n \in G | H_1) =P(x_{max} \le C | H_1) \\
+    H_1: \xi \sim p(x)=\frac{e}{e-1}e^{-x}\{(0,1)\} \qquad F_1(x)=\frac{e}{e-1}(1-e^{-x}) \\ 
+    W=(F_1(C))^{n}=\left(\frac{e}{e-1}(1-e^{-\sqrt[n]{\alpha}})\right)^{n} \qquad \alpha_2=1-W
+  \end{gather*} 
+  Состоятельность $W\to 1$ при $n \to \infty$:
+  \begin{gather*}
+    e^{-(e^{\frac{1}{n}\ln \alpha})}= e^{-(1-\frac{1}{n}\ln\alpha+o(\frac{1}{n}))} \\ 
+    \left(\frac{e}{e-1}(1-e^{-1}e^{-\frac{1}{n}\ln\alpha+o(\frac{1}{n})})\right)^{n}=\left(\frac{e}{e-1}(1-e^{-1}(1-\frac{1}{n}\ln \alpha+o(\frac{1}{n})))\right)^{n} = \\ 
+    = \left[\frac{e}{e-1}\left(\frac{e-1}{e}+\frac{\ln \alpha}{ne}+o(\frac{1}{n})\right)\right]^{n} = \\ 
+    =\left[1+\frac{\ln\alpha}{e-1}\frac{1}{n}+o(\frac{1}{n})\right]^{n} \underset{n\to\infty}{\to} e^{\frac{\ln \alpha}{e-1}}=\alpha^{\frac{1}{e-1}}\neq1
+  \end{gather*}
+  Не является состоятельной
 \end{eg}
+
+\subsection{Проверка сложных гипотез. КОП-критерий отношения правдоподобия}
+$\xi \sim F(x, \vec{\theta}$, $\vec{\theta} \in \Theta \subset \R^{m}$
+
+$H_0: \vec{\theta} \in \Omega_{0}$, $H_1: \vec{\theta} \in \Omega_{1}$, $\Omega_0 \cap \Omega_1 = \emptyset$, $\Omega=\Omega_0 \cup \Omega_1$
+\begin{gather*}
+  l=\frac{L_1}{L_0} \ge C \qquad l(x)=\frac{\sup_{\Omega_1}L}{\sup_{\Omega_0}L} \\ 
+  G: \ l(x)=\frac{\sup_{\Omega}L}{\sup_{\Omega_0}L} \ge C \qquad P(l \ge C|H_0)=\alpha
+\end{gather*}
+(сверху в числителе омега без индекса!)
+\begin{theorem}
+  Если $H_0$ верна, то
+  \[
+    2\ln l \rightsquigarrow \chi^{2}(dim\Omega - dim \Omega_0)
+  \]
+\end{theorem}
+\begin{eg}
+  $\xi \sim p(x)=\theta e^{-\theta x}\{(0, +\infty)\}$, $\theta > 0$
+
+  $H:\theta=\theta_0$, $H_1:\theta>\theta_0$
+
+  $\Omega_0=\{\theta_0\}$, $\theta_1=\{\theta:\theta>\theta_0\}$, $\Omega=[\theta_0, +\infty)$
+  
+  Размерности соответсвенно 0, 1, 1
+
+  \hr 
+  \underline{$n=1$}
+  \begin{gather*}
+    L=\prod_{i=1}^{n}p(x_i,\theta)=p(x,\theta) \\ 
+    \sup_{\theta_0}L=\theta_0e^{-\theta_0 x} \qquad \sup_{\Omega} L = \left\{\begin{aligned}
+      & \theta_0 < \frac{1}{x}: \  \frac{1}{x}e^{-1} \\ 
+      & \theta_0 > \frac{1}{x}: \ \theta_0 e^{-\theta_0 x}
+    \end{aligned}\right. \\ 
+    l=\left\{\begin{aligned}
+      & \theta_0 < \frac{1}{x}: \  \frac{1}{x}\frac{e^{-1}}{\theta_0 e^{-\theta_0 x}} \\
+      & \theta_0 > \frac{1}{x}: \ 1
+    \end{aligned}\right. \ge C
+  \end{gather*}
+  \hr 
+  Давим логикой
+
+  \incfig{l10_eg1}
+  Рассматривая записимость распределения от $\theta$, видим что у альтернативной гипотезы
+  вероятность попасть в окрестность нуля больше, оттлакиваемся от этого
+  \begin{gather*}
+    G: x \le C \qquad P(x \le C | H_0) =\alpha \\ 
+    \int_{0}^{C}\theta_0 e^{-\theta_0 x}dx = 1 - e^{-\theta_0 C}=\alpha \qquad C=-\frac{1}{\theta_0}\ln (1-\alpha) \\ 
+    W(\theta)=P(x \le C | H_1) = \int_{0}^{C}\theta e^{-\theta x}dx =1-e^{-\theta C} 
+    =1-e^{\frac{\theta}{\theta_0}\ln(1-\alpha)}
+  \end{gather*}
+
+  \incfig{l10_eg1_w}
+
+  \incfig{l10_eg1_w2}
+\end{eg}
+
+\subsection{Проверка гипотез о параметрах нормальной модели}
+$\xi \sim N(\theta_1, \theta_2^{2})$, $\theta_1 \in R$, $\theta_2 > 0$
+\subsubsection{Проверка гипотез о значениях параметров}
+a) $H_0: \theta_1=a$, $H_1: \theta_1 \neq a; \; \theta_1 > a; \; \theta_1 < a$
+
+b) $H_0: \theta_2^{2}=b$, $H_1: \theta_2^{2} \neq b; \; \theta_2^{2} > b; \; \theta_2^{2} < b$
+
+Теорема Фишера:
+\begin{gather*}
+\frac{\bar{x}-a}{\sigma}\sqrt{n}\sim N(0,1)  \qquad \frac{S^{2}(n-1)}{\sigma^{2}} \sim \chi^{2(n-1)} \qquad \frac{\bar{x}-a}{S}\sqrt{n}\sim t(n)
+\end{gather*}
+\begin{eg}
+  $\xi \sim N(\theta, 0,001)$, $H_0: \theta_1 = 43$, $H_1: \theta \neq 43$, $n=50$, $\bar{x}=42.972$, $\alpha=0.05$
+  \begin{gather*}
+    \Delta=\frac{\bar{x}-43}{.1}\sqrt{50} \qquad G: |\Delta| \ge C \qquad P(|\Delta| \ge C| H_0)=\alpha \\ 
+    2P(\Delta \ge C | H_0) =\alpha \qquad C=u_{1-\frac{\alpha}{2}} \\ 
+    G: |\Delta| \ge u_{1-\alpha/2}=1.96 \\ 
+    G: \left[\begin{aligned}
+      & \bar{x} \ge 43.027 \\
+      & \bar{x} \le 42.9723
+    \end{aligned}\right.
+  \end{gather*}
+  $\bar{x}\in G$, отвергаем $H_0$
+  \begin{gather*}
+    W(\theta_1)=P(\vec{x}_n \in G | H_1)=P(\bar{x}\ge 43.027 | H_1) + P(\bar{x} \le 42.9723 | H_1) = \\ 
+    = P(\frac{\bar{x}-\theta_1}{0.1}\sqrt{50} \ge \underbrace{\frac{43.027 - \theta_1}{0.1}\sqrt{50}}_{a_1}) +
+P(\frac{\bar{x}-\theta_1}{0.1}\sqrt{50} \le \underbrace{\frac{42.9723 - \theta_1}{0.1}\sqrt{50}}_{a_2})= \\ 
+= \int_{a_1}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx + \int_{-\infty}^{a_2}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx
+  \end{gather*}
+  
+  \incfig{l10_eg2_w}
+
+  Парктические методы:
+  \begin{enumerate}
+    \item p-value:
+  \begin{gather*}
+    \text{p-value}=P(|\Delta| \ge |\tilde{\Delta}| | H_0)= \\ 
+    (\Delta=\frac{\bar{x}-43}{0.1}\sqrt{50} \qquad \tilde{\Delta}=-1.98) \\ 
+    =2P(\Delta \ge 1.98) = 2 \int_{ 1.98}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-\frac{x^{2}}{2}}dx = 0.0477
+  \end{gather*}
+    \item Доверительный интервал: 
+      \begin{gather*}
+        \beta=1-\alpha=0.95 \\ 
+        -1.96 \le \frac{\bar{x}-a}{0.1}\sqrt{50} \le 1.96  \\ 
+        I=(42.9443;42.9997) \qquad a \in I
+      \end{gather*}
+      $a=43$, $H_0$ отвергаем
+  \end{enumerate}
+\end{eg}
+
+\begin{eg}
+  $\xi \sim N(\theta_1, \theta_2^{2})$, $H_0: \theta_2^{2}=40 0$, $H_1:\theta_2^{2}\neq 40 0$,
+  $S^{2}=784$, $n=20$, $\Delta = \frac{S^{2}(n-1)}{\theta_2^{2}} $
+
+  \incfig{l10_eg3_d}
+  \begin{gather*}
+    P(\Delta \le C_1 | H_0) + P(\Delta \ge C_2 | H_0) = \alpha\\ 
+    C_1= \chi^{2}_{\alpha/2}(n-1) \qquad C_2 = \chi^{2}_{1-\alpha/2}(n-1) \\ 
+    \chi^{2}_{0.025}(19)=8.907 \qquad \chi^{2}_{0.975}(19)=32.87 \\ 
+    \tilde{\Delta}=37.24
+  \end{gather*}
+  Попали в критическую область, отвергаем $H_0$.
+  \begin{gather*}
+    \text{p-value}=P(\Delta \ge \tilde{D} | H_0)=0.0 074
+  \end{gather*}
+  Оставляем гипотезу если $\frac{\alpha}{2}\le \text{p-value} \le 1- \frac{\alpha}{2}$,
+  в данном случае не отвергаем.
+\end{eg}
+
+\subsubsection{Проверка гипотез о равенстве параметров}
+a) $\xi \sim N(\phi, \theta_2^{2})$, $\eta \sim N(\psi, \theta_2^{2})$, 
+независимы, $\theta_2^{2}$ одинакова, но неизвестна
+
+$H_0: \phi=\psi$, $H_1: \phi \neq \psi, \phi > \psi, \phi < \psi$
+
+\begin{gather*}
+  x_n \qquad y_m \\ 
+  \frac{\bar{x}-\phi}{\theta_2}\sqrt{n} \sim N(0,1) \qquad \frac{\bar{y}-\psi}{\theta_2}\sqrt{m} \sim N(0,1) \\ 
+  \bar{x}-\phi \sim N(0, \frac{\theta_2^{2}}{n}) \qquad \bar{y}-\psi \sim N(0, \frac{\theta_2^{2}}{m}) \\ 
+  \Delta = \bar{x} - \phi - (\bar{y}-\psi) \sim N(0, \frac{\theta_2^{2}}{n}+\frac{\theta_2^{2}}{m}) \\ 
+  \tilde{\xi} \sim N(\vec{0}, K) \qquad L\vec{\xi}\sim N(\vec{0}, LKL^{T}) \\ 
+  \Delta \sim N(0, \theta_2^{2}\frac{n+m}{nm}) \\ 
+  \frac{\bar{x}-\bar{y}-(\phi -\psi)}{\theta_2 \sqrt{\frac{n+m}{nm}}} \sim N(0,1) \\ 
+  \frac{S_x^{2}(n-1)}{\theta_2^{2}} \sim \chi^{2}(n-1) \qquad \frac{S_y^{2}(m-1)}{\theta_2^{2}} \sim \chi^{2}(m-1) \\ 
+  \frac{S_x^{2}(n-1)-S_y^{2}(m-1)}{\theta_2^{2}} \sim \chi^{2}(n+m-2)
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна, то
+  \[
+    \cfrac{\bar{x}-\bar{y}}{\sqrt{\frac{n+m}{nm}}\sqrt{\frac{S_x^{2}(n-1)+S_y^{2}(m-1)}{n+m-2}}} \sim t(n+m-2)
+  \]
+\end{theorem}
+Асимптотическое приближение $n\to \infty$, $m \to \infty$
+\begin{gather*}
+  \frac{\bar{x}-\phi}{\theta_2'}\sqrt{n} \sim N(0,1) \qquad \frac{\bar{y}-\psi}{\theta_2''}\sqrt{m} \sim N(0,1) \\ 
+\end{gather*}
+По лемме Слуцкого:
+\begin{gather*}
+  \frac{\bar{x}-\phi}{S_x}\sqrt{n} \rightsquigarrow N(0,1) \qquad \frac{\bar{y}-\psi}{S_y}\sqrt{m} \rightsquigarrow N(0,1) \\ 
+  \bar{x}-\phi - (\bar{y}-\psi) \rightsquigarrow N(0, \frac{S_x^{2}}{n} + \frac{S_y^{2}}{m})
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна ($\phi=\psi$), то
+  \[
+    \frac{\bar{x}-\bar{y}}{\sqrt{\frac{S_x^{2}}{n}+\frac{S_y^{2}}{m}}} \rightsquigarrow N(0,1)
+  \]
+\end{theorem}
+
+b) $\xi \sim N(a, \phi^{2})$, $\eta \sim N(b, \psi^{2})$ независ.
+
+$H_0: \phi^{2}=\psi^{2}$, $H_1: \phi^{2}\neq \psi^{2}, \phi^{2} > \psi ^{2}, \phi^{2} < \psi ^{2}$
+\begin{gather*}
+  x_n \qquad y_m \\ 
+  \frac{S_x^{2}(n-1)}{\phi} \sim \chi^{2}(n-1) \qquad \frac{S_y^{2}(m-1)}{\psi^{2}} \sim \chi^{2}(m-1) \\ 
+  \frac{S_x^{2}}{\phi^{2}}\frac{\psi^{2}}{S_y^{2}} \sim F(n-1,m-1)
+\end{gather*}
+\begin{theorem}
+  Если $H_0$ верна, то 
+  \[
+    \frac{S_x^{2}}{S_y^{2}} \sim F(n-1, m-1)
+  \]
+\end{theorem}
+
+\begin{eg}
+  $n=20$, $n_1=10$, $n_2=10$, A/B тестирование
+
+  1 группа сразу: $12, 17.5, 16, 9.5, 15, 15.5, 13, 16.5, 14.5, 17$
+  
+  2 группа сразу: $16, 12, 15.5, 15, 14, 18.5, 18, 13, 17.5, 17$
+  \begin{gather*}
+    \bar{x}=14.65 \qquad S_x=2.49 \\ 
+    \bar{y}=15.65 \qquad S_y = 2.17
+  \end{gather*}
+  \begin{enumerate}
+    \item норм. закон распределения
+    \item дисперсии равны
+  \end{enumerate}
+  $H_0: M\xi=M\eta$, $H_1:M\xi\neq M\eta$
+  \begin{gather*}
+    \frac{\bar{x}-\bar{y}}{\sigma}\sqrt{\frac{nm}{n+m}}\sim t(n+m-2) \qquad \sigma = \sqrt{\frac{(n-1)S_x^{2}+(m-1)S_y^{2}}{n+m-2}} \\ 
+    \tilde{\Delta}=-1.044 \\ 
+    \text{p-value} = P(|\Delta| \ge |\tilde{\Delta}| | H_0) = 2P(\Delta \ge 1.044) 
+    = 2 \int_{1.044}^{+\infty}q(t)dt=0.31
+  \end{gather*}
+  Нет оснований отвергать гипотезу
+\end{eg}
+
+1) Критерий Колмогорова для двух выборок p-value $=0.3$, p-value $=0.68$
+
+2) $H_0: D\xi=D\eta$, $H_1: D\xi \neq D\eta$
+\begin{gather*}
+ \Delta = \frac{S_x^{2}}{S_y^{2}} \sim F(n-1, m-1) \\ 
+ \tilde{\Delta} = 1.147 \qquad g(t): F(9,9)\\ 
+ \text{p-value}=P(\Delta \ge \tilde{\Delta} | H_0) = \int_{1.147}^{\infty}g(t)dt=0.42
+\end{gather*}
+3) Проверка гипотезы случайности:
+\begin{gather*}
+  \Delta=\frac{I_n-\frac{n(n-1)}{4}}{\sqrt{\frac{n^{3}}{36}}} \rightsquigarrow N(0,1)
+\end{gather*}
+Для $y$: $I_m=19$, $\tilde{\Delta}=-0.626$, p-value $=P(|\Delta| \ge |\tilde{\Delta}|)=2P(\Delta \ge 0.626)=0.531$,
+нет оснований отвергать гипотезу.
+
+Бутстрап - непараметрический бутстрап + метот доверительных инт.
+\begin{gather*}
+  h=M\xi - M\eta \qquad \tilde{h}=\bar{x}-\bar{y}=-1 \qquad \Delta=\tilde{h}-h \\ 
+  \left\{\begin{aligned}
+    & \vec{x}_n \to \vec{x}_n^{*} \\
+    & \vec{y}_m \to \vec{y}_m^{*}
+  \end{aligned}\right. \to \Delta_i^{*}=\bar{x}^{*}-\bar{y}^{*}-\tilde{h} \\ 
+  K_1=[N\frac{1-\beta}{2}] \qquad K_2=[N\frac{1+\beta}{2}] \\ 
+  P(\Delta^{*}_{(k_1)} < \Delta^{*} < \Delta^{*}_{(k_2)}) \approx \beta \\ 
+\Delta^{*}_{(k_1)} < \Delta^{*} < \Delta^{*}_{(k_2)} \to (-1, 2)
+\end{gather*}
+$0 \in I$, нет оснований отвергнуть гипотезу
+
+\subsection{Множественная проверка гипотез}
+$H_{01}, \dots , H_{0m}$, всем соответсвует $\alpha$, $P(A_i)=\alpha $
+\begin{gather*}
+  P(A_1 + \dots + A_m)=\bar{P}({\bar{A}_1\dots \bar{A}_m}) = \\
+  = 1 - P(\bar{A}_1\dots \bar{A}_m)= 1 - (1-\alpha)^{m} \approx 1 - (1-\alpha m) = \alpha m
+\end{gather*}
+\subsection{Метод Бонферрони}
+Проверяем гипотезы на уровне $\alpha/m$, адекватно при $m \le 5$
+\subsection{Метод Холма-Бонферрони}
+Считаем p-value для всех гипотиз и упорядовиваем
+
+$p_{(1)} \le p_{(2)} \le \dots  \le p_{(m)}$
+
+$p_{(1)}$ сравниваем с $\alpha/m$: 
+
+если $p_{(1)} \ge \alpha/m$, то нет оснаваний отвернуть все гипотезы
+
+если $p_{(1)} < \alpha /m$, отвергаем $H_{0(1)}$, $p_{(2)}$ сравн. с $\alpha/(m-1)$, ..., $p_{(m)}$ сравн. с $\alpha$
 
 \end{document}
