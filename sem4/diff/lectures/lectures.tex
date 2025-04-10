@@ -1714,4 +1714,120 @@ $fix \, y\in Y$, $fix\, h \in C'[a,b]$, определим множество $A
   \end{gather*}
 \end{proof}
 
+% lecture 10
+
+\begin{remark}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Решения уравнения Эйлера называются экстремалями
+    
+      Решения, удовлетворяющие краевым условиям называются допустимыми экстремалями
+    \item Развёрнутая форма уравнения Эйлера \begin{gather*}
+      \pd{F}{y}-\frac{d}{dx}\pd{F}{y'}=0 \\ 
+      \pd{F}{y}-\frac{\partial^{2}F}{\partial y' \partial x}-\frac{\partial^{2}F}{\partial y' \partial y}y' - \frac{\partial^{2}F}{\partial y'^{2}}y''=0
+    \end{gather*}
+\begin{eg}
+  \begin{gather*}
+    J[y]=\int_{-1}^{1}y^{2}(x-y')^{2}dx \to min \qquad y(-1)=0 \qquad y(1)=\frac{1}{2} \\ 
+    2y(x-y')^{2}+\frac{d}{dx}(2y^{2}(x-y'))=0 \\ 
+    y(x^{2}-y'^{2}+y-yy'')=0 \qquad \text{однородное обобщённое} \\ 
+    y = 0 \qquad y= \frac{x^{2}}{2} \\ 
+    \tilde{y}= \left\{\begin{aligned}
+      & 0, \, x \in [-1, 0] \\ 
+      & \frac{x^{2}}{2}, \, x \in [0,1]
+    \end{aligned}\right. \\ 
+    \pd{F}{y'}|_{\tilde{y}}=0
+  \end{gather*}
+\end{eg}
+\item  $\tilde{y}$ - решение $\underset{\not \leftarrow}{\rightarrow}$ $\delta J[\tilde{y}, h]=0, \forall h \in C'[a,b], h(a)=h(b)=0$ $\underset{\leftarrow}{\rightarrow}$ ур. Эйлера
+  
+  $\tilde{y}$ - допуст. экстр
+  \begin{gather*}
+    \underbrace{\pd{F}{y}|_{\tilde{y}}}_{\text{непр.}}=\frac{d}{dx}\underbrace{\pd{F}{y'}|_{\tilde{y}}}_{\text{непр. дифф.}} \\ 
+    \delta J[\tilde{y},h]=\int_{a}^{b}(\pd{F}{y}h+\pd{F}{y'}h')|_{\tilde{y}}dx= \\ 
+    =\int_{a}^{b}(\underbrace{\pd{F}{y}h-\frac{d}{dx}\pd{F}{y'}h}_{0})|_{\tilde{y}}dx+\underbrace{\pd{F}{y'}|_{\tilde{y}}h|_{a}^{b}}_{0}=0
+  \end{gather*}
+  Первая часть - уравнение Эйлера, во второй $h(a)=h(b)=0$
+  \end{enumerate}
+\end{remark}
+
+\subsubsection{Частные случаи F}
+\begin{enumerate}
+  \item $F=F(x)$, $\int_{a}^{b}F(x)dx$
+  \item $F=F(y)$, $\int_{a}^{b}F(y)dx$, $\pd{F}{y}=0$, $G(y)=0 \rightarrow y=C$
+  \item $F=F(y')$, $\frac{d}{dx}\pd{F}{y'}=0$, $\pd{F}{y'}=C \rightarrow y'=a$, $y=ax+b$
+  \item $F=F(x,y)$, $\pd{F}{y}=0$, $G(x,y)=0$
+  \item $F=F(x,y')$, $\frac{d}{dx}\pd{F}{y'}=0$, $\pd{F}{y'}=C$
+  \item $F=F(y,y')$,
+    \begin{gather*}
+      \pd{F}{y}-\frac{\partial^{2} F}{\partial y' \partial y}y'-\frac{\partial^{2} F}{\partial y'^{2}}y''=0 \qquad |\cdot y' \\ 
+      y' \pd{F}{y}-y'^{2}\frac{\partial^{2} F}{\partial y' \partial y}- y' y''\frac{\partial^{2} F}{\partial y'^{2}}=0 \\ 
+      \frac{d}{dx}\left(F-y'\pd{F}{y'}\right)=0 \\ 
+      F-y'\pd{F}{y'}=C
+    \end{gather*}
+    Доп. исследование $y'=0$ из-за домножения.
+  \item Квадратичный функционал
+    \begin{gather*}
+      F=A(x)y^{2}+B(x)yy'+C(x)y'^{2}+D(x)y+E(x)y'+G(x) \\ 
+      \text{коэф.} \in C^{2}(c,d) \qquad [a,b] \subset (c,d) \\ 
+      F(x,y,y') \in C^{2}(\tilde{D}) \qquad \tilde{D} \subset \R^{3} \ \text{область}
+    \end{gather*}
+    На практике достаточно коэф. $\in C^{2}[a,b]$
+    \begin{gather*}
+      \Delta J = J[y+\delta y] - J[y] \qquad (\delta y= \delta \ \delta y'=\delta') \\ 
+      y \in Y \qquad y + \delta y \in Y \qquad \delta y \in C'[a,b] \qquad \delta y (a) = \delta y(b)=0 \\ 
+      \Delta F=\int_{a}^{b}(A(y^{2}+2y \delta + \delta^{2})+B(y+\delta)(y'+\delta')+C(y'^{2}+2y'\delta'+\delta'^{2}) + \\ 
+      +D(y+\delta)+E(y'+\delta)+G - Ay^{2}-Byy' - Cy'^{2}-Dy-Ey'-G)dx =  \\ 
+      = \int_{a}^{b}(\overbrace{(2Ay+By'+D)}^{\pd{F}{y}}\delta + \overbrace{(By+2Cy'+E)}^{\pd{F}{y'}}\delta')dx + \\
+      + \int_{a}^{b}(A'\delta^{2}+B\delta \delta' + C\delta'^{2})dx \\ 
+      \Delta F[\tilde{y}]=\underbrace{\delta J[\tilde{y}, \delta y]}_{0}+\int_{a}^{b}(A(x)\delta y^{2} + B(x)\delta y \delta y' + C(x)\delta y'^{2})dx
+    \end{gather*}
+\end{enumerate}
+
+\subsection{Задача со свободными концами}
+Постановка задачи:
+\begin{gather*}
+  J[y]=\int_{a}^{b}F(x,y,y')dx \\ 
+  F(x,y,y')\in C^{2}(D) \qquad D \in \R^{3} \ \text{область}
+\end{gather*}
+Либо закреплён один из концов, либо оба не закреплены.
+\begin{gather*}
+  Y = \{y(x)\in C'[a,b]: \forall x \in [a,b], (x,y(x), y'(x)) \in D, y(a)=A\} \\ 
+  J[y] \to extr \qquad y \in Y
+\end{gather*}
+\begin{theorem}[Необходимое условие экстремума]
+  Пусть $\tilde{y} \in Y$ решение задачи со свободными концами, тогда $\delta J[\tilde{y}, h]=0$
+  $\forall h \in C'[a,b], h(a)=0$ и эта функция удовлетворяет ур. Эйлера $\pd{F}{y}-\frac{d}{dx}\pd{F}{y'}=0$
+  и условию $\pd{F}{y'}|_b=0$
+\end{theorem}
+\begin{proof}
+  $\tilde{y}$ - min 
+  \begin{gather*}
+    \exists \epsilon > 0: \: \forall y\in Y : \: 0<\Vert y-\tilde{y} \Vert < \epsilon \true J[y] \ge J[\tilde{y}] \\ 
+    y=\tilde{y}+\delta y \in Y \qquad \tilde{y} \in Y \\ 
+    \delta y \in C'[a,b] \qquad \delta y (a)=0 \\ 
+    \delta y =\alpha h \qquad h \in C'[a,b] \qquad h(a)=0  \\ 
+    0 < \Vert \alpha h \Vert < \epsilon \qquad |\alpha| < \frac{\epsilon}{\Vert h \Vert}
+  \end{gather*}
+  По лемме о существовании первой вариации:
+  \begin{gather*}
+    \forall h \in C'[a,b] \  \exists \epsilon_1 > 0 : \forall |\alpha| < \epsilon_1 \ 
+    \Psi(\alpha)=J[\tilde{y}+\alpha h] \in C'[|\alpha|<\epsilon_1] \\ 
+    \epsilon_2 = \min(\frac{\epsilon}{\Vert h \Vert}, \epsilon_1) \\ 
+    |\alpha| < \epsilon_2 : \underbrace{J[\tilde{y}+\alpha h]}_{\Psi(\alpha)} \ge \underbrace{J[\tilde{y}]}_{\Psi(0)} \qquad \Psi(\alpha) \text{непр. дифф.} \\ 
+  \end{gather*}
+  $\alpha =0$ - min $\Psi(\alpha)$ $\rightarrow$ по теор. Ферма $\Psi'(0)=0$, 
+  $\delta J[\tilde{y},h]=0$, $\forall h \in C'[a,b]$, $h(a)=0$
+  \begin{gather*}
+    \delta J[\tilde{y}, h]= \int_{a}^{b}(\pd{F}{y}h+\pd{F}{y'}h')|_{\tilde{y}}dx = 0
+  \end{gather*}
+  По лемме Дюбуа-Реймона $\pd{F}{y'}|_{\tilde{y}}$ - непр. дифф и $\frac{d}{dx}\pd{F}{y'}=\pd{F}{y}$ на $\tilde{y}$
+  \begin{gather*}
+    \int_{a}^{b}\overbrace{\left(\pd{F}{y}|_{\tilde{y}}h-Ψ(0)\frac{d}{dx}\pd{F}{y'}|_{\tilde{y}}h\right)}^{0}dx + \pd{F}{y'}|_{\tilde{y}}h|_{a}^{b}=0 \\ 
+    \pd{F}{y'}|_{\tilde{y}}(b)\underbrace{h(b)}_{\neq 0}=0 \  \rightarrow \ \pd{F}{y'}|_{\tilde{y}}(b)=0
+  \end{gather*}
+\end{proof}
+
+
 \end{document}
