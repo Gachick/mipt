@@ -1824,10 +1824,171 @@ $fix \, y\in Y$, $fix\, h \in C'[a,b]$, определим множество $A
   \end{gather*}
   По лемме Дюбуа-Реймона $\pd{F}{y'}|_{\tilde{y}}$ - непр. дифф и $\frac{d}{dx}\pd{F}{y'}=\pd{F}{y}$ на $\tilde{y}$
   \begin{gather*}
-    \int_{a}^{b}\overbrace{\left(\pd{F}{y}|_{\tilde{y}}h-Ψ(0)\frac{d}{dx}\pd{F}{y'}|_{\tilde{y}}h\right)}^{0}dx + \pd{F}{y'}|_{\tilde{y}}h|_{a}^{b}=0 \\ 
+    \int_{a}^{b}\overbrace{\left(\pd{F}{y}|_{\tilde{y}}h-\Psi(0)\frac{d}{dx}\pd{F}{y'}|_{\tilde{y}}h\right)}^{0}dx + \pd{F}{y'}|_{\tilde{y}}h|_{a}^{b}=0 \\ 
     \pd{F}{y'}|_{\tilde{y}}(b)\underbrace{h(b)}_{\neq 0}=0 \  \rightarrow \ \pd{F}{y'}|_{\tilde{y}}(b)=0
   \end{gather*}
 \end{proof}
+
+% lecture 11
+
+\begin{remark}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Решения уравнения Эйлера называются экстремалями
+
+      Решения краевой задачи называются допустимыми экстремалями (с учётом $\pd{F}{y'}=0$)
+    \item $\tilde{y}$ реш. $\underset{\not \leftarrow}{\rightarrow}$ $\delta J[\tilde{y},h]=0, h(a)=0, h \in C'[a,b]$ $\underset{\leftarrow}{\rightarrow}$ ур. Эйлера + $\pd{F}{y'}\Big|_b=0$
+      \begin{proof}
+      \begin{gather*}
+        \pd{F}{y}=\frac{d}{dx}\pd{F}{y'} \ \rightarrow \ \pd{F}{y'}\Big|_{\tilde{y}} \ \text{- непр. дифф.} \\ 
+        \delta J=\int_{a}^{b}\left(\pd{F}{y}+\pd{F}{y'}h'\right)\Big|_{\tilde{y}}dx = \\ 
+        = \pd{F}{y'}\Big|_{\tilde{y}}h\Big|_a^b + \int_{a}^{b}\underbrace{\left(\pd{F}{y}-\frac{d}{dx}\pd{F}{y'}\right)}_{0}\Big|_{\tilde{y}}hdx=0
+      \end{gather*}
+      \end{proof}
+    \item На допустимых экстремалях для квадратичного функционала:
+      \[
+        \Delta J[\tilde{y}]=\int_{a}^{b}(A(x)\delta y^{2}+B(x)\delta y \delta y' + C(x)\delta y'^{2})dx
+      \]
+  \end{enumerate}
+\end{remark}
+
+\subsection{Задача с вектор-функцией}
+$\vec{C}^{1}[a,b]$ - множество вектор-функция с непр. дифф. на $[a,b]$ компонентами ($y_k \in C'[a,b]$)
+
+$\Vert \vec{y} \Vert = \sum_{k=1}^{n}\Vert y_k \Vert = \sum_{k=1}^{n}(\max_{[a,b]}|y_k| + \max_{[a,b]} |y_k'|)$
+\subsubsection{Постановка задачи}
+$J[\vec{y}]=\int_{a}^{b}F(x,\vec{y}, \vec{y}')dx \qquad \vec{y}(a)=\vec{A}, \, \vec{y}(b)=\vec{B}$
+
+$F(x,y,\dots ,y_n, y_1',\dots , y_n') \in C^{2}(D)$, $D \subset \R^{2n+1}$, $D$ - область 
+
+$Y=\{ \vec{y}\in \vec{C}'[a,b], \, \forall x\in [a,b] \ (x,y_1(x),\dots ,y_n(x), y_1'(x),\dots , y_n'(x)) \in D, \, \vec{y}(a)=\vec{A}, \, \vec{y}(b)=\vec{B}\}$
+
+$J[\vec{y}\to extr \qquad \vec{y}\in Y$
+\begin{definition}[Экстремум]
+  $\vec{y} \in Y$ называется точкой локального min (max), если 
+  \[
+    \exists \epsilon > 0:\: \forall \vec{y} \in Y:\: 0 \ge \Vert \vec{y} - \tilde{\vec{y}} \Vert < \epsilon \ \rightarrow \ J[\tilde{\vec{y}}] \le J[\vec{y}] \ (\ge)
+  \]
+\end{definition}
+\begin{theorem}[Необходимое условие экстремума]
+  Пусть $\tilde{\vec{y}}$ решение задачи с вектор-функцией,
+  тогда она удовлетворяет системе уравнений Эйлера:
+  \[
+    \left\{\begin{aligned}
+      & \pd{F}{y_1} - \frac{d}{dx}\pd{F}{y_1'}=0 \\
+      & \dots \\
+      & \pd{F}{y_n} - \frac{d}{dx}\pd{F}{y_n'}=0
+    \end{aligned}\right.
+  \]
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    J[\tilde{y}]=\int_{a}^{b}(F, \tilde{y}_1,\dots , \tilde{y}_{k-1}, y_k, \tilde{y}_{k+1},\dots , \tilde{y}_1',\dots ,\tilde{y}_{k-1}', \tilde{y}_k', \tilde{y}_{k+1}', \dots ) \\ 
+    y_k(a)=A_k \qquad y_k(b)=B_k
+  \end{gather*}
+  Простейшая задача для $y_k$ $\rightarrow$ необх. усл $\pd{F}{y_k}-\frac{d}{dx}\pd{F}{y_k'}=0$
+\end{proof}
+\subsection{Задача с производными высших порядков}
+$C^{n}[a,b]$ - множество всех $n$-раз непрерывно дифф. на $[a,b]$ функций
+
+$\Vert y \Vert = \max_{[a,b]}|y| + \sum_{k=1}^{n}\max_{[a,b]}|y^{(k)}|$
+\subsubsection{Постановка задачи}
+$J[y]=\int_{a}^{b}F(x,y,y', \dots , y^{(n)})dx$, $F\in C^{n+1}(D)$, $D \subset \R^{n+2}$
+
+$y(a)=A_0$, $y'(a)=A_1$, ..., $y^{(n-1)}(a)=A_{n-1}$
+
+$y(a)=B_0$, $y'(a)=B_1$, ..., $y^{(n-1)}(a)=B_{n-1}$
+
+$Y=\{y\in C^{n}[a,b], \, \forall x \in [a,b] \ (x,y(x), y'(x),\dots ,y^{(n)}(x) \in D, \, y^{(k)}=A_k,\,$ $ y^{(k)}(b)=B_k, \, k=0,\dots ,n-1\}$
+
+$J[y]\to extr$, $y\in Y$
+\begin{definition}[Определение экстремума]
+  $\vec{y} \in Y$ называется точкой локального min (max), если 
+  \[
+    \exists \epsilon >0: \: \forall y \in Y:\: 0 < \Vert y-\tilde{y} \Vert < \epsilon \ \rightarrow \ J[\tilde{y}]\le J[y] \ (\ge)
+  \]
+\end{definition}
+\begin{lemma}[Обобщённая лемма существования первой вариации]
+  \phantom{.}
+
+  Пусть $J[y]=\int_{a}^{b}F(x,y,y',\dots ,y^{(n)})dx$, $F(x, y, \dots , y^{(n)}) \in C^{n+1}(D)$,
+  $D\in \R^{n+2}$, $Y=\{y \in C^{n}[a,b]:\: \forall x \in [a,b] \ (x,y(x),\dots ,y^{(n)}(x))\in D\}$,
+  тогда
+  \[
+    \forall y\in Y \; \forall h \in C^{n}[a,b] \ \exists \epsilon > 0: \: \Psi(\alpha)=J[y+\alpha h]
+  \]
+  является непр. дифф. на $|\alpha|\le \epsilon$ и
+  \[
+    \Psi'(0)=\delta J[y,h]=\int_{a}^{b}(\pd{F}{y}h+\pd{F}{y'}h'+\dots +\pd{F}{y^{(n)}}h^{(n)})dx
+  \]
+\end{lemma}
+\begin{lemma}[Обобщённая лемма Дюбуа-Реймона]
+  \phantom{.}
+
+  Пусть $a_k(x) \in C[a,b]$, $k=0,\dots ,n$ и
+  \begin{gather*}
+    \int_{a}^{b}(a_0h+a_1h'+\dots +a_kh^{(k)}+\dots +a_nh^{(n)})dx=0 \\ 
+    \forall h \in C^{n}[a,b] \qquad h^{(k)}(a)=h^{(k)}(b)=0 \qquad k=0,\dots ,n-1
+  \end{gather*}
+  тогда $a_k(x) \in C^{k}[a,b]$ и $\sum_{k=0}^{n}(-1)^{k}a_k^{(k)}=0$
+\end{lemma}
+\begin{theorem}[Необходимое условие экстремума]
+  Пусть $\tilde{y}(x) \in Y$ решение задачи с производными высшего порядка, тогда
+  \[
+    \delta J[\tilde{y}, h]=0 \qquad \forall h \in C^{n}[a,b]: \:
+    h^{(k)}(a)=h^{(k)}(b)=0 \quad k=0,\dots ,n-1
+  \]
+  и $\tilde{y}$ удовлетворяет уравнению Эйлера-Пуассона:
+  \[
+    \pd{F}{y}+\sum_{k=1}^{n}(-1)^{k}\frac{d^{k}}{dx^{k}}\pd{F}{y^{(k)}}=0
+  \]
+\end{theorem}
+\begin{proof}
+  $\tilde{y}(x) \in Y$ locmin
+  \begin{gather*}
+    \exists \epsilon > 0 :\: \forall y \in Y :\: 0 < \Vert y-\tilde{y} \Vert < \epsilon \true J[\tilde{y}] \le J[y] \\ 
+    y = \tilde{y} + \delta y \in Y \qquad \delta \in C^{n}[a,b] \ \implies \  \delta y^{(k)}(a)= \delta y^{(k)}(b)=0 \\ 
+    \delta y = \alpha h \qquad h \in C^{n}[a,b] \qquad h^{(k)}(a)=h^{(k)}(b)=0 \\ 
+    0 < \Vert \delta y \Vert = |\alpha|\Vert h \Vert < \epsilon \ \implies \ |\alpha| < \frac{\epsilon}{\Vert h \Vert}
+  \end{gather*}
+  По обобщённой лемме существования первой вариации: 
+
+  $\tilde{y}\in Y \ \forall h \in C^{n}[a,b] \ \exists \epsilon_1 \ \Psi(\alpha)=J[\tilde{y}+\alpha h]$
+  непр. дифф. на $|\alpha| < \epsilon_1$
+
+  $\epsilon_2 = \min(\frac{\epsilon}{\Vert h \Vert}, \epsilon_1)$, $|\alpha| < \epsilon_2$:
+  $\Psi(\alpha)$ непр. дифф. $J[\tilde{y}] \le J[\tilde{y}+\alpha h]$, $\alpha=0$ - min
+
+  По теореме Ферма: $\Psi'(0)=0$, $\delta J[\tilde{y}, h]=0$
+  \begin{gather*}
+    \delta j = \int_{a}^{b}\left(\pd{F}{y}h + \pd{F}{y'}h' + \dots + \pd{F}{y^{(k)}} + \dots + \pd{F}{y^{(n)}}h^{(n)}\right)dx=0 \\ 
+    \forall h \in C^{n}[a,b] \qquad h^{(k)}(a)=h^{(k)}(b)=0 \qquad k=0,\dots ,n-1
+  \end{gather*}
+  По лемме Дюбуа-Реймона: $a_k \in C^{k}[a.b]$, $\sum_{k=0}^{n}(-1)^{k}a_k^{(k)}=0$
+  \begin{gather*}
+    \pd{F}{y}-\frac{d}{dx}\pd{F}{y'}+\frac{d^{2}}{dx^{2}}\pd{F}{y''}+\dots +(-1)^{n}\frac{d^{n}}{dx^{n}}\pd{F}{y^{(n)}}=0
+  \end{gather*}
+\end{proof}
+
+\begin{eg}
+  \begin{gather*}
+    J[y]=\int_{1}^{2}(2y+yy'+x^{2}y'^{2})dx \\ 
+    2+y'-\frac{d}{dx}(y+2x^{2}y')=0 \\ 
+    x^{2}y'' + 2xy' =1 \qquad (x^{2}y')'=1 \\ 
+    y'=\frac{1}{x}+\frac{\tilde{C_1}}{x^{2}} \qquad y =\ln x + \frac{C_1}{x} + C_2 \\ 
+    \pd{F}{y'}\Big|_{1,2}=0 \\ 
+    \left\{\begin{aligned}
+      & y(1) + 2y'(1) = 0 \\ 
+      & y(2) + 8 y'(2) =0 
+    \end{aligned}\right. \ \rightarrow \ \tilde{y}(x)=2+\ln 4 + \frac{4+ \ln 4}{x} + \ln x \\ 
+    \Delta J = J[\tilde{y}+\delta y] - J[\tilde{y}]=\int_{1}^{2}(\delta y \delta y' + x^{2} \delta y'^{2})dx
+    = \frac{1}{2}\delta y^{2} \Big|_{1}^{2} + \int_{1}^{2}x^{2}\delta y'^{2}dx \\ 
+    \Delta J = \frac{1}{2}\delta y^{2}(2) - \frac{1}{2}\delta y^{2}(1) + \int_{1}^{2}x^{2}\delta y'^{2}dx \\ 
+    0<\Vert \delta y \Vert < \epsilon \qquad \delta y = a(x-1) \qquad \Vert \delta y \Vert=2a < \epsilon \\ 
+    \delta y_1 = \frac{\epsilon}{4}(x-1) \rightarrow \Delta J > 0
+  \end{gather*}
+\end{eg}
 
 
 \end{document}
