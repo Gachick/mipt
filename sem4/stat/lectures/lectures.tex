@@ -2352,8 +2352,8 @@ $H_0: \: \beta_i =\beta_j$, $H_1:\: \beta_i\neq\beta_j, \beta_i > \beta_k, \beta
     y_i = \frac{x_i-x_{i\, min}}{x_{i \, max}-x_{i \, min}} \qquad z_i \in [0,1]
   \]
 \end{remark}
-\subsubsection{Сравнение регрессий}
-Вспомогательная задача: 
+\subsection{Сравнение регрессий}
+\subsubsection{Вспомогательная задача}
 
 $\eta = \gamma + \epsilon \qquad \epsilon \sim N(\vec{0}, \sigma^{2}E)$
 
@@ -2369,17 +2369,230 @@ $H_0: \: \gamma \in L_0$, $H_1: \: \gamma \in L_1/L_0$
 Теорема о проекц: $\epsilon \sim N(0, \sigma^{2} E)$ и $L_1 \oplus L_2 \oplus L_3$,
 тогда $\epsilon_{L_1},\epsilon_{L_2},\epsilon_{L_3}$ - независ и $\frac{|\epsilon_{L_i}|^{2}}{\sigma^{2}} \sim \chi^{2}(dim \, L_i)$
 \begin{gather*}
-  \eta = \gamma + \epsilon \qquad H_0: \eta=\gamma+\epsilon \\ 
-  d_1 = |\gamma+\epsilon - \gamma - \epsilon_{L_1}|^{2}=|\epsilon-\epsilon_{L_1}|^{2} \\ 
-  H_0: d_0=|\gamma+\epsilon-\gamma-\epsilon_{L_0}|^{2}=|\epsilon-\epsilon_{L_0}|^{2}
+  \eta_{L_1}=\gamma + \epsilon_{L_1} \\ 
+  H_0: \: \eta_{L_0}=\gamma + \epsilon_{L_0} \\ 
+  d_1 = |\gamma + \epsilon - \gamma - \epsilon_{L_1}|^{2}= |\epsilon - \epsilon_{L_1}|^{2} \\ 
+  d_0 = |\gamma + \epsilon - \gamma - \epsilon_{L_0}|^{2} = |\epsilon - \epsilon_{L_0}|^{2} \\ 
+  \frac{d_1}{\sigma^{2}} \sim \chi^{2}(n-n_1) \qquad \frac{d_{01}}{\sigma^{2}} \sim \chi^{2}(n_1-n_0) \\ 
+  \Delta = \frac{\cfrac{d_0-d_1}{n_1-n_0}}{\cfrac{d_1}{n-n_1}} \sim F(n_1 - n_0, n - n_1)
 \end{gather*}
-$d_{01}$ - проек. $\epsilon$ на $L_0^{\perp}$
+
+\subsubsection{Сравнение вложенных регрессий}
 \begin{gather*}
-  \left\{\begin{aligned}
-    &\frac{d_{01}}{\sigma^{2}}\sim \chi^{2}(n_1-n_0) \\ 
-    & \frac{d_1}{\sigma^{2}}\sim \chi^{2}(n-n_1)
-  \end{aligned}\right. \quad \text{независ.} \\ 
-  H_0: \Delta=\frac{d_{01}/(n_1-n_0)}{d_1/(n-n_1)}\sim F(n_1-n_0, n-n_1)
+  \eta = \Psi \beta + \epsilon \\ 
+  H_0: \: \beta_i = 0, i\in I \qquad H_1: \: \exists i\in I: \: \beta_i=0
 \end{gather*}
+
+\incfig{l12_comp}
+\[
+  \Delta = \frac{\cfrac{RSS_0-RSS_1}{p_1-p_0}}{\cfrac{RSS_1}{n-p_1}} \sim F(p_1-p_0,n-p_1)
+\]
+
+\subsubsection{Сравнение невложенных регрессий}
+\begin{gather*}
+  \Psi_1(x)\dots \Psi_{p_1}(x) \qquad \phi_1(x)\dots \phi_{p_2}(x)
+\end{gather*}
+Объединяем в общий базис $\eta=\Psi \beta + \epsilon$
+\begin{gather*}
+  \begin{aligned}
+    A: \quad  & H_0: \beta_i \ \text{для 2го базиса} \ = 0 \\ 
+    & H_1: \exists i : \: \beta_i \neq 0 \\
+    B: \quad  & H_0: \beta_i \ \text{для 1го базиса} \ = 0 \\ 
+    & H_1: \exists i : \: \beta_i \neq 0
+  \end{aligned}
+\end{gather*}
+Если верна $H_0$, говорим $A (B) < $ длин.
+\begin{enumerate}
+  \item $A < \text{длин} < B$, $A$ - лучший базис
+  \item $\text{длин} < A <> B$ - лучший объединённый базис
+  \item $A <> B < \text{длин} $ - нельзя ничего сказать
+\end{enumerate}
+\begin{eg}
+  \begin{gather*}
+    \{x, \frac{1}{x}\} \qquad \{x, \frac{1}{x^{2}} \} \\ 
+    RSS = 0.664 \qquad RSS=1.93 \\ 
+  \text{длин} \ \{\frac{1}{x^{2}}, x, \frac{1}{x}\} \\ 
+  \Psi^{T}\Psi = F = \begin{pmatrix}
+    1.08 & 2.28 & 1.19 \\ 
+    2.28 & 55 & 5 \\ 
+    1.19 & 5 & 1.45
+  \end{pmatrix} \qquad \tilde{\beta} = F^{-1}\Psi^{T}\Psi = \begin{pmatrix}
+    -0.65 \\ 0.92 \\ 5.77
+  \end{pmatrix} \\ 
+  RSS=0.6471 \\ 
+  A: \: \{x, \frac{1}{x}\} \ \text{vs} \ \{\frac{1}{x^{2}}, x, \frac{1}{x}\} \\ 
+  \tilde{D}_A = \frac{(0.664 - 0.6471)/(3-2)}{0.6471/(5-3)}=0.052 \qquad \tilde{\Delta}_A \sim F(1,2) \\ 
+  \text{p-value}=P(\Delta \ge \tilde{\Delta}_A|H_0)=\int_{0.052}^{\infty}q(t)dt = 0.84 \\
+  B: \: \{x, \frac{1}{x^{2}}\} \ \text{vs} \ \{\frac{1}{x^{2}}, x, \frac{1}{x}\} \\ 
+  \tilde{D}_B = \frac{(1.93 - 0.6471)/(3-2)}{0.6471/(5-3)}=3.965 \qquad \tilde{\Delta}_B \sim F(1,2) \\ 
+  \text{p-value}=P(\Delta \ge \tilde{\Delta}_B|H_0)=\int_{3.965}^{\infty}q(t)dt = 0.185 \\ 
+  A < \text{длин} \qquad B < \text{длин}
+  \end{gather*}
+\end{eg}
+
+\subsubsection{Проверка значимости всей регрессии (факторный анализ)}
+\begin{gather*}
+  \eta = \Psi \beta + \epsilon \qquad \{1,\dots \} \\ 
+  H_0: \: \beta_i = 0, \, i\neq 1 \ \text{(не 0 только при 1)} \\ 
+  H_1: \: \beta_i \neq 0, \, i\neq 1 \ \text{(хотя бы один)} \\ 
+  \eta = \beta_1 - \epsilon \\ 
+  e^{T}e=\sum_{i=1}^{n}(y_i - \beta_1)^{2} \to \min \qquad \tilde{B}_1=\bar{y} \\ 
+  \sum_{i=1}^{n}(y_i - \bar{y})^{2} = TSS \ \text{(total sum of squares)} \\ 
+  \Delta = \frac{(TSS - RSS)/(p-1)}{RSS/(n-p)} \sim F(p-1, n-p)
+\end{gather*}
+\begin{definition}[Коэффициент детерминации]
+  \[
+    R^{2}= \frac{TSS - RSS}{TSS}
+  \]
+  - доля дисперсии отклика, которая объясняется уравнением линейной регресси
+\end{definition}
+\begin{remark}
+  \phantom{.}
+
+  Вся регрессия значима, но при этом все коэфф. не явл. значимыми - значит суммарно значимы
+
+  Регрессия незначима, но коэфф. значимы - вероятно не учли множественную проверку гипотез и откинули лишнее
+\end{remark}
+
+\begin{eg}
+  $n=15$, $x_1$ БРС (24), $x_2$ семестровая (16), $y$ экзамен
+\begin{center}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+  \hline
+   19 & 22 & 14 & 17 & 21 & 24 & 23 & 22 & 15 & 24 & 15 & 18 & 15 & 20 & 21 \\ 
+  \hline
+   9 & 15 & 10 & 3 & 6 & 8 & 13 & 4 & 3 & 10 & 9 & 3 & 13 & 3 & 16 \\
+  \hline
+   6 & 7 & 5 & 3 & 6 & 8 & 8 & 5 & 6 & 8 & 4 & 3 & 5 & 5 & 5  \\
+  \hline
+\end{tabular}
+\end{center}
+\begin{gather*}
+  \eta = \beta_1 + \beta_2 \xi_1 + \beta_3 \xi_2 + \epsilon \\ 
+  \Psi = \begin{pmatrix}
+    1 & 1 & \dots & 1 \\ 
+    19 & 22 & \dots & 21 \\ 
+    9 & 15 & \dots & 16
+  \end{pmatrix}^{T} \qquad T= \begin{pmatrix}
+    6 & 7 & \dots & 5
+  \end{pmatrix}^{T} \\ 
+  F^{-1} = \begin{pmatrix}
+    2.31 & -0.11 & -0.011 \\ 
+    -0.11 & 0.0 062 & -0.0 01 \\ 
+    -0.011 & -0.0 01 & 0.0 0 36 
+  \end{pmatrix} \qquad \tilde{B}=F^{-1}\Psi^{T}\Psi = \begin{pmatrix}
+    -0.3 \\ 0.25 \\ 0.13
+  \end{pmatrix} \\ 
+  y = -0.3 + 0.25 x_1 + 0.13 x_2 + e \\ 
+  RSS=e^{T}e =18.54
+\end{gather*}
+Статистический аналзи модели:
+\begin{enumerate}
+  \item значимость коэффициентов
+    \begin{gather*}
+      H_0: \: \beta_i =0 \qquad H_1: \beta_i \neq 0 \\ 
+      \Delta = \frac{\tilde{B}_i}{\sqrt{RSS \cdot F^{-1}_{ii}}}\sqrt{n-p} \sim t(n-p) \\ 
+      \tilde{\Delta}_1 = \frac{-0.3}{\sqrt{18.54 \cdot 2.31}} \sqrt{12} = -0.16 \\ 
+      \text{p-value}_1=P(|\Delta| \ge |\tilde{\Delta}| | H_0) = 2\int_{0.16}^{\infty}q(t)dt = 0.876 \qquad \beta_1 \text{ не знач.}\\
+      \beta_1 \text{ знач.}  \qquad \beta_1 \text{ не знач.} 
+    \end{gather*}
+  \item значимость всей регрессии
+    \begin{gather*}
+      TSS= \sum_{i=1}^{n}(y_i-\bar{y})^{2}=37.33 \qquad \bar{y}=5.67 \\ 
+      R^{2}= \frac{37.33-18.54}{37.33} = 0.503 \\ 
+      \Delta = \frac{(TSS-RSS)/(p-1)}{RSS/(n-p)} \sim F(p-1, n-p) \qquad \tilde{\Delta} = 6.072 \\ 
+      \Delta \sim F(2,12) \qquad \text{p-value} = P(\delta \ge \tilde{\Delta} |H_0) = 0.015 \\ 
+      H_0: \: \beta_1 \neq 0, \beta_i=0 \qquad \text{отвергаем} 
+    \end{gather*}
+    Регресия значима
+  \item Прогноз $x_1=15$, $x_2 = 8$
+    \begin{gather*}
+      \tilde{y} = -0.3 + \dots = 4.49
+    \end{gather*}
+    Доверительный интервал:
+    \begin{gather*}
+      \Delta = t_{\frac{1+\beta}{2}}(n-p)\sqrt{1+\Psi_0 F^{-1}\Psi_0^{T}}\sqrt{\frac{RSS}{n-p}} \\ 
+      \beta = 0.95 \qquad \Psi_0 = (1 \ 15 \ 8) \\ 
+      t_{0.975}(12)=2.18 \qquad \delta = 2.94 \\ 
+      (1.55; 7.43)
+    \end{gather*}
+  \item Проверка предположений регрессии: 
+    \begin{gather*}
+      \epsilon \sim N(0,\sigma^{2}) \\ 
+      e = (0.33; -0.21;\dots ;-2.09) 
+    \end{gather*}
+    \begin{enumerate}
+      \item Гипотеза случайности $e$ 
+        \begin{gather*}
+          \Delta = \frac{I_n - \frac{n(n-1)}{4}}{\sqrt{\frac{n^{3}}{36}}} \rightsquigarrow N(0,1) \\ 
+          \tilde{\Delta}=0.67 \qquad I_n = 59 \qquad \text{p-value}=0.52
+        \end{gather*}
+      \item Гипотеза нормальности $\epsilon$
+        \begin{gather*}
+          \tilde{\sigma}^{2}=\frac{RSS}{n-p}=\frac{18.54}{12} = 1.545
+        \end{gather*}
+        Критерий Колмогорова
+        \begin{gather*}
+          \Delta = \sqrt{n}\sup_{R} | \tilde{F}(x) - F(x, 0, \sigma^{2})|
+        \end{gather*}
+        Параметрический бутстрап:
+        \begin{gather*}
+          \tilde{\sigma}^{2}=\frac{1}{n-1}\sum_{}^{}(e_i - \bar{e})^{2} = 1.15 \ \rightarrow \ N(0,1.15) \\ 
+          \vec{x}_15^{*} \to \tilde{F}^{*}(x), \, \tilde{\sigma}^{2*}=\frac{1}{n-1}\sum_{}^{}(x_i-\bar{x})^{2} \\ 
+          \Delta_i^{*} = \sqrt{15}\sup_{R}|\tilde{F}(x) - F(x, 0, \tilde{\sigma}^{2*})|
+        \end{gather*}
+        $N=50000$, вар. ряд $\Delta_{(1)}^{*}\dots \Delta_{(N)}^{*}$, m - колво $\Delta_{(k)}^{*} \ge \tilde{\Delta}$,
+        p-value $=\frac{m}{N}$
+        \begin{gather*}
+          \text{p-value}=0.722
+        \end{gather*}
+    \end{enumerate}
+\end{enumerate}
+\end{eg}
+\subsection{Проверка адекватности модели}
+\begin{gather*}
+  fix \, \vec{x} \qquad \vec{\xi}=(\xi_1,\dots ,\xi_k) \\ 
+  y_1, y_2,\dots ,y_l \qquad \eta=f(\vec{x})+\epsilon \quad f=\sum_{}^{}\beta_i\Psi_i(\vec{x})\\ 
+  \tilde{\sigma}^{2}_1=\frac{1}{l-1}\sum_{i=1}^{l}(y_i-\bar{y})^{2} \\ 
+  \epsilon \sim N(0,\sigma^{2}_2) \\ 
+  \frac{\tilde{\sigma}^{2}_1(l-1)}{\sigma_1^{2}} \sim \chi^{2}(l-1) \\ 
+  H_0: \: \sigma_1^{2}=\sigma_2^{2} \qquad H_1: \: \sigma_2^{2} > \sigma_1^{2} \\ 
+  \frac{RSS}{\sigma_2^{2}} \sim \chi^{2}(n-p) \\ 
+  \Delta = \frac{\cfrac{RSS}{n-p}}{\tilde{\sigma}_1^{2}} \sim F(n-p, l-1)
+\end{gather*}
+\begin{eg}
+  Для проверки берём $(14 \ 10 \ 5)$ и $(15 \ 9 \ 4)$ (дальше их не используем)
+  \begin{gather*}
+    \tilde{\sigma}_1^{2}=(5-4.5)^{2} + (4-4.5)^{2} = 0.5 \\ 
+    n = 13 \qquad RSS=17.88 \qquad \tilde{\Delta}=\frac{17.88 / 10}{0.5}=3.58 \\ 
+    \Delta \sim F(10, 1) \qquad \text{p-value}=\int_{3.58}^{\infty}q(t)dt = 0.39 
+  \end{gather*}
+\end{eg}
+\subsection{Проверка предсказательной способности модели}
+Cross-validation (CV) - разбиваем на коробочки (обычно 5), одну используем для проверки,
+остальные - для обучения, каждый раз выбранную коробку и потом берём среднее
+\begin{eg}
+  $n=15$, по $n = 14$ $\rightarrow$ регрессия $CVSS_i=(y_i - \bar{y}_i)^{2}$
+  \begin{gather*}
+    \vec{CVSS}=(0.15;0.07; \dots ; 8.21) \qquad CVSS=\sum_{}^{}CVSS_i \\ 
+    R^{2}_{CV}=\frac{TSS-CVSS}{TSS}=0.172
+  \end{gather*}
+  $R^{2}_{CV}$ - насколько хорошо прогнозирует
+\end{eg}
+\subsection{Упрощение регрессии}
+Исключаем незничительные коэфф.
+\begin{gather*}
+  \{x_1\} \qquad \tilde{\beta}_1=0.29 \\ 
+  y=0.29x_1 + e \\ 
+  RSS_0=23.35 \qquad RSS_1=18.54 \\
+  \Delta=\frac{(RSS_0-RSS_1)/(p_1-p_0)}{RSS_1/(n-p_1)} \sim F(p_1-p_0, n-p_1) \\ 
+  \tilde{\Delta} = \frac{(23.35-18.54)/(3-1)}{18.54 / (12)} = 1.56 \\ 
+  \text{p-value} = 0.25 
+\end{gather*}
+
+\subsection{Проблемы регрессии}
+\begin{enumerate}
+  \item Выбросы - как в boxplot, один из вариантов брать $\epsilon \sim t(m)$
+\end{enumerate}
 
 \end{document}
