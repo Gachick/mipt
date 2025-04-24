@@ -1986,9 +1986,116 @@ $J[y]\to extr$, $y\in Y$
     = \frac{1}{2}\delta y^{2} \Big|_{1}^{2} + \int_{1}^{2}x^{2}\delta y'^{2}dx \\ 
     \Delta J = \frac{1}{2}\delta y^{2}(2) - \frac{1}{2}\delta y^{2}(1) + \int_{1}^{2}x^{2}\delta y'^{2}dx \\ 
     0<\Vert \delta y \Vert < \epsilon \qquad \delta y = a(x-1) \qquad \Vert \delta y \Vert=2a < \epsilon \\ 
-    \delta y_1 = \frac{\epsilon}{4}(x-1) \rightarrow \Delta J > 0
+    \delta y_1 = \frac{\epsilon}{4}(x-1) \rightarrow \Delta J > 0 \\ 
+    \delta y_2(x)=\frac{a}{\sqrt{x}} \qquad 0 < \Vert \delta y_2 \Vert < \epsilon \\ 
+    \max_{[1,2]}|\frac{a}{\sqrt{a}}|+\max_{[1,2]}|\frac{a}{2x^{3/2}}|=\frac{3}{2}a < \epsilon \qquad a = \frac{\epsilon}{3} \\ 
+    \Delta J = \frac{\epsilon^{2}}{18}\frac{1}{2} - \frac{\epsilon^{2}}{18} + \frac{\epsilon^{2}}{9}\int_{1}^{2}\frac{1}{4x^{3}}dx 
+    = -\frac{\epsilon^{2}}{36} + \frac{\epsilon^{2}}{36} \ln 2 < 0  \\ 
+    \forall \epsilon > 0 \ \exists \delta y_1=\frac{\epsilon}{4}(x-1), \, \delta y_2=\frac{\epsilon}{3\sqrt{x}}: \:
+    0 < \Vert \delta y_i \Vert < \epsilon \ \true \ \Delta J_1 >0, \, \delta J_2 < 0
   \end{gather*}
+  $extr$ нет
 \end{eg}
+
+% lecture 12
+
+\subsection{Изопериметрическая задача}
+Задача Дидоны (максимизируем площадь с фиксированной длиной):
+
+\incfig{l12_d}
+\begin{gather*}
+  x(0)=a \qquad y(0) = 0 \\ 
+  x(1)=b \qquad y(1)=0 \\ 
+  \int_{0}^{1}\sqrt{\dot{y}^{2} + \dot{x}^{2}}dt=l \\ 
+  S=\frac{1}{2}\int_{\Gamma}^{}xdy-ydx = \frac{1}{2}\int_{\gamma_1}^{}xdy-ydx=
+  \frac{1}{2}\int_{0}^{1}(x \dot{y}-y\dot{x})dt \to \max
+\end{gather*}
+\begin{gather*}
+  J[y]=\int_{a}^{b}F(x,y,y')dx \quad y(a)=A \quad y(b)=B \\ 
+  H[y]=\int_{a}^{b}G(x,y,y')dx=l \\ 
+  F(x,y,y'),\, G(x,y,y') \in C^{2}(D) \qquad D \subset \R^{3} \ \text{область} \\ 
+  Y=\{y \in C'[a,b]: \: \forall x \in [a,b] \ (x,y(x), y'(x)) \in D, \\ 
+  y(a)=A, \ y(b)=B, \ \int_{a}^{b}G(x,y,y')dx=l\} \\ 
+  J[y] \to extr \qquad y \in Y
+\end{gather*}
+\begin{definition}[Локальный минимум]
+  \[
+    \exists \epsilon > 0: \: \forall y \in Y : \: \ 0 < \Vert y - \tilde{y} \Vert < \epsilon \ \true \ J[\tilde{y}] \le J[y]
+  \]
+\end{definition}
+\begin{lemma}
+  Пусть $J[y]=\int_{a}^{b}F(x,y,y')dx$, $F \in C^{2}(D)$, $D \subset \R^{3}$ область,
+  $Y=\{y\in C'[a,b]: \forall x \in [a,b] \ (x,y(x),y'(x)) \in D\}$, тогда
+  $\forall y \in Y$ и $\forall h_{1,2}\in C'[a,b]$
+  $\exists \epsilon > 0: \ \Psi(\alpha,\beta)=J[y+\alpha h_1 + \beta h_2]$ непр. дифф. на 
+  $|\alpha| \le \epsilon$, $|\beta| \le \epsilon$ и $\pd{\Psi}{\alpha}\Big|_{(0,0)}=\delta J[y,h_1]$,
+  $\pd{\Psi}{\beta}\Big|_{(0,0)}=\delta J[y,h_2]$
+\end{lemma}
+\begin{proof}
+  \incfig{l12_lem}
+  $y \in Y$ произв., $\Gamma$ - замк. и огран в силу открыт. обл $D$
+
+  $\exists O(\Gamma) \subset D \rightarrow \forall h_{1,2} \in C'[a,b] \ $
+  $\exists \epsilon > 0: $ точки $(x, y(x\alpha h_1 + \beta h_2(x), y'+\alpha h_1' + \beta h_2') \in O(\Gamma) \subset D$ 
+  $\forall x \in [a,b] \ \forall |\alpha| \le \epsilon$ и $|\beta| \le \epsilon$
+
+  $\rightarrow \exists \Psi(\alpha,\beta)=J[y+\alpha h_1 + \beta h_2]$ - опред. на $|\alpha| \le \epsilon$, $|\beta| \le \epsilon$ 
+
+  $\Psi(\alpha,\beta)=\int_{a}^{b}F(x, y+\alpha h_1 + \beta h_2, y' + \alpha h_1' + \beta h_2')dx$,
+  $f(x, \alpha, \beta)$ - непр на $A = [a,b] \times [-\epsilon, \epsilon] \times [-\epsilon, \epsilon]$
+
+  $\pd{f}{\alpha}=\pd{F}{(y+\alpha h_1 + \beta h_2)}h_1 + \pd{F}{(y'+\alpha h_1' + \beta h_2')}h_1'$ непр. на $A$
+
+  По теореме о дифф. собств. интегр. по параметру: $\Psi(\alpha, \beta)$ непр. дифф. на $[-\epsilon,\epsilon] \times [-\epsilon,\epsilon]$
+
+  $\pd{\Psi}{\alpha}\Big|_{(0,0)}=\int_{a}^{b}\pd{f}{\alpha}\Big|_{(0,0)}dx= \int_{a}^{b}\pd{F}{y}h_1 + \pd{F}{y'}h'=\delta J[y,h_1]$, аналогично $\delta J[y,h_2]$
+\end{proof}
+\begin{theorem}[Метод множителей Лагранжа]
+  Пусть $(0,0)$ решение задачи $\Psi(\alpha,\beta) \to \min$, $\Phi(\alpha,\beta)=l$
+  и $\Psi(\alpha,\beta)$, $\Phi(\alpha,\beta)$ непр. дифф. в некоторой окрестности точки $(0,0)$
+  и $rg(\pd{\Phi}{\alpha} \ \pd{\Phi}{\beta})\Big|_{(0,0)}=1$,
+  тогда $\exists \lambda \in R: \:$ $\pd{L}{\alpha}\Big|_{(0,0)}=0$ и 
+  $\pd{L}{\beta}\Big|_{(0,0)}=0$, $L=\Psi+\lambda \Phi$
+\end{theorem}
+\begin{theorem}[Необходимое условие экстремума]
+  Пусть $\tilde{y}\in Y$ решение изопереметерической задачи и
+  $\exists \ h_2 \in C'[a,b] : h_2(a)=h_2(b)=0, \ \delta H[\tilde{y},h_2] \neq 0$,
+  тогда $\exists \lambda \in R: \: \tilde{y}$ удовлетворяет уравнению Эйлера для 
+  функции Лагранжа $L=F+\lambda G$
+\end{theorem}
+\begin{proof}
+  $\tilde{y} \in Y$ - решение (loc min для определённости)
+
+  $\exists \epsilon > 0: \: \forall y\in Y: \: 0 < \Vert y -\tilde{y} \Vert < \epsilon \ \true \ J[\tilde{y}] \le J[y]$,
+  $y = \tilde{y} + \alpha h_1 + \beta h_2$ $\forall h_1 \in C'[a,b]$, $h_2$ - из. усл. теор. $\delta H[\tilde{y},h_2] \neq 0$
+
+  $y \in Y \rightarrow h_1, h_2 \in C'[a,b]$, $h_1(a)=h_1(b)=0$ и $h_2(a) = h_2(b)=0$ 
+
+  $0 < \Vert \alpha h_1 + \beta h_2 \Vert \le |\alpha| \Vert h_1 \Vert + |\beta|\Vert h_2 \Vert < \epsilon$ $\exists \, \alpha$ и $\beta$
+
+  По лемме $\exists \epsilon_1: \: \Psi(\alpha,\beta)=J[\tilde{y}+\alpha h_1 + \beta h_2$ непр. дифф. на $|\alpha| < \epsilon_1$ и $|\beta| < \epsilon_1$
+  и $\exists \epsilon_2 > 0: \: \Phi(\alpha,\beta)=H[\tilde{y}+\alpha h_1 + \beta h_2$
+  непр. дифф на $|\alpha| < \epsilon_2$ и $|\beta| < \epsilon_2$
+
+  $\epsilon_3 = \min (\epsilon_1, \epsilon_2): \: |\alpha| < \epsilon_3$ и $|\beta| < \epsilon_3$, $\Psi$ и $\Phi$ непр. дифф. 
+
+  На пересечении ромба и квадрата $\Psi$ и $\Phi$ непр. дифф., $\Psi(0,0=J[\tilde{y}] \le \Psi(\alpha,\beta)=J[\tilde{y}+\alpha h_1 +\beta h_2]$,
+  $(0,0)$ решен. $\Psi(\alpha,\beta) \to \min$, $\Phi(\alpha,\beta)=l$
+
+  $rg(\pd{\Phi}{\alpha} \ \pd{\Phi}{\beta})\Big|_{(0,0)}=rg(\delta H[\tilde{y},h_1] \ \underbrace{\delta H[\tilde{y}, h_2]}_{\neq 0})=1$
+
+  По теореме метода мнод. Лагранжа: $\exists \lambda \in R: \: \pd{\tilde{L}}{\alpha}\Big|_{(0,0)}=0$, $\pd{\tilde{L}}{\beta}\Big|_{(0,0)}=0$, $\tilde{L}=\Psi+\lambda \Phi$
+
+  $\pd{L}{\alpha}\Big|_{(0,0)}=\pd{\Psi}{\alpha}\Big|_{(0,0)} + \lambda \pd{\Phi}{\alpha}\Big|_{(0,0)}=\delta J[\tilde{y}, h_1]+\lambda \delta H[\tilde{y},h_1]
+  =\int_{a}^{b}(\pd{F}{y}h_1 + \pd{F}{y'}h_1'+\lambda \pd{G}{y}h_1 + \lambda \pd{G}{y'}h_1')\Big|_{\tilde{y}}dx=0$,
+  $\forall h_1 \in C'[a,b]: \: h_1(a)=h_1(b)=0$ ($\pd{F}{y}+\lambda \pd{G}{y}=a_0(x)$)
+
+  По лемме Дибуа-Реймона: $a_1(x) \in C'[a,b]$, $a_1'=a_0$, $a_0=\pd{L}{y}$, $L=F+\lambda G$, $a_1 = \pd{L}{y'}$
+
+  $\pd{L}{\beta}\Big|_{(0,0)}=0$, $\underbrace{\pd{\Psi}{\beta}\Big|_{(0,0)}}_{\delta J[\tilde{y},h_2]}+\lambda \underbrace{\pd{\Phi}{\beta}\Big|_{(0,0)}}_{\delta H[\tilde{y},h_2]\neq0}=0$
+  $\implies$ $\lambda $ не зависит от $h_1$
+
+\end{proof}
 
 
 \end{document}
