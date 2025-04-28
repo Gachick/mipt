@@ -2590,9 +2590,200 @@ Cross-validation (CV) - разбиваем на коробочки (обычно
   \text{p-value} = 0.25 
 \end{gather*}
 
+% lecture 13
+
 \subsection{Проблемы регрессии}
-\begin{enumerate}
-  \item Выбросы - как в boxplot, один из вариантов брать $\epsilon \sim t(m)$
-\end{enumerate}
+\subsubsection{Выбросы}
+Выбросы - как в boxplot, один из вариантов брать $\epsilon \sim t(m)$
+\subsubsection{Мультиколлинеарность}
+$\xi_1,\dots ,\xi_k$ - могут коррелировать
+\begin{gather*}
+  \Psi = \begin{pmatrix}
+    1 & 2 \\
+    1 & 2 \\
+    1 & 2 \\
+  \end{pmatrix} \qquad 2x_1=x_2 \\ 
+  F=\Psi^{T}\Psi = \begin{pmatrix}
+    3 & 6 \\ 
+    6 & 12
+  \end{pmatrix} \qquad det \, F =0
+\end{gather*}
+Пытаемся бороться:
+\begin{gather*}
+  \xi_1=b_1+b_2\xi_2 + \dots + b_k \xi_k + \epsilon_1 \ \rightarrow \ R^{2}
+\end{gather*}
+Если $R^{2} > 0.7$ считаем что фактор определяется остальными и отбрасываем.
+\begin{gather*}
+  \xi_2=b_1\xi_1+b_2 + \dots + b_k \xi_k + \epsilon_2 \ \rightarrow \ R^{2} \\ 
+  \dots 
+\end{gather*}
+(Если $\xi_1$ отбросили в дальнейшие регрессии не включаем)
+Частный коэффициент корреляции
+\begin{gather*}
+  \eta = b_1 + b_2\xi_1+\epsilon \ \rightarrow \ y=\underbrace{\tilde{b}_1+\tilde{b}_2x_1}_{\tilde{y}} + e_1\\ 
+  \xi_2 = a_1 + a_2 \xi_1 + \epsilon_2\ \rightarrow \ x=\underbrace{\tilde{a}_1+\tilde{a}_2x_1}_{\tilde{x}_2} + e_2  \\ 
+  e_{1} = y - \tilde{y} \qquad e_2 = x_2 - \tilde{x}_2 \\ 
+  \rho_{\eta\xi_2}=\frac{\tilde{cov}(e_1,e_2)}{\sqrt{\tilde{De}_1\tilde{De}_2}} \\ 
+  \tilde{De}_1 = \frac{1}{n}\sum_{i=1}^{n}(e_{1i}-\bar{e}_1)^{2} \qquad \tilde{De}_2 = \frac{1}{n}\sum_{i=1}^{n}(e_{2i}-\bar{e}_2)^{2} \\ 
+  \tilde{cov}(e_1,e_2)=\frac{1}{n}\sum_{i=1}^{n}(e_{1i}-\bar{e}_1)(e_{2i}-\bar{e_2})
+\end{gather*}
+\begin{eg}
+  20 лет, $\nu$ - урожай, $\xi_1$ - осадки, $\xi_2$ - темп.
+  \begin{gather*}
+    r_{\eta\xi_1}=0.8 \qquad r_{\eta\xi_2}=-0.4 \qquad r_{\xi_1\xi_2}=-0.75 \\ 
+    \rho_{\eta\xi_2}=0.5 \qquad \rho_{\eta\xi_1}=0.82 \qquad \rho_{\xi_1\xi_2}=-0.78
+  \end{gather*}
+\end{eg}
+\subsubsection{Методы регуляризации}
+ridge-регрессия (гребневая) - борется с мультиколлинеарностью и переобучением 
+(штрафная функция $\beta_1^{2}+\beta_2^{2}+\dots +\beta_p^{2}$)
+\begin{gather*}
+  e^{T}e \to \min \\ 
+  (Y - \Psi \tilde{\beta})^{T}(Y-\Psi \tilde{\beta}) + \alpha\tilde{\beta}^{T}\tilde{\beta}\to \min \tag{$\ast$} \\ 
+  Y^{T}Y - \tilde{\beta}^{T}\Psi^{T}Y - Y^{T}\Psi\tilde{\beta}+ \underbrace{\tilde{\beta}^{T}\Psi^{T}\Psi\tilde{\beta} + \alpha\tilde{\beta}^{T}\tilde{\beta}}_{\tilde{\beta}^{T}(F+\alpha E)\tilde{\beta}}
+\end{gather*}
+Схоже с поиском условного максимума $L=f+\lambda g \to \min$
+\begin{gather*}
+  e^{T}e \to \min \qquad \tilde{\beta}^{T}\tilde{\beta}=t
+\end{gather*}
+$\alpha$ - через CVSS 
+\begin{gather*}
+  \alpha_0 \le \alpha \le \alpha_1 
+\end{gather*}
+$\alpha_i$ - один элемент выборки выбрасываем, по остальным ищем $\tilde{\beta}$ по $(\ast)$
+
+$\alpha_i \rightarrow \tilde{\beta} \rightarrow CVSS_1=(y_1-\tilde{y}_1)^{2} \rightarrow CVSS=\sum_{}^{}CVSS_i$
+
+Выбираем $\alpha$ при котором CVSS минимален
+
+\hr 
+lasso-регрессия - убирает незначиммые факторы (штрафная функция $|\beta_1|+|\beta_2|+\dots +|\beta_p|$)
+
+\incfig{l13_lasso}
+
+У lasso острый кочик поэтому вероятность того что $(\ast)$ его коснётся больше, чем у ridge
+
+\hr
+Elastic net
+\[
+  e^{T}e+\alpha_1 \tilde{\beta}^{T}\tilde{\beta}+\alpha_2(|\tilde{\beta}_1|+\dots +|\tilde{\beta}_p|)
+\]
+
+\hr 
+Bridge
+\[
+  e^{T}e + \alpha (|\tilde{\beta}_1|^{q}+\dots +|\tilde{\beta}_p|^{q})
+\]
+
+\subsubsection{Статист. анализ при наруш. усл. регрессии}
+Непараметрический бутстрап - метод доверительных интервалов
+
+\hr
+а) Проверка значимости $\beta_i$
+\begin{gather*}
+  H_0:\: \beta_i = 0 \qquad H_1: \: \beta_i\neq0 \\ 
+  h=\beta_i \qquad \tilde{h}=\tilde{\beta}_i \qquad \Delta = \tilde{h}-h
+\end{gather*}
+Подвыборка объёмом n $\rightarrow$ уравнение линейной регрессии $\tilde{\beta}_i^{*}$ $\rightarrow$ $\Delta_i^{*}=\tilde{\beta}_i^{*}-\tilde{\beta}_i$,
+повторяем 1000 раз, строим вариационный ряд $\Delta_{(1)}^{*}\dots \Delta_{(10 0 0)}^{*}$
+\begin{gather*}
+  K_1=[\frac{1-\beta}{2}N] \qquad K_2 = [\frac{1+\beta}{2}N] \\ 
+  P(\Delta_{K_1}^{*} < \underbrace{\tilde{h}^{*}}_{\tilde{h}}-\underbrace{\tilde{h}}_{h} < \Delta_{K_2}^{*}) \approx \beta \\ 
+  I = (\tilde{h}-\Delta_{K_2}^{*} < h < \tilde{h} - \Delta_{K_1}^{*})
+\end{gather*}
+Если $0 \ni I$ (I накрывает 0) $\implies$ коэф. не явл. значимым, иначе значим
+
+\hr 
+b) Сравнение регрессий
+\begin{gather*}
+  H_0:\: R^{2}_1 = R_0^{2} \qquad H_1: \: R_1^{2}>R_0^{2} \\ 
+  h = R_1^{2}-R_0^{2} \qquad \tilde{h}=\tilde{R}_1^{2}-\tilde{R}_0^{2} \qquad \Delta = \tilde{h}-h \\ 
+  H_0: h =0 \qquad H_1: h > 0 \\
+  \Delta_{(1)}^{*}\dots \Delta_{(10 0 0)}^{*} \qquad K=[(1-\beta)N] \\ 
+P(\Delta_{(K)}^{*} < \underbrace{\tilde{h}^{*}-\tilde{h}}_{\tilde{h}-h} < \Delta_{10 0 0}^{*}) \approx \beta \\ 
+I=(\tilde{h}-\Delta_{100 0}^{*}, \tilde{h}-\Delta_{(K)}^{*})
+\end{gather*}
+Если $0 \ni I$ различие незначимо, иначе регрессии значимо различаются
+
+\subsubsection{Разные типы регрессии}
+$\eta=f(x) + \epsilon(x)$ работает когда $\sigma_\xi << \sigma_{\eta}$
+
+$\eta=f(\xi)+\epsilon(\xi)$ когда $\sigma_{\xi}\sim \sigma_\eta$
+
+\incfig{l13_regr}
+Бонус медианная регрессия Тейла-Сена
+
+\begin{eg}[Дисперсионный анализ]
+  Три группы - разные методы, $n_1 = 7$, $n_2 = 5$, $n_3=3$, $\alpha=0.05$
+  \begin{center}
+  \begin{tabular}{| c | c | c | c | c | c | c | c |}
+    \hline 
+    1 гр & 1 & 3  &2 & 1 & 0 & 2 & 1 \\ 
+    \hline 
+    2 гр & 2 & 3 & 2 & 1 & 4 &   &   \\ 
+    \hline 
+    3 гр & 4 & 5 & 3 &   &   &   &   \\
+    \hline 
+  \end{tabular}
+  \end{center}
+  Индикаторные переменные $x_1x_2x_3$, $x_i=0,1$ 
+  \begin{gather*}
+    \eta = \beta_1x_2+\beta_2x_2+\beta_3x_3 + \epsilon \\ 
+    \Psi = \begin{pmatrix}
+      1 & 0 & 0 \\ 
+        &\dots \times 5 &  \\ 
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\ 
+        &\dots \times 3 &  \\ 
+      0 & 1 & 0 \\
+      0 & 0 & 1 \\ 
+      0 & 0 & 1 \\ 
+      0 & 0 & 1 \\ 
+    \end{pmatrix} \qquad Y = \begin{pmatrix}
+      1 \\ \dots \\ 1 \\ 2 \\ \dots \\ 4 \\ 4 \\ 5 \\ 3
+    \end{pmatrix} \\ 
+    F=\Psi^{T}\Psi = \begin{pmatrix}
+      7 & 0 & 0 \\ 
+      0 & 5 & 0 \\ 
+      0 & 0 & 3 
+    \end{pmatrix} \qquad \begin{pmatrix}
+      \frac{1}{7} & 0 & 0 \\ 
+      0 & \frac{1}{5} & 0 \\ 
+      0 & 0 & \frac{1}{3}
+    \end{pmatrix} \qquad \tilde{\beta}=F^{-1}\Psi^{T}Y = \begin{pmatrix}
+      1.43 \\ 2.4 \\ 4
+    \end{pmatrix}
+  \end{gather*}
+  Все коэфф значимы (по p-value)
+  \begin{gather*}
+    RSS=12.91 \qquad TSS=26.39  \\ 
+    R^{2}=\frac{TSS-RSS}{TSS}=0.52
+  \end{gather*}
+  \begin{gather*}
+    H_0: \beta_3 = \beta_2 \qquad H_1: \beta_3\neq \beta_2 \\ 
+    p = 3 \qquad n = 15\\
+    \Delta = \frac{\beta_2-\beta_3}{\sqrt{RSS(F^{-1}_{22}+F^{-1}_{33})}} \sqrt{n-p} \sim t(n-p) \\ 
+    \tilde{\Delta} = -2.112 \qquad \text{p-value} = P(|\Delta| \ge |\tilde{\Delta}|\Big| H_0) = 2\int_{2.112}^{\infty}q(t)dt =0.057
+  \end{gather*}
+  Методы 2 и 3 одинаковы
+
+Без учёта множественности проверки p-value$_{23}=0.057$,p-value$_{12}=0.1357$,p-value$_{13}=0.0 037$,
+
+Холм-Бонферрони: $m=3$
+  \begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    - & + & + \\ 
+    \hline
+    0.0037 & 0.057 & 0.135 \\ 
+    \hline
+    $\alpha/m$ & $\alpha/(m-1)$ & $\alpha$ \\ 
+    \hline
+    0.0167 & 0.025 & 0.05 \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{eg}
+
 
 \end{document}
