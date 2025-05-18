@@ -1,0 +1,172 @@
+(* Content-type: application/vnd.wolfram.cdf.text *)
+
+(*** Wolfram CDF File ***)
+(* http://www.wolfram.com/cdf *)
+
+(* CreatedBy='Wolfram 14.1' *)
+
+(*************************************************************************)
+(*                                                                       *)
+(*                                                                       *)
+(*  This file was created under the Wolfram Enterprise licensing terms.  *)
+(*                                                                       *)
+(*       For additional information concerning CDF licensing see:        *)
+(*                                                                       *)
+(*        www.wolfram.com/cdf/adopting-cdf/licensing-options.html        *)
+(*                                                                       *)
+(*                                                                       *)
+(*                                                                       *)
+(*************************************************************************)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[      1060,         20]
+NotebookDataLength[      6082,        151]
+NotebookOptionsPosition[      6409,        146]
+NotebookOutlinePosition[      6809,        162]
+CellTagsIndexPosition[      6766,        159]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+\:0422\:0440\:0435\:0445\:043c\:0435\:0440\:043d\:043e\:0433\:043e \:043f\
+\:043e\:0442\:043e\:043a, \:0434\:0435\:043c\:043e\:043d\:0441\:0442\:0440\
+\:0438\:0440\:0443\:044e\:0449\:0438\:0439 \:0431\:0438\:0444\:0443\:0440\
+\:043a\:0430\:0446\:0438\:044e \:0410\:043d\:0434\:0440\:043e\:043d\:043e\
+\:0432\:0430\[LongDash]\:0425\:043e\:043f\:0444\:0430:\
+\>", "Text",
+ CellChangeTimes->{{3.955556982508521*^9, 
+  3.955556996504796*^9}},ExpressionUUID->"6e333ebb-8b6c-4a32-86e0-\
+6e6798fdf4e4"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"StreamPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"a", "*", "x"}], "-", "y", "-", 
+        RowBox[{"x", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"x", "^", "2"}], "+", 
+           RowBox[{"y", "^", "2"}], "+", 
+           RowBox[{"z", "^", "2"}]}], ")"}]}]}], ",", " ", 
+       "\[IndentingNewLine]", 
+       RowBox[{"x", "+", 
+        RowBox[{"a", "*", "y"}], "-", 
+        RowBox[{"y", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"x", "^", "2"}], "+", 
+           RowBox[{"y", "^", "2"}], "+", 
+           RowBox[{"z", "^", "2"}]}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"-", "z"}], "+", 
+        RowBox[{"z", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"x", "^", "2"}], "+", 
+           RowBox[{"y", "^", "2"}]}], ")"}]}]}]}], "\[IndentingNewLine]", 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"y", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"z", ",", 
+       RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", " ", 
+     RowBox[{"PerformanceGoal", "->", "\"\<Speed\>\""}], ",", " ", 
+     RowBox[{"StreamMarkers", "->", "\"\<Arrow3D\>\""}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", 
+     RowBox[{"-", "5"}], ",", "5", ",", " ", 
+     RowBox[{"Appearance", "->", "\"\<Labeled\>\""}]}], "}"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{{3.9555561862769327`*^9, 3.955556247635703*^9}, {
+  3.955556287810544*^9, 3.955556295165447*^9}, {3.9555565343235292`*^9, 
+  3.9555566195200567`*^9}, {3.9559786607253237`*^9, 3.955978664509878*^9}, {
+  3.9559787482818947`*^9, 3.955978756014659*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"0af416eb-de91-4f8c-9ff5-aed51bfec6a9"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 2.84, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`a$$], -5, 5, ControlType -> Manipulator}}, 
+    Typeset`size$$ = {360., {180.94721492503996`, 186.57221492503996`}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True, 
+    Typeset`keyframeActionsQ$$ = False, Typeset`keyframeList$$ = {}}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`a$$ = -5}, 
+      "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$, Typeset`keyframeActionsQ$$, 
+        Typeset`keyframeList$$}, "Body" :> 
+      StreamPlot3D[{$CellContext`a$$ $CellContext`x - $CellContext`y - \
+$CellContext`x ($CellContext`x^2 + $CellContext`y^2 + $CellContext`z^2), \
+$CellContext`x + $CellContext`a$$ $CellContext`y - $CellContext`y \
+($CellContext`x^2 + $CellContext`y^2 + $CellContext`z^2), -$CellContext`z + \
+$CellContext`z ($CellContext`x^2 + $CellContext`y^2)}, {$CellContext`x, -4, 
+         4}, {$CellContext`y, -4, 4}, {$CellContext`z, -4, 4}, 
+        PerformanceGoal -> "Speed", StreamMarkers -> "Arrow3D"], 
+      "Specifications" :> {{$CellContext`a$$, -5, 5, Appearance -> 
+         "Labeled"}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{405.1, {224.32416805003996`, 229.94916805003996`}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.955556686095542*^9, 3.955556693224175*^9}, {
+   3.955978721663103*^9, 3.9559787227152033`*^9}, 3.955978759913129*^9},
+ CellLabel->"Out[3]=",ExpressionUUID->"d1dd537c-ee68-40a8-b964-ca2d81b7176a"]
+}, Open  ]]
+},
+WindowSize->{947.25, 660},
+WindowMargins->{{-305.25, Automatic}, {Automatic, -810}},
+FrontEndVersion->"14.1 for Linux x86 (64-bit) (July 16, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"dbd67124-793d-45a2-9b8d-ac3c608071c2"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[1460, 33, 505, 9, 33, "Text",ExpressionUUID->"6e333ebb-8b6c-4a32-86e0-6e6798fdf4e4"],
+Cell[CellGroupData[{
+Cell[1990, 46, 2030, 53, 186, "Input",ExpressionUUID->"0af416eb-de91-4f8c-9ff5-aed51bfec6a9"],
+Cell[4023, 101, 2370, 42, 490, "Output",ExpressionUUID->"d1dd537c-ee68-40a8-b964-ca2d81b7176a"]
+}, Open  ]]
+}
+]
+*)
+
