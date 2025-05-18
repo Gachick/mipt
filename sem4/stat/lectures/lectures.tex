@@ -5,10 +5,8 @@
 
 \begin{document}
 
-\section{Занятие 1}
-
-\subsection{Основные распределения в Мат Стат}
-\subsubsection{Гамма распределение}
+\section{Основные распределения в Мат Стат}
+\subsection{Гамма распределение}
 \begin{gather*}
   \xi \sim \Gamma(\lambda,a) \; \lambda>0,a>0 \\
   P(x)=\frac{\lambda^{a}}{\Gamma(a)}x^{a-1}e^{-\lambda x} \; \{(0,+\infty)\}
@@ -33,7 +31,7 @@ $\xi_1 \sim \Gamma(\lambda,a_1)$. $\xi_2 \sim \Gamma(\lambda,a_2)$ - незав�
 \end{gather*}
 \end{proof}
 
-\subsubsection[Распределение Пирсона]{Распределение Пирсона $\chi^2$}
+\subsection[Распределение Пирсона]{Распределение Пирсона $\chi^2$}
 $\xi_i\sim N(0,1)$ - независимы, $\eta=\xi_1^2+\dots+\xi_n^2=\chi^2$
 \begin{gather*}
   \Phi(y)=P(\xi^2<y)=\left\{\begin{aligned}
@@ -643,7 +641,7 @@ $\vec{x}_n$ - выборка
   \item Размах выборки $l=x_{max}-x_{min}$
   \item Медиана выборки $med$
     \[
-      mes =\left\{\begin{aligned}
+      med =\left\{\begin{aligned}
         & x_{(k+1)}, \mu n=2k+1 \\ 
         & \frac{x_{(k+1)}+x_{(k)}}{2}, \; n=2k
       \end{aligned}\right.
@@ -987,7 +985,7 @@ $h, \vec{x}_n \to f(g,\vec{x}_n) \sim g(t)$ (созерцание)
   \]
   \begin{gather*}
     t_1=\chi^{2}_{\frac{1-\beta}{2}}(n-1) \qquad t_2=\chi^{2}_{\frac{1+\beta}{2}}(n-1)  \\ 
-    P(t_1<\frac{S^{2}(n-1)}{\theta_2^{2}}<t_2) = ;B \\ 
+    P(t_1<\frac{S^{2}(n-1)}{\theta_2^{2}}<t_2) = \beta \\ 
     \frac{S^{2}(n-1)}{t_2} < \theta^{2}_2 < \frac{S^{2}(n-1)}{t_1} \\
     \sqrt{\frac{S^{2}(n-1)}{t_2}} < \theta_2 < \sqrt{\frac{S^{2}(n-1)}{t_1}}
   \end{gather*}
@@ -1409,7 +1407,7 @@ $A_1\dots A_{k}$ - полная группа
 \end{itemize}
 $H_0:$ все выборки из одного распределения, $H_1:\bar{H_0}$
 \begin{gather*}
-  n = n_1 + \dots  + n_l \qquad \nu_{j}=\frac{\sum_{i=1}^{l}m_ij}{n} \\ 
+  n = n_1 + \dots  + n_l \qquad \nu_{j}=\frac{\sum_{i=1}^{l}m_{ij}}{n} \\ 
   \Delta_1=\sum_{j=1}^{k}\frac{(m_{1j}-n_1\nu_j)^{2}}{n_1\nu_j} \qquad
   \Delta_s=\sum_{j=s}^{k}\frac{(m_{sj}-n_s\nu_j)^{2}}{n_s\nu_j} \\ 
   \Delta = \Delta_1+ \dots + \Delta_l
@@ -1888,7 +1886,7 @@ b) $H_0: \theta_2^{2}=b$, $H_1: \theta_2^{2} \neq b; \; \theta_2^{2} > b; \; \th
 
 Теорема Фишера:
 \begin{gather*}
-\frac{\bar{x}-a}{\sigma}\sqrt{n}\sim N(0,1)  \qquad \frac{S^{2}(n-1)}{\sigma^{2}} \sim \chi^{2(n-1)} \qquad \frac{\bar{x}-a}{S}\sqrt{n}\sim t(n)
+  \frac{\bar{x}-a}{\sigma}\sqrt{n}\sim N(0,1)  \qquad \frac{S^{2}(n-1)}{b} \sim \chi^{2}(n-1) \qquad \frac{\bar{x}-a}{S}\sqrt{n}\sim t(n)
 \end{gather*}
 \begin{eg}
   $\xi \sim N(\theta, 0,001)$, $H_0: \theta_1 = 43$, $H_1: \theta \neq 43$, $n=50$, $\bar{x}=42.972$, $\alpha=0.05$
@@ -2116,6 +2114,7 @@ $\vec{x}$ - значение $\vec{\xi}$, $\epsilon(\vec{x})$ - сл. вел.
 $\epsilon(\vec{x})\sim N(0, \sigma^{2})$
 
 $\beta_1=M\eta$ при $x_i=0$ - среднее влияние внешних факторов
+
 Вероятностная модель для одного отклика:
 \begin{gather*}
   \eta = \sum_{m=1}^{p}\beta_m\Psi_m(\vec{x}) + \epsilon(\vec{x}) \ \text{- линейная регрессия}
@@ -2237,7 +2236,7 @@ $RSS=e^{T}e$ - числа
     \eta_{L_1} = \Psi \tilde{\beta} \qquad \eta_{L_2} = \eta-\eta_{L_1} \\ 
     \eta = \Psi \beta + \epsilon \\ 
     (\Psi \beta + \epsilon)_{L_1} = \Psi \beta + \epsilon_{L_1} = \Psi \tilde{\beta} \\ 
-    (\Psi \beta + \epsilon)_{L_2} = \epsilon_{L_2}=\eta_{L_2}
+    (\Psi \beta + \epsilon)_{L_2} = \epsilon_{L_2}=\eta_{L_2} \\ 
     RSS = |\eta_{L_2}|^{2} \ \text{- как сл. вел} \\ 
     RSS=|\epsilon_{L_2}|^{2}
   \end{gather*}
@@ -2288,10 +2287,10 @@ $RSS=e^{T}e$ - числа
       & \frac{\tilde{y_0}-\eta_0}{\sigma \sqrt{1+\Psi_0 F^{-1}\Psi^{T}}} \sim N(0,1) \\ 
       & \frac{RSS}{\sigma^{2}} \sim \chi^{2}(n-p)
     \end{aligned}\right. \quad \text{независ.} \\ 
-    \frac{\cfrac{\tilde{y_0}-\eta_0}{\sqrt{1+\Psi_0F^{-1}\Psi_0}}}{\sqrt{\cfrac{RSS}{n-p}}} \sim t(n-p) \\ 
-    t_{\frac{1-\beta}{2}}(n-p) < \frac{\tilde{y_0}-\eta_0}{\sqrt{1+\Psi_0F^{-1}\Psi_0}}\sqrt{\frac{n-p}{RSS}} < t_{\frac{1+\beta}{2}}(n-p) \\ 
+    \frac{\cfrac{\tilde{y_0}-\eta_0}{\sqrt{1+\Psi_0F^{-1}\Psi_0^T}}}{\sqrt{\cfrac{RSS}{n-p}}} \sim t(n-p) \\ 
+    t_{\frac{1-\beta}{2}}(n-p) < \frac{\tilde{y_0}-\eta_0}{\sqrt{1+\Psi_0F^{-1}\Psi_0^T}}\sqrt{\frac{n-p}{RSS}} < t_{\frac{1+\beta}{2}}(n-p) \\ 
     \tilde{y_0}-\Delta < \eta_0 < \tilde{y_0} + \Delta \\ 
-    \Delta = t_{\frac{1+\beta}{2}}(n-p)\frac{\sqrt{RSS(1+\Psi_0F^{-1}\Psi_0)}}{\sqrt{n-p}}
+    \Delta = t_{\frac{1+\beta}{2}}(n-p)\frac{\sqrt{RSS(1+\Psi_0F^{-1}\Psi_0^T)}}{\sqrt{n-p}}
   \end{gather*}
 \begin{eg}
   \begin{gather*}
@@ -2308,12 +2307,12 @@ $H_0: \beta_i=0$, $H_1: B_i \neq 0$
 \begin{gather*}
   \tilde{\beta_i}\sim N(\beta_i, \sigma^{2}F_{ii}^{-1}) \\ 
   \frac{\tilde{\beta_i}-\beta_i}{\sigma\sqrt{F_{ii}^{-1}}} \sim N(0,1) \qquad \frac{RSS}{\sigma^{2}}\sim \chi^{2}(n-p) \\ 
-  \frac{\tilde{\beta_i}-\beta}{\sqrt{RSS \cdot F_{ii}^{-1}}\sqrt{n-p}}\sim t(n-p)
+\frac{\tilde{\beta_i}-\beta}{\sqrt{RSS \cdot F_{ii}^{-1}}}\sqrt{n-p}\sim t(n-p)
 \end{gather*}
 \begin{theorem}
   Если $H_0$ верна, то 
   \[
-    \Delta = \frac{\tilde{\beta_i}}{\sqrt{RSS \cdot F_{ii}^{-1}}}\sqrt{n-p} \sim t(n-p)
+  \Delta = \frac{\tilde{\beta_i}}{\sqrt{RSS \cdot F_{ii}^{-1}}}\sqrt{n-p} \sim t(n-p)
   \]
 \end{theorem}
 \begin{eg}
@@ -2380,7 +2379,7 @@ $H_0: \: \gamma \in L_0$, $H_1: \: \gamma \in L_1/L_0$
 \subsubsection{Сравнение вложенных регрессий}
 \begin{gather*}
   \eta = \Psi \beta + \epsilon \\ 
-  H_0: \: \beta_i = 0, i\in I \qquad H_1: \: \exists i\in I: \: \beta_i=0
+  H_0: \: \beta_i = 0, i\in I \qquad H_1: \: \exists i\in I: \: \beta_i\neq 0
 \end{gather*}
 
 \incfig{l12_comp}
@@ -2486,7 +2485,7 @@ $H_0: \: \gamma \in L_0$, $H_1: \: \gamma \in L_1/L_0$
   y = -0.3 + 0.25 x_1 + 0.13 x_2 + e \\ 
   RSS=e^{T}e =18.54
 \end{gather*}
-Статистический аналзи модели:
+Статистический анализ модели:
 \begin{enumerate}
   \item значимость коэффициентов
     \begin{gather*}
@@ -2580,7 +2579,7 @@ Cross-validation (CV) - разбиваем на коробочки (обычно
   $R^{2}_{CV}$ - насколько хорошо прогнозирует
 \end{eg}
 \subsection{Упрощение регрессии}
-Исключаем незничительные коэфф.
+Исключаем незначительные коэфф.
 \begin{gather*}
   \{x_1\} \qquad \tilde{\beta}_1=0.29 \\ 
   y=0.29x_1 + e \\ 
