@@ -168,7 +168,7 @@
   и ряд сходится равномерно тогда:
   \begin{equation}
     \begin{gathered} \label{l2_f_coef}
-      a_n=\frac{1}{\pi}f(x)\int_{-\pi}^{\pi}\cos nx dx, \; n=0,1,2,\dots \\ 
+      a_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\cos nx dx, \; n=0,1,2,\dots \\ 
       b_n=\frac{1}{\pi}\int_{-\pi}^{\pi}f(x)\sin nx dx, \; n\in\mathbb{N} 
     \end{gathered}
   \end{equation}
@@ -974,5 +974,1359 @@ $S_n(x)=\frac{1}{\pi}\int_{-\pi}^{\pi}D_n(t)f(x+t)dt$
     0 = \Vert x-x \Vert \le \Vert x \Vert+\Vert x \Vert = 2 \Vert x \Vert
   \end{gather*}
 \end{proof}
+
+% lecture 7
+
+\begin{definition}
+  Функция, удовлетворяющая условиям 1 и 2 называется полунормой.
+\end{definition}
+\begin{eg}
+  Мн-во действительных чисел: $\Vert x \Vert=|x|$
+\end{eg}
+\begin{eg}
+  Геометрическое пространство: $\Vert \bar{x} \Vert=|\bar{x}|$
+\end{eg}
+\begin{eg}
+  Мн-во $B[a,b]$ ограниченных на $[a,b]$ функций: 
+
+  $\Vert f(x) \Vert=\sup_{[a,b]}|f(x)|$
+\end{eg}
+\begin{eg}
+  Мн-во абс. инт. на $[a,b]$ функций $(RL_1[a,b])$: 
+
+  $\Vert f(x) \Vert=\int_{a}^{b}|f(x)|dx$ - полунорма
+\end{eg}
+\begin{eg}
+  Мн-во непр. на $[a,b]$ функ. $(CL_1[a,b])$: $\Vert f(x) \Vert=\int_{a}^{b}|f(x)|dx$
+\end{eg}
+
+\begin{lemma}
+  Если $X$ - линейное нормированное пространство, то оно является
+  метрическим пространством с метрикой $\rho(x,y)=\Vert x-y \Vert$
+\end{lemma}
+\begin{remark}
+  В этом случае говорят, что метрика порождена нормой.
+\end{remark}
+\begin{remark}
+  Все понятия, введённые в метрическом пространстве могут быть перенесены в нормированное пространство.
+\end{remark}
+\begin{definition}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item $\rho(x,y)=\Vert x-y \Vert=\Vert y-x \Vert=\rho(y,x)$
+    \item $\rho(x,y)=\Vert x-y \Vert=\Vert (x-z)+(z-y) \Vert\le \Vert x-z \Vert + \Vert z-y \Vert=\rho(x,z)+\rho(z,y)$
+    \item Если $\rho(x,y)=\Vert x-y \Vert=0$, то $x-y=0$, т.е. $x=y$
+
+      Если $x=y$ $\implies$ $x-y=0$ $\implies$ $\Vert x-y \Vert=0$ $\implies $ $\rho(x,y)=0$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Линейное нормированное пространство называется полным, если оно полно в смысле
+  метрики, порождённой нормой.
+\end{definition}
+\begin{definition}
+  Полное линейное нормированное пространство называется банаховым. 
+\end{definition}
+\begin{definition}
+  Система $\{x_{\alpha}, \alpha \in U\}$ элементов нормированного (полуномированного)
+  линейного пространства $X$ называется полной в $X$, если $\forall x \in X\ \forall \epsilon>0$
+  $\exists $ линейная комбинация (л.к.$(x_\alpha)$ или lc $x_\alpha$): $\Vert x- lc x_{\alpha}\Vert<\epsilon$
+\end{definition}
+\subsection{Теоремы Вейрештрасса о прибл. непр. функций}
+\begin{theorem}[Т1 с волной]
+  Система тригонометрических полна в пространстве $2\pi$-периодических,
+  непрерывных функций в смысле нормы $\Vert f \Vert=\max_{[-\pi,\pi]}|f(x)|$
+  (в смысле равномерного приближения)
+\end{theorem}
+\begin{theorem}[Т2 с волной]
+  Система неотрицательных степеней $x$ $\{x,x^{2},x^{3},\dots ,x^{n},\dots \}$
+  полна в пространстве $C[a,b]$ непрерывных на $[a,b]$ функций с нормой $\Vert f \Vert=\max_{[a,b]}|f(x)|$
+  в смысле равномерного приближения
+\end{theorem}
+\subsection{Линейные пространства со скалярным произведением}
+\begin{definition}
+  Скалярным произведением в линейном пространстве $X$ называется функция двух переменных
+  $(x,y)$, где $x,y \in X$:
+  \begin{enumerate}
+    \item $(x,x)>0$
+    \item $(x,y)=(y,x)$
+    \item $(\lambda x+ \mu y, z) = \alpha(x,z) + \mu(y,z)$
+    \item $(x,x)=0 \ \implies x = 0$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Пространство со скалярным произведением называется предгильбертовым.
+\end{definition}
+\begin{definition}
+  Функция $(x,y)$, удовлетворяющая условиям 1-3 называется полускалярным произведением.
+\end{definition}
+\begin{theorem}[Неравенство Коши-Буняковского]
+  \phantom{.}
+
+  Если $(x,y)$ -скалярное (полускалярное) произведение в линейном пространстве $X$,
+  то $\forall x,y\in X$ $\true$ $(x,y)^{2}\le (x,x)(y,y)$
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \forall x,y \in X, \, \forall t \in R \true (tx+y,tx+y)\ge 0 \\ 
+    (x,x)t^{2}+2(x,y)t+(y,y) \ge 0 \\ 
+  \end{gather*}
+  \begin{enumerate}
+    \item $(x,x) = 0 \ \implies (x,y)=0 \implies$ нер-во верно
+    \item $(x,x)\neq 0$ $\implies$ $D=(x,y)^{2}-(x,x)(y,y)\le 0$ $\implies$ нер. верно.
+  \end{enumerate}
+\end{proof}
+\begin{corollary}[Неравенство треугольника]
+  Для скалярного (полускалярного) произведения верно
+  \[
+    \sqrt{(x+y,x+y)} \le \sqrt{(x,x)}+\sqrt{(y,y)}
+  \]
+\end{corollary}
+\begin{proof}
+  \begin{gather*}
+    (x+y,x+y)=(x,x)+2(x,y)+(y,y) \le (x,x) + 2|(x,y)|+|(y,y)| \le \\ 
+    \le (x,x)+2\sqrt{(x,x)}\sqrt{(y,y)}+(y,y)=(\sqrt{(x,x)}+\sqrt{(y,y)})^{2}
+  \end{gather*}
+\end{proof}
+\begin{lemma}
+  Если $(x,y)$ - скалярное (полускалярное) произведение, то
+  функция $\Vert x \Vert=\sqrt{(x,x)}$ является нормой (полунормой)
+  и неравенство Коши-Буняковского имеет вид $|(x,y)|\le\Vert x \Vert\Vert y \Vert$
+\end{lemma}
+\begin{proof}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item $\sqrt{(\lambda x,\lambda x)}=|\lambda|\sqrt{(x,x)}$ 
+    \item $\sqrt{(x+y,x+y)}\le \sqrt{(x,x)} + \sqrt{(y,y)}$
+    \item В случае скал. произв. $\sqrt{(x,x)}=0 \ \implies \ x=0$
+  \end{enumerate}
+\end{proof}
+\begin{eg}
+  $\R \ (x,y)=xy$
+\end{eg}
+\begin{eg}
+  Векторное пространство $(\vec{x},\vec{y})=|\vec{x}||\vec{y}|\cos \phi$
+\end{eg}
+\begin{eg}
+  $RL_2[a,b]$ - мн-во функ., интегрируемых на $[a,b]$ в несобственном смысле вместе с квадратом
+
+  Отметим, что если $f(x), g(x) \in RL_2[a,b]$, то $|f(x)g(x)|\le \frac{f^{2}+g^{2}}{2}$ и 
+  $\int_{a}^{b}fgdx$ - сход. (абс.)
+
+  Вводим $(f,g)=\int_{a}^{b}fgdx$ - полускалярное произв.
+\end{eg}
+\begin{eg}
+  $CL_2[a,b]$ - мн-во непр. функций, скал. произв. $(f,g)=\int_{a}^{b}fgdx$
+\end{eg}
+
+\subsection{Сравнение норм}
+Рассмотрим $C[a,b]$, $CL_1[a,b]$, $CL_2[a,b]$
+
+В них $\Vert \phi \Vert_{\infty}=\max_{[a,b]}|\phi(t)|$, $\Vert \phi \Vert_{1}=\int_{a}^{b}|\phi(t)|dt$,
+$\Vert \phi \Vert_{2}=\sqrt{\int_{a}^{b}\phi^{2}(t)dt}$
+
+Неравенство Коши-Буняковского для $(f,g)=\int_{a}^{b}fgdx$:
+\begin{gather*}
+  \left( \int_{a}^{b}fgdt\right)^{2}\le \int_{a}^{b}f^{2}dt\int_{a}^{b}g^{2}dt
+\end{gather*}
+При $g=1$, $f(t)=|\phi(t)|$:
+\begin{gather*}
+  \left(\int_{a}^{b}|\phi(t)|dt\right)^{2} \le \int_{a}^{b}\phi^{2}(t)dt (b-a) \quad \Big|\sqrt{} \\
+  \Vert \phi \Vert_1 \le \Vert \phi \Vert_{2}\sqrt{b-a}
+\end{gather*}
+Также верна: $\Vert \phi \Vert_{2}\le \Vert \phi \Vert_{\infty}\sqrt{b-a}$
+ 
+\begin{theorem}
+  Из сходимости $\{f_n(t)\}$ на норме $\Vert \cdot \Vert_{\infty}$ следует сходимость
+  по норме $\Vert \cdot \Vert_{2}$, а из неё следует сходимость по норме $\Vert \cdot \Vert_{1}$
+\end{theorem}
+\begin{definition}
+  Линейное пространство $X$ со скалярным произведением, полное в смысле метрики,
+  порождённой скалярным произведением, т.е $\rho(x,y)=\Vert x-y \Vert=\sqrt{(x-y,x-y)}$ 
+  называется гильбертовым пространством.
+\end{definition}
+\begin{theorem}
+  $C[a,b]$ - пространство непрерывных функций с нормой $\Vert f(x) \Vert_{\infty}=\max_{[a,b]}$
+  -полное пространство
+\end{theorem}
+\begin{proof}
+Пусть $\{f_{n}(x)\}$ фундаментальна, т.е 
+
+$\underline{\forall \epsilon > 0 \exists N: \forall n,m \ge N} \true \Vert f_n-f_m \Vert_{\infty}< \epsilon$
+
+$\implies \ \underline{\forall x \in [a,b] \true |f_n(x)-f_m(x)|<\epsilon}$
+
+Подчёркнутое означает, что выполнено условие Коши равномерной сходимости
+
+$\implies \ \exists f$ - непр. на $[a,b]$: $f_n(x) \rightrightarrows_{[a,b]}f(x)$
+
+$\implies \ \underline{\forall \epsilon > 0 \exists N: \forall n\ge N}, \forall x \in [a,b] \true |f_n(x)-f(x)| \epsilon$
+
+$\implies \underline{\Vert f_n-f \Vert<\epsilon} \ \implies$ $f_n$ - сходится
+по норме $\Vert \cdot \Vert_{\infty}$ $\implies$ полн. пр-ва
+\end{proof}
+
+% lecture 8
+
+\begin{theorem}
+  Пространство $CL_2[a,b]$ непрерыных функций, со скалярным произведением
+  $(f,g)=\int_{a}^{b}f(x)g(x)dx$ не является полным.  
+\end{theorem}
+\begin{proof}
+  Доказательство проведём для отрезка $[-1,1]$.
+
+  Докажем, что последовательность
+  \begin{gather*}
+    f_n(x)=\left\{\begin{aligned}
+      & -1, x \in [-1,\frac{-1}{n}] \\ 
+      & nx, x \in (-\frac{1}{n}, \frac{1}{n}) \\ 
+      & 1, x \in [\frac{1}{n},1]
+    \end{aligned}\right.
+  \end{gather*}
+  является фундаментальной но не сходится в $CL_2[-1,1]$
+
+  \incfig{l8_cl2}
+
+  1) Докажем фундаментальность 
+
+  \incfig{l8_cl2_1}
+
+  Оценим
+  \begin{gather*}
+    \Vert f_{n+p}(x)-f_n(x) \Vert_2=\sqrt{\int_{-1}^{1}(f_{n+p}(x)-f_n(x))^{2}dx}= \\ 
+    = \sqrt{2\int_{0}^{1/n}(f_{n+p}-f_n)^{2}dx} \le \sqrt{2\int_{0}^{1/n}(1-0)^{2}dx}= \\ 
+    =\sqrt{\frac{2}{n}}\underset{n\to\infty}{\to} 0
+  \end{gather*}
+  Возьмём $\forall \epsilon >0$. Т.к. $\sqrt{\frac{2}{n}}\underset{n\to\infty}{\to}0$ то
+  $\exists N: \forall n \ge N \true \sqrt{\frac{2}{n}}< \epsilon$.
+
+  Тогда $\forall n \ge N, p \in N \true \Vert f_{n+p}-f_n \Vert<\epsilon$
+
+  2) Отсутствие сходимости
+
+  Предположим, что $\exists f(x)$ - непр. на $[-1,1]: \Vert f_n(x)-f(x) \Vert_2 \underset{n\to\infty}{\to}0$
+
+  $\implies \sqrt{\int_{-1}^{1}(f_n-f)^{2}dx}\underset{n\to\infty}{\to}0$
+
+  $\implies \sqrt{\int_{0}^{1}(f_n-f)^{2}dx}\underset{n\to\infty}{\to}0$
+
+  Предположим $\exists x_0 \in (0,1): f(x_0)=1+\epsilon\neq 1$
+
+  Тогда в некоторой $(x_0-\delta,x_0+\delta) \true |f(x)-1|> \frac{|\epsilon|}{2}$ и начиная с некоторого n выполняется
+  $\sqrt{\int_{0}^{1}(f_n-f)^{2}dx}\ge \sqrt{\int_{x_0-\delta}^{x_0+\delta}\frac{\epsilon^{2}}{4}dx}=\sqrt{2\delta\frac{\epsilon^{2}}{4}} \underset{n\to\infty}{\not \to}0$
+
+  $\implies \ f(x)=1$  на $(0,1)$, аналогично $f(x)=-1$ на $(-1,0)$
+
+  $\implies \ f(x)$ разрывна в нуле
+
+  $\implies \ \not \exists f(x)$ - непр. $\implies \ CL_2[-1,1]$ не явл. полным
+\end{proof}
+
+\section{Ортогональные сист. и разложение по ним}
+Работаем в предгильбертовом пространстве $X_{\Pi}$ или в гильбертовом $X_{\Gamma}$
+\begin{definition}
+Система элементов $\{\xi_{\alpha}, \alpha \in U\}$ предгильбертого прост. $X_{\Pi}$
+называется ортогональной, если $(x_{\alpha_1}, x_{\alpha_2})=0 \  \forall \alpha_,\alpha_2 \in U: \alpha_1 \neq \alpha_2$
+
+Если при этом $\Vert x_\alpha \Vert=1 \ \forall \alpha$, то такая система называется ортонормированной.
+\end{definition}
+\begin{definition}
+  Система элементов $X_{\Pi}$ называется незав., если $\forall $ её конечная подсистема
+  - ленейно независ
+\end{definition}
+\begin{lemma}
+  Ортог. сист. в $X_{\Pi}: x_\alpha \neq 0 \ \forall \alpha$ является лин. незав. 
+\end{lemma}
+\begin{proof}
+  Как в ан. геометрии. (Предполагаем что система лин. завис., тогда есть нетрив. лин. комб. равная 0, 
+  домнажаем скалярно на элементы и получаем что коэф. равны нулю из-за ортогональности)
+\end{proof}
+\begin{eg}
+  Триг. система $\{\frac{1}{2}, \cos x, \sin x, \cos 2x, \sin 2x,\dots \}$ 
+
+  - ортог. сист. в $L_2[-\pi,\pi]$, т.е. в смысле скал. произв. $\int_{-\pi}^{\pi}fgdx$
+
+  Система $\{\frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{\pi}}\cos x,\frac{1}{\sqrt{\pi}}\sin x,\dots  \}$ - ортонорм. сист.
+\end{eg}
+\begin{eg}
+  Полином Лежандра
+  \[
+    P_0(x)=1 \qquad P_n(x)=\frac{1}{2^{n}n!}\frac{d^{n}(x^{2}-1)^{n}}{dx^{n}}
+  \]
+  где $ n \in N$ - ортог. сист. в $L_2[-1,1]$, где $(f,g)=\int_{-1}^{1}fgdx$. (Также $\Vert P_n \Vert=\sqrt{\frac{2}{2n+1}}$)
+\end{eg}
+\begin{proof}
+  (Ортогональности)
+
+  Заметим (формула Лейбница) $\frac{d^{k}(x^{2}-1)^{n}}{dx^{k}} \big|_{x=\pm 1}=0 $,
+  $k=0,1,\dots ,n-1$
+
+  Рассмотрим $Q_m(x)$ многочлен степени $m<n$.
+
+  Тогда
+  \begin{gather*}
+    (Q_m,P_n)=\int_{-1}^{1}Q_m(x)\frac{d^{n}(x^{2}-1)^{n}}{dx^{n}}= \\ 
+    =Q_m \frac{d^{n-1}(x^{2}-1)^{n}}{dx^{n-1}}\big|_{-1}^{1}- \int_{-1}^{1}Q_m'\frac{d^{n-1}(x^{2}-1)^{n}}{dx^{n-1}}\big|_{-1}^{1} = \\ 
+    = Q_m'\frac{d^{n-2}(x^{2}-1)^{n}}{dx^{n-2}}\big|_{-1}^{1} + \int_{-1}^{1}Q_m''\frac{d^{n-2}(x^{2}-1)^{n}}{dx^{n-2}}\big|_{-1}^{1} = \\ 
+    = \dots = (-1)^{m}Q_m^{(m)}\frac{d^{n-m-1}(x^{2}-1)^{n}}{dx^{n-m-1}}\big|_{-1}^{1}=0
+  \end{gather*}
+  В частности $\int_{-1}^{1}P_mP_ndx=0$ при $m<n$, т.е. полиномы Лежандра ортогональны.
+\end{proof}
+
+Далее рассматриваем счётные ортогональные системы $\{e_k\}: e_k\neq0$
+
+\begin{definition}
+  Пусть $\{e_1,e_2,\dots ,e_k,\dots \}$ $(e_k\neq 0)$ - ортог. сист. в $X_\Pi$,
+  $x\in X_\Pi$. Тогда $\alpha_k=\frac{(x,e_k)}{\Vert e_k \Vert^{2}}$ назыв.
+  коэф. Фурье $x$ по системе $\{e_k\}$.
+
+  При этом элементу $x$ ставится в соответсвие ряд $\sum_{k=1}^{\infty}\alpha_ke_k$
+  - ряд Фурье.
+
+  Т.е. $x \sim \sum_{k=1}^{\infty}\alpha_ke_k$
+\end{definition}
+\begin{definition}
+  Частичная сумма ряда Фурье $S_n=\sum_{k=1}^{n}\alpha_ke_k$
+\end{definition}
+\begin{remark}
+  Триг. ряд Фурье функции, инт. с квалратов является рядом Фурье в $L_2$.
+\end{remark}
+\begin{remark}
+  $\alpha_ke_k$ проекция $x$ на $e_k$, если система конечна $\alpha_k$ - координата
+\end{remark}
+\begin{definition}
+  Говорят, что $x$ разложен в ряд Фурье и пишут $x=\sum_{k=1}^{\infty}\alpha_ke_k$,
+  если $\Vert x-S_n \Vert \underset{n\to\infty}{\to} 0$
+\end{definition}
+\begin{theorem}[Т1]
+  Пусть $x \in X_\Pi$, $x=\sum_{k=1}^{\infty}A_ke_k$ $\implies$ $A_k=\alpha_k$ ($\alpha_k$ - коэф. Ф.)
+\end{theorem}
+\begin{proof}
+  $x=\sum_{k=1}^{\infty}A_ke_k$ $\implies$ $(x,e_m)\underset{(1)}{=}\sum_{k=1}^{\infty}A_k(e_k,e_m)=A_m\Vert e_m \Vert^{2}$
+  $\implies$ $A_m=\frac{(x,e_m)}{\Vert e_m \Vert^{2}}=\alpha_m$
+
+  Док-во $(1)$: $|(x,e_m) - \sum_{k=1}^{\infty}A_k(e_k,e_m)|=|(x-\sum_{k=1}^{n}A_ke_K,e_m)|$
+  $\le \Vert x-\sum_{k=1}^{n}A_ke_k \Vert \Vert e_m \Vert \underset{n\to\infty}{\to}0$
+  (первая норма стремится к 0)
+\end{proof}
+
+% lecture 9
+
+\begin{theorem}[Минимальное св-во коэфф. Фурье]
+  Пусть $\{e_k\}$ - ортогональная система, тогда
+  \[
+    \min_{A_1,\dots ,A_n}\Vert x- \sum_{k=1}^{n}A_ke_k \Vert=\Vert x- S_n(x) \Vert
+  \]
+  И выполняется
+  \[
+    \Vert x-S_n(x) \Vert^{2}=\Vert x \Vert^{2}-\sum_{k=1}^{n}\alpha_k^{2}\Vert e_k^{2} \Vert \tag{1}
+  \]
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \underline{\Vert x-\sum_{k=1}^{n}A_ke_k \Vert^{2}}=(x-\sum_{k=1}^{n}A_ke_k,x-\sum_{k=1}^{n}A_ke_k) = \\ 
+    = \Vert x \Vert^{2}-2\sum_{k=1}^{n}A_k(x,e_k) + \sum_{k=1}^{n}A_k^{2k}(e_k,e_k)= \\ 
+    = \Vert x \Vert^{2}-2\sum_{k=1}^{n}A_k(x,e_k)+\sum_{k=1}^{n}A_k^{2}\Vert e_k \Vert^{2}= \\ 
+    = \underline{\Vert x \Vert + \sum_{k=1}^{n}(A_k\Vert e_k \Vert-\frac{(x,e_k)}{\Vert e_k \Vert})^{2} - \sum_{k=1}^{n}\frac{(x,e_k)^{2}}{\Vert e_k \Vert^{2}}}
+  \end{gather*}
+  Если в качестве $A_k$ взять $\alpha_k=\frac{(x,e_k)}{\Vert e_k \Vert^{2}}$, то будет $\min$
+
+  Подчёркнутое равенство при $A_k=\alpha_k$ даёт $(1)$
+\end{proof}
+\begin{corollary}
+  В условиях теоремы $\Vert x-S_{n+1} \Vert \le \Vert x-S_n \Vert$
+\end{corollary}
+\begin{proof}
+  Следует из $(1)$ (вичитаем при n+1 и n)
+\end{proof}
+\begin{theorem}[Т3]
+  Пусть $x\in X_\Pi$; $\alpha_k$ - коэф. Фурье по ортог. системе $\{e_k\}$
+  
+  $\implies$ $\sum_{k=1}^{\infty}\alpha_k^{2}\Vert e_k^{2} \Vert \le \Vert x \Vert^{2}$ (Нерав. Бесселя)
+\end{theorem}
+\begin{proof}
+  Рассмотрим $(1)$
+  \begin{gather*}
+    0 \le \Vert x-\sum_{k=1}^{n}\alpha_ke_k \Vert^{2}=\Vert x \Vert^{2}-\sum_{k=1}^{n}\alpha_k^{2}\Vert e_k \Vert^{2} \\ 
+    \sum_{k=1}^{n}\alpha_k^{2}\Vert e_k \Vert^{2} \le \Vert x \Vert^{2}
+  \end{gather*}
+  Переходим к пределу при $n\to\infty$ и получаем неравенство
+\end{proof}
+\begin{corollary}
+  В условиях теоремы $\alpha_k\Vert e_k \Vert{\to}0$ при $k\to\infty$
+\end{corollary}
+\begin{theorem}
+  В $X_\Gamma$ ряд Фурье $\forall x \in X_\Gamma$ по любой ортогональной $\{e_k\}$ сходится.
+
+  Если $x_0=\sum_{n=1}^{\infty}\alpha_ne_n$, то $(x-x_0,e_k)=0 \ \forall k$
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    \Vert S_{n+p}-S_n \Vert^{2}=(\sum_{k=n+1}^{n+p}\alpha_ke_k,\sum_{k=n+1}^{n+p}\alpha_ke_k) = \sum_{k=n+1}^{n+p}\alpha_k^{2}\Vert e_k \Vert^{2} \tag{2}
+  \end{gather*}
+  Из неравенства Бесселя следует сходимость $\sum_{k=1}^{\infty}\alpha_k^{2}\Vert e_k \Vert^{2}$
+
+  $\implies$ фундаментальна последовательность $\sum_{k=1}^{n}\alpha_k^{2}\Vert e_k \Vert^{2}$ 
+
+  Из $(2) \ \implies$ фундаментальность $\{S_n\}$
+
+  Из $X_\Gamma$ - полно $\implies$ $\{S_n\}$ сходится к $x_0 \in X_\Gamma$
+
+  Рассмотрим $(x-x_0,e_k)=(x,e_k)-(x_0,e_k)=(x,e_k)-\sum_{n=1}^{\infty}\alpha_n(e_n,e_k)
+  =(x,e_k)-\alpha_k(e_k,e_k)=(x,e_k)-\alpha_k\Vert e_k \Vert^{2}=0$
+\end{proof}
+\begin{theorem}[Т5]
+  Ортогональная система $\{e_k\}$ является полной в $X_\Pi$ $\iff$
+  $\forall x \in X_\Pi$ ряд Фурье сход. к $x$.
+\end{theorem}
+\begin{proof}
+  1) Возьмём $x\in X_\Pi$. Пусть ряд Фурье сходится к $x$
+
+  $\implies \lim_{n\to\infty}\Vert x-S_n(x) \Vert=0$ и $\forall \epsilon > 0 \exists n: \Vert x-S_n \Vert<\epsilon$,
+  что означает полноту.
+
+2) Пусть система $\{e_k\}$ полна.
+
+  $\implies$ $\forall x \in X_\Pi \ \underline{ \forall \epsilon > 0 \ \exists n } \ \exists \lambda_1,\dots ,\lambda_n:
+  \Vert x-(\lambda_1e_1+\dots +\lambda_ne_n) \Vert < \epsilon$
+
+  Минимальное св-во коэф. Фурье $\implies \Vert  x - S_n \Vert < \epsilon$
+
+  Следствие из Т2 $\implies$ $\underline{\Vert x-S_m \Vert < \epsilon \ \forall m \ge n}$
+
+  Подчёркнутое означает что ряд Фурье сходится к $x$.
+\end{proof}
+\begin{theorem}[Т6]
+  Ряд Фурье элемента $x \in X_\Pi$ сходится к нему $\iff$
+  для него полняется равенство Парсеваля $\Vert x \Vert^{2}=\sum_{k=1}^{\infty}\alpha_k^{2}\Vert e_k \Vert^{2}$
+\end{theorem}
+\begin{proof}
+  Формула $(1)$ из минимального св-ва коэф Фурье
+  \[
+    \Vert x-S_n \Vert^{2}=\Vert x \Vert^{2}-\sum_{k=1}^{n}\alpha_k^{2}\Vert e_k \Vert^{2}
+  \]
+
+  Переходя к пределу при $n\to\infty$ получаем нужный результат.
+\end{proof}
+\begin{corollary}
+  Ортогональная система $\{e_k\}$ полна в $X_\Pi$ 
+
+  $\iff$ $\forall $ элем. в $X_\Pi$ выполняется равенство Парсеваля 
+
+  $\iff$ Ряд Фурье $\forall x \in X_\Pi$ сходится к $x$
+\end{corollary}
+\begin{theorem}[Т7]
+  Если ортогональная система $\{e_k\}$ из $X_\Pi$ полная и коэф. Фурье для $x$ равны нулю,
+  то $x = 0$.
+\end{theorem}
+\begin{proof}
+  Из равентсва Парсеваля следует, что $\Vert x \Vert=0 \ \implies \ x=0$
+\end{proof}
+\begin{corollary}
+  Если коэф. Фурье элем. $x_1$ и $x_2 \in X_\Pi$ по полной ортог. сист $\{e_k\}$
+  равны между собой, то эти элементы равны.
+\end{corollary}
+\begin{proof}
+Для элемента $x=x_2-x_1$ коэф. Фурье $\frac{(x,e_k)}{\Vert e_k \Vert^{2}}=\frac{(x_2-x_1,e_k)}{\Vert e_k \Vert^{2}}$
+будут нулевыми. Тогда $x_2-x_1=0$.
+\end{proof}
+\begin{definition}[Замкнутость системы]
+  Ортогональная система $\{e_k\}$ в $X_\Pi$ называется замкнутой, если в $X_\Pi \ \not \exists x\neq 0: (x,e_k)=0 \ \forall k$.
+\end{definition}
+\begin{theorem}
+  В $X_\Gamma$ ортогональная система $\{e_k\}$ полна 
+  $\iff$ $\{e_k\}$ - замкнута
+\end{theorem}
+\begin{proof}
+  1) Пусть $\{e_k\}$ - полна. Пусть $\exists x \neq 0: (x,e_k)=0\ \forall k$
+
+  $\implies$ коэф. Фурье - нулевые, по Т7 $\implies \ x= 0 \ \implies$ система замкнута
+  2) Пусть система $\{e_k\}$ - замкнута. Пусть $x\in X_\Gamma$, $x \sim \sum_{k=1}^{\infty}\alpha_ke_k$ 
+  и $x_0 = \sum_{ k=1}^{\infty}\alpha_ke_k$
+
+  По Т4 $(x-x_0,e_k)=0 \ \forall k \ \implies x-x_0=0$ (т.к. замкнута)
+
+  $\implies x = x_0 = \sum_{k=1}^{n}\alpha_ke_k$ и по Т5 система полна.
+\end{proof}
+\begin{definition}
+  Пусть $X$ - нормированное пространство. Счётная система $\{e_k\}$ называется базисом в $X$,
+  если $\forall x \in x \ \exists !$ представление $x=\sum_{k=1}^{\infty}\lambda_je_j$
+\end{definition}
+\begin{remark}
+  Базис - полная система, но не всякая полная система - базис.
+\end{remark}
+\begin{eg}
+  Система $\{1,x,x^{2},\dots ,x^{k},\dots \}$ не является базисом в $C[-1,1]$,
+  т.к. ряд $\sum_{k=1}^{\infty}\lambda_kx^{k}$, сходящийся на этом отрезке
+  - диф. функция не существует для $|x|$ (не диф. функция).
+\end{eg}
+\begin{theorem}[Т9]
+  Пусть $\{e_k\}$ - ортог. сист. в $X_\Pi$. Если $\{e_k\}$ - полн. то она базис.
+\end{theorem}
+\begin{proof}
+  Если $\{e_k\}$ - полная ортог. сист., то $\forall x \in X_\Pi \true x = \sum_{k=1}^{\infty}\alpha_ke_k$ по Т%.
+
+  Единственность следует из Т1.
+\end{proof}
+\begin{eg}
+  Полные ортогональные системы:
+  \begin{enumerate}
+    \item Тригонометрическая система в $L_2[-\pi,\pi]$
+    \item Система полиномов Лежандра в $L_2[-1,1]$
+  \end{enumerate}
+\end{eg}
+
+\section{Собственные интегралы, зависящие от параметра}
+\begin{theorem}[Т1]
+  Пусть $f(x,y)$ - непр. в $[a,b]\times [c,d]$
+
+  $\implies \ I(y)=\int_{a}^{b}f(x,y)dx$ - непр. на $[c,d]$ (здесь y - параметр)
+\end{theorem}
+\begin{proof}
+  $f$ - непр. на компакте $[a,b]\times [c,d]$, значит $f$ - равномерно непр. на нём 
+
+  $\implies \ \omega(\delta) \underset{\delta\to\infty}{\to}0$ (модуль. непр.)
+
+  $\implies \ |I(y+\Delta y)-I(y)| \le \int_{a}^{b}|f(x,y+\Delta y)-f(x,y)|dx \le 
+  (b-a)\omega(\Delta y) \underset{\Delta y \to 0}{\to} 0$
+  $\implies \ I(y)$ - непр. на $[c,d]$.
+\end{proof}
+\incfig{l10_t2}
+\begin{theorem}[Т2]
+  Пусть $\phi(y)$ и $\psi(y)$ - непр. на $[c,d]$. $\phi(y) \le \psi(y)$ на $[c,d]$
+
+  $E=\{(x,y)\}: \phi(y)\le x \le \psi(y), \, y\in [c,d]$, f(x,y) - непр. на $E$
+
+  $\implies \ I(y)=\int_{\phi(y)}^{\psi(y)}f(x,y)dx$ - непр. на $[c,d]$
+\end{theorem}
+\begin{proof}
+  Замена пременной $x=\phi(y)+t(\psi(y)-\phi(y))$
+
+  $I(y)=\int_{0}^{1}f(\phi(y)+t(\psi(y)-\phi(y)), y)(\psi(y)-\phi(y))dy$ - непр. на $[0,1]\times [c,d]$ как суперпоз. непр.
+
+  По Т1 $I(y)$ - непр. функ. на $[c,d]$.
+\end{proof}
+\begin{theorem}[Т3 Об интегрировании под знаком интеграла]
+  \phantom{.}
+
+  \begin{enumerate}
+  \item $f(x,y)$ - инт. по Риману на $[a,b]\times [c,d]$
+  \item $\int_{a}^{b}f(x,y)dx$ существувет $\forall y \in [c,d]$
+  \item $\int_{c}^{d}f(x,y)dy$ существувет $\forall x \in [a,b]$
+  \end{enumerate}
+  $\implies$ $\int_{c}^{d}(\int_{a}^{b}f(x,y)dx)dy=\int_{a}^{b}(\int_{c}^{d}f(x,y)dy)dx$
+\end{theorem}
+\begin{proof}
+  Утверждение следует из равенства кратного интегрела $\iint_{[a,b]\times [c,d]}f(x,y)dxdy$ двум повторным
+\end{proof}
+\begin{remark}
+  Если $f(x,y)$ непр. на $[a,b]\times [c,d]$, то верно заключение теоремы.
+\end{remark}
+\begin{theorem}[Т4 О дифференцировании интеграла]
+  \phantom{.}
+
+  \begin{enumerate}
+    \item $f(x,y), f_y'(x,y)$ - непр. в $[a,b]\times [c,d]$
+    \item $E:\{(x,y): \phi(y) \le x \le \psi(y), y\in [c,d]\}\subset [a,b]\times [c,d]$
+    \item $\exists \phi'(y),\psi'(y)$ на $[c,d]$
+  \end{enumerate}
+  Тогда существует
+
+  $\left(\int_{\phi(y)}^{\psi(y)}f(x,y)dx\right)'=\psi'(y)f(\psi(y),y)-\phi'(y)f(\phi(y),y)+\int_{\phi(y)}^{\psi(y)}f_y'(x,y)dx$
+\end{theorem}
+\begin{proof}
+  Пусть $y,y_0\in[c,d]$. Обозначим $I(y)=\int_{\phi(y)}^{\psi(y)}d(x,y)dx$
+  \begin{gather*}
+    I(y)-I(y_0)=(\int_{\phi(y)}^{\phi(y_0)}+\int_{\phi(y_0)}^{\psi(y_0)}+\int_{\psi(y_0)}^{\psi(y)})f(x,y)dx - \int_{\phi(y_0)}^{\psi(y_0)}f(x,y_0)dx = \\ 
+    = \int_{\phi(y)}^{\phi(y_0)}f(x,y)dx+\int_{\psi(y_0)}^{\psi(y)}f(x,y)dx+\int_{\phi(y_0)}^{\psi(y_0)}(f(x,y)-f(x,y_0))dx \\ 
+    \frac{1}{y-y_0}\int_{\phi(y)}^{\phi(y_0)}f(x,y)dx= \\ 
+    = \frac{1}{y-y_0}(\phi(y_0)-\phi(y))f(\tilde{x},y) \underset{y\to y_0}{\to} -\phi'(y_0)f(\phi(y_0), y_0)
+  \end{gather*}
+  (Использовали теорему о среднем, $\tilde{x} \in (\phi(y), \phi(y_0)$)
+
+  Аналогично для второго интеграла.
+  \begin{gather*}
+    \frac{1}{y-y_0}\int_{\phi(y_0)}^{\psi(y_0)}(f(x,y)-f(x,y_0))dx= \\ 
+     = \frac{1}{y-y_0}\int_{\phi(y_0)}^{\psi(y_0)}f_y'(x,y_0+\theta(y-y_0))(y-y_0)dx = \\ 
+     = \int_{\phi(y_0)}^{\psi(y_0)}f_y'(x,y_0+\theta(y-y_0))dx \underset{y\to y_0}{\to}\int_{\phi(y_0)}^{\psi(y_0)}f_y'(x,y_0)dx
+  \end{gather*}
+  Воспользовались Т1.
+\end{proof}
+
+\section{Несобственные интегралы, зависящие от параметра}
+Будем рассматривать несобственные интегралы
+\[
+  I(y)=\int_{a}^{b}f(x,y)dx \quad-\infty < a < b \le +\infty, \ y\in Y \tag{1}
+\]
+с единственной особенностью на верхнем пределе.
+
+Это предполагает, что для любых $\eta \in (a,b)$ и $\forall y \in Y$ 
+существует Риманов интеграл $\int_{a}^{\eta}f(x,y)dx$.
+
+По умолчанию считаем, что условие выполняется.
+
+В случае сходимости интеграла:
+\[
+  I(y)=\lim_{\eta \to b-0}\int_{a}^{\eta}f(x,y)dx \qquad
+  \lim_{\eta\to b-0}\int_{\eta}^{b}f(x,y)dx=0
+\]
+\begin{definition}
+  Сходящийся на $Y$ интеграл называется равномерно сходящимся на $Y$, если
+  \[
+    \forall \epsilon > 0 \ \exists \eta_{\epsilon}\in(a,b): \ \forall \eta \in (\eta_\epsilon,b); \ \forall y \in Y 
+    \true |\int_{\eta}^{b}f(x,y)dx|<\epsilon
+  \]
+\end{definition}
+\begin{definition}[Перефразирование]
+  Сходящийся на $Y$ называется равномерно сходящимся, если 
+  \[
+    \lim_{\eta\to b-0}\sup_{y\in Y}|\int_{\eta}^{b}f(x,y)dx|=0
+  \]
+\end{definition}
+\begin{theorem}[Критерий Коши равномерной сходимости несобст. инт.]
+  Интеграл $(1)$ сходится равномерно на $Y$ 
+  $\iff$ выполняется условие Коши равномерной сходимости интеграла
+  \[
+    \forall \epsilon>0 \ \exists \eta_\epsilon \in (a,b): \ \forall \eta',\eta'' \in (\eta,b), \ \forall y \in Y 
+    \true |\int_{\eta'}^{\eta''}f(x,y)dx| < \epsilon
+  \]
+\end{theorem}
+\begin{proof}
+  \phantom{.}
+
+  1) Пусть интеграл сходится равномерно, т.е.
+  \begin{gather*}
+    \underline{\forall \epsilon > 0 \ \exists \eta_{\epsilon}\in(a,b)}: \ \forall \eta \in (\eta_\epsilon,b); \ \forall y \in Y 
+    \true |\int_{\eta}^{b}f(x,y)dx|<\frac{\epsilon}{2}
+  \end{gather*}
+  Возьмём  $\underline{\forall \eta',\eta'' \in (\eta_\epsilon,b), \ \forall y \in Y}$
+
+  Тогда
+  \begin{gather*}
+    \underline{|\int_{\eta'}^{\eta''}f(x,y)dx|}=|(\int_{\eta'}^{b}-\int_{\eta''}^{b})f(x,y)dx|  \le \\
+    \le |\int_{\eta'}^{b}f(x,y)dx| + |\int_{\eta''}^{b}f(x,y)dx|
+    \underline{< \frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon}
+  \end{gather*}
+  2) Пусть выполняется условие Коши равномерной сходимости, т.е.
+  \begin{gather*}
+    \underline{\forall \epsilon>0 \ \exists \eta_\epsilon \in (a,b): \ \forall \eta'},\eta'' \underline{\in (\eta,b), \ \forall y \in Y}
+    \true |\int_{\eta'}^{\eta''}f(x,y)dx| < \frac{\epsilon}{2}
+  \end{gather*}
+  Перейдём к пределу при $\eta''\to b-0$ (предел существует при $\forall y \in Y$, т.к 
+  из выполнения условия Коши равномерной сходимости следует условия Коши сходимости 
+  и, следовательно, сходимость)
+  \begin{gather*}
+    \underline{|\int_{\eta'}^{b}f(x,y)dx|\le \frac{\epsilon}{2} < \epsilon}
+  \end{gather*}
+  Подчёркнутое означает сходимость интеграла.
+\end{proof}
+\begin{theorem}[Т2 Признак Вейерштрасса равн. сход. несобст. инт.]
+  Пусть $\exists \phi(x): \ \phi(x)$ - инт. по Риману на $[a,\eta] \ \forall \eta \in (a,b)$
+  $|f(x,y)| \le \phi(x) \ \forall x \in [a,b), \ \forall y \in Y$,
+  $\int_{a}^{b}\phi(x)dx$ - сходится
+
+  $\implies$ $(1)$ сходится равномерно на $Y$.
+\end{theorem}
+\begin{proof}
+  Возьмём $\underline{\forall \epsilon >0}$. Из сходимости $\int_{a}^{b}\phi(x)dx$ следует (кр. Коши),
+  что $\underline{\exists \eta_\epsilon \in (a,b): \ \forall \eta',\eta'' \in (\eta,b)} 
+    \true |\int_{\eta'}^{\eta''}f(x,y)dx| < \epsilon$
+  
+    Но $\underline{\forall y \in Y \true |\int_{\eta'}^{\eta''}f(x,y)dx|} \le |\int_{\eta'}^{\eta''}|f(x,y)|dx|
+    \le |\int_{\eta'}^{\eta''}\phi(x)dx|\underline{<\epsilon}$
+
+    Подчёркнутое означает равномерную сходимость интеграла $(1)$.
+\end{proof}
+
+% lecture 11
+
+\begin{definition}[Равномерная сходимость функции]
+  $f(x,y)\rightrightarrows \phi(y)$ при $x\to x_0$,
+  если $\lim_{x\to x_0}\sup_{y\in E}|f(x,y)-\phi(y)|=0$
+\end{definition}
+\begin{theorem}[Признак Дирихле равномерной сход. инт.]
+  Пусть
+  \begin{enumerate}
+    \item $f(x,y)$ непр. на $[a,+\infty)\times Y$ по $x$
+      и $\exists M>0: \ |\int_{a}^{\eta}f(x,y)dx|<M \ \forall \eta>a, \ \forall y \in Y$
+      (интеграл $\int_{a}^{\eta}$ - равномерно ограничен)
+    \item $\pd{g}{x}$ - непр. по $x$ на $[a,+\infty)\times Y$
+
+      $g(x,y)$ - монот. по $x$ на $[a,+\infty)\times Y$
+    \item $g(x,y) \underset{y\in Y}{\rightrightarrows} 0$ при $x \to +\infty$ 
+  \end{enumerate}
+  $\implies \ \int_{a}^{+\infty}f(x,y)g(x,y)dx$ сх. равн. на $Y$
+\end{theorem}
+\begin{proof}
+  Возьмём $\underline{\forall \epsilon > 0}$. Т.к. $g(x,y) \underset{y\in Y}{\rightrightarrows}0$ при $x\to \infty$,
+  то $\underline{\exists \eta_\epsilon >a} : \forall \eta>\eta_\epsilon \ \forall y \in Y \true |g(\eta,y)| < \frac{\epsilon}{6M}$
+
+  Возьмём $\underline {\forall \eta', \eta'' > \eta_\epsilon, \ \forall y \in Y}$.
+  Тогда
+  \begin{gather*}
+    \underline{|\int_{\eta'}^{\eta''}f(x,y)g(x,y)dx|}=\int_{\eta'}^{\eta''}g(x,y)d\int_{\eta'}^{x}f(\xi,y)d\xi|= \\ 
+    = |g(x,y)\int_{\eta'}^{x}f(\xi,y)d\xi\big|_{\eta'}^{\eta''}-\int_{\eta'}^{\eta''}(\int_{\eta'}^{x}f(\xi,y)d\xi)g_x'(x,y)dx| \le \\ 
+    (\text{т.к.} \int_{\eta'}^{x}=\int_{a}^{x}-\int_{a}^{\eta'}) \quad \le |g(\eta'',y)|\cdot 2M + 2M|\int_{\eta'}^{\eta''}|g_x'(x,y)|dx| = \\ 
+    =|g(\eta'',y)2M+2M|\int_{\eta'}^{\eta''}g_x'(x,y)dx \le 2M (2|g(\eta'',y)|+|g(\eta')|) < \\ 
+    \underline{< 2M(2\frac{\epsilon}{6M}+\frac{\epsilon}{6M}) = \epsilon}
+  \end{gather*}
+  Подчёркнутое означает равномерную сходимость интеграла.
+\end{proof}
+\begin{theorem}[Признак Абеля (вне программы)]
+  Пусть
+  \begin{enumerate}
+    \item $f(x,y)$ - непр. по $x$ на $[a,+\infty)\times Y$, $\int_{a}^{+\infty}f(x,y)dx$ сх-ся равн. на $Y$
+    \item $\pd{g}{x}$ - непр. по $x$ на $[a,+\infty)\times Y$, $g(x,y)$ монот. по $x$ на $[a,+\infty)\times Y$
+
+      $g(x,y)$ - равн. огр. (т.е. огр. на совокупн. пер. $x$ и $y$ на $[a,+\infty)\times Y$)
+  \end{enumerate}
+  $\implies$ $\ \int_{a}^{\infty}fgdx$ - равн. сход. на $Y$
+\end{theorem}
+
+\subsection{Свойства равномерно сходящихся интегралов}
+\begin{theorem}[О непрерывности]
+  Пусть $f(x,y)$ непр. на $[a,b)\times [c,d]$
+
+  $I(y)=\int_{a}^{b}f(x,y)dx$ - равн. сход. на $[c,d]$
+
+  $\implies \ I(y)$ - непр. на $[c,d]$.
+\end{theorem}
+\begin{proof}
+  Возьмём $\underline{\forall y_0 \in [c,d]}$. Возьмём $\underline{\forall \epsilon>0}$.
+  Т.к. $\int_{a}^{b}f(x,y)dx$ - сх. равн. на $[c,d]$, то
+  $\exists \eta \in (a,b): \ \forall y \in [c,d] \true |\int_{\eta}^{b}f(x,y)dx|<\frac{\epsilon}{3}$
+
+  Теперь $\int_{a}^{\eta}f(x,y)dx$ - собст. интеграл и непр. на $[c,d]$.
+
+  Тогда $\underline{\exists \delta >0: \ \forall y \in U_\delta(y_0)} \true |\int_{a}^{\eta}f(x,y)dx - \int_{a}^{\eta}f(x,y_0)dx|<\frac{\epsilon}{3}$
+
+  Оценим
+  \begin{gather*}
+    \underline{|I(y) - I(y_0)|}\le |\int_{a}^{\eta}f(x,y)dx-\int_{a}^{\eta}f(x,y_0)dx| + \\ 
+    + |\int_{\eta}^{b}f(x,y)dx|+|\int_{\eta}^{b}f(x,y_0)dx|\underline{< \frac{\epsilon}{3}\cdot 3 = \epsilon}
+  \end{gather*}
+\end{proof}
+\begin{theorem}[Об интегрировании несобственного интеграла]
+  В условиях предыдущей теоремы:
+  \begin{gather*}
+    \int_{c}^{d}I(y)dy=\int_{c}^{d}(\int_{a}^{b}f(x,y)dx)dy=\int_{a}^{b}(\int_{c}^{d}f(x,y)dy)dx
+  \end{gather*}
+\end{theorem}
+\begin{proof}
+  Т.к. $f(x,y)$ - непр., то
+  \[
+    \int_{c}^{d}(\int_{a}^{\eta}f(x,y)dx)dy=\int_{a}^{\eta}(\int_{c}^{d}f(x,y)dy)dx \tag{1}
+  \]
+  Но
+  \begin{gather*}
+    |\int_{c}^{d}(\int_{a}^{\eta}f(x,y)dx)dy-\int_{c}^{d}(\int_{a}^{b}f(x,y)dx)dy| \le \\ 
+    \le \int_{c}^{d}|\int_{\eta}^{b}f(x,y)dx|dy \le (d-c)\sup_{y\in [c,d]}|\int_{\eta}^{b}f(x,y)dx|\underset{\eta\to b-0}{\to}0
+  \end{gather*}
+  Т.к. инт. $I(y)$ сход. равномерно.
+
+  Доказали, что $\lim_{\eta\to b-0}\int_{c}^{d}(\int_{a}^{\eta}f(x,y)dx)dy=\int_{c}^{d}(\int_{a}^{b}fdx)dy$
+
+  Переходя в (1) к пределу при $\eta\to b-0$ получаем нужный результат.
+\end{proof}
+\begin{theorem}[О дифф. собственного интеграла]
+  \phantom{.}
+
+  Пусть $f(x,y), \pd{f}{y}$ - непр. на $[a,b)\times [c,d]$.
+
+  Пусть $\exists y_0 \in [c,d]: \int_{a}^{b}f(x,y_0)dx$ - сход.
+
+  Пусть $\int_{a}^{b}\pd{f}{y}dx$ - сход. равномерно на $[c,d]$
+
+  $\implies \ \frac{d}{dy}\int_{a}^{b}f(x,y)dx=\int_{a}^{b}\pd{f(x,y)}{y}dx$
+\end{theorem}
+\begin{proof}
+  По предыдущей теореме
+  \begin{gather*}
+    \int_{y_0}^{y}(\int_{a}^{b}f_y'(x,t)dx)dt=\overbrace{\int_{a}^{b}(f(x,y)-f(x,y_0))dx}^{(1)} = \\ 
+    =\underbrace{\int_{a}^{b}f(x,y)dx}_{(3)} - \underbrace{\int_{a}^{b}f(x,y_0)dx}_{(2)}
+  \end{gather*}
+  (3) сходится т.к. сходятся (1) и (2).
+  
+  Дифф. полученное равенство
+  \[
+    \int_{a}^{b}f_y'(x,y)dx=\frac{d}{dy}\int_{a}^{b}f(x,y)dx
+  \]
+\end{proof}
+\section{Эйлеровы интегралы}
+\begin{definition}
+  Гамма-функция Эйлера
+  \[
+    \Gamma(s)=\int_{0}^{+\infty}x^{s-1}e^{-x}dx, \ s>0
+  \]
+\end{definition}
+Св-ва:
+\begin{enumerate}
+  \item Инт. сходится при $s>0$ и расх. при $s\le0$
+
+    \begin{proof}
+      \phantom{.}
+
+      $x^{s-1}e^{-x} \underset{x\to 0}{\sim}x^{s-1} \ \implies \ \int_{0}^{1}x^{s-1}e^{-x}dx$ - сх. $s>0$, расх. $s\le0$
+
+    $x^{s-1}e^{-x}=o(e^{-\frac{x}{2}}) \ \implies \ \int_{1}^{+\infty}x^{s-1}e^{-x}dx$ - сходится $\forall s$
+    \end{proof}
+  \item $\Gamma(s)$ - непр. при $s>0$
+
+    \begin{proof}
+      \phantom{.}
+
+      \begin{enumerate}
+        \item $x^{s-1}e^{-x}\le x ^{s_0-1}$, где $x\in (0,1]$, $s_1\ge s \ge s_0> 0$
+
+          $\implies \ I_1(s)=\int_{0}^{1}x^{s-1}e^{-x}dx$ - сх. равн. на $[s_0,s_1]$
+
+          $\implies \ I_1(s)$ - непр. на $[s_0,s_1]$ $\implies$ $I_1(s)$ - непр. на $(0,+\infty)$
+        \item $x^{s-1}e^{-x}\le x^{s_1-1}e^{-x}$, где $x\in[1,+\infty)$, $0<s_0\le s \le s_1$
+
+          $\implies \ I_2(s)=\int_{0}^{1}x^{s-1}e^{-x}dx$ - сх. равн. на $[s_0,s_1]$
+
+          $\implies \ I_2(s)$ - непр. на $[s_0,s_1]$ $\implies$ $I_2(s)$ - непр. на $(0,+\infty)$
+      \end{enumerate}
+      $\implies \ \Gamma(s)$ - непр. на $(0,+\infty)$
+    \end{proof}
+% lecture 12 
+  \item $\Gamma(s+1)=s\Gamma(s)$
+    \begin{proof}
+      \begin{gather*}
+        \Gamma(s+1)=\int_{0}^{+\infty}x^{s}e^{-x}dx= -\int_{0}^{+\infty}x^{s}de^{-x} = \\
+        =\underbrace{-x^{s}e^{-x}\big|_{0}^{\infty}}_{0}+\int_{0}^{+\infty}sx^{s-1}e^{-x}dx=s\Gamma(s)
+      \end{gather*}
+    \end{proof}
+    ($\Gamma(1)=\Gamma(2)=1, \Gamma(3)=2\dots \Gamma(n+1)=n!$)
+\end{enumerate}
+\begin{definition}
+  Бета-функция Эйлера:
+  \[
+    B(p,q)=\int_{0}^{1}x^{p-1}(1-x)^{q-1}dx
+  \]
+\end{definition}
+Св-ва:
+\begin{enumerate}
+  \item Интеграл сходится при $p>0,q>0$
+    \begin{proof}
+      \phantom{.}
+
+      $x^{p-1}(1-x)^{p-1}\underset{x\to +0}{\sim} x^{p-1} \ \implies \ \int_{0}^{1/2}x^{p-1}(1-x)^{q-1}dx$ - сх. при $p>0$
+
+      $x^{p-1}(1-x)^{p-1}\underset{x\to 1-0}{\sim} (1-x)^{q-1} \ \implies \ \int_{1/2}^{1}x^{p-1}(1-x)^{q-1}dx$ - сх. при $q>0$
+    \end{proof}
+  \item $B(p,q)=B(q,p)$
+    \begin{proof}
+      \phantom{.}
+
+      Замена переменных $1-x=t$, $dx=-dt$
+
+      $B(p,q)=\int_{0}^{1}x^{p-1}(1-x)^{q-1}dx=-\int_{1}^{0}(1-t)^{p-1}t^{q-1}dt=\int_{0}^{1}t^{q-1}(1-t)^{p-1}dt=B(q,p)$
+    \end{proof}
+  \item $B(p,q)$ - непр. на $(0,+\infty)\times(0,+\infty)$
+    \begin{proof}
+      \phantom{.}
+
+      Рассмотрим $[p_0,+\infty)\times[q_0,+\infty)$, где $p_0>0,q_0>0$
+
+      Верно $x^{p-1}(1-x)^{q-1} \le x^{p_0-1}(1-x)^{q_0-1}$ при $x \in (0,1)$, $p\ge p_0, q \ge q_0$,
+      при этом $\int_{0}^{1}x^{p_0-1}(1-x)^{q_0-1}dx$ - сход.
+
+      $\implies B(p,q)$ - сх. равн. на $[p_0,+\infty)\times [q_0,+\infty)$ (пр. Вейер.)
+
+      $B(p,q)$ - непр. на $[p_0,+\infty)\times [q_0,+\infty)$
+      
+      $\implies \ B(p,q)$ - непр. на $(0,+\infty)\times(0,+\infty)$
+    \end{proof}
+    \begin{remark}
+      Здесь применили теоремы для инт., завис. от двух параметров
+    \end{remark}
+  \item $B(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}$ (без док.)
+  \item Формула дополнения $B(a,1-a)=\frac{\pi}{\sin a\pi}$ $(a\in(0,1)$ (без док.)
+  
+\end{enumerate}
+\section{Интеграл Дирихле}
+\begin{lemma}
+  \[
+    \int_{0}^{+\infty}\frac{\sin \alpha x}{x}dx=\frac{\pi}{2} sign(\alpha)
+  \]
+\end{lemma}
+\begin{proof}
+  (Через ядро Дирихле)
+  \begin{gather*}
+    \frac{1}{2}+\sum_{k=1}^{n}\cos kx = \frac{\sin(n+\frac{1}{2}x)}{2\sin \frac{x}{2}} \qquad \Big|\int_{0}^{\pi}\dots dx \\ 
+    \frac{\pi}{2}=\int_{0}^{\pi}\frac{\sin(n+\frac{1}{2}x)}{2\sin \frac{x}{2}} = \\
+    = \underbrace{\int_{0}^{\pi}\overbrace{\left(\frac{1}{2\sin \frac{x}{2}}-\frac{1}{x}\right)}^{(1)}\sin(n+\frac{1}{2})xdx}_{(2)} + \int_{0}^{\pi}\frac{\sin (n+\frac{1}{2})x}{x}dx
+  \end{gather*}
+  (1) имеет предел при $x\to 0$ (расскладываем по Тейлору) $\implies$ можно доопределить до непр. на $[0,\pi]$ 
+
+  Тогда интеграл (2) при $n\to +\infty$ стремится к 0 (теорема Римана)
+
+  Переходим в последнем равенстве к пределеу при $n\to+\infty$ (замена $(n+\frac{1}{2})x=t$)
+  \begin{gather*}
+    \frac{\pi}{2}=\lim_{n\to \infty}\int_{0}^{\pi}\frac{\sin(n+\frac{1}{2})x}{x}dx=\lim_{n\to\infty}\int_{0}^{(n+\frac{1}{2})\pi}\frac{\sin t}{t}dt
+  \end{gather*}
+  Но $\int_{0}^{\infty}\frac{\sin t}{t}dt$ - сход. $\implies \ \int_{0}^{+\infty}\frac{\sin t}{t}dt=\frac{\pi}{2}$
+
+  Из нечётности и постоянства незименности знака $\alpha$ $\implies \ \int_{0}^{+\infty}\frac{\sin \alpha x}{x}dx = \frac{\pi}{2}sign(\alpha)$
+\end{proof}
+
+\section{Интеграл Фурье}
+\begin{lemma}
+  Пусть $f(x)$ - абс. инт. на $(a,b)$ (конечном или беск.), $\phi(x,y)$ - непр. и огран.
+  на $(a,b)\times [c,d]$. Тогда
+  \begin{enumerate}
+    \item $I(y)=\int_{a}^{b}f(x)\phi(x,y)dx$ - непр. на $[c,d]$
+    \item $\int_{c}^{d}(\int_{a}^{b}f(x)\phi(x,y)dx)dy=\int_{a}^{b}(\int_{c}^{d}f(x)\phi(x,y)dy)dx$
+  \end{enumerate}
+\end{lemma}
+\incfig{l12_l1}
+\begin{proof}(Для 2-х особ. на концах)
+
+  1) Пусть $\phi(x,y)\le M$ на $(a,b)\times [c,d]$
+
+  Возьмём $\underline{\forall \epsilon > 0}$. Т.к. $f(x)$ - абс. инт., то
+  $\exists \xi, \eta \in (a,b): \ \int_{a}^{\xi}|f(x)|dx < k \epsilon$,
+  $\int_{\eta}^{b}|f(x)|dx < k \epsilon$
+
+  Рассмотрим $\Delta I =I(y+\Delta y) - I(y) = (\int_{a}^{\xi}+\int_{\xi}^{\eta}+\int_{\eta}^{b})f(x)(\phi(x,y+\Delta y) - \phi(x,y))dx$
+
+  Оценка $|\Delta I| < 2Mk\epsilon + \omega(\Delta y, \phi, \Pi) \int_{a}^{b}|f(x)|dx + 2Mk\epsilon$ ($\Pi = [\xi,\eta]\times [c,d]$)
+
+  Т.к. $\phi(x,y)$ - непр. на $\Pi$, то $\phi(x,y)$ - равн. непр. на $\Pi$
+
+  $\underline{\exists \delta >0}: \ \forall \Delta y < \delta \true |\omega(\Delta y, \phi, \Pi)| < k\epsilon$
+  
+  Тогда $|\Delta I|< 4Mk\epsilon + \int_{a}^{b}|f(x)|dx k\epsilon = k\epsilon(4M+\int_{a}^{b}|f(x)|dx)$
+  
+  Если $k=\frac{1}{4M + \int_{a}^{b}|f(x)|dx}$, то получим $\underline{|\Delta I| < \epsilon}$
+
+  Подчёркнутое означает непрерывность $I(y)$.
+
+  2) Доказана теорема о том, что любая абс. инт. функция $f(x)$ может быть приближена на $[a,b]$
+  ступенчатой функцией $\psi(x)$ по норме $\Vert \cdot \Vert_{1}$ (интеграл от модуля) сколь 
+  угодно точно. Но ступенчатая функция может быть приближена непрерывной $f_{\epsilon}(x)$ по норме
+  $\Vert \cdot \Vert_{1}$, сколь угодно точно, если "исправить" ступеньку на трапецию.
+  ($\_|\bar{}|\_ \rightarrow \_/\bar{}\backslash \_$)
+
+  Таким образом $\forall \epsilon > 0 \ \exists f_\epsilon(x): \int_{a}^{b}|f_\epsilon(x)-f(x)|dx<\epsilon$
+
+  При этом $f_{\epsilon}(x)$ - непр. и равна нулю вне некоторого $[\alpha,\beta]\subset(a,b)$
+
+  Тогда $f_\epsilon(x)\phi(x,y)$ - непр. на $[\alpha,\beta]\times [c,d] \subset (a,b)\times [c,d]$ и
+  \[
+    \int_{c}^{d}(\int_{a}^{b}f_\epsilon(x)\phi(x,y)dx)dy=\int_{a}^{b}f_\epsilon(x)(\int_{c}^{d}\phi(x,y)dy)dx
+  \]
+  Покажем, что перейдя к пределу при $\epsilon \to 0$ в последнем равенстве получим
+  утверждение леммы.
+  Действительно
+  \[
+    \int_{c}^{d}(\int_{a}^{b}f_{\epsilon}(x)\phi(x,y)dx)dy \underset{\epsilon\to 0}{\to}\int_{c}^{d}(\int_{a}^{b}f(x)\phi(x,y)dx)dy
+  \]
+  т.к. $|\int_{c}^{d}(\int_{a}^{b}(f(x)-f_\epsilon(x))\phi(x,y)dx)dy| \le M(d-c)\int_{a}^{b}|f(x)-f_\epsilon(x)|dx \le M(d-c)\epsilon \underset{\epsilon\to 0}{\to}0$
+  
+  Аналогично $\int_{a}^{b}(f_\epsilon(x)\int_{c}^{d}\phi(x,y)dy)dx \underset{\epsilon\to 0}{\to}\int_{a}^{b}(\int_{c}^{d}f(x)\phi(x,y)dy)dx$
+\end{proof}
+
+% lecture 13
+
+\begin{definition}
+  Пусть $f(x)$ - абс. инт. на $(-\infty,+\infty)$. Тогда:
+  \begin{gather*}
+    S(x)=S(x,f)=\int_{0}^{+\infty}(a(y)\cos xy+ b(y) \sin xy)dy \\ 
+    a(y)=\frac{1}{\pi}\int_{-\infty}^{+\infty}f(t)\cos ty dt \qquad
+    b(y)=\frac{1}{\pi}\int_{-\infty}^{+\infty}f(t)\sin ty dt
+  \end{gather*}
+  называется интегралом Фурье функции $f(x)$
+\end{definition}
+\begin{remark}
+  Интеграл Фурье - аналог ряда Фурье для функции определённой на $(-\infty,+\infty)$,
+  $a(y),b(y)$ - аналоги коэф. Фурье
+\end{remark}
+\begin{lemma}
+  Пусть $f(x)$ - абс. инт. $(-\infty,+\infty)$ - непр. на $(-\infty,+\infty)$. Тогда
+  \begin{enumerate}
+    \item $a(y),b(y)$ - непр. на $(-\infty,+\infty$
+    \item $\lim_{y\to \pm\infty} a(y)=\lim_{y\to \pm\infty} b(y) = 0$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Следует из леммы 1 
+    \item Следует из Теоремы Римана
+  \end{enumerate}
+\end{proof}
+\begin{theorem}[О сходимости интеграла Фурье к функции]
+  Пусть $f(x)$ - абс. инт. на $(-\infty,+\infty)$.
+
+  Пусть в точке $x_0 \ \exists f(x_0\pm 0), f_{\pm}'(x_0)$
+
+  $\implies \ S(x_0)=\frac{f(x_0+0)+f(x_0-0)}{2}$
+\end{theorem}
+\begin{proof}
+  Преобразуем инт. Фурье (подставляем $a$ и $b$):
+  \[
+    S(x)=\frac{1}{\pi}\int_{0}^{+\infty}\left(\int_{-\infty}^{+\infty}f(y)\cos y (x-t)dt\right)dy
+  \]
+  Рассмотрим $S(x)=\frac{1}{\pi}\int_{0}^{\eta}\left(\int_{-\infty}^{+\infty}f(y)\cos y (x-t)dt\right)dy$ - аналог. част. суммы Фурье
+
+  Применяя лемму 1, получим
+  \begin{gather*}
+    S_\eta=\int_{-\infty}^{+\infty}f(t)\left(\int_{0}^{\eta}\cos y(x-t)dt\right)dt  = \\
+    = \frac{1}{\pi}\int_{-\infty}^{+\infty}f(t)\frac{\sin \eta(x-t)}{x-t}dt = \\ 
+    \langle t-x=u \rangle \ =\frac{1}{\pi}\int_{-\infty}^{+\infty}f(x+u)\frac{\sin \eta u}{u}du= \\ 
+    = \frac{1}{\pi}\left(\underset{t=-u}{\int_{-\infty}^{0}}+\underset{t=u}{\int_{0}^{+\infty}}\right)f(x+u)\frac{\sin \eta u}{u}du =  \\ 
+    = \frac{1}{\pi}\int_{0}^{+\infty}(f(x+t)+f(x-t))\frac{\sin \eta t}{t}dy
+  \end{gather*}
+  В точке $x_0 \ \exists f(x_0\pm 0), f_{\pm}'(x_0)$. Тогда (используя инт. Дирихле)
+  \begin{gather*}
+    S_\eta(x_0)-\frac{f(x_0+0)+f(x_0-0)}{2}= \\ 
+    = \frac{1}{\pi}\int_{0}^{+\infty}(f(x_0+t)+f(x_0-t))\frac{\sin \eta t}{t}dt - \\ -  \frac{1}{\pi}\int_{0}^{+\infty}(f(x_0+0)+f(x_0-0))\frac{\sin \eta t}{t}dt = \\ 
+    = \underbrace{\frac{1}{\pi}\int_{0}^{+\infty}(f(x_0+t)-f(x_0+0))\frac{\sin \eta t}{t}dt}_{I^{+}} + \\ + \underbrace{\frac{1}{\pi}\int_{0}^{+\infty}(f(x_0-t)-f(x_0-0))\frac{\sin \eta t}{t}dt}_{I^{-}}
+  \end{gather*}
+  \begin{gather*}
+    I^{+}=\left(\int_{0}^{1}+\int_{1}^{+\infty}\right)(f(x_0+t)-f(x_0+0))\frac{\sin\eta t}{t}dt = \\ 
+    = \underbrace{\int_{0}^{1}\frac{f(x_0+t)-f(x_0+0)}{t}\sin \eta t dt}_{I^{+}_{1}} + \\ + \underbrace{\int_{1}^{+\infty}\frac{f(x_0+t)}{t}\sin \eta t dt}_{I_{2}^{+}} - \underbrace{\int_{1}^{+\infty}f(x_0+0)\frac{\sin \eta t}{t}dt}_{I_{3}^{+}}
+  \end{gather*}
+  По теореме Римана $I_{1}^{+} \underset{\eta \to \infty}{\to } 0$ (т.к. $\exists f_{+}'(x_0$), $I_{2}^{+} \underset{\eta \to \infty}{\to } 0$
+
+  Преобразуем $I_{3}^{+}\underset{\eta t = u}{=}f(x_0+0)\int_{\eta}^{+\infty}\frac{\sin u}{u}du \underset{\eta\to \infty}{0}$,
+  т.к. это остаток сходящегося интеграла Дирихле.
+
+  $\implies \ I^{+}=I_{1}^{+}+ I_{2}^{+} + I_{3}^{+} \underset{\eta \to \infty}{\to} 0$. Аналогичо $I^{-}$.
+
+  $\implies S_\eta(x_0) \underset{\eta \to \infty}{\to} \frac{f(x_0+0)+f(x_0-)}{2}$
+\end{proof}
+\begin{definition}
+  Пусть $f(x)$ - инт. в собственном или несобственном смысле на произвольном $[\eta,\eta]$.
+
+  Тогда интеграл $v.p.\int_{-\infty}^{+\infty}f(x)dx=\lim_{\eta \to +\infty}\int_{-\eta}^{\eta}f(x)dx$
+  называется интегралом в смысле главного значения.
+\end{definition}
+\begin{remark}
+  Если $\exists \ \int_{-\infty}^{+\infty}f(x)dx$, то $\exists \ v.p. \int_{-\infty}^{+\infty}f(x)dx$, но не наоборот
+\end{remark}
+\begin{eg}
+  Функции $\sin x$ и $x$
+\end{eg}
+Пусть $f(x)$ - абс. инт. на $(-\infty,+\infty)$, непр., в любой точке существует одностор. производная.
+
+Тогда по теореме:
+\begin{gather*}
+  f(x)=\frac{1}{\pi}\int_{0}^{+\infty}\left(\int_{-\infty}^{+\infty}f(t)\cos(x-t)dt\right)dy = \\ 
+  = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\int_{-\infty}^{+\infty}f(t)\cos y (x-t)dt\right)dy
+\end{gather*}
+Также:
+\[
+  0=v.p.\frac{1}{2\pi}\int_{-\infty}^{+\infty}\left(\int_{-\infty}^{+\infty}f(t)\sin y(x-t)dt\right)dy
+\]
+Умножаем на $i$ и складываем с предыдущим:
+\begin{definition}
+\[
+  f(x)=\frac{1}{2\pi}v.p. \int_{-\infty}^{+\infty}\left(\int_{-\infty}^{+\infty}f(t)e^{iy(x-t)}dt\right)dy \tag{0}
+\]
+- комплексная запись инт. Фурье
+\end{definition}
+
+\section{Преобразование Фурье}
+Пусть $f(x)$ - абс. инт и непр. на $(-\infty,+\infty)$, в каждой точке существуют $f_{\pm}'$
+
+Тогда перепишем $(0)$ в виде
+\[
+  f(x)=v.p. \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(t)e^{-iyt}dt\right)e^{iyx}dy \tag{1}
+\]
+\begin{definition}
+  \[
+    F[f](y)=v.p. \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(x)e^{-ixy}dx
+  \]
+  называется преобразованием Фурье функции $f(x)$
+\end{definition}
+\begin{definition}
+  \[
+    F^{-1}[f](y)=v.p. \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(x)e^{ixy}dx
+  \]
+  называется обратным преобразованием Фурье функции $f(x)$
+\end{definition}
+\begin{theorem}[Т1]
+  Пусть $f(x)$ абс. инт. на $(-\infty,+\infty)$, непр. и меет обе одностор. произв. в любой точке
+
+  $\implies \ F^{-1}[F[f]]=f; F[F^{-1}[f]]=f$
+\end{theorem}
+\begin{proof}
+  Первая формула совпадает с $(1)$.
+
+  Формулу $(0)$ можно записать поменяв $(x-t)$ на $(t-x)$ т.е.
+  \begin{gather*}
+    f(x) = v.p. \frac{1}{2\pi}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(t)e^{iy(t-x)}dtdy = \\ 
+    = v.p. \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}e^{-iyx}\left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(t)e^{iyt}dt\right)dt = F[F^{-1}[f]]
+  \end{gather*}
+\end{proof}
+\subsection{Св-ва преобр. Фурье абс. инт. функций}
+\begin{enumerate}
+  \item $F[\lambda_1 f_1+\lambda_2f_2]=\lambda_1F[f_1]+\lambda_2F[f_2]$
+  \item $F[f](y)$ - непр. на $(-\infty,+\infty)$
+  \item $F[f](y) \underset{y\to \infty}{\to}0$
+  \item $F[f](y)$ - огран. на $(-\infty,+\infty)$
+\end{enumerate}
+\begin{proof}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Из свойства интеграла
+    \item Из леммы 2 раздела 'Интеграл Фурье'
+      , т.к. $F[f](y)=(a(t)-ib(t))\sqrt{\frac{\pi}{2}}$
+    \item Аналогично второму
+    \item $|F[f](y)|\le \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}|f(x)|\underbrace{|e^{-ixy}|}_{1}dx=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}|f(x)|dx$
+  \end{enumerate}
+\end{proof}
+\subsection{Преобразование производной}
+\begin{theorem}[Т2 Преобразование Фурье производной]
+  Пусть $f(x)$ - абс. инт. на $(-\infty,+\infty)$, $f'(x)$ - непр. и абс. инт. на $(-\infty,+\infty)$
+
+  $\implies \ F[f'](y)=iyF[f](y), \ y \in (-\infty,+\infty)$
+\end{theorem}
+\begin{proof}
+  \begin{gather*}
+    f(x)=f(0)+\int_{0}^{x}f'(t)dt
+  \end{gather*}
+  Т.к. $\int_{-\infty}^{+\infty}f'(t)dt$ - сход., то $\exists \lim_{x\to +\infty}f(x),\ \lim_{x\to -\infty}f(x)$
+
+  Эти пределы равны $0$, т.к. $\int_{-\infty}^{+\infty}f(x)dx$ - сход.
+
+  Тогда
+  \begin{gather*}
+    F[f'](y)=\frac{1}{\sqrt{2\pi}\int_{-\infty}^{+\infty}f'(x)e^{-ixy}dx}= \\ 
+    = \underbrace{\frac{1}{\sqrt{2\pi}}f(x)e^{-ixy}\big|_{-\infty}^{\infty}}_{=0}+\frac{iy}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(x)e^{-ixy}dx = iyF[f](y)
+  \end{gather*}
+\end{proof}
+\begin{corollary}
+  Пусть $f(x)$ абс. инт. на $(-\infty,+\infty)$ вместе со своими производными до порядка n влюкчительно и
+  $f^{(n)}(x)$ - непр. как $(-\infty,+\infty)$. Тогда
+
+  \begin{gather*}
+    F[f^{(n)}](y)=(iy)^{n}F[f](y) \tag {2} \\ 
+    |F[f](y)| \le \frac{M}{|y|^{n}} \qquad M=\sup_{(-\infty,+\infty)}|F[f^{(n)}]| \tag{3}
+  \end{gather*}
+\end{corollary}
+\begin{proof}
+  Применяя $n$ раз теорему получаем $(2)$. Оценка следует из $(2)$
+\end{proof}
+\begin{theorem}[Т3 Производная от преобразования]
+  \phantom{.}
+
+  Пусть $f(x)$ - непр. на $(-\infty,+\infty)$, а $xf(x)$ - абс. инт на $(-\infty,+\infty)$
+
+  $\implies \ \exists \frac{d}{dy}F[f](y)=F[-ixfx()](y)$
+\end{theorem}
+\begin{proof}
+  Из абс. сход $xf(x)$ и непр. $f(x)$ следует абс. инт. $f(x)$.
+
+  Тогда $F[f](y)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(x)e^{-ixy}dx$.
+
+Продифф. по $y$:
+\[
+  \frac{d}{dy}F[f](y)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}f(x)(-ix)e^{-iyx}dx
+\]
+Дифф. законно, т.к. инт. справа сх. равн. по признаку Вейерштрасса 
+
+($|f(x)(-ix)e^{-ixy}|\le|f(x)x|$)
+\end{proof}
+\begin{corollary}
+  Пусть $f(x)$ - непр. на $(-\infty,+\infty)$. $x^{n}f(x)$ - абс. инт. на $(-\infty,+\infty)$
+
+  $\implies \ \exists \ \frac{d^{n}}{dy^{n}}F[f](y)=F[(-ix)^{n}f(x)](y)$
+\end{corollary}
+\begin{proof}
+  Применяем теорему $n$ раз.
+\end{proof}
+
+% lecture 14
+
+\section{Обобщённые функции}
+\begin{definition}
+  Носителем функции $\phi(x)$ $(x\in \R)$ называется замыкание множества,
+  на котором $\phi(x) \neq 0$ и обозначается $supp \phi$
+\end{definition}
+\begin{definition}
+  Функция $\phi(x)$ называется финитной, если её носитель ограничен.
+\end{definition}
+\begin{definition}
+  Пространство $D$ основных (пробных) функций - множество беск. дифф. финитных функций
+  со сходимость, определённой следующим образом.
+\end{definition}
+\begin{definition}
+  Последовательность $\{\phi_n(x)\}$ называется сход. в $D$ к функции $\phi(x)$, если 
+  \begin{enumerate}
+    \item $\exists [a,b]: \ supp \phi_n(x) \in [a,b] \ \forall n$
+    \item $\sup_{[a,b]}|\phi_n^{(s)}(x)-\phi^{(s)}(x)| \underset{n\to \infty}{\to} 0 \ \forall s =0,1,2,\dots $
+  \end{enumerate}
+\end{definition}
+\begin{eg}
+  \[
+    \phi_a(x)=\left\{\begin{aligned}
+      &e^{-\frac{a^{2}}{a^{2}-x^{2}}}, |x|<a, a>0 \\ 
+      &0, |x|\ge a
+    \end{aligned}\right.
+  \]
+  Докозательство беск. дифф. функции $\phi_a(x)$ проводится аналогично док-ву беск. дифф. функции
+  \[
+    f(x) = \left\{\begin{aligned}
+      & e^{-\frac{1}{x^{2}}}, \neq 0 \\ 
+      & 0, x=0
+    \end{aligned}\right.
+  \]
+  (пределы всех производных в точках $a$ равны $0$)
+\end{eg}
+\begin{definition}
+  Отображение $f: D \to \R$, будем называть функционалом.
+
+  Значение $f$ на $\phi$ будем обозначать $(f,\phi)$
+\end{definition}
+\begin{definition}
+  Функционал $f$ на $D$ будем называть линейным, если $(f,\alpha_1\phi_1+\alpha_2\phi_2)=\alpha_1(f,\phi_1)+\alpha_2(f,\phi_2)$,
+  для $\forall \alpha_1,\alpha_2 \in \R; \forall \phi_1,\phi_2 \in D$
+\end{definition}
+\begin{definition}
+  Функционал $f$ на $D$ называется непрерывным, если $\forall \{\phi_n\}$ из $D: \ \phi_n \underset{n\to \infty}{\to}\phi$ в $D$
+  $\true (f,\phi_n) \underset{ n \to \infty}{\to }(f,\phi)$
+\end{definition}
+\begin{definition}
+  Всякий линейный непрерывный функционал на $D$ называется обобщённой функцией.
+\end{definition}
+\begin{definition}
+  Пространством обобщённых функций $D'$ называется множество всех обобщённых функций
+  с введённымы в нём операциями сложение и умножение на число и сходимостью по следующим правилам
+  \begin{enumerate}
+    \item $(\alpha_1f_1+\alpha_2f_2,\phi)=\alpha_1(f_1,\phi)+\alpha_2(f_2,\phi)\ \forall \alpha_1,\alpha_2 \in \R, \forall \phi \in D$
+    \item Последовательность $\{f_n\}$ называется сходящейся в $D'$ к $f\in D'$, если
+      $(f_n,\phi)\underset{n\to \infty}{\to}(f,\phi) \ \forall \phi\in D$
+
+      Сходимость записываться $f_n \underset{n\to \infty}{\to }f $ в $D'$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Функция $f(x)$ называется локально абс. инт., если $f(x)$ абс. инт на любом $[a,b]$
+\end{definition}
+\begin{definition}
+  Функционал порождённый локально абс. инт. функцией $f(x)$ по правилу 
+  $(f,\phi)=\int_{-\infty}^{+\infty}f(x)\phi(x)dx$ называется регулярной обобщённой функцией
+  и обозначается также $f$
+\end{definition}
+\begin{proof}(Коректности определения)
+  \begin{enumerate}
+    \item $(f,\phi)\exists$ (см. лемму перед теоремой Римана)
+    \item Функционал линеен (следует из линейности интеграла)
+    \item Функционал непрерывен, т.к. из того, что $\phi_n(x)\underset{n\to\infty}{\to}\phi(x)$ в $D$
+      следует $|(f,\phi_n)-(f,\phi)|\le \int_{a}^{b}|f||\phi-\phi_n|dx \le \sup_{[a,b]}|\phi-\phi_n|\int_{a}^{b}|f|dx \underset{n\to\infty}{\to}0$
+
+      $\implies \ (f,\phi_n) \underset{ n\to\infty}{\to}(f,\phi)$
+  \end{enumerate}
+\end{proof}
+\begin{definition}
+  Обобщённая функция, которая не является регульрной называется сингулярной.
+\end{definition}
+\begin{definition}
+  Функционал вида $(\delta(x),\phi(x))=\phi(0)$ называется $\delta$-функцией (Дирака)
+\end{definition}
+\begin{theorem}
+  $\delta$-функция является сингулярной обобщённой функцией
+\end{theorem}
+\begin{proof}
+  \phantom{.}
+
+  \begin{enumerate}
+    \item Линейность $(\delta,\alpha_1\phi_1+\alpha_2\phi_2)=\alpha_1\phi(0)+\alpha_2\phi_2(0)=\alpha_1(\delta,\phi_1)+\alpha_2(\delta,\phi_2)$
+    \item Непрерывность $\phi_n(x) \underset{n\to \infty}{\to}\phi(x)$ в $D$
+
+      $\implies \ \phi_n(0)\underset{n\to\infty}{\to}\phi(0) \iff (\delta,\phi_n)\underset{n\to\infty}{\to}(\delta,\phi)$
+    \item Сингулярность
+
+      Предположим, что $\delta$ - регулярная и порождена локально абс. инт. функ. $f(x)$
+      и $\phi(0)=\int_{-\infty}^{+\infty}f(x)\phi(x)dx$
+
+      Пусть $\phi(x)=\phi_\epsilon(x)=\left\{\begin{aligned}
+        & e^{-\frac{\epsilon^{2}}{\epsilon^{2}-x^{2}}}, |x|<\epsilon, \epsilon>0 \\ 
+        & 0, |x|> \epsilon
+      \end{aligned}\right.$
+
+      Тогда $\frac{1}{e}=\int_{-\infty}^{+\infty}f(x)\phi_\epsilon(x)dx$.
+
+      Но $|\int_{-\infty}^{+\infty}f(x)\phi_\epsilon(x)dx| \le \int_{-\epsilon}^{+\epsilon}|f(x)|\frac{1}{f}dx \underset{\epsilon\to 0}{\to}0$ (?!)
+      
+      $\implies \ \delta$ - синг. обобщ. функ.
+  \end{enumerate}
+\end{proof}
+\begin{remark}
+  Допускается вместо $(\delta,\phi)$ писать $\int_{-\infty}^{+\infty}\delta(x)\phi(x)dx$
+\end{remark}
+\begin{eg}
+  \begin{gather*}
+    \delta_n(x)=\left\{\begin{aligned}
+      & \frac{n}{2}, x \in [-\frac{1}{n},\frac{1}{n}] \\ 
+      & 0, x \not \in [-\frac{1}{n},\frac{1}{n}]
+    \end{aligned}\right.
+  \end{gather*}
+  Доказать, что $\delta_n(x) \underset{n\to\infty}{\to}\delta(x)$ в $D'$
+  \begin{proof}
+    \begin{gather*}
+      (\delta_n,\phi)=\int_{-\infty}^{+\infty}\delta_n(x)\phi(x)dx=\int_{-\frac{1}{n}}^{\frac{1}{n}}\frac{n}{2}\phi(x)dx = \\ 
+      = \frac{n}{2}\frac{2}{n}\phi(\xi_n)\underset{n\to\infty}{\to}\phi(0)=(\delta,\phi)
+    \end{gather*}
+    Здесь $\xi_n\in(-\frac{1}{n},\frac{1}{n})$
+  \end{proof}
+\end{eg}
+\begin{definition}
+  $(\delta(x-x_0),\phi(x))=\phi(x_0)$
+\end{definition}
+\begin{definition}
+  Пусть $f\in D'$. Тогда $(f',\phi)=-(f,\phi')$
+\end{definition}
+\begin{proof}[Обоснование]
+  Если $f$ - регулярная обобщённая функция, порожд. непр. дифф. функцией $f(x)$, то
+  $f'(x)$ - локально. абс. инт. и $(f',\phi)=\int_{-\infty}^{+\infty}f'\phi dx=f(x)\phi(x)\big|_{-\infty}^{+\infty}-\int_{-\infty}^{+\infty}f\phi' dx = -(f,\phi')$
+
+  Докажем, что $f'\in D'$
+
+  \begin{enumerate}
+    \item $f' \in D \ \implies \ \exists (f,\phi')$
+    \item $f'$ - линейный, т.к. $f$ - линейный
+    \item Если $\phi_n \underset{n\to\infty}{\phi}$ в $D$, то
+
+      $\phi_n' \to \phi'$ в $D$ $\ \implies \ $ (т.к. $f$ - непр) $(f,\phi_n')\underset{n\to\infty}{\to}(f,\phi')$ 
+
+      $\implies (f',\phi_n)\underset{n\to\infty}{\to}(f',\phi)$- непр.
+  \end{enumerate}
+\end{proof}
+\begin{remark}
+  Любая обобщённая функция имеет производную.
+\end{remark}
+\begin{eg}
+  Функция Хевисайда
+  \begin{gather*}
+    \theta(x)= \left\{\begin{aligned}
+      & 1, x \ge 0 \\ 
+      & 0, x < 0
+    \end{aligned}\right. \\ 
+    (\theta',\phi)=-(\theta,\phi')=-\int_{-\infty}^{+\infty}\theta(x)\phi'(x)dx = \\ 
+    = -\int_{0}^{+\infty}\phi'(x)dx=-\phi(x)\big|_{0}^{+\infty}=\phi(0)=(\delta,\phi)
+  \end{gather*}
+  $\implies \ \theta'(x)=\delta(x)$ в $D'$
+\end{eg}
+\begin{definition}
+  Пусть $f \in D'$, $g(x)$ - беск. дифф. функция. Тогда $(fg, \phi)=(f,\phi g)$
+\end{definition}
+\begin{eg}
+  Упростить в $D'$: $\delta'(x)x$
+  \begin{gather*}
+    (\delta'(x),\phi(x))=(\delta'(x),\phi(x)x)=-(\delta(x),\phi'(x)+\phi(x))= \\ 
+    =-\phi'(0)0-\phi(0)=-(\delta,\phi)
+  \end{gather*}
+  $\implies \delta'(x)x=-\delta(x)$ в $D'$
+\end{eg}
+
 
 \end{document}
